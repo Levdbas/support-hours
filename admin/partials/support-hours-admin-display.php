@@ -12,8 +12,6 @@
  * @subpackage Support_Hours/admin/partials
  */
 ?>
-
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div class="wrap">
     <?php
       $user_ID = get_current_user_id();

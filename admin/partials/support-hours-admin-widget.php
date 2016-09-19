@@ -13,10 +13,7 @@
  */
 ?>
 <?php
-  //Grab all options
   $options = get_option($this->plugin_name);
-
-  // Cleanup
   $bought_hours = $options['bought_hours'];
   $used_hours = $options['used_hours'];
   $percentage = $used_hours * 100 / $bought_hours;

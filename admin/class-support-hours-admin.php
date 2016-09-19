@@ -142,35 +142,23 @@ class Support_Hours_Admin {
 			include_once( 'partials/support-hours-admin-display.php' );
 	}
 	public function validate($input) {
-		// All checkboxes inputs
 		$valid = array();
-
-		//Cleanup
 		$valid['bought_hours'] = sanitize_text_field($input['bought_hours']);
 		$valid['used_hours'] = sanitize_text_field($input['used_hours']);
-
 		return $valid;
 	}
 	function support_hours_add_dashboard_widgets() {
-
-		wp_add_dashboard_widget(
-	                 'support_hours_dashboard_widget',         // Widget slug.
-	                 __( 'Support hours', 'support-hours'),         // Title.
-	                 array($this, 'support_hours_dashboard_widget_function') // Display function.
-	        );
-					global $wp_meta_boxes;
-
-				 	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
-				 	$support_hours_dashboard_widget_backup = array( 'support_hours_dashboard_widget' => $normal_dashboard['support_hours_dashboard_widget'] );
-				 	unset( $normal_dashboard['support_hours_dashboard_widget'] );
-
-				 	// Merge the two arrays together so our widget is at the beginning
-
-				 	$sorted_dashboard = array_merge( $support_hours_dashboard_widget_backup, $normal_dashboard );
-
-				 	// Save the sorted array back into the original metaboxes
-
-				 	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+			wp_add_dashboard_widget(
+			   'support_hours_dashboard_widget',         // Widget slug.
+			   __( 'Support hours', 'support-hours'),         // Title.
+			   array($this, 'support_hours_dashboard_widget_function') // Display function.
+			);
+			global $wp_meta_boxes;
+		 	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+		 	$support_hours_dashboard_widget_backup = array( 'support_hours_dashboard_widget' => $normal_dashboard['support_hours_dashboard_widget'] );
+		 	unset( $normal_dashboard['support_hours_dashboard_widget'] );
+		 	$sorted_dashboard = array_merge( $support_hours_dashboard_widget_backup, $normal_dashboard );
+		 	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 	}
 	function support_hours_dashboard_widget_function() {
 		include_once( 'partials/support-hours-admin-widget.php' );
