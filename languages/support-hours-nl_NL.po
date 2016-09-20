@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Support Hours\n"
-"POT-Creation-Date: 2016-09-20 22:01+0200\n"
-"PO-Revision-Date: 2016-09-20 22:19+0200\n"
+"POT-Creation-Date: 2016-09-20 22:48+0200\n"
+"PO-Revision-Date: 2016-09-20 22:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: Erik van der Bas <erik@basedonline.nl>\n"
 "Language: nl_NL\n"
@@ -17,11 +17,11 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/class-support-hours-admin.php:114
-#: admin/class-support-hours-admin.php:155
+#: admin/class-support-hours-admin.php:154
 msgid "Support hours"
 msgstr "Support uren"
 
-#: admin/class-support-hours-admin.php:129
+#: admin/class-support-hours-admin.php:128
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -61,32 +61,36 @@ msgstr ""
 "U heeft geen toegang tot deze pagina omdat u niet de support-uren manager "
 "bent. Deactiveer en activeer deze plugin als u toch toegang nodig heeft."
 
-#: admin/partials/support-hours-admin-widget.php:35
+#: admin/partials/support-hours-admin-widget.php:38
 msgid "hour"
 msgstr "uur"
 
-#: admin/partials/support-hours-admin-widget.php:35
+#: admin/partials/support-hours-admin-widget.php:38
 msgid "used"
 msgstr "verbruikt"
 
-#: admin/partials/support-hours-admin-widget.php:51
+#: admin/partials/support-hours-admin-widget.php:54
 msgid "Support-hours used."
 msgstr "Support-uren verbruikt."
 
-#: admin/partials/support-hours-admin-widget.php:53
+#: admin/partials/support-hours-admin-widget.php:56
 msgid "Support-hours almost used."
 msgstr "Support-uren bijna verbruikt."
 
-#: admin/partials/support-hours-admin-widget.php:55
+#: admin/partials/support-hours-admin-widget.php:58
 msgid "Need more support-hours?"
 msgstr "Heeft u meer support-uren nodig?"
 
-#: admin/partials/support-hours-admin-widget.php:57
-#: admin/partials/support-hours-admin-widget.php:63
+#: admin/partials/support-hours-admin-widget.php:60
+#: admin/partials/support-hours-admin-widget.php:71
 msgid "Contact me via"
 msgstr "Neem contact op via"
 
-#: admin/partials/support-hours-admin-widget.php:61
+#: admin/partials/support-hours-admin-widget.php:66
+msgid "Configure plugin!"
+msgstr "Configureer plugin!"
+
+#: admin/partials/support-hours-admin-widget.php:69
 msgid "No support-hours bought"
 msgstr "Geen support-uren gekocht"
 

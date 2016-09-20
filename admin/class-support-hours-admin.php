@@ -120,7 +120,6 @@ class Support_Hours_Admin {
  *
  * @since    1.0.0
  */
-
 	public function add_action_links( $links ) {
 			/*
 			*  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)

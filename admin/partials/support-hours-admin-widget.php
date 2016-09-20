@@ -19,12 +19,9 @@
   if($used_hours > $bought_hours){
     $used_hours = $bought_hours;
   }
-  if($used_hours == 00) {
-    $used_hours_view = 0;
-  } else{
-    $used_hours_view = $used_hours;
+  if($used_hours == 0) {
+    $used_hours = '0';
   }
-
   $email = $options['email'];
   if(!empty($bought_hours)){
     $percentage = $used_hours * 100 / $bought_hours;
@@ -38,7 +35,7 @@
         <div class="inner">
           <div class="innerCicle">
             <span class="textHolder">
-              <span class="text"><?php if(!empty($used_hours)) echo $used_hours_view; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?> <?php echo __( 'hour', 'support-hours'); ?><br /><?php echo __( 'used', 'support-hours'); ?></span>
+              <span class="text"><?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?> <?php echo __( 'hour', 'support-hours'); ?><br /><?php echo __( 'used', 'support-hours'); ?></span>
             </span>
           </div>
         </div>
@@ -64,10 +61,14 @@
       <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
     </p>
 <?php } else { ?>
+  <?php if(empty($email)){ ?>
+    <p>
+      <?php echo __( 'Configure plugin!', 'support-hours'); ?>
+    </p>
+<?php } else{ ?>
   <h4><?php echo __( 'No support-hours bought', 'support-hours'); ?></h4>
   <p>
     <?php echo __( 'Contact me via', 'support-hours'); ?>
     <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
   </p>
-
-<?php } ?>
+<?php } } ?>
