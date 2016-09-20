@@ -25,33 +25,34 @@
   function minuszeros($hours2)
   {
     $minutes = 0;
-    if (strpos($hours2, ':00') !== false)
-    {
+    if (preg_match("/0+([1-9])/", $hours2) == true) {
+      $hours2 = ltrim($hours2, '0');
+    }elseif(preg_match("/00:00/", $hours2) == true){
+      $hours2 = substr($hours2, 1);
+    }
+    if (strpos($hours2, ':00') !== false) {
         list($hours2, $minutes) = explode(':', $hours2);
     }
-    $hours2 = ltrim($hours2, '0');
     return $hours2;
   }
 
   $options = get_option($this->plugin_name);
   $used_hours_calc = hoursToMinutes($options['used_hours']);
   $used_hours = new DateTime($options['used_hours']);
-  $used_hours = $used_hours->format('h:i');
+  $used_hours = $used_hours->format('H:i');
   $used_hours= minuszeros($used_hours);
   $bought_hours_calc = hoursToMinutes($options['bought_hours']);
   $bought_hours = new DateTime($options['bought_hours']);
-  $bought_hours = $bought_hours->format('h:i');
+  $bought_hours = $bought_hours->format('H:i');
   $bought_hours= minuszeros($bought_hours);
-  
-  if (strpos($used_hours, ':') !== true){
+
+  if (strpos($used_hours, ':') !== false){
     $test = 'small';
   }
   if($used_hours_calc > $bought_hours_calc){
     $used_hours = $bought_hours;
   }
-  if($used_hours == 0) {
-    $used_hours = '0';
-  }
+
   $email = $options['email'];
   if(!empty($bought_hours_calc)){
     $percentage = $used_hours_calc * 100 / $bought_hours_calc;
