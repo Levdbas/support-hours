@@ -13,18 +13,48 @@
  */
 ?>
 <?php
+  function hoursToMinutes($hours)
+  {
+    $minutes = 0;
+    if (strpos($hours, ':') !== false)
+    {
+        list($hours, $minutes) = explode(':', $hours);
+    }
+    return $hours * 60 + $minutes;
+  }
+  function minuszeros($hours2)
+  {
+    $minutes = 0;
+    if (strpos($hours2, ':00') !== false)
+    {
+        list($hours2, $minutes) = explode(':', $hours2);
+    }
+    $hours2 = ltrim($hours2, '0');
+    return $hours2;
+  }
+
   $options = get_option($this->plugin_name);
-  $bought_hours = $options['bought_hours'];
-  $used_hours = $options['used_hours'];
-  if($used_hours > $bought_hours){
+  $used_hours_calc = hoursToMinutes($options['used_hours']);
+  $used_hours = new DateTime($options['used_hours']);
+  $used_hours = $used_hours->format('h:i');
+  $used_hours= minuszeros($used_hours);
+  $bought_hours_calc = hoursToMinutes($options['bought_hours']);
+  $bought_hours = new DateTime($options['bought_hours']);
+  $bought_hours = $bought_hours->format('h:i');
+  $bought_hours= minuszeros($bought_hours);
+  
+  if (strpos($used_hours, ':') !== true){
+    $test = 'small';
+  }
+  if($used_hours_calc > $bought_hours_calc){
     $used_hours = $bought_hours;
   }
   if($used_hours == 0) {
     $used_hours = '0';
   }
   $email = $options['email'];
-  if(!empty($bought_hours)){
-    $percentage = $used_hours * 100 / $bought_hours;
+  if(!empty($bought_hours_calc)){
+    $percentage = $used_hours_calc * 100 / $bought_hours_calc;
     $percentage = round($percentage)/100;
   }
 ?>
@@ -35,7 +65,7 @@
         <div class="inner">
           <div class="innerCicle">
             <span class="textHolder">
-              <span class="text"><?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?> <?php echo __( 'hour', 'support-hours'); ?><br /><?php echo __( 'used', 'support-hours'); ?></span>
+              <span class="text <?php echo $test; ?>"><?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?> <?php echo __( 'hour', 'support-hours'); ?><br /><?php echo __( 'used', 'support-hours'); ?></span>
             </span>
           </div>
         </div>

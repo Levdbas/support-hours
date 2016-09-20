@@ -13,9 +13,7 @@
  */
 ?>
 <?php
-  //Grab all options
   $options = get_option($this->plugin_name);
-  // Cleanup
   $bought_hours = $options['bought_hours'];
   $used_hours = $options['used_hours'];
   $user = $options['user'];
@@ -56,13 +54,13 @@
         <fieldset>
             <p><?php echo __( 'Amount of bought support-hours', 'support-hours'); ?>:</p>
             <legend class="screen-reader-text"><span><?php _e('Amount of bought support-hours', $this->plugin_name); ?>:</span></legend>
-            <input type="text" class="regular-text" id="<?php echo $this->plugin_name; ?>-bought_hours" name="<?php echo $this->plugin_name; ?>[bought_hours]" value="<?php if(!empty($bought_hours)) echo $bought_hours; ?>"/>
+            <input type="text" placeholder="00:00" class="regular-text" id="<?php echo $this->plugin_name; ?>-bought_hours" name="<?php echo $this->plugin_name; ?>[bought_hours]" value="<?php if(!empty($bought_hours)) echo $bought_hours; ?>"/>
         </fieldset>
 
         <fieldset>
             <p><?php echo __( 'Amount of used support-hours', 'support-hours'); ?>:</p>
             <legend class="screen-reader-text"><span><?php _e('Amount of used support-hours', $this->plugin_name); ?>:</span></legend>
-            <input type="text" class="regular-text" id="<?php echo $this->plugin_name; ?>-used_hours" name="<?php echo $this->plugin_name; ?>[used_hours]" value="<?php if(!empty($used_hours)) echo $used_hours; ?>"/>
+            <input type="text" placeholder="00:00" class="regular-text" id="<?php echo $this->plugin_name; ?>-used_hours" name="<?php echo $this->plugin_name; ?>[used_hours]" value="<?php if(!empty($used_hours)) echo $used_hours; ?>"/>
         </fieldset>
         <?php submit_button(__( 'Save all changes', 'support-hours'), 'primary','submit', TRUE); ?>
     </form>
