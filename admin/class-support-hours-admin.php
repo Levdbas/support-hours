@@ -143,8 +143,10 @@ class Support_Hours_Admin {
 	}
 	public function validate($input) {
 		$valid = array();
-		$valid['bought_hours'] = sanitize_text_field($input['bought_hours']);
-		$valid['used_hours'] = sanitize_text_field($input['used_hours']);
+		$valid['bought_hours'] = sanitize_key($input['bought_hours']);
+		$valid['used_hours'] = sanitize_key($input['used_hours']);
+		$valid['user'] = sanitize_text_field($input['user']);
+		$valid['email'] = sanitize_email($input['email']);
 		return $valid;
 	}
 	function support_hours_add_dashboard_widgets() {

@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
+Contributors: levdbas
 Donate link: http://basedonline.nl
 Tags: comments, spam
 Requires at least: 3.0.1
@@ -8,7 +8,7 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+ The support-hours plugin can be used to give your customers insights on the status of their pre-paid support-hours. Security by setting only one manager at the first time you use the plugin.
 
 == Description ==
 
