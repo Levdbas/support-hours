@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Support Hours\n"
 "POT-Creation-Date: 2016-09-20 22:01+0200\n"
-"PO-Revision-Date: 2016-09-20 22:04+0200\n"
+"PO-Revision-Date: 2016-09-20 22:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: Erik van der Bas <erik@basedonline.nl>\n"
 "Language: nl_NL\n"
@@ -67,7 +67,7 @@ msgstr "uur"
 
 #: admin/partials/support-hours-admin-widget.php:35
 msgid "used"
-msgstr "gebruikt"
+msgstr "verbruikt"
 
 #: admin/partials/support-hours-admin-widget.php:51
 msgid "Support-hours used."

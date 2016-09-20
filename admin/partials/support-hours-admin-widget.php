@@ -26,8 +26,10 @@
   }
 
   $email = $options['email'];
-  $percentage = $used_hours * 100 / $bought_hours;
-  $percentage = round($percentage)/100;
+  if(!empty($bought_hours)){
+    $percentage = $used_hours * 100 / $bought_hours;
+    $percentage = round($percentage)/100;
+  }
 ?>
 <?php if(!empty($bought_hours)) { ?>
     <div class="outerCircle">

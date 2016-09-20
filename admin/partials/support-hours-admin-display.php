@@ -25,7 +25,7 @@
 
     <?php
       $user_ID = get_current_user_id();
-      if ($user_ID == $user) {
+      if ($user_ID == $user || empty($user)) {
     ?>
     <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
     <form method="post" name="cleanup_options" action="options.php">
