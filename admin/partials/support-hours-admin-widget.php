@@ -83,7 +83,7 @@
     <p>
       <?php if($percentage == 1) {?>
           <?php echo __( 'Support-hours used.', 'support-hours'); ?><br />
-        <?php } elseif($percentage == 1) {?>
+        <?php } elseif($percentage > 0.8) {?>
           <?php echo __( 'Support-hours almost used.', 'support-hours'); ?><br />
       <?php } else {?>
         <?php echo __( 'Need more support-hours?', 'support-hours'); ?><br />

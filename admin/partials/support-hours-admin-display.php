@@ -33,7 +33,7 @@
         ?>
         <fieldset>
           <p><?php echo __( 'Select support-hour manager. ', 'support-hours'); ?>.</p>
-          <p><?php echo __( 'Warning! If you select the wrong user, you will not have acces to this page until the plugin is disabled and enabled.', 'support-hours'); ?>.</p>
+          <p><?php echo __( 'Warning! If you select the wrong user, you will not have access to this page until the plugin is disabled and enabled.', 'support-hours'); ?>.</p>
           <legend class="screen-reader-text"><span><?php _e('Select support-hour manager.Warning!  If you select the wrong user, you will not have acces to this page until the plugin is disabled and enabled.', $this->plugin_name); ?></span></legend>
           <?php $args = array(
              'orderby'                 => 'display_name',
@@ -68,7 +68,7 @@
     </form>
     <?php } else {?>
       <p>
-        <?php echo __( 'You do not have acces to this page because you are not the support-hour manager. Please disable and enable this plugin if you need acces again.', 'support-hours'); ?>
+        <?php echo __( 'You do not have access to this page because you are not the support-hour manager. Please disable and enable this plugin if you need acces again.', 'support-hours'); ?>
       </p>
     <?php } ?>
 </div>
