@@ -45,7 +45,7 @@
   $bought_hours = new DateTime($options['bought_hours']);
   $bought_hours = $bought_hours->format('H:i');
   $bought_hours= minuszeros($bought_hours);
-
+  $current_color = get_user_option( 'admin_color' );
   if (strpos($used_hours, ':') !== false){
     $test = 'small';
   }
@@ -61,7 +61,7 @@
 ?>
 <?php if(!empty($bought_hours)) { ?>
     <div class="outerCircle">
-      <div class="circle" id="circle" data-Circle="<?php echo $percentage; ?>">
+      <div class="circle <?php echo $current_color;?>" id="circle" data-Circle="<?php echo $percentage; ?>">
         <div class="arc_q"></div>
         <div class="inner">
           <div class="innerCicle">

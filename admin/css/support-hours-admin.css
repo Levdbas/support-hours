@@ -26,6 +26,24 @@
   -o-transform: rotate(-45deg);
   z-index: 2;
 }
+.circle.midnight .arc_q{
+  border-color:transparent #e14d43 transparent transparent;
+}
+.circle.ectoplasm .arc_q{
+  border-color:transparent #a3b745 transparent transparent;
+}
+.circle.blue .arc_q{
+  border-color:transparent #e1a948 transparent transparent;
+}
+.circle.ocean .arc_q{
+  border-color:transparent #9ebaa0 transparent transparent;
+}
+.circle.coffee .arc_q{
+  border-color:transparent #c7a589 transparent transparent;
+}
+.circle.sunrise .arc_q{
+  border-color:transparent #dd823b transparent transparent;
+}
 .cover{
   position:absolute;
   top:0;
@@ -118,6 +136,25 @@
   font-size: 45px;
   color:#008ec2;
 }
+.circle.midnight .innerCicle:hover .text{
+  color:#e14d43;
+}
+.circle.ectoplasm .innerCicle:hover .text{
+  color:#a3b745;
+}
+.circle.blue .innerCicle:hover .text{
+  color:#e1a948;
+}
+.circle.ocean .innerCicle:hover .text{
+  color:#9ebaa0;
+}
+.circle.coffee .innerCicle:hover .text{
+  color:#c7a589;
+}
+.circle.sunrise .innerCicle:hover .text{
+  color:#dd823b;
+}
+
 .innerCicle:hover .text.small{
   font-size: 35px;
 }
