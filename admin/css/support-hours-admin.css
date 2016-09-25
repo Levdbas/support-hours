@@ -92,10 +92,10 @@
   display: block;
   color:#cccccc;
   font-weight: bold;
-  margin-top: -60px;
-  font-size: 40px;
+  margin-top: -50px;
+  font-size: 35px;
   transition: all 0.2s ease-in;
-  line-height: 60px;
+  line-height: 50px;
   position: absolute;
   width: 100%;
 }
@@ -115,11 +115,11 @@
   padding: 10px;
 }
 .innerCicle:hover .text{
-  font-size: 50px;
+  font-size: 45px;
   color:#008ec2;
 }
 .innerCicle:hover .text.small{
-  font-size: 40px;
+  font-size: 35px;
 }
 @media screen and (max-width: 870px) {
   .circle {

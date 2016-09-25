@@ -66,7 +66,7 @@
         <div class="inner">
           <div class="innerCicle">
             <span class="textHolder">
-              <span class="text <?php echo $test; ?>"><?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?> <?php echo __( 'hour', 'support-hours'); ?><br /><?php echo __( 'used', 'support-hours'); ?></span>
+              <span class="text <?php echo $test; ?>"><?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?> <?php echo __( 'hours', 'support-hours'); ?><br /><?php echo __( 'used', 'support-hours'); ?></span>
             </span>
           </div>
         </div>

@@ -7,15 +7,15 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
- The support-hours plugin can be used to give your customers insights on the status of their pre-paid support-hours. Security by setting only one manager at the first time you use the plugin.
+ The support-hours plugin can be used to give your customers insights on the status of their pre-paid support-hours.
 
 == Description ==
 
-Tracking pre-paid hours for customers can be a pain. They have to check their mail or call you how many time they have left.
+Tracking their pre-paid hours for customers can be a pain. They have to check their mail or call you how many time they have left.
 Support Hours give direct insights to the amount of hours bought and used via an animated CSS3 Dashboard widget.
 They can even contact you directly via an easy mail-link.
 
-The amount of bought and used hours can be set via the settings page. After the first activation you need to set the main support hour manager (you).
+The amount of bought and used hours can be set via the an extra settings page. After the first activation you need to set the main support hour manager (you).
 This account can only access the management page so no sudden strange changes in the hours you've set.
 
 == Installation ==
@@ -44,5 +44,4 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 == Changelog ==
 
 = 1.0 =
-* A change since the previous version.
-* Another change.
+* First commit of my plugin

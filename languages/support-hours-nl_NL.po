@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Support Hours\n"
-"POT-Creation-Date: 2016-09-20 22:48+0200\n"
-"PO-Revision-Date: 2016-09-20 22:49+0200\n"
+"POT-Creation-Date: 2016-09-25 22:10+0200\n"
+"PO-Revision-Date: 2016-09-25 22:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: Erik van der Bas <erik@basedonline.nl>\n"
 "Language: nl_NL\n"
@@ -25,27 +25,32 @@ msgstr "Support uren"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: admin/partials/support-hours-admin-display.php:37
+#: admin/partials/support-hours-admin-display.php:35
 msgid "Select support-hour manager. "
 msgstr "Selecteer de support-uren manager"
 
-#: admin/partials/support-hours-admin-display.php:38
+#: admin/partials/support-hours-admin-display.php:36
 msgid ""
-"Warning! If you select the wrong user, you will not have acces to this page "
+"Warning! If you select the wrong user, you will not have access to this page "
 "until the plugin is disabled and enabled."
 msgstr ""
-"Pas op! Bij het selecteren van de de verkeerde gebruiker, heeft u geen "
-"toegang meer tot deze pagina"
+"Waarschuwing! Al selecteert u een verkeerde gebruiker moet u de plugin "
+"deactiveren en opnieuw activeren om weer toegang te krijgen tot deze pagina."
 
-#: admin/partials/support-hours-admin-display.php:52
+#: admin/partials/support-hours-admin-display.php:50
 msgid "E-Mail adress support-hour manager"
 msgstr "E-Mail adres support-uren manager"
 
-#: admin/partials/support-hours-admin-display.php:57
+#: admin/partials/support-hours-admin-display.php:55
 msgid "Amount of bought support-hours"
 msgstr "Aantal ingekochte support-uren"
 
-#: admin/partials/support-hours-admin-display.php:63
+#: admin/partials/support-hours-admin-display.php:58
+#: admin/partials/support-hours-admin-display.php:65
+msgid "Please enter a valid time"
+msgstr "Voer een valide  tijd in."
+
+#: admin/partials/support-hours-admin-display.php:62
 msgid "Amount of used support-hours"
 msgstr "Aantal verbruikte support-uren"
 
@@ -55,44 +60,62 @@ msgstr "Bijwerken"
 
 #: admin/partials/support-hours-admin-display.php:71
 msgid ""
-"You do not have acces to this page because you are not the support-hour "
-"manager. Please disable and enable this plugin if you need acces again."
+"You do not have access to this page because you are not the support-hour "
+"manager. Please disable and enable this plugin if you need access again."
 msgstr ""
 "U heeft geen toegang tot deze pagina omdat u niet de support-uren manager "
-"bent. Deactiveer en activeer deze plugin als u toch toegang nodig heeft."
+"bent.  Deactiveer en activeer de plugin opnieuw om weer toegang te krijgen "
+"tot deze pagina."
 
-#: admin/partials/support-hours-admin-widget.php:38
-msgid "hour"
+#: admin/partials/support-hours-admin-widget.php:69
+msgid "hours"
 msgstr "uur"
 
-#: admin/partials/support-hours-admin-widget.php:38
+#: admin/partials/support-hours-admin-widget.php:69
 msgid "used"
 msgstr "verbruikt"
 
-#: admin/partials/support-hours-admin-widget.php:54
+#: admin/partials/support-hours-admin-widget.php:85
 msgid "Support-hours used."
 msgstr "Support-uren verbruikt."
 
-#: admin/partials/support-hours-admin-widget.php:56
+#: admin/partials/support-hours-admin-widget.php:87
 msgid "Support-hours almost used."
 msgstr "Support-uren bijna verbruikt."
 
-#: admin/partials/support-hours-admin-widget.php:58
+#: admin/partials/support-hours-admin-widget.php:89
 msgid "Need more support-hours?"
 msgstr "Heeft u meer support-uren nodig?"
 
-#: admin/partials/support-hours-admin-widget.php:60
-#: admin/partials/support-hours-admin-widget.php:71
+#: admin/partials/support-hours-admin-widget.php:91
+#: admin/partials/support-hours-admin-widget.php:102
 msgid "Contact me via"
 msgstr "Neem contact op via"
 
-#: admin/partials/support-hours-admin-widget.php:66
+#: admin/partials/support-hours-admin-widget.php:97
 msgid "Configure plugin!"
 msgstr "Configureer plugin!"
 
-#: admin/partials/support-hours-admin-widget.php:69
+#: admin/partials/support-hours-admin-widget.php:100
 msgid "No support-hours bought"
 msgstr "Geen support-uren gekocht"
+
+#~ msgid "hour"
+#~ msgstr "uur"
+
+#~ msgid ""
+#~ "Warning! If you select the wrong user, you will not have acces to this "
+#~ "page until the plugin is disabled and enabled."
+#~ msgstr ""
+#~ "Pas op! Bij het selecteren van de de verkeerde gebruiker, heeft u geen "
+#~ "toegang meer tot deze pagina"
+
+#~ msgid ""
+#~ "You do not have acces to this page because you are not the support-hour "
+#~ "manager. Please disable and enable this plugin if you need acces again."
+#~ msgstr ""
+#~ "U heeft geen toegang tot deze pagina omdat u niet de support-uren manager "
+#~ "bent. Deactiveer en activeer deze plugin als u toch toegang nodig heeft."
 
 #~ msgid "No support hours bought"
 #~ msgstr "Geen ingekochte supporturen"
