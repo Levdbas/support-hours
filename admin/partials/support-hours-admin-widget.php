@@ -59,7 +59,7 @@
     $percentage = round($percentage)/100;
   }
 ?>
-<?php if(!empty($bought_hours)) { ?>
+<?php if(!empty($bought_hours_calc)) { ?>
     <div class="outerCircle">
       <div class="circle <?php echo $current_color;?>" id="circle" data-Circle="<?php echo $percentage; ?>">
         <div class="arc_q"></div>
