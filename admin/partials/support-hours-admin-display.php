@@ -32,7 +32,7 @@
           do_settings_sections($this->plugin_name);
         ?>
         <fieldset>
-          <p><?php echo __( 'Select support-hour manager. ', 'support-hours'); ?>.</p>
+          <p><?php echo __( 'Select support-hour manager', 'support-hours'); ?>.</p>
           <p><?php echo __( 'Warning! If you select the wrong user, you will not have access to this page until the plugin is disabled and enabled.', 'support-hours'); ?>.</p>
           <legend class="screen-reader-text"><span><?php _e('Select support-hour manager.Warning!  If you select the wrong user, you will not have access to this page until the plugin is disabled and enabled.', $this->plugin_name); ?></span></legend>
           <?php $args = array(
