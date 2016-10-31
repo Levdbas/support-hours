@@ -1,7 +1,15 @@
 (function( $ ) {
 	'use strict';
-	$( document ).ready(function() {
+	function sizeCircle(){
+		var width = $('.outerCircle').width();
+		var circle = $('#circle');
 
+		circle.width(width);
+		circle.height(width);
+		console.log(width);
+	}
+	$( document ).ready(function() {
+		sizeCircle();
 		// regexpression for matching xx:xx (4 digits at max)
 		var $regexname=/^\d{2}\:(([0-5]){1}.$([0-9]|){1}$)/;
 		$('.time').on('keypress keydown keyup',function(){
@@ -60,5 +68,8 @@
 		// kick things off ..
 		var circleVar = $('#circle').attr("data-Circle");
 		animate($('.circle'), circleVar);
+	});
+	$(window).resize(function() {
+		sizeCircle()
 	});
 })( jQuery );

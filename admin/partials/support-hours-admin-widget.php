@@ -47,7 +47,9 @@
   $bought_hours= minuszeros($bought_hours);
   $current_color = get_user_option( 'admin_color' );
   if (strpos($used_hours, ':') !== false){
-    $test = 'small';
+    $size = 'small';
+  } else{
+    $size = 'big';
   }
   if($used_hours_calc > $bought_hours_calc){
     $used_hours = $bought_hours;
@@ -66,7 +68,18 @@
         <div class="inner">
           <div class="innerCicle">
             <span class="textHolder">
-              <span class="text <?php echo $test; ?>"><?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?> <?php echo __( 'hours', 'support-hours'); ?><br /><?php echo __( 'used', 'support-hours'); ?></span>
+              <span class="text <?php echo $size; ?>">
+                <?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?>
+                <br class="smallbr" />
+                <?php if($size == "small"){
+                  echo "<br class='bigbr' />";
+                } ?>
+                <?php echo __( 'hours', 'support-hours'); ?>
+                <?php if($size == "big"){
+                  echo "<br class='bigbr' />";
+                } ?>
+                <?php echo __( 'used', 'support-hours'); ?>
+              </span>
             </span>
           </div>
         </div>
@@ -94,7 +107,7 @@
 <?php } else { ?>
   <?php if(empty($email)){ ?>
     <p>
-      <?php echo __( 'Configure plugin!', 'support-hours'); ?>
+      <a href="<?php echo admin_url( 'options-general.php?page=support-hours' ); ?>"><?php echo __( 'Configure plugin!', 'support-hours'); ?></a>
     </p>
 <?php } else{ ?>
   <h4><?php echo __( 'No support-hours bought', 'support-hours'); ?></h4>

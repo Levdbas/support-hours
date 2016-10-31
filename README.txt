@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid
 Requires at least: 3.0.1
 Tested up to: 4.6.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,11 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 
 == Changelog ==
+= 1.0.4 =
+* Dynamically scale circle-diagram via some javascript and css
+* Added setup link when widget isn't configured yet.
+* Fixed scaling/overflowing issues due to translations.
+
 = 1.0.3 =
 * Removed unnecessary style and javascript file
 = 1.0.2 =
