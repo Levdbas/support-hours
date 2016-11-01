@@ -37,6 +37,8 @@
   }
 
   $options = get_option($this->plugin_name);
+  $users = $options['users'];
+  $email = $options['email'];
   $used_hours_calc = hoursToMinutes($options['used_hours']);
   $used_hours = new DateTime($options['used_hours']);
   $used_hours = $used_hours->format('H:i');
@@ -54,14 +56,12 @@
   if($used_hours_calc > $bought_hours_calc){
     $used_hours = $bought_hours;
   }
-
-  $email = $options['email'];
   if(!empty($bought_hours_calc)){
     $percentage = $used_hours_calc * 100 / $bought_hours_calc;
     $percentage = round($percentage)/100;
   }
 ?>
-<?php if(!empty($bought_hours_calc)) { ?>
+<?php if(!empty($users)) { ?>
     <div class="outerCircle">
       <div class="circle <?php echo $current_color;?>" id="circle" data-Circle="<?php echo $percentage; ?>">
         <div class="arc_q"></div>
@@ -105,7 +105,7 @@
       <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
     </p>
 <?php } else { ?>
-  <?php if(empty($email)){ ?>
+  <?php if(empty($users)){ ?>
     <p>
       <a href="<?php echo admin_url( 'options-general.php?page=support-hours' ); ?>"><?php echo __( 'Configure plugin!', 'support-hours'); ?></a>
     </p>

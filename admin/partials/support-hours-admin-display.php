@@ -34,7 +34,7 @@ $email = $options['email'];
         <p><?php echo __( 'Select Support Hours managers', 'support-hours'); ?>.</p>
         <legend class="screen-reader-text"><span><?php _e('Select Support-Hour manager. Warning!  If you do not set yourself as a Support Hours manager, you will lose acces to this page until the plugin is disabled and enabled.', $this->plugin_name); ?></span></legend>
         <?php $WPusers = get_users( 'orderby=nicename&role=administrator' ); foreach ( $WPusers as $user ) { ?>
-          <input type="checkbox" name="<?php echo $this->plugin_name; ?>[users][]" id="<?php echo $this->plugin_name; ?>-users" value="<?php echo $user->ID; ?>" <?php checked((in_array( $user->ID, $users))); ?> />
+          <input type="checkbox" name="<?php echo $this->plugin_name; ?>[users][]" id="<?php echo $this->plugin_name; ?>-users" value="<?php echo $user->ID; ?>" <?php if (!empty($users)) { checked((in_array( $user->ID, $users))); } ?> />
           <label for="<?php echo $this->plugin_name; ?>[users<?php echo $user->ID; ?>]"><?php echo $user->display_name; ?></label><br />
         <?php } ?>
         <p><?php echo __( 'Warning! If you do not set yourself as a Support Hours manager, you will lose acces to this page until the plugin is disabled and enabled.', 'support-hours'); ?></p>

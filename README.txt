@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid
 Requires at least: 3.0.1
 Tested up to: 4.6.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 
 == Changelog ==
+= 1.1.1 =
+* Fix for error when no user is set
+* When no user is set the dashboards widget will set a link to the plugin setup page.
 = 1.1.0 =
 * Ability to set more than one Support Hour manager.
 * More consistent use of plugin name
