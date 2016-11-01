@@ -95,11 +95,11 @@
     </div>
     <p>
       <?php if($percentage == 1) {?>
-          <?php echo __( 'Support-hours used.', 'support-hours'); ?><br />
+          <?php echo __( 'Support hours used.', 'support-hours'); ?><br />
         <?php } elseif($percentage > 0.8) {?>
-          <?php echo __( 'Support-hours almost used.', 'support-hours'); ?><br />
+          <?php echo __( 'Support hours almost used.', 'support-hours'); ?><br />
       <?php } else {?>
-        <?php echo __( 'Need more support-hours?', 'support-hours'); ?><br />
+        <?php echo __( 'Need more support hours?', 'support-hours'); ?><br />
       <?php } ?>
       <?php echo __( 'Contact me via', 'support-hours'); ?>
       <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
@@ -110,7 +110,7 @@
       <a href="<?php echo admin_url( 'options-general.php?page=support-hours' ); ?>"><?php echo __( 'Configure plugin!', 'support-hours'); ?></a>
     </p>
 <?php } else{ ?>
-  <h4><?php echo __( 'No support-hours bought', 'support-hours'); ?></h4>
+  <h4><?php echo __( 'No support Hours bought', 'support-hours'); ?></h4>
   <p>
     <?php echo __( 'Contact me via', 'support-hours'); ?>
     <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>

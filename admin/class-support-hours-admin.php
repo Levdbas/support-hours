@@ -146,12 +146,13 @@ class Support_Hours_Admin {
 		$valid['used_hours'] = sanitize_text_field($input['used_hours']);
 		$valid['user'] = sanitize_text_field($input['user']);
 		$valid['email'] = sanitize_email($input['email']);
+		$valid['users'] = $input['users'];
 		return $valid;
 	}
 	function support_hours_add_dashboard_widgets() {
 			wp_add_dashboard_widget(
 			   'support_hours_dashboard_widget',         // Widget slug.
-			   __( 'Support hours', 'support-hours'),         // Title.
+			   __( 'Support Hours', 'support-hours'),         // Title.
 			   array($this, 'support_hours_dashboard_widget_function') // Display function.
 			);
 			global $wp_meta_boxes;

@@ -1,16 +1,18 @@
 # Copyright (C) 2016 Support Hours
 # This file is distributed under the same license as the Support Hours package.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Support Hours 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/support-hours\n"
-"POT-Creation-Date: 2016-09-25 21:04:20+00:00\n"
+"POT-Creation-Date: 2016-11-01 09:37+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: admin/class-support-hours-admin.php:114
 #: admin/class-support-hours-admin.php:154
@@ -104,9 +106,7 @@ msgstr ""
 msgid "Support Hours"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (Support Hours 1.0)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Support Hours 1.0)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://basedonline.nl"
 msgstr ""
