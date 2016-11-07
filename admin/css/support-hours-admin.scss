@@ -1,0 +1,148 @@
+$circle-size: 400px;
+$background-color: #cccccc;
+$progress-color:  #008ec2;
+$percent: 75;
+$duration: 2s;
+
+
+.progress-bar {
+	position: relative;
+	height: $circle-size;
+	width: $circle-size;
+	.background{
+		background-color: $background-color;
+	}
+	.left{
+		background-color: $background-color;
+		opacity: 1;
+	}
+	&.midnight .rotate, &.midnight .right{
+		background-color:#e14d43;
+		.innerCicle:hover .text{
+			color:#e14d43;
+		}
+	}
+	&.ectoplasm .rotate, &.ectoplasm .right{
+		background-color:#a3b745;
+		.innerCicle:hover .text{
+			color:#a3b745;
+		}
+	}
+	&.blue .rotate, &.blue .right{
+		background-color:#e1a948;
+		.innerCicle:hover .text{
+			color:#e1a948;
+		}
+	}
+	&.ocean .rotate, &.ocean .right{
+		background-color:#9ebaa0;
+		.innerCicle:hover .text{
+			color:#9ebaa0;
+		}
+	}
+	&.coffee .rotate, &.coffee .right{
+		background-color:#c7a589;
+		.innerCicle:hover .text{
+			color:#c7a589;
+		}
+	}
+	&.sunrise .rotate, &.sunrise .right{
+		background-color:#dd823b;
+		.innerCicle:hover .text{
+			color:#dd823b;
+		}
+	}
+
+	.rotate{
+		background-color: $progress-color;
+	}
+	.right{
+		background-color: $progress-color;
+		transform: rotate(180deg);
+		opacity: 0;
+	}
+	.innerCicle{
+	  width: 90%;
+	  height: 90%;
+    margin: 5%;
+	  position: absolute;
+	  z-index: 12;
+	  border-radius: 50%;
+	  background: white;
+	  transition: all 0.2s ease-in;
+		.textHolder{
+			display: block;
+		  top: 50%;
+		  position: relative;
+			.text{
+				text-align: center;
+			  display: block;
+			  color:$background-color;
+			  font-weight: bold;
+			  margin-top: -50px;
+			  font-size: 35px;
+			  transition: all 0.2s ease-in;
+			  line-height: 50px;
+			  position: absolute;
+			  width: 100%;
+				&.small{
+					margin-top: -50px;
+					line-height: 50px;
+					font-size: 30px;
+				}
+			}
+		}
+		&:hover{
+			width: 94%;
+			height: 94%;
+			margin: 3%;
+			.text{
+				font-size: 45px;
+				color:$progress-color;
+				&.small{
+					font-size: 35px;
+				}
+			}
+		}
+	}
+	div {
+		border-radius: 50%;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+	}
+	.smallbr{
+	  display: none;
+	}
+}
+@keyframes toggle {
+	0%		{ opacity: 0; }
+	100%	{ opacity: 1; }
+}
+
+@media screen and (max-width: 1500px) {
+  .outerCircle{
+    max-width: 340px;
+		max-height: 340px;
+  }
+}
+@media screen and (max-width: 870px) {
+  .smallbr{
+    display: block;
+  }
+  .bigbr{
+    display: none;
+  }
+  .circle {
+    width: 200px;
+    height: 200px;
+  }
+  .text{
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: -40px;
+  }
+  .innerCicle:hover .text{
+    font-size: 40px;
+  }
+}

@@ -58,41 +58,34 @@
   }
   if(!empty($bought_hours_calc)){
     $percentage = $used_hours_calc * 100 / $bought_hours_calc;
-    $percentage = round($percentage)/100;
+    $percentage = round($percentage);
   }
 ?>
 <?php if(!empty($users)) { ?>
-    <div class="outerCircle">
-      <div class="circle <?php echo $current_color;?>" id="circle" data-Circle="<?php echo $percentage; ?>">
-        <div class="arc_q"></div>
-        <div class="inner">
-          <div class="innerCicle">
-            <span class="textHolder">
-              <span class="text <?php echo $size; ?>">
-                <?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?>
-                <br class="smallbr" />
-                <?php if($size == "small"){
-                  echo "<br class='bigbr' />";
-                } ?>
-                <?php echo __( 'hours', 'support-hours'); ?>
-                <?php if($size == "big"){
-                  echo "<br class='bigbr' />";
-                } ?>
-                <?php echo __( 'used', 'support-hours'); ?>
-              </span>
-            </span>
-          </div>
-        </div>
-          <div class="outer">
-          </div>
-          <div class="center">
-          </div>
-          <div class="arc_q"></div>
-          <div class="arc_q"></div>
-          <div class="arc_q"></div>
-        <div class="cover"></div>
-      </div>
-    </div>
+
+<div class="progress-bar position <?php echo $current_color;?>" data-percent="<?php echo $percentage; ?>">
+  <div class="background">
+    <div class="rotate"></div>
+  </div>
+  <div class="left"></div>
+  <div class="right"></div>
+  <div class="innerCicle">
+    <span class="textHolder">
+      <span class="text <?php echo $size; ?>">
+        <?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?>
+        <br class="smallbr" />
+        <?php if($size == "small"){
+          echo "<br class='bigbr' />";
+        } ?>
+        <?php echo __( 'hours', 'support-hours'); ?>
+        <?php if($size == "big"){
+          echo "<br class='bigbr' />";
+        } ?>
+        <?php echo __( 'used', 'support-hours'); ?>
+      </span>
+    </span>
+  </div>
+</div>
     <p>
       <?php if($percentage == 1) {?>
           <?php echo __( 'Support hours used.', 'support-hours'); ?><br />

@@ -1,113 +1,78 @@
-.outerCircle{
-  padding-bottom: 40px;
-  padding-right: 40px;
-  position:relative;
-  margin:20px;
-}
-.circle {
-  position:relative;
-  width: 280px;
-  height: 280px;
-}
-.arc_q {
-  position:absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  border-radius:50%;
-  border:20px solid;
-  border-color:transparent #008ec2 transparent transparent;
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  z-index: 2;
-}
-.circle.midnight .arc_q{
-  border-color:transparent #e14d43 transparent transparent;
-}
-.circle.ectoplasm .arc_q{
-  border-color:transparent #a3b745 transparent transparent;
-}
-.circle.blue .arc_q{
-  border-color:transparent #e1a948 transparent transparent;
-}
-.circle.ocean .arc_q{
-  border-color:transparent #9ebaa0 transparent transparent;
-}
-.circle.coffee .arc_q{
-  border-color:transparent #c7a589 transparent transparent;
-}
-.circle.sunrise .arc_q{
-  border-color:transparent #dd823b transparent transparent;
-}
-.cover{
-  position:absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  border-radius:50%;
-  border:20px solid;
-  border-color:transparent #cccccc transparent transparent;
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  -moz-transform: rotate(-135deg);
-  -ms-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  z-index: 3;
-}
-.outer{
-  width: 100%;
-  height: 100%;
-  border: 20px solid;
-  border-color: white;
-  border-radius: 50%;
-  z-index: 6;
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  padding: 20px;
-}
-.center{
-  width: 100%;
-  height: 100%;
-  border-radius:50%;
-  background: #cccccc;
-  z-index: 1;
+.progress-bar {
   position: relative;
-  padding: 20px;
+  height: 400px;
+  width: 400px;
 }
-.inner{
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+.progress-bar .background {
+  background-color: #cccccc;
+}
+.progress-bar .left {
+  background-color: #cccccc;
+  opacity: 1;
+}
+.progress-bar.midnight .rotate, .progress-bar.midnight .right {
+  background-color: #e14d43;
+}
+.progress-bar.midnight .rotate .innerCicle:hover .text, .progress-bar.midnight .right .innerCicle:hover .text {
+  color: #e14d43;
+}
+.progress-bar.ectoplasm .rotate, .progress-bar.ectoplasm .right {
+  background-color: #a3b745;
+}
+.progress-bar.ectoplasm .rotate .innerCicle:hover .text, .progress-bar.ectoplasm .right .innerCicle:hover .text {
+  color: #a3b745;
+}
+.progress-bar.blue .rotate, .progress-bar.blue .right {
+  background-color: #e1a948;
+}
+.progress-bar.blue .rotate .innerCicle:hover .text, .progress-bar.blue .right .innerCicle:hover .text {
+  color: #e1a948;
+}
+.progress-bar.ocean .rotate, .progress-bar.ocean .right {
+  background-color: #9ebaa0;
+}
+.progress-bar.ocean .rotate .innerCicle:hover .text, .progress-bar.ocean .right .innerCicle:hover .text {
+  color: #9ebaa0;
+}
+.progress-bar.coffee .rotate, .progress-bar.coffee .right {
+  background-color: #c7a589;
+}
+.progress-bar.coffee .rotate .innerCicle:hover .text, .progress-bar.coffee .right .innerCicle:hover .text {
+  color: #c7a589;
+}
+.progress-bar.sunrise .rotate, .progress-bar.sunrise .right {
+  background-color: #dd823b;
+}
+.progress-bar.sunrise .rotate .innerCicle:hover .text, .progress-bar.sunrise .right .innerCicle:hover .text {
+  color: #dd823b;
+}
+.progress-bar .rotate {
+  background-color: #008ec2;
+}
+.progress-bar .right {
+  background-color: #008ec2;
+  transform: rotate(180deg);
+  opacity: 0;
+}
+.progress-bar .innerCicle {
+  width: 90%;
+  height: 90%;
+  margin: 5%;
   position: absolute;
-  z-index: 7;
-  top: 0px;
-}
-.innerCicle{
-  width: 100%;
-  height: 100%;
-  position: relative;
   z-index: 12;
   border-radius: 50%;
   background: white;
-  margin-top: 20px;
-  margin-left: 20px;
   transition: all 0.2s ease-in;
 }
-.textHolder{
+.progress-bar .innerCicle .textHolder {
   display: block;
   top: 50%;
   position: relative;
 }
-.text{
+.progress-bar .innerCicle .textHolder .text {
   text-align: center;
   display: block;
-  color:#cccccc;
+  color: #cccccc;
   font-weight: bold;
   margin-top: -50px;
   font-size: 35px;
@@ -116,72 +81,68 @@
   position: absolute;
   width: 100%;
 }
-.text.small{
+.progress-bar .innerCicle .textHolder .text.small {
   margin-top: -50px;
   line-height: 50px;
   font-size: 30px;
 }
-.innerCicle:hover{
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 5;
-  border-radius: 50%;
-  margin-top: 10px;
-  margin-left: 10px;
-  padding: 10px;
+.progress-bar .innerCicle:hover {
+  width: 94%;
+  height: 94%;
+  margin: 3%;
 }
-.innerCicle:hover .text{
+.progress-bar .innerCicle:hover .text {
   font-size: 45px;
-  color:#008ec2;
+  color: #008ec2;
 }
-.circle.midnight .innerCicle:hover .text{
-  color:#e14d43;
-}
-.circle.ectoplasm .innerCicle:hover .text{
-  color:#a3b745;
-}
-.circle.blue .innerCicle:hover .text{
-  color:#e1a948;
-}
-.circle.ocean .innerCicle:hover .text{
-  color:#9ebaa0;
-}
-.circle.coffee .innerCicle:hover .text{
-  color:#c7a589;
-}
-.circle.sunrise .innerCicle:hover .text{
-  color:#dd823b;
-}
-
-.innerCicle:hover .text.small{
+.progress-bar .innerCicle:hover .text.small {
   font-size: 35px;
 }
-.smallbr{
+.progress-bar div {
+  border-radius: 50%;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.progress-bar .smallbr {
   display: none;
 }
+
+@keyframes toggle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @media screen and (max-width: 1500px) {
-  .outerCircle{
+  .outerCircle {
     max-width: 340px;
+    max-height: 340px;
   }
 }
 @media screen and (max-width: 870px) {
-  .smallbr{
+  .smallbr {
     display: block;
   }
-  .bigbr{
+
+  .bigbr {
     display: none;
   }
+
   .circle {
     width: 200px;
     height: 200px;
   }
-  .text{
+
+  .text {
     font-size: 30px;
     line-height: 40px;
     margin-top: -40px;
   }
-  .innerCicle:hover .text{
+
+  .innerCicle:hover .text {
     font-size: 40px;
   }
 }
