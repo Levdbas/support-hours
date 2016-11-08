@@ -61,8 +61,7 @@
     $percentage = round($percentage);
   }
 ?>
-<?php if(!empty($users)) { ?>
-
+<?php if(!empty($users) && !empty($bought_hours)) { ?>
 <div class="progress-bar position <?php echo $current_color;?>" data-percent="<?php echo $percentage; ?>">
   <div class="background">
     <div class="rotate"></div>
@@ -87,9 +86,9 @@
   </div>
 </div>
     <p>
-      <?php if($percentage == 1) {?>
+      <?php if($percentage == 100) {?>
           <?php echo __( 'Support hours used.', 'support-hours'); ?><br />
-        <?php } elseif($percentage > 0.8) {?>
+        <?php } elseif($percentage >= 80) {?>
           <?php echo __( 'Support hours almost used.', 'support-hours'); ?><br />
       <?php } else {?>
         <?php echo __( 'Need more support hours?', 'support-hours'); ?><br />

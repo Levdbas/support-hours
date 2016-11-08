@@ -3,36 +3,39 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid
 Requires at least: 3.0.1
 Tested up to: 4.6.1
-Stable tag: 1.1.1
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
- The support-hours plugin can be used to give your customers insights on the status of their pre-paid support-hours.
+ The support-hours plugin can be used to give your customers insight on the status of their pre-paid support hours.
 
 == Description ==
 
-Tracking their pre-paid hours for customers can be a pain. They have to check their mail or call you how many time they have left.
-Support Hours give direct insights to the amount of hours bought and used via an animated CSS3 Dashboard widget.
-They can even contact you directly via an easy mail-link.
+Many webdevelopers  offer pre-paid hours to their customers to maintain their websites. It can be a long wait for both the developers and the customer to find out how many hours are left to be spent on maintenance work.
+This plugin makes this process much easier by displaying the hours bought and left directly in a dashboard widget.
 
-The amount of bought and used hours can be set via the an extra settings page. After the first activation you need to set the main support hour manager (you).
-This account can only access the management page so no sudden strange changes in the hours you've set.
+The amount of bought and used hours can be set via the an extra settings page. After the first activation you need to set the support hour managers.
+These accounts can only access the management page, so no sudden changes in the hours you've set.
 
 == Installation ==
 
 This section describes how to install the plugin and get it working.
 
-e.g.
-
 1. Upload .zip to the `/wp-content/plugins/` directory or download via plugin manager
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Configure plugin under 'settings' in the admin dashboard.
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Configure plugin under 'settings' in the admin dashboard.
+4. See the admin widget displayed on your dashboard.
 
 == Frequently Asked Questions ==
 
 = Why did you create this plugin? =
 
 To help my customers keep track of their pre-paid hours.
+
+= Do you have plans to work on new functions for the plugin? =
+
+Yes! I am planning a feature to set the date, name of developer, description of maintenance and hours spent per maintenance job.
+These will be displayed under the circle to give the customer insight on which maintenance work which amount of hours were spent.
 
 = Is this your first plugin? =
 
@@ -42,6 +45,13 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 
 == Changelog ==
+= 1.2.1 =
+* Updated Description in plugin
+* Fixed circle showing up at 0
+= 1.2.0 =
+* Moved to a new way to visualize the circle diagram.
+* Circle diagram is now more responsive
+* Minified css admin file
 = 1.1.1 =
 * Fix for error when no user is set
 * When no user is set the dashboards widget will set a link to the plugin setup page.
