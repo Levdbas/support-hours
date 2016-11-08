@@ -13,37 +13,37 @@
 .progress-bar.midnight .rotate, .progress-bar.midnight .right {
   background-color: #e14d43;
 }
-.progress-bar.midnight .rotate .innerCicle:hover .text, .progress-bar.midnight .right .innerCicle:hover .text {
+.progress-bar.midnight .innerCicle:hover .text {
   color: #e14d43;
 }
 .progress-bar.ectoplasm .rotate, .progress-bar.ectoplasm .right {
   background-color: #a3b745;
 }
-.progress-bar.ectoplasm .rotate .innerCicle:hover .text, .progress-bar.ectoplasm .right .innerCicle:hover .text {
+.progress-bar.ectoplasm .innerCicle:hover .text {
   color: #a3b745;
 }
 .progress-bar.blue .rotate, .progress-bar.blue .right {
   background-color: #e1a948;
 }
-.progress-bar.blue .rotate .innerCicle:hover .text, .progress-bar.blue .right .innerCicle:hover .text {
+.progress-bar.blue .innerCicle:hover .text {
   color: #e1a948;
 }
 .progress-bar.ocean .rotate, .progress-bar.ocean .right {
   background-color: #9ebaa0;
 }
-.progress-bar.ocean .rotate .innerCicle:hover .text, .progress-bar.ocean .right .innerCicle:hover .text {
+.progress-bar.ocean .innerCicle:hover .text {
   color: #9ebaa0;
 }
 .progress-bar.coffee .rotate, .progress-bar.coffee .right {
   background-color: #c7a589;
 }
-.progress-bar.coffee .rotate .innerCicle:hover .text, .progress-bar.coffee .right .innerCicle:hover .text {
+.progress-bar.coffee .innerCicle:hover .text {
   color: #c7a589;
 }
 .progress-bar.sunrise .rotate, .progress-bar.sunrise .right {
   background-color: #dd823b;
 }
-.progress-bar.sunrise .rotate .innerCicle:hover .text, .progress-bar.sunrise .right .innerCicle:hover .text {
+.progress-bar.sunrise .innerCicle:hover .text {
   color: #dd823b;
 }
 .progress-bar .rotate {
@@ -117,7 +117,7 @@
   }
 }
 @media screen and (max-width: 1500px) {
-  .outerCircle {
+  .progress-bar {
     max-width: 340px;
     max-height: 340px;
   }
@@ -131,18 +131,19 @@
     display: none;
   }
 
-  .circle {
-    width: 200px;
-    height: 200px;
-  }
-
   .text {
     font-size: 30px;
     line-height: 40px;
     margin-top: -40px;
   }
 
-  .innerCicle:hover .text {
+  .progress-bar:hover .text {
     font-size: 40px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .progress-bar {
+    max-width: none;
+    max-height: none;
   }
 }

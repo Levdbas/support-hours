@@ -7,21 +7,27 @@
 				percent: $target.data('percent'),
 				duration: 2000
 			};
-			var innerWith = $('.inside').width();
-			var circleWith = $('.progress-bar').width();
+			var innerWidth = $('.inside').width();
+			var innerWidth = Math.round(innerWidth);
 			$('.progress-bar').css({
-				'width': innerWith +'px',
-				'height': innerWith +'px'
+				'width': innerWidth +'px',
+				'height': innerWidth +'px'
 			});
+
+			var circleWidth = $('.progress-bar').width();
+			var circleWidth = Math.round(circleWidth);
+			var halfCircleWidth =  Math.round(circleWidth/2);
+
 			$('.left, .right, .rotate').css({
-				'clip': 'rect(0px, ' + circleWith/2 +'px, ' + circleWith +'px, 0px)'
+				'clip': 'rect(0px, ' + halfCircleWidth +'px, ' + circleWidth +'px, 0px)'
 			});
+
 
 			var $rotate = $target.find('.rotate');
 			setTimeout(function () {
 				$rotate.css({
 					'transition': 'transform ' + opts.duration + 'ms linear',
-					'transform': 'rotate(' + opts.percent * 3.6 + 'deg)'
+					'transform': 'rotate(' + Math.round(opts.percent * 3.6) + 'deg)'
 				});
 			},1);
 
@@ -43,8 +49,20 @@
 (function( $ ) {
 	$( document ).ready(function() {
 		$(".progress-bar").loading();
-	});
-	$(window).resize(function() {
-		$(".progress-bar").loading();
-	});
-})(jQuery);
+
+		// regexpression for matching xx:xx (4 digits at max)
+		var $regexname=/^\d{2}\:(([0-5]){1}.$([0-9]|){1}$)/;
+		$('.time').on('keypress keydown keyup',function(){
+			if (!$(this).val().match($regexname)) {
+				$(this).next().removeClass('hidden');
+				$('input[type="submit"]').attr('disabled','disabled');
+			} else{
+				$(this).next().addClass('hidden');
+				$('input[type="submit"]').removeAttr('disabled');
+			}
+		});
+		});
+		$(window).resize(function() {
+			$(".progress-bar").loading();
+		});
+	})(jQuery);
