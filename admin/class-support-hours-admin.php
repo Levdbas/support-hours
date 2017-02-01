@@ -142,6 +142,12 @@ class Support_Hours_Admin {
 	}
 	public function validate($input) {
 		$valid = array();
+		if ($input['bought_hours'] == null) {
+ 	   	$input['bought_hours'] = '00:00';
+ 	 	}
+		if ($input['used_hours'] == null) {
+		 	$input['used_hours'] = '00:00';
+		}
 		$valid['bought_hours'] = sanitize_text_field($input['bought_hours']);
 		$valid['used_hours'] = sanitize_text_field($input['used_hours']);
 		$valid['user'] = sanitize_text_field($input['user']);
@@ -163,6 +169,8 @@ class Support_Hours_Admin {
 		 	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 	}
 	function support_hours_dashboard_widget_function() {
+		include_once( 'partials/support-hours-functions.php' );
 		include_once( 'partials/support-hours-admin-widget.php' );
+
 	}
 }

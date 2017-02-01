@@ -56,6 +56,9 @@
 			if (!$(this).val().match($regexname)) {
 				$(this).next().removeClass('hidden');
 				$('input[type="submit"]').attr('disabled','disabled');
+			} elseif((!$(this).val().match('')) {
+				$(this).next().addClass('hidden');
+				$('input[type="submit"]').removeAttr('disabled');
 			} else{
 				$(this).next().addClass('hidden');
 				$('input[type="submit"]').removeAttr('disabled');
