@@ -25,10 +25,12 @@ function minuszeros($hours2)
   $options = get_option($this->plugin_name);
   $users = $options['users'];
   $email = $options['email'];
+  
   $used_hours_calc = hoursToMinutes($options['used_hours']);
   $used_hours = new DateTime($options['used_hours']);
   $used_hours = $used_hours->format('H:i');
   $used_hours= minuszeros($used_hours);
+
   $bought_hours_calc = hoursToMinutes($options['bought_hours']);
   $bought_hours = new DateTime($options['bought_hours']);
   $bought_hours = $bought_hours->format('H:i');
@@ -46,6 +48,4 @@ function minuszeros($hours2)
     $percentage = $used_hours_calc * 100 / $bought_hours_calc;
     $percentage = round($percentage);
   }
-
-
  ?>

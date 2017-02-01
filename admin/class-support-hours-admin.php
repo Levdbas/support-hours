@@ -143,7 +143,7 @@ class Support_Hours_Admin {
 	public function validate($input) {
 		$valid = array();
 		if ($input['bought_hours'] == null) {
- 	   	$input['bought_hours'] = '00:00';
+ 	  	$input['bought_hours'] = '00:00';
  	 	}
 		if ($input['used_hours'] == null) {
 		 	$input['used_hours'] = '00:00';
@@ -153,6 +153,7 @@ class Support_Hours_Admin {
 		$valid['user'] = sanitize_text_field($input['user']);
 		$valid['email'] = sanitize_email($input['email']);
 		$valid['users'] = $input['users'];
+		$valid['workFields'] = $input['workFields'];
 		return $valid;
 	}
 	function support_hours_add_dashboard_widgets() {

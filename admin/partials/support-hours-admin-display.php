@@ -18,6 +18,7 @@ $bought_hours = $options['bought_hours'];
 $used_hours = $options['used_hours'];
 $users = $options['users'];
 $email = $options['email'];
+$workFields = $options['workFields'];
 ?>
 <div class="wrap">
   <?php
@@ -57,6 +58,54 @@ $email = $options['email'];
           <input type="text" placeholder="00:00" class="regular-text time" id="<?php echo $this->plugin_name; ?>-used_hours" name="<?php echo $this->plugin_name; ?>[used_hours]" value="<?php if(!empty($used_hours)) echo $used_hours; ?>"/>
           <span class="emsg hidden"><?php echo __( 'Please enter a valid time', 'support-hours'); ?></span>
         </fieldset>
+
+        <fieldset>
+          <table id="repeatable-fieldset-one" width="100%">
+	<thead>
+		<tr>
+			<th width="2%"></th>
+			<th width="30%">datum</th>
+			<th width="68%">beschrijving</th>
+      <th width="60%">tijd</th>
+			<th width="2%"></th>
+		</tr>
+	</thead>
+<tbody>
+          <?php
+          $i = 0;
+          	if ( $workFields ) :
+          		foreach ( $workFields as $field ) {
+                $i++
+          ?>
+          <tr>
+            <td><a class="button remove-row" href="#">-</a></td>
+            <td>
+              <input type="text" placeholder="dd-mm-yy" class="regular-text date" id="<?php echo $this->plugin_name; ?>-workFields-date" name="<?php echo $this->plugin_name; ?>[workFields][date_<?php echo $i; ?>]" value="<?php if(!empty($options['workFields']['date_'.$i])) { echo $options['workFields']['date_'.$i]; } else { echo date("d-m-y");} ?>"/>
+            </td>
+            <td>
+              <input type="text" placeholder="beschrijving van de werkzaamheden" class="regular-text description" id="<?php echo $this->plugin_name; ?>-workFields-description" name="<?php echo $this->plugin_name; ?>[workFields][description_<?php echo $i; ?>]" value="<?php if(!empty($options['workFields']['description_'.$i])) echo $options['workFields']['description_'.$i] ?>"/>
+            </td>
+            <td>
+              <input type="text" placeholder="00:00" class="regular-text time" id="<?php echo $this->plugin_name; ?>-workFields-used" name="<?php echo $this->plugin_name; ?>[workFields][used_<?php echo $i; ?>]" value="<?php if(!empty($options['workFields']['used_'.$i])) echo $options['workFields']['used_'.$i] ?>" />
+            </td>
+          </tr>
+        </fieldset>
+        <?php
+		}
+	else :
+		// show a blank one
+?>
+	<tr>
+		<td><a class="button remove-row" href="#">-</a></td>
+    <td>
+      <input type="text" placeholder="00:00" class="regular-text time" id="<?php echo $this->plugin_name; ?>-workFields-time" name="<?php echo $this->plugin_name; ?>[workFields][used_<?php echo $i; ?>]" value="test"/>
+    </td>
+    <td><a class="sort">|||</a></td>
+	</tr>
+</tbody>
+</table>
+<?php endif; ?>
+
         <?php submit_button(__( 'Save all changes', 'support-hours'), 'primary','submit', TRUE); ?>
       </form>
       <?php } else {?>
