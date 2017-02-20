@@ -164,7 +164,17 @@ $duration: 2s;
 		max-height:none;
 	}
 }
-#repeatable-fieldset-one{
+#support_hours_dashboard_widget{
+	h4{
+	}
+}
+.bold{
+	font-weight: bold;
+	color:#444;
+}
+#repeatable-fieldset-one, .worktable{
+	margin-top: 20px;
+	margin-bottom: 20px;
 	th{
 		text-align: left;
 	}
