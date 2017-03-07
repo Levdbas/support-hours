@@ -16,7 +16,7 @@
  * Plugin Name:       Support Hours
  * Plugin URI:        http://basedonline.nl
  * Description:       The support-hours plugin can be used to give your customers insight on the status of their pre-paid support hours.
- * Version:           1.2.1
+ * Version:           1.3.0
  * Author:            Erik van der Bas
  * Author URI:        http://basedonline.nl
  * License:           GPL-2.0+
@@ -38,13 +38,6 @@ function activate_support_hours() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-support-hours-activator.php';
 	Support_Hours_Activator::activate();
 }
-function sample_admin_notice__error() {
-  $class = 'notice notice-warning is-dismissible';
-  $message = __( 'Irks! An error has occurred.', 'sample-text-domain' );
-
-  printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
-}
-add_action( 'admin_notices', 'sample_admin_notice__error' );
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-support-hours-deactivator.php
@@ -56,6 +49,35 @@ function deactivate_support_hours() {
 
 register_activation_hook( __FILE__, 'activate_support_hours' );
 register_deactivation_hook( __FILE__, 'deactivate_support_hours' );
+
+
+function shapeSpace_plugin_notice() {
+	global $current_user;
+	$options = get_option('support-hours');
+	$class = 'notice notice-warning is-dismissible';
+	$first = __( 'Support Hours uses a new system to store hours. Do not forget to input the old hours into the new system. Amount of old hours need to be set:', 'support-hours' );
+	$user_id = $current_user->ID;
+	if (!get_user_meta($user_id, 'shapeSpace_plugin_notice_ignore')) { ?>
+
+		<div class="<?php echo $class ?>">
+			<p>
+				<?php echo $first; ?>
+				<?php echo $options['used_hours']; ?>
+				<a href="?my-plugin-ignore-notice"><?php _e('I understand. Dismiss this notice.', 'support-hours'); ?></a>
+			</p>
+		</div>
+	<?php }
+}
+add_action('admin_notices', 'shapeSpace_plugin_notice');
+
+function shapeSpace_plugin_notice_ignore() {
+	global $current_user;
+	$user_id = $current_user->ID;
+	if (isset($_GET['my-plugin-ignore-notice'])) {
+		add_user_meta($user_id, 'shapeSpace_plugin_notice_ignore', 'true', true);
+	}
+}
+add_action('admin_init', 'shapeSpace_plugin_notice_ignore');
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -76,6 +98,5 @@ function run_support_hours() {
 
 	$plugin = new Support_Hours();
 	$plugin->run();
-
 }
 run_support_hours();

@@ -1,5 +1,4 @@
 <?php
-
 function hoursToMinutes($hours)
 {
   $minutes = 0;

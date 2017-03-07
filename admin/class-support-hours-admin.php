@@ -130,7 +130,6 @@ class Support_Hours_Admin {
 		 return array_merge(  $settings_link, $links );
 
 	}
-
 	/**
 	 * Render the settings page for this plugin.
 	 *

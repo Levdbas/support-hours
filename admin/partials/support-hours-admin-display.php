@@ -41,7 +41,7 @@ $workFields = $options['workFields'];
         <p><?php _e( 'Warning! If you do not set yourself as a Support Hours manager, you will loose access to this page until the plugin is disabled and enabled.', $this->plugin_name); ?></p>
         </fieldset>
         <fieldset>
-          <p><?php _e( 'E-Mail adress main Support Hours manager', 'Support Hours'); ?>:</p>
+          <p><?php _e( 'E-Mail adress main Support Hours manager', $this->plugin_name); ?>:</p>
           <legend class="screen-reader-text"><span><?php _e('E-Mail adress main Support Hours manager', $this->plugin_name); ?>:</span></legend>
           <input type="text" class="regular-text" id="<?php echo $this->plugin_name; ?>-bought_hours" name="<?php echo $this->plugin_name; ?>[email]" value="<?php if(!empty($email)) echo $email; ?>"/>
         </fieldset>
