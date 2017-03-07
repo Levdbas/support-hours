@@ -81,22 +81,11 @@
 	$('.remove-row').click(function(e){
 		$(this).parents('.repeating').remove();
 	});
-$('.today').click(function(e){
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth()+1; //January is 0!
-	var yyyy = today.getFullYear();
-
-	if(dd<10) {
-	    dd='0'+dd;
-		}
-
-	if(mm<10) {
-	    mm='0'+mm;
-	}
-	today = dd+'-'+mm+'-'+yyyy;
-	$(this).prev().val(today);
-});
+		$('.today').click(function(e){
+			var today = $('.currentDate').text();
+			e.preventDefault();
+			$(this).prev().val(today);
+		});
 // Clone the previous section, and remove all of the values
 	$('.repeat').click(function(e){
 				e.preventDefault();
@@ -109,7 +98,7 @@ $('.today').click(function(e){
 				resetAttributeNames(cloned)
 		});
 
-		});
+	});
 		$(window).resize(function() {
 			$(".progress-bar").loading();
 		});

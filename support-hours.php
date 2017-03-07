@@ -38,7 +38,13 @@ function activate_support_hours() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-support-hours-activator.php';
 	Support_Hours_Activator::activate();
 }
+function sample_admin_notice__error() {
+  $class = 'notice notice-warning is-dismissible';
+  $message = __( 'Irks! An error has occurred.', 'sample-text-domain' );
 
+  printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
+}
+add_action( 'admin_notices', 'sample_admin_notice__error' );
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-support-hours-deactivator.php

@@ -1,4 +1,5 @@
 <?php
+
 function hoursToMinutes($hours)
 {
   $minutes = 0;
@@ -21,9 +22,12 @@ function minuszeros($hours2)
   }
   return $hours2;
 }
-
-
+/*
+Checks the workfields for the time fields. Adds all timefields and returns them.
+If no workfields and therefore no time fields are filled, returns 00:00
+*/
 function AddTime($workFields) {
+  if($workFields != null){
     foreach ($workFields as $time) {
         list($hour, $minute) = explode(':', $time['used']);
         $minutes += $hour * 60;
@@ -32,6 +36,9 @@ function AddTime($workFields) {
     $hours = floor($minutes / 60);
     $minutes -= $hours * 60;
     return sprintf('%02d:%02d', $hours, $minutes);
+  } else{
+    return "00:00";
+  }
 }
 
 

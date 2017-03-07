@@ -165,7 +165,10 @@ $duration: 2s;
 	}
 }
 #support_hours_dashboard_widget{
-	h4{
+	h3{
+		margin: 1.33em 0 0;
+		font-size: 16px;
+		font-weight: bold;
 	}
 }
 .bold{
@@ -174,8 +177,68 @@ $duration: 2s;
 }
 #repeatable-fieldset-one, .worktable{
 	margin-top: 20px;
-	margin-bottom: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
 	th{
 		text-align: left;
 	}
+}
+.worktable, .total{
+	border-bottom: 1px solid #eee;
+}
+.total{
+	padding-bottom: 10px !important;
+}
+.currentDate{display: none;}
+$breakpoint-alpha: 480px;
+
+.rwd-table {
+  margin: 1em 0;
+  min-width: 300px;
+
+  tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    display: none;
+  }
+  td {
+    display: block;
+    &:first-child {
+      padding-top: .5em;
+    }
+    &:last-child {
+      padding-bottom: .5em;
+    }
+		&.remove:before{
+			content:'';
+			width: 0;
+		}
+    &:before {
+      content: attr(data-th)": "; // who knew you could do this? The internet, that's who.
+      font-weight: bold;
+      width: 6.5em;
+      display: inline-block;
+      @media (min-width: $breakpoint-alpha) {
+        display: none;
+      }
+    }
+  }
+  th, td {
+    text-align: left;
+    @media (min-width: $breakpoint-alpha) {
+      display: table-cell;
+      padding: .25em .5em;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+.clearfix{
+	clear:both;
 }

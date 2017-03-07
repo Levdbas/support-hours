@@ -22,7 +22,6 @@
  * @author     Erik van der Bas <erik@basedonline.nl>
  */
 class Support_Hours_Loader {
-
 	/**
 	 * The array of actions registered with WordPress.
 	 *

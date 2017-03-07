@@ -111,7 +111,7 @@ class Support_Hours_Admin {
 		 *        Administration Menus: http://codex.wordpress.org/Administration_Menus
 		 *
 		 */
-		add_options_page( __( 'Support hours', 'support-hours'), __( 'Support hours', 'support-hours'), 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
+		add_options_page( __( 'Support hours', $this->plugin_name), __( 'Support hours', $this->plugin_name), 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
 		);
 }
 
@@ -158,7 +158,7 @@ class Support_Hours_Admin {
 	function support_hours_add_dashboard_widgets() {
 			wp_add_dashboard_widget(
 			   'support_hours_dashboard_widget',         // Widget slug.
-			   __( 'Support Hours', 'support-hours'),         // Title.
+			   __( 'Support Hours', $this->plugin_name),         // Title.
 			   array($this, 'support_hours_dashboard_widget_function') // Display function.
 			);
 			global $wp_meta_boxes;
