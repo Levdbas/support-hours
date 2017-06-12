@@ -1,5 +1,4 @@
 (function( $ ) {
-	console.log('test');
 	$.fn.loading = function () {
 		$(this).each(function () {
 			var $target  = $(this);
@@ -64,7 +63,42 @@
 				$('input[type="submit"]').removeAttr('disabled');
 			}
 		});
+
+		// Prepare new attributes for the repeating section
+		var attrs = ['for', 'id', 'name'];
+		function resetAttributeNames(section) {
+				var tags = section.find('input, label'), idx = section.index()-1;
+				tags.each(function() {
+					var $this = jQuery(this);
+					jQuery.each(attrs, function(i, attr) {
+						var attr_val = $this.attr(attr);
+						if (attr_val) {
+								$this.attr(attr, attr_val.replace(/\[workFields\]\[\d+\]\[/, '\[workFields\]\['+(idx + 1)+'\]\['))
+						}
+					})
+				})
+		}
+	$('.remove-row').click(function(e){
+		$(this).parents('.repeating').remove();
+	});
+		$('.today').click(function(e){
+			var today = $('.currentDate').text();
+			e.preventDefault();
+			$(this).prev().val(today);
 		});
+// Clone the previous section, and remove all of the values
+	$('.repeat').click(function(e){
+				e.preventDefault();
+				var lastRepeatingGroup = jQuery('.repeating').last();
+				var cloned = lastRepeatingGroup.clone(true)
+				cloned.insertAfter(lastRepeatingGroup);
+				cloned.find("input").val("");
+				cloned.find("select").val("");
+				cloned.find("input:radio").attr("checked", false);
+				resetAttributeNames(cloned)
+		});
+
+	});
 		$(window).resize(function() {
 			$(".progress-bar").loading();
 		});

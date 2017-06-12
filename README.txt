@@ -2,8 +2,8 @@
 Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid
 Requires at least: 3.0.1
-Tested up to: 4.7
-Stable tag: 1.2.1
+Tested up to: 4.8
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,10 +11,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Many webdevelopers  offer pre-paid hours to their customers to maintain their websites. It can be a long wait for both the developers and the customer to find out how many hours are left to be spent on maintenance work.
+Many webdevelopers offer pre-paid hours to their customers to maintain their websites. It can be a long wait for both the developers and the customer to find out how many hours are left to be spent on maintenance work.
 This plugin makes this process much easier by displaying the hours bought and left directly in a dashboard widget.
 
-The amount of bought and used hours can be set via the an extra settings page. After the first activation you need to set the support hour managers.
+The amount of bought hours and used hours with a description and date can be set on the settings page. After the first activation you need to set the support hour managers.
 These accounts can only access the management page, so no sudden changes in the hours you've set.
 
 == Installation ==
@@ -34,8 +34,7 @@ To help my customers keep track of their pre-paid hours.
 
 = Do you have plans to work on new functions for the plugin? =
 
-Yes! I am planning a feature to set the date, name of developer, description of maintenance and hours spent per maintenance job.
-These will be displayed under the circle to give the customer insight on which maintenance work which amount of hours were spent.
+Yes! I just added some new functionality to set different work entries. I will look into new functions on request or when I need something myself.
 
 = Is this your first plugin? =
 
@@ -45,6 +44,15 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 
 == Changelog ==
+= 1.3.2 =
+* Checked up to version 4.8
+* Removed notice
+= 1.3.1 =
+* Fixed a bug where an empty field row was not repeatable.
+= 1.3.0 =
+* Multiple work entries can now be added to the system and are shown in the dashboard widget. All time entries are calculated together to give a quick overview on the amount of hours left.
+* Added a notice to set the old amount of hours in the new system.
+* Updated the styling more towards the standard WP UI.
 = 1.2.1 =
 * Updated Description in plugin
 * Fixed circle showing up at 0

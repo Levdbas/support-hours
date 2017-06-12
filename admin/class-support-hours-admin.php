@@ -111,7 +111,7 @@ class Support_Hours_Admin {
 		 *        Administration Menus: http://codex.wordpress.org/Administration_Menus
 		 *
 		 */
-		add_options_page( __( 'Support hours', 'support-hours'), __( 'Support hours', 'support-hours'), 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
+		add_options_page( __( 'Support hours', $this->plugin_name), __( 'Support hours', $this->plugin_name), 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
 		);
 }
 
@@ -130,7 +130,6 @@ class Support_Hours_Admin {
 		 return array_merge(  $settings_link, $links );
 
 	}
-
 	/**
 	 * Render the settings page for this plugin.
 	 *
@@ -150,7 +149,6 @@ class Support_Hours_Admin {
 		}
 		$valid['bought_hours'] = sanitize_text_field($input['bought_hours']);
 		$valid['used_hours'] = sanitize_text_field($input['used_hours']);
-		$valid['user'] = sanitize_text_field($input['user']);
 		$valid['email'] = sanitize_email($input['email']);
 		$valid['users'] = $input['users'];
 		$valid['workFields'] = $input['workFields'];
@@ -159,7 +157,7 @@ class Support_Hours_Admin {
 	function support_hours_add_dashboard_widgets() {
 			wp_add_dashboard_widget(
 			   'support_hours_dashboard_widget',         // Widget slug.
-			   __( 'Support Hours', 'support-hours'),         // Title.
+			   __( 'Support Hours', $this->plugin_name),         // Title.
 			   array($this, 'support_hours_dashboard_widget_function') // Display function.
 			);
 			global $wp_meta_boxes;
