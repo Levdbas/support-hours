@@ -27,10 +27,14 @@ If no workfields and therefore no time fields are filled, returns 00:00
 */
 function AddTime($workFields) {
   if($workFields != null){
+    $minutes = 0;
     foreach ($workFields as $time) {
-        list($hour, $minute) = explode(':', $time['used']);
-        $minutes += $hour * 60;
-        $minutes += $minute;
+        //  Check if the field is not empty. Else stay with 0.
+        if($time['used'] !== ""){
+          list($hour, $minute) = explode(':', $time['used']);
+          $minutes += $hour * 60;
+          $minutes += $minute;
+        }
     }
     $hours = floor($minutes / 60);
     $minutes -= $hours * 60;
@@ -54,7 +58,7 @@ function AddTime($workFields) {
   $bought_hours_calc = hoursToMinutes($options['bought_hours']);
   $bought_hours = new DateTime($options['bought_hours']);
   $bought_hours = $bought_hours->format('H:i');
-  $bought_hours= minuszeros($bought_hours);
+  $bought_hours = minuszeros($bought_hours);
 
   $current_color = get_user_option( 'admin_color' );
   if (strpos($used_hours, ':') !== false){

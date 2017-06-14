@@ -15,7 +15,6 @@
 <?php
 $options = get_option($this->plugin_name);
 $bought_hours = $options['bought_hours'];
-$used_hours = $options['used_hours'];
 $users = $options['users'];
 $email = $options['email'];
 $workFields = $options['workFields'];

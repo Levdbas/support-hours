@@ -144,11 +144,10 @@ class Support_Hours_Admin {
 		if ($input['bought_hours'] == null) {
  	  	$input['bought_hours'] = '00:00';
  	 	}
-		if ($input['used_hours'] == null) {
-		 	$input['used_hours'] = '00:00';
+		if($input['workFields'] == null){
+			$input['workFields'] = null;
 		}
 		$valid['bought_hours'] = sanitize_text_field($input['bought_hours']);
-		$valid['used_hours'] = sanitize_text_field($input['used_hours']);
 		$valid['email'] = sanitize_email($input['email']);
 		$valid['users'] = $input['users'];
 		$valid['workFields'] = $input['workFields'];
