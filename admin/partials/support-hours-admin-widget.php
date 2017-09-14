@@ -12,24 +12,28 @@
 * @subpackage Support_Hours/admin/partials
 */
 
-if(!empty($users) && !empty($bought_hours)) {
+if(!empty($users) && !empty($bought_hours)):
 
   include_once( 'support-hours-admin-widget-clock.php' );
   include_once( 'support-hours-admin-widget-hourTable.php' );
   include_once( 'support-hours-admin-widget-bottomMessage.php' );
-  
-} elseif(empty($users)){ ?>
+
+elseif(empty($users)):
+?>
 
   <p>
-    <a class="button button-primary button-hero load-customize hide-if-no-customize" href="<?php echo admin_url( 'options-general.php?page=support-hours' ); ?>"><?php _e( 'Configure plugin!', $this->plugin_name); ?></a>
+    <a class="button button-primary button-hero load-customize hide-if-no-customize" href="<?php echo admin_url( 'options-general.php?page=support-hours' ); ?>">
+      <?php _e( 'Configure plugin!', $this->plugin_name); ?>
+    </a>
   </p>
 
-<?php } else{ ?>
+<?php else: ?>
 
-  <h4><?php _e( 'No support Hours bought', $this->plugin_name); ?></h4>
+  <h4>
+    <?php _e( 'No support Hours bought', $this->plugin_name); ?>.
+  </h4>
   <p>
-    <?php _e( 'Contact me via', $this->plugin_name); ?>
-    <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
+    <?php _e( 'Contact me via', $this->plugin_name); ?> <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
   </p>
 
-<?php } ?>
+<?php endif; ?>

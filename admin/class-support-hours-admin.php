@@ -137,7 +137,7 @@ class Support_Hours_Admin {
 	 */
 
 	public function display_plugin_setup_page() {
-			include_once( 'partials/support-hours-admin-display.php' );
+			include_once( 'partials/support-hours-admin-page.php' );
 	}
 	public function validate($input) {
 		$valid = array();
@@ -169,6 +169,5 @@ class Support_Hours_Admin {
 	function support_hours_dashboard_widget_function() {
 		include_once( 'partials/support-hours-functions.php' );
 		include_once( 'partials/support-hours-admin-widget.php' );
-
 	}
 }
