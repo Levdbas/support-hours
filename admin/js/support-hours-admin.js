@@ -6,12 +6,6 @@
 				percent: $target.data('percent'),
 				duration: 2000
 			};
-			var innerWidth = $('.inside').width();
-			var innerWidth = Math.round(innerWidth);
-			$('.progress-bar').css({
-				'width': innerWidth +'px',
-				'height': innerWidth +'px'
-			});
 
 			var circleWidth = $('.progress-bar').width();
 			var circleWidth = Math.round(circleWidth);
@@ -48,7 +42,6 @@
 (function( $ ) {
 	$( document ).ready(function() {
 		$(".progress-bar").loading();
-
 		// regexpression for matching xx:xx (4 digits at max)
 		var $regexname=/^\d{2}\:(([0-5]){1}.$([0-9]|){1}$)/;
 		$('.time').on('keypress keydown keyup',function(){

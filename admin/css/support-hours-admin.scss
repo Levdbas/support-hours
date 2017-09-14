@@ -4,12 +4,12 @@ $background-color: #cccccc;
 $progress-color:  #008ec2;
 $percent: 75;
 $duration: 2s;
-
+$breakpoint-alpha: 480px;
 
 .progress-bar {
 	position: relative;
-	height: $circle-size;
-	width: $circle-size;
+	width:100%;
+	padding-bottom: 100%;
 	.background{
 		background-color: $background-color;
 	}
@@ -132,12 +132,6 @@ $duration: 2s;
 	100%	{ opacity: 1; }
 }
 
-@media screen and (max-width: 1500px) {
-  .progress-bar {
-    max-width: 340px;
-    max-height: 340px;
-  }
-}
 @media screen and (max-width: 870px) {
   .smallbr {
     display: block;
@@ -164,8 +158,82 @@ $duration: 2s;
 		max-height:none;
 	}
 }
-#repeatable-fieldset-one{
+#support_hours_dashboard_widget{
+	h3{
+		margin: 1.33em 0 0;
+		font-size: 16px;
+		font-weight: bold;
+	}
+}
+.bold{
+	font-weight: bold;
+	color:#444;
+}
+.worktable{
+	margin-top: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
 	th{
 		text-align: left;
 	}
+}
+.worktable, .total{
+	border-bottom: 1px solid #eee;
+}
+.total{
+	padding-bottom: 10px !important;
+}
+.currentDate{
+	display: none;
+}
+
+.rwd-table {
+  margin: 1em 0;
+  min-width: 300px;
+
+  tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    display: none;
+  }
+  td {
+    display: block;
+    &:first-child {
+      padding-top: .5em;
+    }
+    &:last-child {
+      padding-bottom: .5em;
+    }
+		&.remove:before{
+			content:'';
+			width: 0;
+		}
+    &:before {
+      content: attr(data-th)": "; // who knew you could do this? The internet, that's who.
+      font-weight: bold;
+      width: 6.5em;
+      display: inline-block;
+      @media (min-width: $breakpoint-alpha) {
+        display: none;
+      }
+    }
+  }
+  th, td {
+    text-align: left;
+    @media (min-width: $breakpoint-alpha) {
+      display: table-cell;
+      padding: .25em .5em;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+.clearfix{
+	clear:both;
 }
