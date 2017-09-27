@@ -30,9 +30,12 @@ class Support_Hours_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-			//delete_option('support-hours');
-			// TODO: checken of deze functie goed werkt met het verwijderen van de user accounts.
-			delete_option('support-hours','support-hours["users"]');
+			//Get entire array
+			$SupportHourOptions = get_option('support-hours');
+			//Alter the options array appropriately
+			$SupportHourOptions['users'] = '';
+			//Update entire array
+			update_option('support-hours', $SupportHourOptions);
 	}
 
 }

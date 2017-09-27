@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Fired during plugin deactivation
+ * Fired during plugin uninstall
  *
  * @link       http://basedonline.nl
  * @since      1.0.0
@@ -11,9 +11,9 @@
  */
 
 /**
- * Fired during plugin deactivation.
+ * Fired during plugin uninstall.
  *
- * This class defines all code necessary to run during the plugin's deactivation.
+ * This class defines all code necessary to run during the plugin's uninstall.
  *
  * @since      1.0.0
  * @package    Support_Hours

@@ -1,6 +1,7 @@
 <?php
-function hoursToMinutes($hours)
-{
+
+
+function hoursToMinutes($hours){
   $minutes = 0;
   if (strpos($hours, ':') !== false)
   {
@@ -8,8 +9,9 @@ function hoursToMinutes($hours)
   }
   return $hours * 60 + $minutes;
 }
-function minuszeros($hours2)
-{
+
+
+function minuszeros($hours2) {
   $minutes = 0;
   if (preg_match("/0+([1-9]:)/", $hours2) == true) {
     $hours2 = ltrim($hours2, '0');
@@ -21,6 +23,8 @@ function minuszeros($hours2)
   }
   return $hours2;
 }
+
+
 /*
 Checks the workfields for the time fields. Adds all timefields and returns them.
 If no workfields and therefore no time fields are filled, returns 00:00
@@ -51,19 +55,14 @@ function AddTime($workFields) {
   $workFields = $options['workFields'];
 
   $used_hours_calc = hoursToMinutes(AddTime($workFields));
-  $used_hours = new DateTime(AddTime($workFields));
-  $used_hours = $used_hours->format('H:i');
+  $used_hours = AddTime($workFields);
   $used_hours= minuszeros($used_hours);
-
   $bought_hours_calc = hoursToMinutes($options['bought_hours']);
-
-  // TODO: hier een nieuwe functie voor vinden die ook meer uren dan 24 toelaat. @3:59 pakt het systeem wel. 24 uur, pakt ie wel maar geen error. Vanaf boven de 24 uur een error.
-
-  $bought_hours = new DateTime($options['bought_hours']);
-  $bought_hours = $bought_hours->format('H:i');
+  $bought_hours = $options['bought_hours'];
   $bought_hours = minuszeros($bought_hours);
-
   $current_color = get_user_option( 'admin_color' );
+
+
   if (strpos($used_hours, ':') !== false){
     $size = 'small';
   } else{
