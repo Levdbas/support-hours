@@ -56,6 +56,9 @@ function AddTime($workFields) {
   $used_hours= minuszeros($used_hours);
 
   $bought_hours_calc = hoursToMinutes($options['bought_hours']);
+
+  // TODO: hier een nieuwe functie voor vinden die ook meer uren dan 24 toelaat. @3:59 pakt het systeem wel. 24 uur, pakt ie wel maar geen error. Vanaf boven de 24 uur een error.
+
   $bought_hours = new DateTime($options['bought_hours']);
   $bought_hours = $bought_hours->format('H:i');
   $bought_hours = minuszeros($bought_hours);
