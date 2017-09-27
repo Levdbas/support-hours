@@ -47,8 +47,14 @@ function deactivate_support_hours() {
 	Support_Hours_Deactivator::deactivate();
 }
 
+function uninstall_support_hours() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-support-hours-uninstaller.php';
+	Support_Hours_Uninstaller::uninstall();
+}
+
 register_activation_hook( __FILE__, 'activate_support_hours' );
 register_deactivation_hook( __FILE__, 'deactivate_support_hours' );
+//register_uninstall_hook(__FILE__, 'uninstall_support_hours');
 
 
 function supportHours_plugin_notice() {

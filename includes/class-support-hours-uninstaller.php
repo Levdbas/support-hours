@@ -20,7 +20,7 @@
  * @subpackage Support_Hours/includes
  * @author     Erik van der Bas <erik@basedonline.nl>
  */
-class Support_Hours_Deactivator {
+class Support_Hours_Uninstaller {
 
 	/**
 	 * Short Description. (use period)
@@ -29,10 +29,8 @@ class Support_Hours_Deactivator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function deactivate() {
-			//delete_option('support-hours');
-			// TODO: checken of deze functie goed werkt met het verwijderen van de user accounts.
-			delete_option('support-hours','support-hours["users"]');
+	public static function uninstall() {
+			delete_option('support-hours');
 	}
 
 }
