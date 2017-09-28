@@ -44,6 +44,32 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 
 == Changelog ==
+= 1.4 =
+
+## New:
+
+* new menu setup
+   * main page with dashicon
+   * overview page with all entries
+  * settings page with that originally was located under settings
+* better access control to widget and buttons
+
+## Enhancements:
+
+* made the hour wheel more responsive
+* code refactoring by splitting code over multiple partials.
+* new translations
+* UI is more consistant with WordPress in general.
+
+## Bugs fixed:
+
+* fixed a bug where entering more then 24h on bought/used gave an error
+* fixed a bug where when deactivating the plugin, all data was lost
+   * all data will be removed on plugin removal.
+
+= 1.3.3 =
+* removed some unnecessary fields
+* Extra checks around fields to remove php notices
 = 1.3.3 =
 * removed some unnecessary fields
 * Extra checks around fields to remove php notices
