@@ -9,7 +9,7 @@
 * @since      1.0.0
 *
 * @package    Support_Hours
-* @subpackage Support_Hours/admin/partials
+* @subpackage Support_Hours/admin
 */
 ?>
 <?php
@@ -27,8 +27,8 @@
       <?php
       settings_fields($this->plugin_name);
       do_settings_sections($this->plugin_name);
-      include_once( 'support-hours-admin-display-textFields.php' );
-      include_once( 'support-hours-admin-display-workTable.php' );
+      include_once( 'partials/support-hours-admin-settings-textFields.php' );
+      include_once( 'partials/support-hours-admin-settings-workTable.php' );
       ?>
     </form>
   <?php } else {?>

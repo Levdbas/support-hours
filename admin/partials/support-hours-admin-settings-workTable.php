@@ -1,3 +1,4 @@
+
 <?php
 $i = 0;
 ?>
@@ -13,19 +14,20 @@ $i = 0;
         <th><?php _e('Time used', $this->plugin_name); ?></th>
       </tr>
     </thead>
-
+    <tbody>
     <?php if ( $workFields ) : foreach ( $workFields as $field ) {  ?>
 
-      <tbody>
+
         <tr class="repeating">
 
           <td class="remove">
             <a class="button remove-row" href="#">-</a>
+            <?php // TODO: <span class="button sort hndle">|||</span> ?>
           </td>
 
           <td data-th="<?php _e('Date', $this->plugin_name); ?>">
             <input type="text" placeholder="dd-mm-yyyy" class="regular-text date" id="<?php echo $this->plugin_name; ?>-workFields-date" name="<?php echo $this->plugin_name; ?>[workFields][<?php echo $i; ?>][date]" value="<?php if(!empty($field['date'])) { echo $field['date']; } ?>"/>
-            <button class="today button button-primary"><?php _e('Today', $this->plugin_name); ?></button>
+            <button class="today button button-secondary"><?php _e('Today', $this->plugin_name); ?></button>
           </td>
 
           <td data-th="<?php _e('Description', $this->plugin_name); ?>">
@@ -37,11 +39,9 @@ $i = 0;
           </td>
 
         </tr>
-      </tbody>
 
       <?php $i++;	} else : ?>
 
-        <tbody>
           <tr class="repeating">
 
             <td class="remove">
@@ -62,10 +62,9 @@ $i = 0;
             </td>
 
           </tr>
-        </tbody>
 
       <?php endif; ?>
-
+      </tbody>
     </table>
-    <a href="#" class="repeat button button-primary"><?php _e('Add row', $this->plugin_name); ?></a><?php submit_button(__( 'Save all changes', $this->plugin_name), 'primary','submit', TRUE); ?>
+    <a href="#" class="repeat button button-secondary"><?php _e('Add activity', $this->plugin_name); ?></a><?php submit_button(__( 'Save all changes', $this->plugin_name), 'primary','submit', true); ?>
   </fieldset>

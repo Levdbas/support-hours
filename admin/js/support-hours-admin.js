@@ -90,7 +90,6 @@
 			cloned.find("input:radio").attr("checked", false);
 			resetAttributeNames(cloned)
 		});
-
 	});
 	$(window).resize(function() {
 		$(".progress-bar").loading();
