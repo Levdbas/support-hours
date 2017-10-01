@@ -1,18 +1,17 @@
 <?php
 
 /**
-* Provide a admin area view for the plugin
+* Settings page of Support Hours
 *
 * This file is used to markup the admin-facing aspects of the plugin.
 *
 * @link       http://basedonline.nl
-* @since      1.0.0
+* @since      1.4.0
 *
 * @package    Support_Hours
 * @subpackage Support_Hours/admin
 */
-?>
-<?php
+
   $options = get_option($this->plugin_name);
   $bought_hours = $options['bought_hours'];
   $users = $options['users'];
@@ -25,6 +24,7 @@
     <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
     <form method="post" name="cleanup_options" action="options.php">
       <?php
+      // load fields and include sub-parts of this form.
       settings_fields($this->plugin_name);
       do_settings_sections($this->plugin_name);
       include_once( 'partials/support-hours-admin-settings-textFields.php' );

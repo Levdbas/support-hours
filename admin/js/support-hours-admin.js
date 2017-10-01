@@ -68,18 +68,18 @@
 				})
 			})
 		}
-
+		// remove workFields row.
 		$('.remove-row').click(function(e){
 			$(this).parents('.repeating').remove();
 		});
-
+		// set date field to todays date.
 		$('.today').click(function(e){
 			var today = $('.currentDate').text();
 			e.preventDefault();
 			$(this).prev().val(today);
 		});
 
-		// Clone the previous section, and remove all of the values
+		// Clone the previous workField, and remove all of the values
 		$('.repeat').click(function(e){
 			e.preventDefault();
 			var lastRepeatingGroup = jQuery('.repeating').last();
@@ -90,8 +90,5 @@
 			cloned.find("input:radio").attr("checked", false);
 			resetAttributeNames(cloned)
 		});
-	});
-	$(window).resize(function() {
-		$(".progress-bar").loading();
 	});
 	})(jQuery);

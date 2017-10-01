@@ -1,6 +1,6 @@
 <?php
 
-
+// function to explode on hours and calculates them to minutes.
 function hoursToMinutes($hours){
   $minutes = 0;
   if (strpos($hours, ':') !== false)
@@ -10,7 +10,7 @@ function hoursToMinutes($hours){
   return $hours * 60 + $minutes;
 }
 
-
+// function to strip the hours displayed in the clock of minutes if the hour is round.
 function minuszeros($hours2) {
   $minutes = 0;
   if (preg_match("/0+([1-9]:)/", $hours2) == true) {
@@ -48,7 +48,7 @@ function AddTime($workFields) {
   }
 }
 
-
+  // set of vars used in different files and functions.
   $options = get_option($this->plugin_name);
   $users = $options['users'];
   $email = $options['email'];
@@ -61,8 +61,9 @@ function AddTime($workFields) {
   $bought_hours = $options['bought_hours'];
   $bought_hours = minuszeros($bought_hours);
   $current_color = get_user_option( 'admin_color' );
+  $size = 'big';
 
-
+  // TODO:set code to functions.
   if (strpos($used_hours, ':') !== false){
     $size = 'small';
   } else{

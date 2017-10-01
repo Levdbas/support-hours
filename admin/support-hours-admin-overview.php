@@ -1,9 +1,7 @@
 <?php
 
 /**
-* Provide a admin area view for the plugin
-*
-* This file is used to markup the admin-facing aspects of the plugin.
+* Provide a page that can be seen from editor to admin. Shows all the time entries.
 *
 * @link       http://basedonline.nl
 * @since      1.0.0
@@ -13,6 +11,7 @@
 */
 ?>
 <?php
+  // load options and functions.
   $options = get_option($this->plugin_name);
   $bought_hours = $options['bought_hours'];
   $workFields = $options['workFields'];
@@ -34,7 +33,9 @@
     </thead>
     <tbody>
       <?php
-      foreach ( array_reverse($workFields) as $field ) { ?>
+        // loop the $workFields. Show all. 
+        foreach ( array_reverse($workFields) as $field ) {
+      ?>
         <tr>
           <td><?php if(!empty($field['used'])) echo $field['date'] ?></td>
           <td><?php if(!empty($field['used'])) echo $field['description'] ?></td>

@@ -15,14 +15,16 @@ $i = 0;
       </tr>
     </thead>
     <tbody>
-    <?php if ( $workFields ) : foreach ( $workFields as $field ) {  ?>
+    <?php
+    // loop the $workFields. Show all.
+    if ( $workFields ) : foreach ( $workFields as $field ) {
+    ?>
 
 
         <tr class="repeating">
 
           <td class="remove">
             <a class="button remove-row" href="#">-</a>
-            <?php // TODO: <span class="button sort hndle">|||</span> ?>
           </td>
 
           <td data-th="<?php _e('Date', $this->plugin_name); ?>">
