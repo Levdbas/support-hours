@@ -48,7 +48,7 @@ function AddTime($workFields) {
   }
 }
 
-  // set of vars used in different files and functions.
+// set of vars used in different files and functions.
   $options = get_option($this->plugin_name);
   $users = $options['users'];
   $email = $options['email'];
@@ -61,9 +61,9 @@ function AddTime($workFields) {
   $bought_hours = $options['bought_hours'];
   $bought_hours = minuszeros($bought_hours);
   $current_color = get_user_option( 'admin_color' );
-  $size = 'big';
 
   // TODO:set code to functions.
+  
   if (strpos($used_hours, ':') !== false){
     $size = 'small';
   } else{

@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid
 Requires at least: 3.0.1
 Tested up to: 4.8
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,9 +44,24 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 
 == Changelog ==
+= 1.4.1 =
+Thank you [Jos Klever](https://wordpress.org/support/users/josklever/) for reviewing the plugin.
+
+bugs fixed:
+
+* link to setup page on plugin overview is fixed.
+* better check on the $workFields array if it is really empty.
+
+enhancements:
+
+* code refactoring, reusing code from widget page on overview page
+* and thus using the same feedback flow from the widget on the overview page.
+* add extra feedback when there are no work activities filled in. Providing a button to the settings page as well.
+
+
 = 1.4 =
 
-## New:
+new:
 
 * new menu setup
    * main page with dashicon
@@ -54,14 +69,14 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
   * settings page with that originally was located under settings
 * better access control to widget and buttons
 
-## Enhancements:
+Enhancements:
 
 * made the hour wheel more responsive
 * code refactoring by splitting code over multiple partials.
 * new translations
 * UI is more consistant with WordPress in general.
 
-## Bugs fixed:
+Bugs fixed:
 
 * fixed a bug where entering more then 24h on bought/used gave an error
 * fixed a bug where when deactivating the plugin, all data was lost

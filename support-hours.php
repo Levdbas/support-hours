@@ -16,7 +16,7 @@
  * Plugin Name:       Support Hours
  * Plugin URI:        http://basedonline.nl
  * Description:       The support-hours plugin can be used to give your customers insight on the status of their pre-paid support hours.
- * Version:           1.4
+ * Version:           1.4.1
  * Author:            Erik van der Bas
  * Author URI:        http://basedonline.nl
  * License:           GPL-2.0+

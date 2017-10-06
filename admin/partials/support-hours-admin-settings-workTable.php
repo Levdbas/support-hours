@@ -1,7 +1,3 @@
-
-<?php
-$i = 0;
-?>
 <fieldset>
   <span class="currentDate"><?php echo date_i18n("d-m-Y"); ?></span>
   <table id="repeatable-fieldset-one" class="rwd-table">
@@ -15,10 +11,7 @@ $i = 0;
       </tr>
     </thead>
     <tbody>
-    <?php
-    // loop the $workFields. Show all.
-    if ( $workFields ) : foreach ( $workFields as $field ) {
-    ?>
+    <?php if ( $workFields ) : foreach ( $workFields as $field ) {  ?>
 
 
         <tr class="repeating">

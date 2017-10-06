@@ -147,7 +147,7 @@ class Support_Hours_Admin {
 		*  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
 		*/
 		$settings_link = array(
-			'<a href="' . admin_url( $this->plugin_name ) . '.php">' . __('Settings', $this->plugin_name) . '</a>',
+			'<a href="' . admin_url('admin.php?page=support-hours-settings') . '">' . __('Settings', $this->plugin_name) . '</a>',
 		);
 		return array_merge(  $settings_link, $links );
 
@@ -159,6 +159,7 @@ class Support_Hours_Admin {
 	*/
 
 	public function display_plugin_page() {
+		include_once( 'partials/support-hours-functions.php' );
 		include_once( 'support-hours-admin-overview.php' );
 	}
 	public function display_plugin_setup_page() {

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Support hours\n"
-"POT-Creation-Date: 2017-09-28 13:59+0200\n"
-"PO-Revision-Date: 2017-09-28 13:59+0200\n"
+"POT-Creation-Date: 2017-10-06 03:31+0200\n"
+"PO-Revision-Date: 2017-10-06 04:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: Erik van der Bas <erik@basedonline.nl>\n"
 "Language: nl_NL\n"
@@ -76,67 +76,84 @@ msgstr "Aantal ingekochte Support Uren"
 msgid "Please enter a valid time"
 msgstr "Voer een valide  tijd in"
 
-#: admin/partials/support-hours-admin-settings-workTable.php:12
-#: admin/partials/support-hours-admin-settings-workTable.php:28
-#: admin/partials/support-hours-admin-settings-workTable.php:51
-#: admin/partials/support-hours-admin-widget-hourTable.php:6
-#: admin/support-hours-admin-overview.php:30
+#: admin/partials/support-hours-admin-settings-workTable.php:8
+#: admin/partials/support-hours-admin-settings-workTable.php:24
+#: admin/partials/support-hours-admin-settings-workTable.php:47
+#: admin/partials/support-hours-admin-widget-hourTable.php:5
+#: admin/support-hours-admin-overview.php:27
 msgid "Date"
 msgstr "Datum"
 
-#: admin/partials/support-hours-admin-settings-workTable.php:13
-#: admin/partials/support-hours-admin-settings-workTable.php:33
-#: admin/partials/support-hours-admin-settings-workTable.php:56
-#: admin/partials/support-hours-admin-widget-hourTable.php:7
-#: admin/support-hours-admin-overview.php:31
+#: admin/partials/support-hours-admin-settings-workTable.php:9
+#: admin/partials/support-hours-admin-settings-workTable.php:29
+#: admin/partials/support-hours-admin-settings-workTable.php:52
+#: admin/partials/support-hours-admin-widget-hourTable.php:6
+#: admin/support-hours-admin-overview.php:28
 msgid "Description"
 msgstr "Beschrijving"
 
-#: admin/partials/support-hours-admin-settings-workTable.php:14
-#: admin/partials/support-hours-admin-settings-workTable.php:37
-#: admin/partials/support-hours-admin-settings-workTable.php:60
-#: admin/partials/support-hours-admin-widget-hourTable.php:8
-#: admin/support-hours-admin-overview.php:32
+#: admin/partials/support-hours-admin-settings-workTable.php:10
+#: admin/partials/support-hours-admin-settings-workTable.php:33
+#: admin/partials/support-hours-admin-settings-workTable.php:56
+#: admin/partials/support-hours-admin-widget-hourTable.php:7
+#: admin/support-hours-admin-overview.php:29
 msgid "Time used"
 msgstr "Tijd verbruikt"
 
-#: admin/partials/support-hours-admin-settings-workTable.php:30
-#: admin/partials/support-hours-admin-settings-workTable.php:53
+#: admin/partials/support-hours-admin-settings-workTable.php:26
+#: admin/partials/support-hours-admin-settings-workTable.php:49
 msgid "Today"
 msgstr "Vandaag"
 
-#: admin/partials/support-hours-admin-settings-workTable.php:34
-#: admin/partials/support-hours-admin-settings-workTable.php:57
+#: admin/partials/support-hours-admin-settings-workTable.php:30
+#: admin/partials/support-hours-admin-settings-workTable.php:53
 msgid "Description of the activity"
 msgstr "Beschrijving van de activiteit"
 
-#: admin/partials/support-hours-admin-settings-workTable.php:69
+#: admin/partials/support-hours-admin-settings-workTable.php:65
 msgid "Add activity"
 msgstr "Voeg activiteit toe"
 
-#: admin/partials/support-hours-admin-settings-workTable.php:69
+#: admin/partials/support-hours-admin-settings-workTable.php:65
 msgid "Save all changes"
 msgstr "Bijwerken"
 
 #: admin/partials/support-hours-admin-widget-bottomMessage.php:3
+msgid "Add new activity"
+msgstr "Voeg nieuwe activiteit toe"
+
+#: admin/partials/support-hours-admin-widget-bottomMessage.php:6
+msgid "View all acitivities"
+msgstr "Bekijk alle activiteiten"
+
+#: admin/partials/support-hours-admin-widget-bottomMessage.php:11
+msgid "Add first acitivity"
+msgstr "Voeg eerste activiteit toe"
+
+#: admin/partials/support-hours-admin-widget-bottomMessage.php:16
+#: admin/support-hours-admin-overview.php:46
+msgid "Total"
+msgstr "Totaal"
+
+#: admin/partials/support-hours-admin-widget-bottomMessage.php:21
 msgid "Support hours used."
 msgstr "Support uren verbruikt."
 
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:5
+#: admin/partials/support-hours-admin-widget-bottomMessage.php:23
 msgid "Support hours almost used"
 msgstr "Support Uren bijna gebruik"
 
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:7
+#: admin/partials/support-hours-admin-widget-bottomMessage.php:25
 msgid "Need more support hours"
 msgstr "Heeft u meer support uren nodig"
 
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:9
-#: admin/support-hours-admin-widget.php:35
+#: admin/partials/support-hours-admin-widget-bottomMessage.php:27
+#: admin/support-hours-admin-widget.php:38
 msgid "Contact me via"
 msgstr "Neem contact op via"
 
 #: admin/partials/support-hours-admin-widget-clock.php:15
-#: admin/support-hours-admin-overview.php:51
+#: admin/support-hours-admin-overview.php:48
 msgid "hours"
 msgstr "uur"
 
@@ -144,32 +161,19 @@ msgstr "uur"
 msgid "used"
 msgstr "verbruikt"
 
-#: admin/partials/support-hours-admin-widget-hourTable.php:2
+#: admin/partials/support-hours-admin-widget-hourTable.php:1
 msgid "Activities"
 msgstr "Activiteiten"
 
-#: admin/partials/support-hours-admin-widget-hourTable.php:30
-msgid "Add new activity"
-msgstr "Voeg nieuwe activiteit toe"
-
-#: admin/partials/support-hours-admin-widget-hourTable.php:33
-msgid "View all acitivities"
-msgstr "Bekijk alle activiteiten"
-
-#: admin/partials/support-hours-admin-widget-hourTable.php:35
-#: admin/support-hours-admin-overview.php:49
-msgid "Total"
-msgstr "Totaal"
-
-#: admin/partials/support-hours-admin-widget-hourTable.php:37
-msgid "Add first acitivity"
-msgstr "Voeg eerste activiteit toe"
-
-#: admin/support-hours-admin-overview.php:50
+#: admin/support-hours-admin-overview.php:47
 msgid "hours used of"
 msgstr "uren gebruikt van"
 
-#: admin/support-hours-admin-settings.php:36
+#: admin/support-hours-admin-overview.php:52
+msgid "There are currently no activities logged"
+msgstr "Er zijn momenteel nog geen activiteiten toegevoegd."
+
+#: admin/support-hours-admin-settings.php:37
 msgid ""
 "You do not have access to this page because you are not a Support Hours "
 "manager. Please disable and enable this plugin if you need access again."
@@ -178,11 +182,11 @@ msgstr ""
 "bent.  Deactiveer en activeer de plugin opnieuw om weer toegang te krijgen "
 "tot deze pagina."
 
-#: admin/support-hours-admin-widget.php:25
+#: admin/support-hours-admin-widget.php:28
 msgid "Configure plugin!"
 msgstr "Configureer plugin!"
 
-#: admin/support-hours-admin-widget.php:32
+#: admin/support-hours-admin-widget.php:35
 msgid "No support Hours bought"
 msgstr "Geen support uren gekocht"
 
