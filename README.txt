@@ -44,6 +44,7 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 
 == Changelog ==
+
 = 1.4.1 =
 Thank you [Jos Klever](https://wordpress.org/support/users/josklever/) for reviewing the plugin.
 
