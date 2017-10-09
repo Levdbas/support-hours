@@ -1,0 +1,50 @@
+.progress-bar{
+  &.midnight {
+    .rotate, .right{
+      background-color:#e14d43;
+    }
+    .innerCicle:hover .text{
+      color:#e14d43;
+    }
+  }
+  &.ectoplasm {
+    .rotate, .right{
+      background-color:#a3b745;
+    }
+    .innerCicle:hover .text{
+      color:#a3b745;
+    }
+  }
+  &.blue {
+    .rotate, .right{
+      background-color:#e1a948;
+    }
+    .innerCicle:hover .text{
+      color:#e1a948;
+    }
+  }
+  &.ocean {
+    .rotate, .right{
+      background-color:#9ebaa0;
+    }
+    .innerCicle:hover .text{
+      color:#9ebaa0;
+    }
+  }
+  &.coffee {
+    .rotate, .right{
+      background-color:#c7a589;
+    }
+    .innerCicle:hover .text{
+      color:#c7a589;
+    }
+  }
+  &.sunrise {
+    .rotate, .right{
+      background-color:#dd823b;
+    }
+    .innerCicle:hover .text{
+      color:#dd823b;
+    }
+  }
+}

@@ -1,0 +1,112 @@
+#support_hours_dashboard_widget{
+	h3{
+		margin: 1.33em 0 0;
+		font-size: 16px;
+		font-weight: bold;
+	}
+}
+.progress-bar {
+	position: relative;
+	width:100%;
+	padding-bottom: 100%;
+	.background{
+		background-color: $background-color;
+	}
+	.left{
+		background-color: $background-color;
+		opacity: 1;
+	}
+	.rotate{
+		background-color: $progress-color;
+	}
+	.right{
+		background-color: $progress-color;
+		transform: rotate(180deg);
+		opacity: 0;
+	}
+div {
+		border-radius: 50%;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+	}
+	.smallbr{
+	  display: none;
+	}
+}
+.innerCicle{
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+  position: absolute;
+  z-index: 12;
+  border-radius: 50%;
+  background: white;
+  transition: all 0.2s ease-in;
+  .textHolder{
+    display: block;
+    top: 50%;
+    position: relative;
+    .text{
+      text-align: center;
+      display: block;
+      color:$background-color;
+      font-weight: bold;
+      margin-top: -50px;
+      font-size: 35px;
+      transition: all 0.2s ease-in;
+      line-height: 50px;
+      position: absolute;
+      width: 100%;
+      &.small{
+        margin-top: -50px;
+        line-height: 50px;
+        font-size: 30px;
+      }
+    }
+  }
+  &:hover{
+    width: 94%;
+    height: 94%;
+    margin: 3%;
+    .text{
+      font-size: 45px;
+      color:$progress-color;
+      &.small{
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+@keyframes toggle {
+	0%		{ opacity: 0; }
+	100%	{ opacity: 1; }
+}
+
+@media screen and (max-width: 870px) {
+  .smallbr {
+    display: block;
+  }
+
+  .bigbr {
+    display: none;
+  }
+
+
+  .text {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: -40px;
+  }
+
+  .progress-bar:hover .text {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 800px) {
+	.progress-bar {
+		max-width:none;
+		max-height:none;
+	}
+}

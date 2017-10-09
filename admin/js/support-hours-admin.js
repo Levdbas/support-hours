@@ -1,6 +1,6 @@
 (function($) {
 	$( document ).ready(function() {
-
+		// for each .progress-bar element, start setting up the time circle. Manages the css transitions etc.
 		$(".progress-bar").each(function () {
 			var $target  = $(this);
 			var opts = {
@@ -15,7 +15,6 @@
 			$('.left, .right, .rotate').css({
 				'clip': 'rect(0px, ' + halfCircleWidth +'px, ' + circleWidth +'px, 0px)'
 			});
-
 
 			var $rotate = $target.find('.rotate');
 			setTimeout(function () {
