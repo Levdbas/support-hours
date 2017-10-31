@@ -2,8 +2,8 @@
 Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid
 Requires at least: 3.0.1
-Tested up to: 4.8
-Stable tag: 1.4.1
+Tested up to: 4.9
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,9 +41,18 @@ Yes! I just added some new functionality to set different work entries. I will l
 Yes! Feel free to sent me any suggestions or feedback. I think this plugin can be optimized quite a lot!
 
 == Screenshots ==
-
+1. Dashboard widget, visible for all roles highter then editor. Animated by css and js. The table shows the last five activities.
+2. Settings page where you can set your E-mail adress. Amount of bought hours and input the activities with a date, description and the time spent.
+3. Overview page where all activities are listed.
 
 == Changelog ==
+= 1.4.2 =
+
+* Tested up to version 4.9
+* Updated .pot file
+* Added screenshots
+* Switched to multi sass files for css
+* Some extra refactoring
 
 = 1.4.1 =
 Thank you [Jos Klever](https://wordpress.org/support/users/josklever/) for reviewing the plugin.
