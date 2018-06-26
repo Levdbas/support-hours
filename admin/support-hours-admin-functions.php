@@ -1,5 +1,10 @@
 <?php
 
+$options = get_option($this->plugin_name);
+$users = $options['users'];
+$email = $options['email'];
+$current_color = get_user_option( 'admin_color' );
+
 // function to explode on hours and calculates them to minutes.
 function hoursToMinutes($hours){
   $minutes = 0;
@@ -29,15 +34,22 @@ function minuszeros($hours2) {
 Checks the workfields for the time fields. Adds all timefields and returns them.
 If no workfields and therefore no time fields are filled, returns 00:00
 */
-function AddTime($workFields) {
+function AddTime($workFields, $returns) {
   if($workFields != null){
     $minutes = 0;
     foreach ($workFields as $time) {
         //  Check if the field is not empty. Else stay with 0.
         if($time['used'] !== ""){
-          list($hour, $minute) = explode(':', $time['used']);
-          $minutes += $hour * 60;
-          $minutes += $minute;
+          if($returns == 'all'){
+            list($hour, $minute) = explode(':', $time['used']);
+            $minutes += $hour * 60;
+            $minutes += $minute;
+          } elseif($time['type'] == $returns){
+            list($hour, $minute) = explode(':', $time['used']);
+            $minutes += $hour * 60;
+            $minutes += $minute;
+          }
+
         }
     }
     $hours = floor($minutes / 60);
@@ -49,21 +61,20 @@ function AddTime($workFields) {
 }
 
 // set of vars used in different files and functions.
-  $options = get_option($this->plugin_name);
-  $users = $options['users'];
-  $email = $options['email'];
+
   $workFields = $options['workFields'];
 
-  $used_hours_calc = hoursToMinutes(AddTime($workFields));
-  $used_hours = AddTime($workFields);
-  $used_hours= minuszeros($used_hours);
-  $bought_hours_calc = hoursToMinutes($options['bought_hours']);
-  $bought_hours = $options['bought_hours'];
+  $used_hours = AddTime($workFields, 'time-used');
+  $used_hours_calc = hoursToMinutes($used_hours);
+  $used_hours = minuszeros($used_hours);
+
+  $bought_hours = AddTime($workFields, 'time-added');
+  $bought_hours_calc = hoursToMinutes($bought_hours);
   $bought_hours = minuszeros($bought_hours);
-  $current_color = get_user_option( 'admin_color' );
+
 
   // TODO:set code to functions.
-  
+
   if (strpos($used_hours, ':') !== false){
     $size = 'small';
   } else{
