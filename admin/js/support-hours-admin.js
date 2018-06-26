@@ -82,12 +82,13 @@
 		$('.repeat').click(function(e){
 			e.preventDefault();
 			var lastRepeatingGroup = jQuery('.repeating').last();
-			var cloned = lastRepeatingGroup.clone(true)
-			cloned.insertAfter(lastRepeatingGroup);
+			var num = parseInt( lastRepeatingGroup.data("number"));
+			var cloned = lastRepeatingGroup.clone(true);
 			cloned.find("input").val("");
 			cloned.find("select").val("");
 			cloned.find("input:radio").attr("checked", false);
-			resetAttributeNames(cloned)
+			cloned.insertAfter(lastRepeatingGroup);
+			resetAttributeNames(cloned);
 		});
 	});
 	})(jQuery);
