@@ -11,7 +11,8 @@
 */
 ?>
 <?php
-  $options = get_option($this->plugin_name);
+  $name = $this->plugin_name;
+  $options = get_option($name);
   $bought_hours = $options['bought_hours'];
   $users = $options['users'];
   $email = $options['email'];
@@ -24,15 +25,15 @@
     <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
     <form method="post" name="cleanup_options" action="options.php">
       <?php
-      settings_fields($this->plugin_name);
-      do_settings_sections($this->plugin_name);
+      settings_fields($name);
+      do_settings_sections($name);
       include_once( 'partials/settings/general-settings-form.php' );
       include_once( 'partials/settings/work-table-form.php' );
       ?>
     </form>
   <?php } else {?>
     <p>
-      <?php _e( 'You do not have access to this page because you are not a Support Hours manager. Please disable and enable this plugin if you need access again.', $this->plugin_name); ?>
+      <?php _e( 'You do not have access to this page because you are not a Support Hours manager. Please disable and enable this plugin if you need access again.', $name); ?>
     </p>
   <?php } ?>
 </div>
