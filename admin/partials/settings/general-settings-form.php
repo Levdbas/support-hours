@@ -1,9 +1,16 @@
 <fieldset>
   <p><?php _e( 'Select Support Hours managers', $this->plugin_name); ?>.</p>
-  <legend class="screen-reader-text"><span><?php _e('Select Support-Hour manager. Warning!  If you do not set yourself as a Support Hours manager, you will loose access to this page until the plugin is disabled and enabled.', $this->plugin_name); ?></span></legend>
-  <?php $WPusers = get_users( 'orderby=nicename&role=administrator' ); foreach ( $WPusers as $user ) { ?>
+  <legend class="screen-reader-text">
+    <span><?php _e('Select Support-Hour manager. Warning!  If you do not set yourself as a Support Hours manager, you will loose access to this page until the plugin is disabled and enabled.', $this->plugin_name); ?></span>
+  </legend>
+  <?php
+  $WPusers = get_users( 'orderby=nicename&role=administrator' );
+  foreach ( $WPusers as $user ) {
+  ?>
     <input type="checkbox" name="<?php echo $this->plugin_name; ?>[users][]" id="<?php echo $this->plugin_name; ?>-users" value="<?php echo $user->ID; ?>" <?php if (!empty($users)) { checked((in_array( $user->ID, $users))); } ?> />
-    <label for="<?php echo $this->plugin_name; ?>[users<?php echo $user->ID; ?>]"><?php echo $user->display_name; ?></label><br />
+    <label for="<?php echo $this->plugin_name; ?>[users<?php echo $user->ID; ?>]">
+      <?php echo $user->display_name; ?>
+    </label><br />
   <?php } ?>
   <p><?php _e( 'Warning! If you do not set yourself as a Support Hours manager, you will loose access to this page until the plugin is disabled and enabled.', $this->plugin_name); ?></p>
 </fieldset>

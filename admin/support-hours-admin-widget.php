@@ -17,19 +17,19 @@ global $pagenow;
 
 if(!empty($users) && (!empty($bought_hours) || $bought_hours == '00:00' ) && !empty($email)):
 
-  include_once( 'partials/support-hours-admin-widget-clock.php' );
+  include_once( 'partials/widgets/widget-clock.php' );
 
   if ( !empty($workFields[0]['date']) ) :
 
-    include_once( 'partials/support-hours-admin-overview-workTable.php' );
+    include_once( 'partials/common/worktable.php' );
 
   endif;
 
-  include_once( 'partials/support-hours-admin-widget-bottomMessage.php' );
+  include_once( 'partials/common/bottom-message.php' );
 
   elseif(empty($users) || empty($email)):
 
-    include_once( 'partials/support-hours-admin-configure-plugin-notice.php' );
+    include_once( 'partials/common/configure-plugin-notice.php' );
 
   else: ?>
 

@@ -26,8 +26,8 @@
       <?php
       settings_fields($this->plugin_name);
       do_settings_sections($this->plugin_name);
-      include_once( 'partials/support-hours-admin-settings-textFields.php' );
-      include_once( 'partials/support-hours-admin-settings-workTable.php' );
+      include_once( 'partials/settings/general-settings-form.php' );
+      include_once( 'partials/settings/work-table-form.php' );
       ?>
     </form>
   <?php } else {?>

@@ -159,7 +159,7 @@ class Support_Hours_Admin {
 	*/
 
 	public function display_plugin_page() {
-		include_once( 'partials/support-hours-functions.php' );
+		include_once( 'support-hours-admin-functions.php' );
 		include_once( 'support-hours-admin-overview.php' );
 	}
 	public function display_plugin_setup_page() {
@@ -198,7 +198,7 @@ class Support_Hours_Admin {
 		}
 	}
 	function support_hours_dashboard_widget_function() {
-		include_once( 'partials/support-hours-functions.php' );
+		include_once( 'support-hours-admin-functions.php' );
 		include_once( 'support-hours-admin-widget.php' );
 	}
 }
