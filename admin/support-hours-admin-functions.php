@@ -4,13 +4,17 @@ $options = get_option($this->plugin_name);
 $users = $options['users'];
 $email = $options['email'];
 $current_color = get_user_option( 'admin_color' );
+$workFields = $options['workFields'];
+$used_hours = AddTime($workFields, 'time-used');
+$bought_hours = AddTime($workFields, 'time-added');
+
 
 // function to explode on hours and calculates them to minutes.
 function hoursToMinutes($hours){
   $minutes = 0;
   if (strpos($hours, ':') !== false)
   {
-      list($hours, $minutes) = explode(':', $hours);
+    list($hours, $minutes) = explode(':', $hours);
   }
   return $hours * 60 + $minutes;
 }
@@ -24,62 +28,96 @@ function minuszeros($hours2) {
     $hours2 = substr($hours2, 1);
   }
   if (strpos($hours2, ':00') !== false) {
-      list($hours2, $minutes) = explode(':', $hours2);
+    list($hours2, $minutes) = explode(':', $hours2);
   }
   return $hours2;
 }
-
 
 /*
 Checks the workfields for the time fields. Adds all timefields and returns them.
 If no workfields and therefore no time fields are filled, returns 00:00
 */
+
 function AddTime($workFields, $returns) {
   if($workFields != null){
     $minutes = 0;
     foreach ($workFields as $time) {
-        //  Check if the field is not empty. Else stay with 0.
-        if($time['used'] !== ""){
-          if($returns == 'all'){
-            list($hour, $minute) = explode(':', $time['used']);
-            $minutes += $hour * 60;
-            $minutes += $minute;
-          } elseif($time['type'] == $returns){
-            list($hour, $minute) = explode(':', $time['used']);
-            $minutes += $hour * 60;
-            $minutes += $minute;
-          }
-
+      //  Check if the field is not empty. Else stay with 0.
+      if($time['used'] !== ""){
+        if($returns == 'all'){
+          list($hour, $minute) = explode(':', $time['used']);
+          $minutes += $hour * 60;
+          $minutes += $minute;
+        } elseif($time['type'] == $returns){
+          list($hour, $minute) = explode(':', $time['used']);
+          $minutes += $hour * 60;
+          $minutes += $minute;
         }
+
+      }
     }
     $hours = floor($minutes / 60);
     $minutes -= $hours * 60;
-    return sprintf('%02d:%02d', $hours, $minutes);
+    $time = sprintf('%02d:%02d', $hours, $minutes);
+
+    return $time;
   } else{
     return "00:00";
   }
 }
 
-// set of vars used in different files and functions.
-
-  $workFields = $options['workFields'];
-
-  $used_hours = AddTime($workFields, 'time-used');
-  $used_hours_calc = hoursToMinutes($used_hours);
-  $used_hours = minuszeros($used_hours);
-
-  $bought_hours = AddTime($workFields, 'time-added');
-  $bought_hours_calc = hoursToMinutes($bought_hours);
-  $bought_hours = minuszeros($bought_hours);
-
-
-  // TODO:set code to functions.
-
-  if (strpos($used_hours, ':') !== false){
-    $size = 'small';
-  } else{
-    $size = 'big';
+function last_bought($workFields){
+  if($workFields != null){
+    $workFields =array_reverse($workFields);
+    $key = array_search('time-added', array_column($workFields, 'type'));
+    $output = $workFields[$key]['used'];
   }
+  return $output;
+}
+
+
+function widget_output($workFields, $used_hours, $bought_hours, $output_type){
+  $hours_to_spent = $bought_hours - $used_hours;
+  $last_bought_hours = last_bought($workFields);
+
+  // NOTE: calculates spent hours
+  if($used_hours > $last_bought_hours){
+    $used_hours = $used_hours - $last_bought_hours;
+  } else{
+    $used_hours = $used_hours;
+  }
+  // NOTE: returns hours left
+  if($hours_to_spent < $last_bought_hours){
+    $bought_hours = $last_bought_hours;
+  } else{
+    $bought_hours = $bought_hours;
+  }
+
+  // calculates percentage.
+  $percentage = percentage($used_hours, $bought_hours);
+
+  $left_display = minuszeros($used_hours);
+  $right_display = minuszeros($bought_hours);
+  $widget_hours = $left_display.' / '.$right_display;
+
+  switch ($output_type) {
+    case 'time':
+      $output = $widget_hours;
+      break;
+      case 'percentage':
+        $output = $percentage;
+        break;
+    default:
+      // code...
+      break;
+  }
+  return $output;
+}
+
+function percentage($used_hours, $bought_hours){
+  $used_hours_calc = hoursToMinutes($used_hours);
+  $bought_hours_calc = hoursToMinutes($bought_hours);
+
   if($used_hours_calc > $bought_hours_calc){
     $used_hours = $bought_hours;
   }
@@ -89,5 +127,25 @@ function AddTime($workFields, $returns) {
       $percentage = 100;
     }
     $percentage = round($percentage);
+    return $percentage;
   }
- ?>
+}
+
+
+// set of vars used in different files and functions.
+
+
+
+
+function font_size($used_hours){
+  if (strpos($used_hours, ':') !== false){
+    $size = 'small';
+  } else{
+    $size = 'big';
+  }
+  return $size;
+}
+
+
+
+?>

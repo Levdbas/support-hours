@@ -21,7 +21,7 @@ if(!empty($users) && (!empty($bought_hours) || $bought_hours == '00:00' ) && !em
 
   if ( !empty($workFields[0]['date']) ) :
 
-    include_once( 'partials/common/worktable.php' );
+    include_once( 'partials/widgets/widget-worktable.php' );
 
   endif;
 

@@ -1,4 +1,4 @@
-<div class="progress-bar position <?php echo $current_color;?>" data-percent="<?php echo $percentage; ?>">
+<div class="progress-bar position <?php echo $current_color;?>" data-percent="  <?php echo widget_output($workFields, $used_hours, $bought_hours, 'percentage'); ?>">
   <div class="background">
     <div class="rotate"></div>
   </div>
@@ -6,17 +6,15 @@
   <div class="right"></div>
   <div class="innerCicle">
     <span class="textHolder">
-      <span class="text <?php echo $size; ?>">
-        <?php echo $used_hours; ?> / <?php if(!empty($bought_hours)) echo $bought_hours; ?>
+      <span class="text <?php echo font_size($used_hours); ?>">
+        <?php echo widget_output($workFields, $used_hours, $bought_hours, 'time'); ?>
         <br class="smallbr" />
-        <?php if($size == "small"){
-          echo "<br class='bigbr' />";
-        } ?>
-        <?php _e( 'hours', $this->plugin_name); ?>
-        <?php if($size == "big"){
-          echo "<br class='bigbr' />";
-        } ?>
-        <?php _e( 'used', $this->plugin_name); ?>
+        <?php
+        //echo "<br class='bigbr' />";
+        _e( 'hours', $this->plugin_name);
+        echo "<br class='bigbr' />";
+        _e( 'used', $this->plugin_name);
+        ?>
       </span>
     </span>
   </div>

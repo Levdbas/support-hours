@@ -1,6 +1,3 @@
-<?php if ($pagenow == 'admin.php?page=support-hours'): ?>
-  <h3><?php _e('Activities', $this->plugin_name); ?></h3>
-<?php endif; ?>
 <table class="worktable" width="100%">
   <thead>
     <tr>
@@ -28,6 +25,6 @@
   </tbody>
 </table>
 <div class="total">
-  <span class="bold"><?php _e('Total', $this->plugin_name); ?></span>
-  <span>: <?php echo AddTime($workFields); ?></span>
+  <span class="bold"><?php _e('Total spent', $this->plugin_name); ?></span>
+  <span>: <?php  echo $bought_hours; /*echo AddTime($workFields); */ ?></span>
 </div>
