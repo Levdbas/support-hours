@@ -84,7 +84,7 @@
 			var lastRepeatingGroup = jQuery('.repeating').last();
 			var num = parseInt( lastRepeatingGroup.data("number"));
 			var cloned = lastRepeatingGroup.clone(true);
-			cloned.find("input").val("");
+			cloned.find("input:not(:radio)").val("");
 			cloned.find("select").val("");
 			cloned.find("input:radio").attr("checked", false);
 			cloned.insertAfter(lastRepeatingGroup);
