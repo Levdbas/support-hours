@@ -10,7 +10,6 @@
     </thead>
     <tbody>
       <?php
-      $i = 0;
       foreach ( $workFields as $field ) { ?>
         <tr>
           <td><?php if(!empty($field['used'])) echo $field['date'] ?></td>

@@ -77,7 +77,14 @@
 			e.preventDefault();
 			$(this).prev().val(today);
 		});
-
+    $('.datepicker').datepicker({
+			format: 'dd-mm-yyyy',
+			defaultDate: new Date()
+		});
+    $('.timepicker').timepicker({
+			twelveHour : false,
+			defaultTime : '00:00'
+		});
 		// Clone the previous workField, and remove all of the values
 		$('.repeat').click(function(e){
 			e.preventDefault();
@@ -89,6 +96,14 @@
 			cloned.find("input:radio").attr("checked", false);
 			cloned.insertAfter(lastRepeatingGroup);
 			resetAttributeNames(cloned);
+			$('.datepicker').datepicker({
+				format: 'dd-mm-yyyy',
+				defaultDate: new Date()
+			});
+			$('.timepicker').timepicker({
+				twelveHour : false,
+				defaultTime : '00:00'
+			});
 		});
 	});
 	})(jQuery);

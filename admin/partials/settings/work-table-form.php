@@ -7,10 +7,11 @@
         <th></th>
         <th><?php _e('Date', $name); ?></th>
         <th><?php _e('Description', $name); ?></th>
-        <th><?php _e('Time used', $name); ?></th>
+        <th><?php _e('Time', $name); ?></th>
+        <th><?php _e('Type', $name); ?></th>
       </tr>
     </thead>
-    
+
     <tbody>
       <?php if ( $workFields ):
         foreach ( $workFields as $field ) {

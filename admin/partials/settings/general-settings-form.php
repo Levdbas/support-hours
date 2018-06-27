@@ -9,9 +9,9 @@
   $WPusers = get_users( 'orderby=nicename&role=administrator' );
   foreach ( $WPusers as $user ) {
   ?>
-    <input type="checkbox" name="<?php echo $name; ?>[users][]" id="<?php echo $name; ?>-users" value="<?php echo $user->ID; ?>" <?php if (!empty($users)) { checked((in_array( $user->ID, $users))); } ?> />
     <label for="<?php echo $name; ?>[users<?php echo $user->ID; ?>]">
-      <?php echo $user->display_name; ?>
+      <input type="checkbox" name="<?php echo $name; ?>[users][]" id="<?php echo $name; ?>[users<?php echo $user->ID; ?>]" class="filled-in" value="<?php echo $user->ID; ?>" <?php if (!empty($users)) { checked((in_array( $user->ID, $users))); } ?> />
+      <span><?php echo $user->display_name; ?></span>
     </label><br />
   <?php } ?>
   <p><?php _e( 'Warning! If you do not set yourself as a Support Hours manager, you will loose access to this page until the plugin is disabled and enabled.', $name); ?></p>
