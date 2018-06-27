@@ -1,13 +1,30 @@
 <?php
 
 $options = get_option($this->plugin_name);
+$name = $this->plugin_name;
 $users = $options['users'];
 $email = $options['email'];
+$static_time = $options['bought_hours'];
 $current_color = get_user_option( 'admin_color' );
 $workFields = $options['workFields'];
 $used_hours = AddTime($workFields, 'time-used');
 $bought_hours = AddTime($workFields, 'time-added');
 
+// NOTE: temp function to transform first set of hours to new hour system.
+function transform_fixed_time($static_time, $workFields, $name, $options){
+  if($options['bought_hours'] != '00:00'){
+    $newdata =  array (
+        'date' => date('d-m-Y'),
+        'description' => __('First bought time - added by Support Hours', $name),
+        'used' => $static_time,
+        'type' => 'time-added'
+      );
+      array_unshift($options['workFields'] , $newdata);
+      $options = array_diff_key($options, ['bought_hours' => "xy"]);
+      update_option($name, $options);
+  }
+}
+echo transform_fixed_time($static_time, $workFields, $name, $options);
 
 // function to explode on hours and calculates them to minutes.
 function hoursToMinutes($hours){
@@ -68,7 +85,7 @@ function AddTime($workFields, $returns) {
 
 function last_bought($workFields){
   if($workFields != null){
-    $workFields =array_reverse($workFields);
+    $workFields = array_reverse($workFields);
     $key = array_search('time-added', array_column($workFields, 'type'));
     $output = $workFields[$key]['used'];
   }
@@ -95,7 +112,6 @@ function widget_output($workFields, $used_hours, $bought_hours, $output_type){
 
   // calculates percentage.
   $percentage = percentage($used_hours, $bought_hours);
-
   $left_display = minuszeros($used_hours);
   $right_display = minuszeros($bought_hours);
   $widget_hours = $left_display.' / '.$right_display;
@@ -132,11 +148,7 @@ function percentage($used_hours, $bought_hours){
 }
 
 
-// set of vars used in different files and functions.
-
-
-
-
+// function to control the font size
 function font_size($used_hours){
   if (strpos($used_hours, ':') !== false){
     $size = 'small';
