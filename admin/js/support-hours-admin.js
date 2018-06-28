@@ -69,7 +69,9 @@
 		}
 		// remove workFields row.
 		$('.remove-row').click(function(e){
-			$(this).parents('.repeating').remove();
+			$(this).parents('.repeating').fadeOut(500, function(){
+				$(this).remove();
+			});
 		});
 		// set date field to todays date.
 		$('.today').click(function(e){
@@ -94,7 +96,9 @@
 			cloned.find("input:not(:radio)").val("");
 			cloned.find("select").val("");
 			cloned.find("input:radio").attr("checked", false);
+			cloned.hide();
 			cloned.insertAfter(lastRepeatingGroup);
+			cloned.fadeIn(500);
 			resetAttributeNames(cloned);
 			$('.datepicker').datepicker({
 				format: 'dd-mm-yyyy',

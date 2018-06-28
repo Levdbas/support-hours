@@ -1,7 +1,7 @@
 <tr class="repeating" data-number="<?php echo $i; ?>">
 
   <td class="remove">
-     <a class="remove-row btn-floating btn-small waves-effect waves-light"><i class="material-icons">-</i></a>
+     <a class="remove-row btn-floating btn-small waves-effect waves-light"><span class="material-icons dashicons dashicons-trash"></span></a>
   </td>
 
   <td data-th="<?php _e('Date', $name); ?>">
