@@ -1,6 +1,6 @@
 <?php if(!empty($users) && in_array($user_ID, $users) && !empty($workFields[0]['date'])): ?>
 
-  <a class="waves-effect waves-light btn" href="<?php echo admin_url( 'admin.php?page=support-hours-settings' ); ?>"><?php _e('Add new activity', $this->plugin_name); ?></a>
+  <a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=support-hours-settings' ); ?>"><?php _e('Add new activity', $this->plugin_name); ?></a>
 
   <?php if($i >= 5 && current_user_can('publish_pages')): ?>
     <a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=support-hours' ); ?>"><?php _e('View all acitivities', $this->plugin_name); ?></a>
