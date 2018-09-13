@@ -78,10 +78,15 @@ const config = {
     filename: 'scripts/[name].js',
     path: path.resolve(__dirname, variables.distPath)
   },
+  externals: {
+    jquery: 'jQuery'
+  },
   plugins: [
     new webpack.ProvidePlugin({
       Component: 'materialize-css/js/component.js',
       Modal: 'materialize-css/js/modal.js',
+      $: 'jquery',
+      jQuery: 'jquery'
     }),
     ExtractNormalCSS,
     new BrowserSyncPlugin({
