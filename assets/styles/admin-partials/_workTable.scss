@@ -1,0 +1,33 @@
+.bold{
+	color:#444;
+	font-weight: bold;
+}
+.worktable{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	th{
+		text-align: left;
+	}
+}
+.total{
+	margin: 0 -12px;
+	margin-top: 10px;
+	margin-bottom: 12px;
+	padding: 8px 12px 4px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	background:#fafafa;
+	font-size: 1rem;
+}
+.remove{
+	.dashicons {
+		position: relative;
+		top: 4px;
+	}
+}
+.submit{
+		display: inline-block;
+		margin: 0 !important;
+		padding: 0 !important;
+}

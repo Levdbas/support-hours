@@ -74,9 +74,7 @@ class Support_Hours_Admin {
 		* between the defined hooks and the functions defined in this
 		* class.
 		*/
-		wp_enqueue_style( 'materialize', plugin_dir_url( __FILE__ ) . 'css/materialize.min.css', array(), $this->version, 'all' );
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/support-hours-admin.min.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style( $this->plugin_name, plugins_url($this->plugin_name). '/dist/styles/support-hours-admin.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -97,8 +95,8 @@ class Support_Hours_Admin {
 		* between the defined hooks and the functions defined in this
 		* class.
 		*/
-				wp_enqueue_script( 'materialize', plugin_dir_url( __FILE__ ) . 'js/materialize.min.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/support-hours-admin.js', array( 'jquery' ), $this->version, false );
+
+		wp_enqueue_script( $this->plugin_name, plugins_url($this->plugin_name). '/dist/scripts/support-hours-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 	public function add_plugin_admin_menu() {

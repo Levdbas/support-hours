@@ -1,3 +1,9 @@
+import 'materialize-css/js/cash.js';
+import 'materialize-css/js/component.js';
+import 'materialize-css/js/global.js';
+import 'materialize-css/js/modal.js';
+
+
 (function($) {
 	$( document ).ready(function() {
 		// for each .progress-bar element, start setting up the time circle. Manages the css transitions etc.
