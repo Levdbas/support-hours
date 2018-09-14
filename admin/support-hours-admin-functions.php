@@ -14,14 +14,20 @@ $bought_minutes = AddTime($workFields, 'time-added', 'minutes');
 // NOTE: temp function to transform first set of hours to new hour system.
 function transform_fixed_time($static_time, $workFields, $name, $options){
   if($options['bought_hours'] != '00:00'){
+    echo "<h3>". __('Update of Support Hours complete, please refresh page', $name)."</h3>";
     $newdata =  array (
       'date' => date('d-m-Y'),
       'description' => __('First bought time - added by Support Hours', $name),
       'used' => $static_time,
       'type' => 'time-added'
     );
-    array_unshift($options['workFields'] , $newdata);
+    array_unshift($options['workFields'], $newdata);
     $options = array_diff_key($options, ['bought_hours' => "xy"]);
+
+    $options['workFields'] = array_map(function($arr){
+      return $arr + ['type' =>'time-used'];
+    }, $options['workFields']);
+
     update_option($name, $options);
   }
 }
@@ -48,26 +54,26 @@ If no workfields and therefore no time fields are filled, returns 00:00
 function AddTime($workFields, $type, $returns = null) {
   if($workFields != null){
     $minutes = 0;
-
-    $workFields = array_filter($workFields, function ($var) use ($type) {
+    if(isset($workFields[1]['type'])):
+      $workFields = array_filter($workFields, function ($var) use ($type) {
         return ($var['type'] == $type);
-    });
-
-    foreach ($workFields as $time) {
-      //  Check if the field is not empty. Else stay with 0.
-      if($time['type'] !== ""){
-        list($hour, $minute) = explode(':', $time['used']);
-        $minutes += $hour * 60;
-        $minutes += $minute;
+      });
+        foreach ($workFields as $time) {
+        //  Check if the field is not empty. Else stay with 0.
+        if($time['type'] !== ""){
+          list($hour, $minute) = explode(':', $time['used']);
+          $minutes += $hour * 60;
+          $minutes += $minute;
+        }
       }
-    }
-    if($returns == 'minutes'):
-      return $minutes;
-    else:
-      $hours = floor($minutes / 60);
-      $minutes -= $hours * 60;
-      $time = sprintf('%02d:%02d', $hours, $minutes);
-      return $time;
+      if($returns == 'minutes'):
+        return $minutes;
+      else:
+        $hours = floor($minutes / 60);
+        $minutes -= $hours * 60;
+        $time = sprintf('%02d:%02d', $hours, $minutes);
+        return $time;
+      endif;
     endif;
   } else{
     return "00:00";
