@@ -7,9 +7,10 @@
   <?php endif; ?>
 
 <?php elseif(!empty($users) && in_array($user_ID, $users)):  ?>
-
+  <?php if ($pagenow == 'admin.php'): ?>
+    <h1 class="support-hours-notice"><?php _e( 'No time entries added.', $this->plugin_name); ?></h1>
+  <?php endif; ?>
   <a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=support-hours-settings' ); ?>"><?php _e('Add first acitivity', $this->plugin_name); ?></a>
-
 <?php
  endif;
 if ($pagenow == 'index.php'):
@@ -17,11 +18,15 @@ if ($pagenow == 'index.php'):
   ?>
 <p>
   <?php if($percentage == 100) {?>
+    <p class="support-hours-notice support-hours-notice--warning">
     <?php _e( 'Support hours used.', $this->plugin_name); ?><br />
+    </p>
   <?php } elseif($percentage >= 80) {?>
-    <?php _e( 'Support hours almost used', $this->plugin_name); ?>.<br />
+    <p class="support-hours-notice support-hours-notice--notice"><?php _e( 'Support hours almost used', $this->plugin_name); ?>.</p>
   <?php } else {?>
-    <?php _e( 'Need more support hours', $this->plugin_name); ?>?<br />
+    <p class="support-hours-notice support-hours-notice--warning">
+    <?php _e( 'Need more support hours', $this->plugin_name); ?>?
+    </p>
   <?php } ?>
   <?php _e( 'Contact me via', $this->plugin_name); ?>
   <span class="screen-reader-text">(opens in a new window)</span>

@@ -1,3 +1,4 @@
+<h3><?php _e('Last five entries', $this->plugin_name); ?></h3>
 <table class="worktable" width="100%">
   <thead>
     <tr>

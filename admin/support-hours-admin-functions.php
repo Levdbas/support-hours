@@ -54,7 +54,7 @@ If no workfields and therefore no time fields are filled, returns 00:00
 function AddTime($workFields, $type, $returns = null) {
   if($workFields != null){
     $minutes = 0;
-    if(isset($workFields[1]['type'])):
+    if(isset($workFields[0]['type'])):
       $workFields = array_filter($workFields, function ($var) use ($type) {
         return ($var['type'] == $type);
       });
@@ -76,7 +76,7 @@ function AddTime($workFields, $type, $returns = null) {
       endif;
     endif;
   } else{
-    return "00:00";
+    return "0";
   }
 }
 
@@ -89,18 +89,25 @@ function last_bought($workFields){
     list($hour, $minute) = explode(':', $time);
     $minutes += $hour * 60;
     $minutes += $minute;
+    return $minutes;
   }
-  return $minutes;
+  return 0;
+}
+function bought_minus_last($workFields, $bought_minutes){
+  if($workFields != null){
+    return $bought_minutes - last_bought($workFields);
+  } else{
+    return 0;
+  }
 }
 
-
 function widget_output($workFields, $used_minutes, $bought_minutes){
+  $bought_minus_last = bought_minus_last($workFields, $bought_minutes);
   $minutes_to_spent = $bought_minutes - $used_minutes;
   $last_bought_minutes = last_bought($workFields);
   // NOTE: calculates spent hours
-
-  if($used_minutes > $last_bought_minutes){
-    $used_minutes = $last_bought_minutes - $used_minutes;
+  if($used_minutes > $bought_minus_last){
+    $used_minutes = $used_minutes - $bought_minus_last;
   } else{
     $used_minutes = $used_minutes;
   }
@@ -117,7 +124,7 @@ function widget_output($workFields, $used_minutes, $bought_minutes){
 function percentage($used_minutes, $bought_minutes){
 
   if($used_minutes > $bought_minutes){
-    $used_hours = $bought_hours;
+    $used_minutes = $bought_minutes;
   }
   if(!empty($bought_minutes)){
     $percentage = $used_minutes * 100 / $bought_minutes;

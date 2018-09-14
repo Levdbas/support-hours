@@ -14,8 +14,7 @@
 $user_ID = get_current_user_id();
 $i = 0;
 global $pagenow;
-
-if(!empty($users) && (!empty($bought_minutes) || $bought_minutes == '0' ) && !empty($email)):
+if(!empty($users) && !empty($email)):
 
   include_once( 'partials/widgets/widget-clock.php' );
 
@@ -27,7 +26,7 @@ if(!empty($users) && (!empty($bought_minutes) || $bought_minutes == '0' ) && !em
 
   include_once( 'partials/common/bottom-message.php' );
 
-  elseif(empty($users) || empty($email)):
+  elseif(empty($users) || empty($email) || $bought_minutes == '0'):
 
     include_once( 'partials/common/configure-plugin-notice.php' );
 
