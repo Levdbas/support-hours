@@ -1,3 +1,8 @@
+.regular-text--email{
+	padding-left: 10px !important;
+	background-color: white !important;
+}
+
 .bold{
 	color:#444;
 	font-weight: bold;
@@ -23,7 +28,7 @@
 .remove{
 	.dashicons {
 		position: relative;
-		top: 4px;
+		top: 5px;
 	}
 }
 .submit{

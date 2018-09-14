@@ -14,7 +14,7 @@ global $pagenow;
 <div class="wrap">
   <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
   <?php
-  if(!empty($users) && (!empty($bought_hours) || $bought_hours == '00:00' ) && !empty($email)):
+  if(!empty($users) && (!empty($bought_minutes) || $bought_minutes == '0' ) && !empty($email)):
     $user_ID = get_current_user_id();
     $i = 0;
 

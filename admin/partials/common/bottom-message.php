@@ -12,8 +12,8 @@
 
 <?php endif; ?>
 <?php if ($pagenow == 'index.php'):
-  $percentage = widget_output($workFields, $used_hours, $bought_hours, 'percentage');
-  ?>
+  $percentage = percentage($used_minutes, $bought_minutes);
+    ?>
 <p>
   <?php if($percentage == 100) {?>
     <?php _e( 'Support hours used.', $this->plugin_name); ?><br />

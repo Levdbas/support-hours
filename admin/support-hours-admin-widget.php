@@ -15,7 +15,7 @@ $user_ID = get_current_user_id();
 $i = 0;
 global $pagenow;
 
-if(!empty($users) && (!empty($bought_hours) || $bought_hours == '00:00' ) && !empty($email)):
+if(!empty($users) && (!empty($bought_minutes) || $bought_minutes == '0' ) && !empty($email)):
 
   include_once( 'partials/widgets/widget-clock.php' );
 

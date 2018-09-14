@@ -26,5 +26,5 @@
 </table>
 <div class="total">
   <span class="bold"><?php _e('Total spent', $this->plugin_name); ?></span>
-  <span>: <?php  echo $bought_hours; /*echo AddTime($workFields); */ ?></span>
+  <span>: <?php  echo AddTime($workFields, 'time-used'); echo AddTime($workFields, 'time-added'); ?></span>
 </div>
