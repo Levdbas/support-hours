@@ -8,3 +8,20 @@
 	font-weight: bold;
 	text-align: center;
 }
+.support-hours-notice{
+	padding: 10px;
+	border-left: 4px solid #b6b0b0;
+	border-radius: 0 6px 6px 0;
+	background: whitesmoke;
+	box-shadow: 3px 4px 4px #ddd;
+	font-size: 16px;
+	font-style: italic;
+}
+.support-hours-notice--notice{
+	border-left: 4px solid #e9bc8a;
+	background: #fbecdb;
+}
+.support-hours-notice--warning{
+	border-left: 4px solid #e08e8e;
+	background: #fee7e7;
+}

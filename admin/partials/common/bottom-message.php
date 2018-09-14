@@ -17,20 +17,30 @@ if ($pagenow == 'index.php'):
   $percentage = percentage($used_minutes, $bought_minutes);
   ?>
 <p>
-  <?php if($percentage == 100) {?>
+  <?php
+  $welcome = __('Hi ').wp_get_current_user()->display_name . ', ';
+  if($percentage == 100) {?>
     <p class="support-hours-notice support-hours-notice--warning">
-    <?php _e( 'Support hours used.', $this->plugin_name); ?><br />
+    <?php
+    echo $welcome;
+     _e( 'your Support hours are used.', $this->plugin_name); ?><br />
     </p>
   <?php } elseif($percentage >= 80) {?>
-    <p class="support-hours-notice support-hours-notice--notice"><?php _e( 'Support hours almost used', $this->plugin_name); ?>.</p>
+    <p class="support-hours-notice support-hours-notice--notice">
+      <?php
+      echo $welcome;
+       _e( 'your Support hours are almost used', $this->plugin_name); ?>.
+    </p>
   <?php } else {?>
-    <p class="support-hours-notice support-hours-notice--warning">
-    <?php _e( 'Need more support hours', $this->plugin_name); ?>?
+    <p class="support-hours-notice support-hours-notice--normal">
+    <?php
+      echo $welcome;
+     _e( "you have plenty of hours left!", $this->plugin_name); ?>
     </p>
   <?php } ?>
-  <?php _e( 'Contact me via', $this->plugin_name); ?>
+  <?php _e( 'Get in contact via', $this->plugin_name); ?>
   <span class="screen-reader-text">(opens in a new window)</span>
-  <a href="mailto:<?php echo $email;?>">
+  <a href="mailto:<?php echo $email;?>?SUBJECT=<?php _e('Support hours', $this->plugin_name) ?>">
     <span aria-hidden="true" class="dashicons dashicons-email"></span>
     <?php echo $email;?>
   </a>
