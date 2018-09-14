@@ -14,7 +14,12 @@
         <tr>
           <td><?php if(!empty($field['used'])) echo $field['date'] ?></td>
           <td><?php if(!empty($field['used'])) echo $field['description'] ?></td>
-          <td><?php if(!empty($field['used'])) echo $field['used'] ?></td>
+          <td>
+            <span class="time-type-icon">
+              <?php echo ($field['type'] == 'time-added') ? '+' : '-'; ?>
+            </span>
+            <?php if(!empty($field['used'])) echo $field['used'] ?>
+          </td>
         </tr>
         <?php
       }
@@ -23,6 +28,6 @@
   </table>
   <div class="total">
     <span class="bold"><?php _e('Total', $this->plugin_name); ?></span>:
-    <?php echo AddTime($workFields, 'time-used'); ?>
+    <?php  echo AddTime($workFields, 'time-used'); ?> / <?php echo AddTime($workFields, 'time-added'); ?>
   </div>
 <?php endif;?>

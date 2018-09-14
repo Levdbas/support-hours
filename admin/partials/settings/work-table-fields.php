@@ -1,7 +1,7 @@
 <tr class="repeating" data-number="<?php echo $i; ?>">
 
   <td class="remove">
-     <a class="remove-row btn-floating btn-small waves-effect waves-light"><span class="material-icons dashicons dashicons-trash"></span></a>
+     <a class="remove-row btn-floating btn-small waves-effect waves-light grey darken-3"><span class="material-icons dashicons dashicons-minus"></span></a>
   </td>
 
   <td data-th="<?php _e('Date', $name); ?>">
@@ -18,14 +18,15 @@
 
   <td data-th="<?php _e('test', $name); ?>">
 
-  <fieldset class="test">
+  <fieldset class="type-switch">
   <label for="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][used]">
-    <input id="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][used]" type="radio" value="time-used" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type]" <?php checked('time-used', $field['type'], true); ?> >
+    <input id="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][used]" type="radio" value="time-used" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type]" <?php if ( isset($field['type']) && 'time-used' == $field['type'] ) echo 'checked="checked"'; ?>>
     <span><?php _e('Time used', $name); ?></span>
   </label>
 
   <label for="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][added]">
-  <input id="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][added]" type="radio" value="time-added" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type]"  <?php checked('time-added', $field['type'], true); ?>>
+  <input id="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][added]" type="radio" value="time-added" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type]"
+  <?php if ( isset($field['type']) && 'time-added' == $field['type'] ) echo 'checked="checked"'; ?>>
   <span><?php _e('Time added', $name); ?></span>
 </label>
 </fieldset>

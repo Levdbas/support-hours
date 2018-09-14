@@ -10,10 +10,11 @@
 
   <a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=support-hours-settings' ); ?>"><?php _e('Add first acitivity', $this->plugin_name); ?></a>
 
-<?php endif; ?>
-<?php if ($pagenow == 'index.php'):
+<?php
+ endif;
+if ($pagenow == 'index.php'):
   $percentage = percentage($used_minutes, $bought_minutes);
-    ?>
+  ?>
 <p>
   <?php if($percentage == 100) {?>
     <?php _e( 'Support hours used.', $this->plugin_name); ?><br />

@@ -1,6 +1,6 @@
 <fieldset>
   <span class="currentDate"><?php echo date_i18n("d-m-Y"); ?></span>
-  <table id="repeatable-fieldset-one" class="rwd-table">
+  <table id="repeatable-fieldset-one" class="worktable">
 
     <thead>
       <tr>
@@ -22,8 +22,8 @@
         endif; ?>
       </tbody>
     </table>
+    <?php submit_button(__( 'Save all changes', $name), 'primary','submit', true); ?>
     <a href="#" class="repeat button button-secondary">
       <?php _e('Add activity', $name); ?>
     </a>
-    <?php submit_button(__( 'Save all changes', $name), 'primary','submit', true); ?>
   </fieldset>

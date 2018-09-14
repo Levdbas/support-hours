@@ -11,9 +11,6 @@ $workFields = $options['workFields'];
 $used_minutes = AddTime($workFields, 'time-used', 'minutes');
 $bought_minutes = AddTime($workFields, 'time-added', 'minutes');
 
-//$used_hours = AddTime($workFields, 'time-used');
-//$bought_hours = AddTime($workFields, 'time-added');
-
 // NOTE: temp function to transform first set of hours to new hour system.
 function transform_fixed_time($static_time, $workFields, $name, $options){
   if($options['bought_hours'] != '00:00'){
@@ -58,7 +55,7 @@ function AddTime($workFields, $type, $returns = null) {
 
     foreach ($workFields as $time) {
       //  Check if the field is not empty. Else stay with 0.
-      if($time[$type] !== ""){
+      if($time['type'] !== ""){
         list($hour, $minute) = explode(':', $time['used']);
         $minutes += $hour * 60;
         $minutes += $minute;
@@ -78,6 +75,7 @@ function AddTime($workFields, $type, $returns = null) {
 }
 
 function last_bought($workFields){
+  $minutes = 0;
   if($workFields != null){
     $workFields = array_reverse($workFields);
     $key = array_search('time-added', array_column($workFields, 'type'));

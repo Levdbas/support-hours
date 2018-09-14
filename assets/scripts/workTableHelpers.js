@@ -16,8 +16,7 @@ function workTableHelpers(  ) {
 
   $('.datepicker').datepicker({
     format: 'dd-mm-yyyy',
-    defaultDate: new Date(),
-    setDefaultDate: true
+    defaultDate: new Date()
   });
 
   $('.timepicker').timepicker({
