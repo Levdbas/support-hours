@@ -24,6 +24,7 @@ function repeatRow() {
     cloned.find("input:not(:radio)").val("");
     cloned.find("select").val("");
     cloned.find("input:radio").attr("checked", false);
+    cloned.find("input.time-used").attr("checked", true);
     cloned.hide();
     cloned.insertAfter(lastRepeatingGroup);
     cloned.fadeIn(500);

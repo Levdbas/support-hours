@@ -3,7 +3,7 @@
   <table id="repeatable-fieldset-one" class="worktable">
 
     <thead>
-      <tr>
+      <tr class="row-head">
         <th></th>
         <th><?php _e('Date', $name); ?></th>
         <th><?php _e('Description', $name); ?></th>
