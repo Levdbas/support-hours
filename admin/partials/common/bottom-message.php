@@ -21,7 +21,7 @@
     ?>
     <p>
       <?php
-      $welcome  =   __('Hi '). wp_get_current_user()->display_name . ', ';
+      $welcome  =   __('Hi').' '. wp_get_current_user()->display_name . ', ';
       ?>
     </p>
     <?php  if($percentage == 100) {?>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Support hours\n"
-"POT-Creation-Date: 2018-09-15 17:00+0200\n"
-"PO-Revision-Date: 2018-09-15 17:03+0200\n"
+"POT-Creation-Date: 2018-09-15 17:09+0200\n"
+"PO-Revision-Date: 2018-09-15 17:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Erik van der Bas <erik@basedonline.nl>\n"
 "Language: nl_NL\n"
@@ -57,8 +57,8 @@ msgid "Add first activity"
 msgstr "Voeg eerste activiteit toe"
 
 #: admin/partials/common/bottom-message.php:24
-msgid "Hi "
-msgstr "Hallo "
+msgid "Hi"
+msgstr "Hallo"
 
 #: admin/partials/common/bottom-message.php:32
 msgid "your Support Hours are used."
