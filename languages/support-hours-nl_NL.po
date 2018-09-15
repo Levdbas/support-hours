@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Support hours\n"
-"POT-Creation-Date: 2018-09-15 17:09+0200\n"
-"PO-Revision-Date: 2018-09-15 17:10+0200\n"
+"POT-Creation-Date: 2018-09-15 17:35+0200\n"
+"PO-Revision-Date: 2018-09-15 17:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: Erik van der Bas <erik@basedonline.nl>\n"
 "Language: nl_NL\n"
@@ -118,7 +118,7 @@ msgstr "Selecteer Support Hours managers"
 #: admin/partials/settings/general-settings-form.php:14
 #: admin/partials/settings/general-settings-form.php:16
 msgid "E-mail address main Support Hours manager"
-msgstr "E-mail adres Support Hours manager"
+msgstr "E-mailadres Support Hours manager"
 
 #: admin/partials/settings/general-settings-form.php:20
 msgid "E-mail"

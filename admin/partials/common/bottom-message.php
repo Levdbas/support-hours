@@ -9,7 +9,7 @@
 
   <?php elseif(!empty($users) && in_array($user_ID, $users)):  ?>
     <?php if ($pagenow == 'admin.php'): ?>
-      <div class="warning-message notice inline notice-warning notice-alt">
+      <div class="warning-message notice support-hours-notice inline notice-warning notice-alt">
         <p><?php _e( 'No activities added yet.', $this->plugin_name); ?></p>
       </div>
     <?php endif; ?>
@@ -25,7 +25,7 @@
       ?>
     </p>
     <?php  if($percentage == 100) {?>
-      <div class="warning-message notice inline notice-error notice-alt">
+      <div class="warning-message notice support-hours-notice inline notice-error notice-alt">
         <p>
           <?php
           echo $welcome;
@@ -34,7 +34,7 @@
         </p>
       </div>
     <?php } elseif($percentage >= 80) {?>
-      <div class="warning-message notice inline notice-warning notice-alt">
+      <div class="warning-message notice support-hours-notice inline notice-warning notice-alt">
         <p>
           <?php
           echo $welcome;
@@ -43,7 +43,7 @@
         </p>
       </div>
     <?php } else {?>
-      <div class="warning-message notice inline notice-alt notice-message notice-success">
+      <div class="warning-message notice support-hours-notice inline notice-alt notice-message notice-success">
         <p>
           <?php
           echo $welcome;

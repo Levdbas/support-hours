@@ -85,11 +85,16 @@ function last_bought($workFields){
   if($workFields != null){
     $workFields = array_reverse($workFields);
     $key = array_search('time-added', array_column($workFields, 'type'));
-    $time = $workFields[$key]['used'];
-    list($hour, $minute) = explode(':', $time);
-    $minutes += $hour * 60;
-    $minutes += $minute;
-    return $minutes;
+
+    if($key !== false):
+      $time = $workFields[$key]['used'];
+      list($hour, $minute) = explode(':', $time);
+      $minutes += $hour * 60;
+      $minutes += $minute;
+      return $minutes;
+    else:
+      return 0;
+    endif;
   }
   return 0;
 }
