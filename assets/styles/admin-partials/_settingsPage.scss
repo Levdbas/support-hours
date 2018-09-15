@@ -1,55 +1,7 @@
-.worktable {
-  min-width: 300px;
-  margin: 1em 0;
-
-  tr.repeating {
-    border: 0;
-  }
-  th {
-    display: none;
-  }
-  td {
-    display: block;
-    &:first-child {
-      width: 50px;
-      padding-top: .5em;
-    }
-    &:last-child {
-      padding-bottom: .5em;
-    }
-		&.remove:before{
-			width: 0;
-			content:'';
-		}
-    &:before {
-      display: inline-block;
-      width: 6.5em;
-      font-weight: bold;
-      content: attr(data-th)": ";
-      @media (min-width: $breakpoint-alpha) {
-        display: none;
-      }
-    }
-  }
-  th, td {
-    text-align: left;
-    @media (min-width: $breakpoint-alpha) {
-      display: table-cell;
-      padding: .25em .5em;
-      &:first-child {
-        padding-left: 0;
-      }
-      &:last-child {
-        padding-right: 0;
-      }
-    }
-  }
-}
-
 .currentDate{
 	display: none;
 }
-.settings{
+.support-hours-settings{
   p.submit{
   		display: inline-block;
   		margin: 0 !important;
@@ -68,4 +20,7 @@
 	label{
 		display: block;
 	}
+}
+.datepicker-controls .select-month input {
+    width: 90px;
 }
