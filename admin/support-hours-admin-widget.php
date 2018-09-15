@@ -20,7 +20,7 @@ if(!empty($users) && !empty($email)):
 
   if ( !empty($workFields[0]['date']) ) :
 
-    include_once( 'partials/widgets/widget-worktable.php' );
+    include_once( 'partials/common/worktable.php' );
 
   endif;
 
