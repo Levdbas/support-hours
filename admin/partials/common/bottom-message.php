@@ -4,7 +4,7 @@
     <a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=support-hours-settings' ); ?>"><?php _e('Add new activity', $this->plugin_name); ?></a>
 
     <?php if($i >= 5 && current_user_can('publish_pages')): ?>
-      <a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=support-hours' ); ?>"><?php _e('View all acitivities', $this->plugin_name); ?></a>
+      <a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=support-hours' ); ?>"><?php _e('View all activities', $this->plugin_name); ?></a>
     <?php endif; ?>
 
   <?php elseif(!empty($users) && in_array($user_ID, $users)):  ?>
@@ -13,7 +13,7 @@
       <p><?php _e( 'No activities added yet.', $this->plugin_name); ?></p>
     </div>
     <?php endif; ?>
-    <a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=support-hours-settings' ); ?>"><?php _e('Add first acitivity', $this->plugin_name); ?></a>
+    <a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=support-hours-settings' ); ?>"><?php _e('Add first activity', $this->plugin_name); ?></a>
   <?php
    endif;
   if ($pagenow == 'index.php'):
@@ -38,7 +38,7 @@
       <p>
         <?php
           echo $welcome;
-         _e( 'your Support Hours are almost used.<br />', $this->plugin_name);
+         _e( 'your Support Hours are almost used.', $this->plugin_name);
          ?>
        </p>
        </div>

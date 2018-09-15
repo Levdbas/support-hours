@@ -1,6 +1,6 @@
 <tr class="repeating" data-number="<?php echo $i; ?>">
 
-  <td data-th="<?php _e('test', $name); ?>">
+  <td>
 
     <fieldset class="type-switch">
       <label for="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][used]">

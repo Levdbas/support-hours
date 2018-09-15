@@ -11,9 +11,9 @@
   <?php } ?>
 </fieldset>
 <fieldset>
-  <h3><?php _e( 'E-Mail address main Support Hours manager', $name); ?>:</h3>
+  <h3><?php _e( 'E-mail address main Support Hours manager', $name); ?>:</h3>
   <legend class="screen-reader-text">
-    <span><?php _e('E-Mail adress main Support Hours manager', $name); ?>:</span>
+    <span><?php _e('E-mail address main Support Hours manager', $name); ?>:</span>
   </legend>
   <div class="input-field">
     <input id="email" type="text" class="regular-text regular-text--email" id="<?php echo $name; ?>-bought_hours" name="<?php echo $name; ?>[email]" value="<?php if(!empty($email)) echo $email; ?>"/>

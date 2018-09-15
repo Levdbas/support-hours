@@ -30,6 +30,7 @@ class Support_Hours_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+		/*
 		function sample_admin_notice__error() {
 			$options = get_option($this->plugin_name);
 			$class = 'notice notice-warning is-dismissible';
@@ -42,7 +43,8 @@ class Support_Hours_Activator {
 				</p>
 			</div>
 			<?php }
-		add_action( 'admin_notices', 'sample_admin_notice__error' );
+			add_action( 'admin_notices', 'sample_admin_notice__error' );
+		*/
 	}
 
 }

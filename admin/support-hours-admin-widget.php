@@ -33,7 +33,7 @@ if(!empty($users) && !empty($email)):
   else: ?>
 
     <h4>
-      <?php _e( 'No support Hours bought', $this->plugin_name); ?>.
+      <?php _e( 'No Support Hours bought yet', $this->plugin_name); ?>.
     </h4>
     <p>
       <?php _e( 'Contact me via', $this->plugin_name); ?> <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
