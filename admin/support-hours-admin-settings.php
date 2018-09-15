@@ -13,7 +13,6 @@
 <?php
   $name = $this->plugin_name;
   $options = get_option($name);
-  $bought_hours = $options['bought_hours'];
   $users = $options['users'];
   $email = $options['email'];
   $workFields = $options['workFields'];
