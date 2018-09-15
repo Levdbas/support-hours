@@ -9,9 +9,11 @@
 
   <?php elseif(!empty($users) && in_array($user_ID, $users)):  ?>
     <?php if ($pagenow == 'admin.php'): ?>
-      <h1 class="support-hours-notice"><?php _e( 'No time entries added.', $this->plugin_name); ?></h1>
+      <div class="warning-message notice inline notice-warning notice-alt">
+      <p><?php _e( 'No activities added yet.', $this->plugin_name); ?></p>
+    </div>
     <?php endif; ?>
-    <a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=support-hours-settings' ); ?>"><?php _e('Add first acitivity', $this->plugin_name); ?></a>
+    <a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=support-hours-settings' ); ?>"><?php _e('Add first acitivity', $this->plugin_name); ?></a>
   <?php
    endif;
   if ($pagenow == 'index.php'):
@@ -20,20 +22,14 @@
   <p>
     <?php
     $welcome  =   __('Hi '). wp_get_current_user()->display_name . ', ';
-    $closeing = '<span class="screen-reader-text">(opens in a new window)</span>';
-    $closeing .= '<a class="support-hours-mail" href="mailto:'. $email.'?SUBJECT='. __('Support hours', $this->plugin_name).'">';
-    $closeing .= '<span aria-hidden="true" class="dashicons dashicons-email"></span>';
-    $closeing .= $email;
-    $closeing .=' </a>';
     ?>
   </p>
   <?php  if($percentage == 100) {?>
-      <div class="update-message notice inline notice-error notice-alt">
+      <div class="warning-message notice inline notice-error notice-alt">
       <p>
       <?php
       echo $welcome;
-       _e( 'your Support hours are used. <br /> If you need more support hours you can get in contact via', $this->plugin_name);
-       echo ' '.$closeing;
+       _e( 'your Support Hours are used.', $this->plugin_name);
         ?>
      </p>
      </div>
@@ -42,22 +38,20 @@
       <p>
         <?php
           echo $welcome;
-         _e( 'your Support hours are almost used.<br /> If you need more support hours you can get in contact via', $this->plugin_name);
-         echo ' '.$closeing;
+         _e( 'your Support Hours are almost used.<br />', $this->plugin_name);
          ?>
        </p>
        </div>
     <?php } else {?>
-      <div class="update-message notice inline notice-alt updated-message notice-success">
+      <div class="warning-message notice inline notice-alt notice-message notice-success">
       <p>
         <?php
           echo $welcome;
-         _e( "you have plenty of hours left, but you can always get in contact via", $this->plugin_name);
-         echo ' '.$closeing;
+         _e( "you have plenty of hours left.", $this->plugin_name);
           ?>
       </p>
       </div>
     <?php } ?>
-
+      <a class="button button-primary"  href="mailto:<?php echo $email; ?>'?SUBJECT=<?php  _e('Order Support Hours', $this->plugin_name); ?> - <?php echo bloginfo('name'); ?>"><?php _e('Order Support Hours', $this->plugin_name); ?></a>
 </div>
 <?php endif; ?>

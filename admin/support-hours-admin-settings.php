@@ -21,8 +21,9 @@
   $i = 0;
 ?>
 <div class="wrap">
+  <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
   <?php  if (empty($users) || (!empty($users) && in_array($user_ID, $users))) { ?>
-    <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
+
     <form method="post" name="cleanup_options" action="options.php" class="support-hours-settings">
       <?php
       settings_fields($name);
@@ -32,8 +33,8 @@
       ?>
     </form>
   <?php } else {?>
-    <p>
-      <?php _e( 'You do not have access to this page because you are not a Support Hours manager. Please disable and enable this plugin if you need access again.', $name); ?>
-    </p>
+    <h3>
+      <?php _e( 'You do not have access to this page because you are not a Support Hours manager. Please disable and enable the plugin to reset user access.', $name); ?>
+    </h3>
   <?php } ?>
 </div>

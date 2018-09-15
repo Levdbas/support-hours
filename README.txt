@@ -2,12 +2,12 @@
 Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid
 Requires at least: 3.0.1
-Tested up to: 4.9
+Tested up to: 4.9.8
 Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
- The support-hours plugin can be used to give your customers insight on the status of their pre-paid support hours.
+Use Support hours to give yourself and your clients insights on the status of pre-paid work.
 
 == Description ==
 
@@ -30,11 +30,11 @@ This section describes how to install the plugin and get it working.
 
 = Why did you create this plugin? =
 
-To help my customers keep track of their pre-paid hours.
+To help my customers keep track of their pre-paid hours and what/when I've been working on for the spent time. Hope it can serve you in the same way.
 
 = Do you have plans to work on new functions for the plugin? =
 
-Yes! I just added some new functionality to set different work entries. I will look into new functions on request or when I need something myself.
+Yes! I just released a very big update and I'm planning to iterate on it! Hopefully not another year will pass.
 
 = Is this your first plugin? =
 
@@ -46,6 +46,27 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 1.5 =
+
+New:
+
+* Changed the working of the amount of bought hours. Instead of one fixed number of all the hours, you can add new time over time.
+* Complely new UI on the settings page which now features material design modals.
+* Introducting a temporary function that changes some database related stuff to move to the new system.
+* implemented new build tools for faster development flow.
+
+Changed:
+
+* Rework of all the functions under the hood
+* Changed the way you input the work
+* A lot of css and JS enhancements
+* Updated strings and translations
+
+Deleted:
+
+* the fixed bought hours field is now gone
+
 = 1.4.2 =
 
 * Tested up to version 4.9
@@ -136,3 +157,7 @@ Bugs fixed:
 
 = 1.0 =
 * First commit of my plugin
+
+
+== Upgrade Notice ==
+If you dont see your previous time entries show up after you update the plugin, please refresh the page. If the problem continues to exist, please get in contact.

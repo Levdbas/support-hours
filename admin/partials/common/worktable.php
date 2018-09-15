@@ -3,9 +3,9 @@
     <h3>
       <?php
       if ($pagenow == 'index.php'):
-        _e('Last five entries', $this->plugin_name);
+        _e('Last five activities:', $this->plugin_name);
       else:
-        _e('Activities', $this->plugin_name);
+        _e('Activities:', $this->plugin_name);
       endif;
       ?>
     </h3>
@@ -14,8 +14,8 @@
       <thead>
         <tr>
           <th width="20%"><?php _e('Date', $this->plugin_name); ?></th>
+          <th width="30%"><?php _e('Time', $this->plugin_name); ?></th>
           <th width="50%"><?php _e('Description', $this->plugin_name); ?></th>
-          <th width="30%"><?php _e('Time used', $this->plugin_name); ?></th>
         </tr>
       </thead>
       <tbody>
@@ -24,16 +24,16 @@
         foreach ( $workFields as $field ) { ?>
           <tr>
             <td><?php if(!empty($field['used'])) echo $field['date'] ?></td>
-            <td><?php if(!empty($field['used'])) echo $field['description'] ?></td>
             <td>
               <span class="time-type-icon">
                 <?php echo ($field['type'] == 'time-added') ? '+' : '-'; ?>
               </span>
               <?php if(!empty($field['used'])) echo $field['used'] ?>
             </td>
+            <td><?php if(!empty($field['used'])) echo $field['description'] ?></td>
           </tr>
           <?php
-          if ($pagenow != 'index.php'):
+          if ($pagenow == 'index.php'):
             $i++;
             if ($i >= 5){
               break;

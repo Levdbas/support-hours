@@ -4,11 +4,12 @@
 
     <thead>
       <tr class="row-head">
-        <th></th>
-        <th><?php _e('Date', $name); ?></th>
-        <th><?php _e('Description', $name); ?></th>
-        <th><?php _e('Time', $name); ?></th>
+
         <th><?php _e('Type', $name); ?></th>
+        <th><?php _e('Date', $name); ?></th>
+        <th><?php _e('Time', $name); ?></th>
+        <th><?php _e('Description', $name); ?></th>
+        <th></th>
       </tr>
     </thead>
 
@@ -22,8 +23,8 @@
         endif; ?>
       </tbody>
     </table>
-    <?php submit_button(__( 'Save all changes', $name), 'primary','submit', true); ?>
     <a href="#" class="repeat button button-secondary">
       <?php _e('Add activity', $name); ?>
     </a>
+    <?php submit_button(__( 'Save all changes', $name), 'primary','submit', true); ?>
   </fieldset>
