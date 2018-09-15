@@ -26,5 +26,5 @@
     <a href="#" class="repeat button button-secondary">
       <?php _e('Add activity', $name); ?>
     </a>
-    <?php submit_button(__( 'Save all changes', $name), 'primary','submit', true); ?>
+    <?php submit_button(__( 'Save', $name), 'primary','submit', true); ?>
   </fieldset>

@@ -32,11 +32,11 @@ if(!empty($users) && !empty($email)):
 
   else: ?>
 
-    <h4>
-      <?php _e( 'No Support Hours bought yet', $this->plugin_name); ?>.
-    </h4>
-    <p>
-      <?php _e( 'Contact me via', $this->plugin_name); ?> <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
-    </p>
+  <div class="warning-message notice inline notice-warning notice-alt">
+    <p><?php _e( 'No Support Hours bought yet.', $this->plugin_name); ?></p>
+  </div>
+  <a class="button button-primary"  href="mailto:<?php echo $email; ?>'?SUBJECT=<?php  _e('Order Support Hours', $this->plugin_name); ?> - <?php echo bloginfo('name'); ?>">
+    <?php _e('Order Support Hours', $this->plugin_name); ?>
+  </a>
 
-  <?php endif; ?>
+<?php endif; ?>

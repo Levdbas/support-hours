@@ -14,7 +14,7 @@ global $pagenow;
 <div class="wrap">
   <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
   <p>
-    <?php  _e( 'A complete overview of all logged activities.', $this->plugin_name); ?>
+    <?php  _e( 'A complete overview of all activities.', $this->plugin_name); ?>
   </p>
   <?php
   if(!empty($users) && (!empty($bought_minutes) || $bought_minutes == '0' ) && !empty($email)):
