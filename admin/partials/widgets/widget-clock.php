@@ -6,7 +6,7 @@
   <div class="right"></div>
   <div class="innerCicle">
     <span class="textHolder">
-      <span class="text <?php echo font_size($used_hours); ?>">
+      <span class="text <?php echo font_size($used_minutes, $bought_minutes); ?>">
         <?php echo widget_output($workFields, $used_minutes, $bought_minutes); ?>
         <br class="smallbr" />
         <?php

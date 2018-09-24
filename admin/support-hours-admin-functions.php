@@ -143,12 +143,13 @@ function percentage($used_minutes, $bought_minutes){
 
 
 // function to control the font size
-function font_size($used_hours){
-  if (strpos($used_hours, ':') !== false){
-    $size = 'small';
-  } else{
+function font_size($used_minutes, $bought_minutes){
+  // big font size if time doesn't include :00 (minutes) and bought hours are less then 99 hours. Otherwise UI will be too cluttered.
+  if($used_minutes %60 == 0 && $bought_minutes < 5940):
     $size = 'big';
-  }
+  else:
+    $size = 'small';
+  endif;
   return $size;
 }
 

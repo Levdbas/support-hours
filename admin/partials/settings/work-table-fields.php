@@ -20,8 +20,8 @@
     <input type="text" placeholder="dd-mm-yyyy" class="regular-text date validate datepicker" id="<?php echo $name; ?>-workFields-date" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][date]" value="<?php if(!empty($field['date'])) { echo $field['date']; } ?>" required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"/>
   </td>
 
-  <td data-th="<?php _e('Time used', $name); ?>">
-    <input type="time" placeholder="00:00" class="regular-text time validate timepicker" id="<?php echo $name; ?>-workFields-used" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][used]" required pattern="[0-9]{2}:[0-9]{2}" value="<?php if(!empty($field['used'])) echo $field['used'] ?>" />
+  <td data-th="<?php _e('Time', $name); ?>">
+    <input type="text" placeholder="00:00" class="regular-text time validate" id="<?php echo $name; ?>-workFields-used" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][used]" required pattern="[0-9]{2,4}:[0-9]{2}" value="<?php if(!empty($field['used'])) echo $field['used'] ?>" />
   </td>
 
   <td data-th="<?php _e('Description', $name); ?>">
