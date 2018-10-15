@@ -28,3 +28,13 @@
 		color: #444;
 	}
 }
+
+
+*, ::after, ::before {
+    box-sizing: content-box;
+}
+.support-hours-settings{
+	*, ::after, ::before {
+	    box-sizing: border-box !important;
+	}
+}

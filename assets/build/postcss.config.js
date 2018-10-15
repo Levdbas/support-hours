@@ -1,10 +1,13 @@
 const cssnanoConfig = {
-  preset: ['default', { discardComments: { removeAll: true } }]
+  preset: [
+    "default",
+    { discardComments: { removeAll: true }, reduceIdents: false }
+  ]
 };
 
 module.exports = {
-    plugins: {
-      cssnano: process.env.NODE_ENV === 'production' ? cssnanoConfig : false,
-      autoprefixer: true,
-    },
+  plugins: {
+    cssnano: false,
+    autoprefixer: true
+  }
 };

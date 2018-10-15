@@ -1,3 +1,8 @@
+@keyframes a {
+	0%		{ opacity: 0; }
+	100%	{ opacity: 1; }
+}
+
 #support_hours_dashboard_widget{
 	h3{
 		margin: 1.33em 0 0;
@@ -6,7 +11,19 @@
 	}
 }
 
-
+.progress-bar__background, .progress-bar__left{
+	background-color: $background-color;
+}
+.progress-bar__rotate, .progress-bar__right{
+	background-color: $progress-color;
+}
+.progress-bar__left{
+	opacity: 1;
+}
+.progress-bar__right{
+	transform: rotate(180deg);
+	opacity: 0;
+}
 .progress-bar {
 	.innerCicle{
 	  width: 90%;
@@ -55,21 +72,6 @@
 	position: relative;
 	width:100%;
 	padding-bottom: 100%;
-	.background{
-		background-color: $background-color;
-	}
-	.left{
-		background-color: $background-color;
-		opacity: 1;
-	}
-	.rotate{
-		background-color: $progress-color;
-	}
-	.right{
-		background-color: $progress-color;
-		transform: rotate(180deg);
-		opacity: 0;
-	}
 div {
 		border-radius: 50%;
     height: 100%;
@@ -79,10 +81,6 @@ div {
 	.smallbr{
 	  display: none;
 	}
-}
-@keyframes toggle {
-	0%		{ opacity: 0; }
-	100%	{ opacity: 1; }
 }
 
 @media screen and (max-width: 870px) {
@@ -110,4 +108,7 @@ div {
 		max-width:none;
 		max-height:none;
 	}
+}
+.totalrandomthing{
+	animation: a;
 }

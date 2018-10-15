@@ -16,6 +16,7 @@
     <tbody>
       <?php
       if ( $workFields ):
+        $first = false;
         foreach ( $workFields as $field ) {
           include( 'work-table-fields.php' );
           $i++;
