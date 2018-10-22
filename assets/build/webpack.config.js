@@ -124,7 +124,7 @@ const config = {
 if (process.env.NODE_ENV === "production") {
   config.plugins.push(
     new UglifyJsPlugin({}),
-    new OptimizeCssAssetsPlugin({}),
+    //new OptimizeCssAssetsPlugin({}),
     new ImageminPlugin({
       disable: process.env.NODE_ENV !== "production",
       test: /\.(jpe?g|png|gif|svg)$/i

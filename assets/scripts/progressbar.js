@@ -24,16 +24,16 @@ function progressBar() {
 
     if (opts.percent > 50) {
       var animationRight =
-        "a " + (opts.duration / opts.percent) * 50 + "ms step-end";
+        "c " + (opts.duration / opts.percent) * 50 + "ms step-end";
       var animationLeft =
-        "a " + (opts.duration / opts.percent) * 50 + "ms step-start";
+        "c " + (opts.duration / opts.percent) * 50 + "ms step-start";
       $target.find(".progress-bar__right").css({
         animation: animationRight,
         opacity: 1
       });
       $target.find(".progress-bar__left").css({
         animation: animationLeft,
-        opacity: 0
+        opacity:0
       });
     }
   });
