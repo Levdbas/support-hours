@@ -49,7 +49,7 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 = 1.5.1 =
 
-* Fixed the issue where adding a new time entry caused all other entries to have the same date. Thank you [Don](https://wordpress.org/support/users/donquicky/) for reporting the bug!
+* Fixed the issue where adding a new time entry caused all other entries to have the same date. Thank you [Ivar](https://wordpress.org/support/users/donquicky/) for reporting the bug!
 = 1.5 =
 
 New:
