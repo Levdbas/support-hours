@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid
 Requires at least: 3.0.1
 Tested up to: 5.0
-Stable tag: 1.5
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 == Changelog ==
 
+= 1.5.1 =
+
+* Fixed the issue where adding a new time entry caused all other entries to have the same date. Thank you [Don](https://wordpress.org/support/users/donquicky/) for reporting the bug!
 = 1.5 =
 
 New:

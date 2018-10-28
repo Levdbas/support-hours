@@ -29,14 +29,10 @@ function repeatRow() {
     cloned.fadeIn(500);
     resetAttributeNames(cloned);
     cloned.find("input.time-used").attr("checked", true); // sets new repeated time.used button to checked.
-    $('.datepicker').datepicker({
+    cloned.find('.datepicker').datepicker({
       format: 'dd-mm-yyyy',
       defaultDate: new Date(),
       setDefaultDate: true
-    });
-    $('.timepicker').timepicker({
-      twelveHour : false,
-      defaultTime : '00:00'
     });
   });
 
