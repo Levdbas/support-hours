@@ -74,7 +74,6 @@ class Support_Hours {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
 
 	}
 
@@ -117,7 +116,6 @@ class Support_Hours {
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-support-hours-public.php';
 
 		$this->loader = new Support_Hours_Loader();
 
@@ -163,18 +161,6 @@ class Support_Hours {
 
 	}
 
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_public_hooks() {
-		$plugin_public = new Support_Hours_Public( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-	}
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
