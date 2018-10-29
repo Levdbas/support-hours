@@ -17,7 +17,7 @@ global $pagenow;
     <?php  _e( 'A complete overview of all activities.', $this->plugin_name); ?>
   </p>
   <?php
-  if(!empty($users) && (!empty($bought_minutes) || $bought_minutes == '0' ) && !empty($email)):
+  if(!empty($users) && $bought_minutes !== '0' && !empty($email)):
     $user_ID = get_current_user_id();
     $i = 0;
 
@@ -28,9 +28,11 @@ global $pagenow;
     include_once( 'partials/common/bottom-message.php' );
 
     elseif(empty($users) || empty($email)):
+      include_once( 'partials/common/notice-configure.php' );
 
-      include_once( 'partials/common/configure-plugin-notice.php' );
+    else:
+      include_once( 'partials/common/notice-no-hours.php' );
 
-    endif; ?>
-
+    endif;
+?>
   </div>
