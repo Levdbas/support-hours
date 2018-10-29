@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Support hours\n"
-"POT-Creation-Date: 2018-09-15 17:35+0200\n"
-"PO-Revision-Date: 2018-09-15 17:35+0200\n"
+"POT-Creation-Date: 2018-10-29 09:31+0100\n"
+"PO-Revision-Date: 2018-10-29 09:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: Erik van der Bas <erik@basedonline.nl>\n"
 "Language: nl_NL\n"
@@ -23,7 +23,7 @@ msgid "Support Hours overview"
 msgstr "Support Hours overzicht"
 
 #: admin/class-support-hours-admin.php:114
-#: admin/class-support-hours-admin.php:188
+#: admin/class-support-hours-admin.php:198
 msgid "Support Hours"
 msgstr "Support Hours"
 
@@ -97,6 +97,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: admin/partials/common/worktable.php:17
+#: admin/partials/settings/work-table-fields.php:23
 #: admin/partials/settings/work-table-form.php:10
 msgid "Time"
 msgstr "Tijd"
@@ -125,7 +126,6 @@ msgid "E-mail"
 msgstr "E-mail"
 
 #: admin/partials/settings/work-table-fields.php:8
-#: admin/partials/settings/work-table-fields.php:23
 msgid "Time used"
 msgstr "Tijd verbruikt"
 
@@ -141,11 +141,15 @@ msgstr "Beschrijving van de activiteit"
 msgid "Type"
 msgstr "Type"
 
-#: admin/partials/settings/work-table-form.php:27
+#: admin/partials/settings/work-table-form.php:31
+msgid "Activities will be sorted by date on save"
+msgstr "Activiteiten worden gesorteerd op datum tijdens het bijwerken."
+
+#: admin/partials/settings/work-table-form.php:33
 msgid "Add activity"
 msgstr "Voeg activiteit toe"
 
-#: admin/partials/settings/work-table-form.php:29
+#: admin/partials/settings/work-table-form.php:35
 msgid "Save"
 msgstr "Bijwerken"
 
@@ -169,7 +173,7 @@ msgstr "Eerste ingekochte tijd - toegevoegd door Support Hours"
 msgid "A complete overview of all activities."
 msgstr "Een compleet overzicht van alle activiteiten."
 
-#: admin/support-hours-admin-settings.php:37
+#: admin/support-hours-admin-settings.php:36
 msgid ""
 "You do not have access to this page because you are not a Support Hours "
 "manager. Please disable and enable the plugin to reset user access."

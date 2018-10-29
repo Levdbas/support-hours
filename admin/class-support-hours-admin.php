@@ -176,6 +176,16 @@ class Support_Hours_Admin {
 		$valid['bought_hours'] = sanitize_text_field($input['bought_hours']);
 		$valid['email'] = sanitize_email($input['email']);
 		$valid['users'] = $input['users'];
+
+		function date_compare($a, $b)
+		{
+			$t1 = strtotime($a['date']);
+			$t2 = strtotime($b['date']);
+			return $t1 - $t2;
+		}
+		usort($input['workFields'], 'date_compare');
+
+
 		$valid['workFields'] = $input['workFields'];
 		return $valid;
 	}

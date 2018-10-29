@@ -28,6 +28,7 @@
       ?>
     </tbody>
   </table>
+  <p><em><?php _e('Activities will be sorted by date on save', $name); ?>.</em></p>
   <a href="#" class="repeat button button-secondary">
     <?php _e('Add activity', $name); ?>
   </a>
