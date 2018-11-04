@@ -4,13 +4,14 @@ $options = get_option($this->plugin_name);
 $name = $this->plugin_name;
 $users = $options['users'];
 $email = $options['email'];
-$static_time = $options['bought_hours'];
+//$static_time = $options['bought_hours'];
 $current_color = get_user_option( 'admin_color' );
 $workFields = $options['workFields'];
 
 $used_minutes = AddTime($workFields, 'time-used', 'minutes');
 $bought_minutes = AddTime($workFields, 'time-added', 'minutes');
 
+/*
 // NOTE: temp function to transform first set of hours to new hour system.
 function transform_fixed_time($static_time, $workFields, $name, $options){
   if($options['bought_hours'] != '00:00'){
@@ -22,7 +23,7 @@ function transform_fixed_time($static_time, $workFields, $name, $options){
       'type' => 'time-added'
     );
     array_unshift($options['workFields'], $newdata);
-    $options = array_diff_key($options, ['bought_hours' => "xy"]);
+    //$options = array_diff_key($options, ['bought_hours' => "xy"]);
 
     $options['workFields'] = array_map(function($arr){
       return $arr + ['type' =>'time-used'];
@@ -32,6 +33,7 @@ function transform_fixed_time($static_time, $workFields, $name, $options){
   }
 }
 echo transform_fixed_time($static_time, $workFields, $name, $options);
+*/
 
 function minutestoTime($minutes){
   return sprintf("%02d:%02d", floor($minutes/60), $minutes%60);  // 01:37

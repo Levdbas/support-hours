@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid
 Requires at least: 3.0.1
 Tested up to: 5.0
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,13 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 1.5.2 =
+
+* order activities on data at saving.
+* removed time transform function
+* removed public side of plugin for a smaller package
+* update to notices and errors if thrown.
 
 = 1.5.1 =
 

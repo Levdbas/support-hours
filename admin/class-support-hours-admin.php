@@ -158,7 +158,6 @@ class Support_Hours_Admin {
 
 	public function display_plugin_page() {
 		include_once( 'support-hours-admin-functions.php' );
-		echo transform_fixed_time($static_time, $workFields, $name, $options);
 		include_once( 'support-hours-admin-overview.php' );
 	}
 	public function display_plugin_setup_page() {
@@ -168,11 +167,7 @@ class Support_Hours_Admin {
 	public function validate($input) {
 		$valid = array();
 
-		if ($input['bought_hours'] == null) {
-			$input['bought_hours'] = '00:00';
-		}
 
-		$valid['bought_hours'] = sanitize_text_field($input['bought_hours']);
 		$valid['email'] = sanitize_email($input['email']);
 
 		if(isset($input['users'])):
