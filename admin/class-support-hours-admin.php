@@ -179,13 +179,13 @@ class Support_Hours_Admin {
 		if(!isset($input['workFields']) || $input['workFields'] == null){
 			$input['workFields'] = null;
 		} else{
-			function date_compare($a, $b)
+			function support_hours_date_compare($a, $b)
 			{
 				$t1 = strtotime($a['date']);
 				$t2 = strtotime($b['date']);
 				return $t1 - $t2;
 			}
-			usort($input['workFields'], 'date_compare');
+			usort($input['workFields'], 'support_hours_date_compare');
 		}
 
 		$valid['workFields'] = $input['workFields'];
