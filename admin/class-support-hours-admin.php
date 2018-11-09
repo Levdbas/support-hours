@@ -164,6 +164,13 @@ class Support_Hours_Admin {
 		include_once( 'support-hours-admin-settings.php' );
 	}
 
+	public function support_hours_date_compare($a, $b)
+	{
+		$t1 = strtotime($a['date']);
+		$t2 = strtotime($b['date']);
+		return $t1 - $t2;
+	}
+	
 	public function validate($input) {
 		$valid = array();
 
@@ -179,12 +186,7 @@ class Support_Hours_Admin {
 		if(!isset($input['workFields']) || $input['workFields'] == null){
 			$input['workFields'] = null;
 		} else{
-			function support_hours_date_compare($a, $b)
-			{
-				$t1 = strtotime($a['date']);
-				$t2 = strtotime($b['date']);
-				return $t1 - $t2;
-			}
+
 			usort($input['workFields'], 'support_hours_date_compare');
 		}
 
