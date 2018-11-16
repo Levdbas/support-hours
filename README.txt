@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: levdbas
-Tags: time, hours, tracking, client, pre-paid
+Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
 Tested up to: 5.0
 Stable tag: 1.5.3
@@ -13,7 +13,7 @@ Use Support hours to give yourself and your clients insights on the status of pr
 == Description ==
 
 Small development task can have a huge impact on your time as a developer. How much time did your customer bought, how much time did you spent on tasks, how much time do you have left to spent? Not to mention all the effort to report it all back to your customer, every time you do something for them.
-No more with Support Hours. Support Hours offers a simple interface for you, the webdeveloper, to add more hours, log spent time and give a beautiful overview to your customer of how much time they have left. It even notices when the support hours are almost spent.
+No more with Support Hours. Support Hours offers a simple interface for you, the web professional, to add pre-paid hours, log spent time and give a beautiful overview to your customer of how much time they have left. It even notices when the support hours are almost spent.
 Free yourself from all the hassle around development support and try Support Hours now.
 
 == Installation ==
@@ -45,6 +45,16 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 1.5.3 =
+
+* Updated readme
+* Fixed a redeclare php error when saving the time fields
+* Enhanced build package
+* Fixed color scheme not loading for the circle animation
+* Worktable in the widget now shows the last five entries instead of the first five
+* Better responsive behavior
+* Updated plugin screenshots, readme and logo
 
 = 1.5.2 =
 
