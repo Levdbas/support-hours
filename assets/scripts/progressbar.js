@@ -1,4 +1,14 @@
 function progressBar() {
+
+  function clipSizer(){
+    var circleWidth = $(".progress-bar").width();
+    var halfCircleWidth = Math.round(circleWidth / 2);
+    $(".progress-bar__left, .progress-bar__right, .progress-bar__rotate").css({
+      clip: "rect(0px, " + halfCircleWidth + "px, auto, 0px)"
+    });
+  }
+
+
   $(".progress-bar").each(function() {
     var $target = $(this);
     var opts = {
@@ -6,13 +16,11 @@ function progressBar() {
       duration: 2000
     };
 
-    var circleWidth = $(".progress-bar").width();
-    var circleWidth = Math.round(circleWidth);
-    var halfCircleWidth = Math.round(circleWidth / 2);
-
-    $(".progress-bar__left, .progress-bar__right, .progress-bar__rotate").css({
-      clip: "rect(0px, " + halfCircleWidth + "px, " + circleWidth + "px, 0px)"
+    clipSizer()
+    $( window ).resize(function() {
+      clipSizer()
     });
+
 
     var $rotate = $target.find(".progress-bar__rotate");
     setTimeout(function() {
