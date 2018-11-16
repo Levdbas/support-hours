@@ -1,6 +1,6 @@
 @mixin theme-colors($color) {
   .progress-bar{
-    .rotate, .right{
+    .progress-bar__rotate, .progress-bar__right{
       background-color:$color;
     }
     .innerCicle:hover .text{
