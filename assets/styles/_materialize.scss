@@ -1,16 +1,10 @@
+    @import "~materialize-css/sass/components/color-variables";
+    @import "~materialize-css/sass/components/variables";
+    @import "~materialize-css/sass/components/global";
 
-  @import "~materialize-css/sass/components/color-variables";
-  @import "~materialize-css/sass/components/color-classes";
-  @import "~materialize-css/sass/components/variables";
-
-  @import "~materialize-css/sass/components/global";
-
-  .support-hours_page_support-hours-settings{
-    @import "~materialize-css/sass/components/buttons";
-    @import "~materialize-css/sass/components/dropdown";
-    @import "~materialize-css/sass/components/waves";
-    @import "~materialize-css/sass/components/modal";
-    @import "~materialize-css/sass/components/materialbox";
-    @import "~materialize-css/sass/components/forms/forms";
-    @import "~materialize-css/sass/components/datepicker";
-  }
+    .shs{
+      @import "~materialize-css/sass/components/buttons";
+      @import "~materialize-css/sass/components/modal";
+      @import "~materialize-css/sass/components/forms/forms";
+      @import "~materialize-css/sass/components/datepicker";
+    }
