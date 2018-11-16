@@ -20,7 +20,9 @@
       </thead>
       <tbody>
         <?php
-        $i = 0;
+        if ($pagenow == 'index.php'):
+          $workFields = array_slice($workFields, -5);
+        endif;
         foreach ( $workFields as $field ) { ?>
           <tr>
             <td><?php if(!empty($field['used'])) echo $field['date'] ?></td>
@@ -32,15 +34,7 @@
             </td>
             <td><?php if(!empty($field['used'])) echo $field['description'] ?></td>
           </tr>
-          <?php
-          if ($pagenow == 'index.php'):
-            $i++;
-            if ($i >= 5){
-              break;
-            }
-          endif;
-        }
-        ?>
+          <?php } ?>
       </tbody>
     </table>
     <div class="total">
