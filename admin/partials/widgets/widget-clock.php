@@ -10,9 +10,8 @@
         <?php echo widget_output($workFields, $used_minutes, $bought_minutes); ?>
         <br class="smallbr" />
         <?php
-        //echo "<br class='bigbr' />";
         _e( 'hours', $this->plugin_name);
-        echo "<br class='bigbr' />";
+        echo "<br class='bigbr' /> ";
         _e( 'used', $this->plugin_name);
         ?>
       </span>
