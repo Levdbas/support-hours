@@ -12,11 +12,9 @@ Use Support hours to give yourself and your clients insights on the status of pr
 
 == Description ==
 
-Many webdevelopers offer pre-paid hours to their customers to maintain their websites. It can be a long wait for both the developers and the customer to find out how many hours are left to be spent on maintenance work.
-This plugin makes this process much easier by displaying the hours bought and left directly in a dashboard widget.
-
-The amount of bought hours and used hours with a description and date can be set on the settings page. After the first activation you need to set the support hour managers.
-These accounts can only access the management page, so no sudden changes in the hours you've set.
+Small development task can have a huge impact on your time as a developer. How much time did your customer bought, how much time did you spent on tasks, how much time do you have left to spent? Not to mention all the effort to report it all back to your customer, every time you do something for them.
+No more with Support Hours. Support Hours offers a simple interface for you, the webdeveloper, to add more hours, log spent time and give a beautiful overview to your customer of how much time they have left. It even notices when the support hours are almost spent.
+Free yourself from all the hassle around development support and try Support Hours now.
 
 == Installation ==
 
@@ -31,7 +29,7 @@ This section describes how to install the plugin and get it working.
 
 = Why did you create this plugin? =
 
-To help my customers keep track of their pre-paid hours and what/when I've been working on for the spent time. Hope it can serve you in the same way.
+To help you and your customers keep track of pre-paid support hours and on what activities the time has been spend.
 
 = Do you have plans to work on new functions for the plugin? =
 
@@ -42,8 +40,8 @@ Yes! I just released a very big update and I'm planning to iterate on it! Hopefu
 Yes! Feel free to sent me any suggestions or feedback. I think this plugin can be optimized quite a lot!
 
 == Screenshots ==
-1. Dashboard widget, visible for all roles highter then editor. Animated by css and js. The table shows the last five activities.
-2. Settings page where you can set your E-mail adress. Amount of bought hours and input the activities with a date, description and the time spent.
+1. Dashboard widget, visible for all roles higher then editor. Animated with css and js. The table shows the last five activities.
+2. Settings page where you can set your E-mail address and add time entries with bought and spent time with a date and description
 3. Overview page where all activities are listed.
 
 == Changelog ==
