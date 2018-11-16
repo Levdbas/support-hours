@@ -24,9 +24,9 @@ function progressBar() {
 
     if (opts.percent > 50) {
       var animationRight =
-        "c " + (opts.duration / opts.percent) * 50 + "ms step-end";
+        "circleAnim " + (opts.duration / opts.percent) * 50 + "ms step-end";
       var animationLeft =
-        "c " + (opts.duration / opts.percent) * 50 + "ms step-start";
+        "circleAnim " + (opts.duration / opts.percent) * 50 + "ms step-start";
       $target.find(".progress-bar__right").css({
         animation: animationRight,
         opacity: 1
