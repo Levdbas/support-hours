@@ -17,7 +17,7 @@
     <?php
   endif;
   if ($pagenow == 'index.php'):
-    $percentage = percentage($used_minutes, $bought_minutes);
+    $percentage = percentage($workFields, $used_minutes, $bought_minutes);
     ?>
     <p>
       <?php

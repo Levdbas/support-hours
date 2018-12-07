@@ -20,6 +20,7 @@
       </thead>
       <tbody>
         <?php
+        $widget_fields = $workFields;
         if ($pagenow == 'index.php'):
           $widget_fields = array_slice($workFields, -5);
         endif;
