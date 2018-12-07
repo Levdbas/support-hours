@@ -21,9 +21,9 @@
       <tbody>
         <?php
         if ($pagenow == 'index.php'):
-          $workFields = array_slice($workFields, -5);
+          $widget_fields = array_slice($workFields, -5);
         endif;
-        foreach ( $workFields as $field ) { ?>
+        foreach ( $widget_fields as $field ) { ?>
           <tr>
             <td><?php if(!empty($field['used'])) echo $field['date'] ?></td>
             <td>

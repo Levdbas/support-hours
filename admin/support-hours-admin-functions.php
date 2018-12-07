@@ -14,23 +14,23 @@ $bought_minutes = AddTime($workFields, 'time-added', 'minutes');
 /*
 // NOTE: temp function to transform first set of hours to new hour system.
 function transform_fixed_time($static_time, $workFields, $name, $options){
-  if($options['bought_hours'] != '00:00'){
-    echo "<h3>". __('Update of Support Hours complete, please refresh page', $name)."</h3>";
-    $newdata =  array (
-      'date' => date('d-m-Y'),
-      'description' => __('First bought time - added by Support Hours', $name),
-      'used' => $static_time,
-      'type' => 'time-added'
-    );
-    array_unshift($options['workFields'], $newdata);
-    //$options = array_diff_key($options, ['bought_hours' => "xy"]);
+if($options['bought_hours'] != '00:00'){
+echo "<h3>". __('Update of Support Hours complete, please refresh page', $name)."</h3>";
+$newdata =  array (
+'date' => date('d-m-Y'),
+'description' => __('First bought time - added by Support Hours', $name),
+'used' => $static_time,
+'type' => 'time-added'
+);
+array_unshift($options['workFields'], $newdata);
+//$options = array_diff_key($options, ['bought_hours' => "xy"]);
 
-    $options['workFields'] = array_map(function($arr){
-      return $arr + ['type' =>'time-used'];
-    }, $options['workFields']);
+$options['workFields'] = array_map(function($arr){
+return $arr + ['type' =>'time-used'];
+}, $options['workFields']);
 
-    update_option($name, $options);
-  }
+update_option($name, $options);
+}
 }
 echo transform_fixed_time($static_time, $workFields, $name, $options);
 */
@@ -60,7 +60,7 @@ function AddTime($workFields, $type, $returns = null) {
       $workFields = array_filter($workFields, function ($var) use ($type) {
         return ($var['type'] == $type);
       });
-        foreach ($workFields as $time) {
+      foreach ($workFields as $time) {
         //  Check if the field is not empty. Else stay with 0.
         if($time['type'] !== ""){
           list($hour, $minute) = explode(':', $time['used']);
@@ -128,19 +128,34 @@ function widget_output($workFields, $used_minutes, $bought_minutes){
   return $widget_hours;
 }
 
-function percentage($used_minutes, $bought_minutes){
+function percentage($workFields, $used_minutes, $bought_minutes){
 
-  if($used_minutes > $bought_minutes){
-    $used_minutes = $bought_minutes;
+
+  $bought_minus_last = bought_minus_last($workFields, $bought_minutes);
+  $minutes_to_spent = $bought_minutes - $used_minutes;
+  $last_bought_minutes = last_bought($workFields);
+
+  // NOTE: calculates spent hours
+  if($used_minutes > $bought_minus_last){
+    $used_minutes = $used_minutes - $bought_minus_last;
+  } else{
+    $used_minutes = $used_minutes;
   }
-  if(!empty($bought_minutes)){
-    $percentage = $used_minutes * 100 / $bought_minutes;
-    if($percentage > 100){
-      $percentage = 100;
-    }
-    $percentage = round($percentage);
-    return $percentage;
+  // NOTE: returns hours left
+  if($minutes_to_spent < $last_bought_minutes){
+    $bought_minutes = $last_bought_minutes;
+  } else{
+    $bought_minutes = $bought_minutes;
   }
+
+
+  $percentage = $used_minutes * 100 / $bought_minutes;
+  if($percentage > 100){
+    $percentage = 100;
+  }
+  $percentage = round($percentage);
+  return $percentage;
+
 }
 
 

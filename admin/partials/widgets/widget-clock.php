@@ -1,4 +1,4 @@
-<div class="progress-bar position <?php echo $current_color;?>" data-percent="<?php echo percentage($used_minutes, $bought_minutes); ?>">
+<div class="progress-bar position <?php echo $current_color;?>" data-percent="<?php echo percentage($workFields, $used_minutes, $bought_minutes); ?>">
   <div class="progress-bar__background">
     <div class="progress-bar__rotate"></div>
   </div>
