@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
 Tested up to: 5.0
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,10 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 1.5.5 =
+* Fixed an issue where other css would get overruled by support-hours css
+* Fixed an issue where the plugins Javascript would interfere with Divi theme.
 
 = 1.5.4 =
 * Fixed widget circle percentage when multiple times hours were added
