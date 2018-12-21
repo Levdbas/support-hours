@@ -9,7 +9,6 @@
 * @package    Support_Hours
 * @subpackage Support_Hours/admin
 */
-
 /**
 * The admin-specific functionality of the plugin.
 *
@@ -62,19 +61,11 @@ class Support_Hours_Admin {
 	* @since    1.0.0
 	*/
 	public function enqueue_styles() {
-
-		/**
-		* This function is provided for demonstration purposes only.
-		*
-		* An instance of this class should be passed to the run() function
-		* defined in Support_Hours_Loader as all of the hooks are defined
-		* in that particular class.
-		*
-		* The Support_Hours_Loader will then create the relationship
-		* between the defined hooks and the functions defined in this
-		* class.
-		*/
-		wp_enqueue_style( $this->plugin_name, plugins_url($this->plugin_name). '/dist/styles/support-hours-admin.css', array(), $this->version, 'all' );
+	 	$current_page = get_current_screen()->base;
+		
+		if (in_array($current_page, array('toplevel_page_support-hours','support-hours_page_support-hours-settings','dashboard'))):
+			wp_enqueue_style( $this->plugin_name, plugins_url($this->plugin_name). '/dist/styles/support-hours-admin.css', array(), $this->version, 'all' );
+		endif;
 	}
 
 	/**
@@ -83,21 +74,11 @@ class Support_Hours_Admin {
 	* @since    1.0.0
 	*/
 	public function enqueue_scripts() {
+		$current_page = get_current_screen()->base;
 
-		/**
-		* This function is provided for demonstration purposes only.
-		*
-		* An instance of this class should be passed to the run() function
-		* defined in Support_Hours_Loader as all of the hooks are defined
-		* in that particular class.
-		*
-		* The Support_Hours_Loader will then create the relationship
-		* between the defined hooks and the functions defined in this
-		* class.
-		*/
-
-		wp_enqueue_script( $this->plugin_name, plugins_url($this->plugin_name). '/dist/scripts/support-hours-admin.js', array( 'jquery' ), $this->version, false );
-
+		if (in_array($current_page, array('toplevel_page_support-hours','support-hours_page_support-hours-settings','dashboard'))):
+			wp_enqueue_script( $this->plugin_name, plugins_url($this->plugin_name). '/dist/scripts/support-hours-admin.js', array( 'jquery' ), $this->version, false );
+		endif;
 	}
 	public function add_plugin_admin_menu() {
 
