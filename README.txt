@@ -2,8 +2,8 @@
 Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
-Tested up to: 5.0
-Stable tag: 1.5.5
+Tested up to: 5.1.1
+Stable tag: 1.5.6
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,12 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 1.5.6 =
+* Fixed another issue where the plugins Javascript would interfere with Divi theme.
+* Made the overall js package a lot smaller.
+* New build stack added based on Webpack 4.
+* Checked up to WP 5.1.1
 
 = 1.5.5 =
 * Fixed an issue where other css would get overruled by support-hours css
