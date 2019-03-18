@@ -1,4 +1,10 @@
 {
+  "entry": {
+    "support-hours-admin": [
+      "./scripts/support-hours-admin.js",
+      "./styles/support-hours-admin.scss"
+    ]
+  },
   "browserSyncURL": "testenvironment.local",
   "themePath": "",
   "assetsPath": "assets"

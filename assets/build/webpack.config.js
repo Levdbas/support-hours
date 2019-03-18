@@ -1,134 +1,168 @@
-/**
- * Assets Config file
- */
 process.noDeprecation = true;
 const env = process.env.NODE_ENV;
-const path = require("path");
-const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ImageminPlugin = require("imagemin-webpack-plugin").default;
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const devMode = process.env.NODE_ENV !== 'production';
+const path = require('path');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack');
+const imageminGifsicle = require('imagemin-gifsicle');
+const imageminJpegtran = require('imagemin-jpegtran');
+const imageminOptipng = require('imagemin-optipng');
+const imageminSvgo = require('imagemin-svgo');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const merge = require('webpack-merge');
 const rootPath = process.cwd();
-var configFile = require(path.resolve(__dirname, rootPath) +
-  "/assets/config.json");
 
-const variables = {
-  browserSyncURL: configFile["browserSyncURL"],
-  browserSyncPort: configFile["browserSyncPort"],
-  themePath: path.join(rootPath, configFile["themePath"]), // from root folder path/to/theme
-  distPath: path.join(rootPath, configFile["themePath"], "dist"), // from root folder path/to/theme
-  assetsPath: path.join(rootPath, configFile["assetsPath"]) // from root folder path/to/assets
-};
+var userConfig = require(path.resolve(__dirname, rootPath) + '/assets/config.json');
 
-const ExtractNormalCSS = new ExtractTextPlugin("styles/[name].css");
-
-if (process.env.NODE_ENV === undefined) {
-  process.env.NODE_ENV = isProduction ? "production" : "development";
-}
-
-const config = {
-  context: variables.assetsPath,
-  entry: {
-    "support-hours-admin": [
-      "./scripts/support-hours-admin.js",
-      "./styles/support-hours-admin.scss"
-    ]
+const config = merge(
+  {
+    path: {
+      theme: path.join(rootPath, userConfig['themePath']), // from root folder path/to/theme
+      dist: path.join(rootPath, userConfig['themePath'], 'dist'), // from root folder path/to/theme
+      assets: path.join(rootPath, userConfig['assetsPath']), // from root folder path/to/assets
+    },
   },
+  userConfig
+);
+
+const webpackConfig = {
+  context: config.path.assets,
+  entry: config.entry,
+  devtool: config.sourceMaps ? 'source-map' : false,
+  mode: env,
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: {
-          loader: "buble-loader",
-          options: { objectAssign: "Object.assign" }
-        }
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            cacheDirectory: true,
+          },
+        },
       },
       {
-        test: /\.(css|scss|sass)$/,
-        include: variables.assetsPath,
-        use: ExtractNormalCSS.extract({
-          fallback: "style-loader",
-          use: [
-            { loader: "css-loader" },
-            {
-              loader: "postcss-loader",
-              options: {
-                config: {
-                  path: __dirname
-                }
-              }
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+              sourceMap: config.sourceMaps,
             },
-            { loader: "sass-loader" }
-          ],
-          publicPath: "../"
-        })
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: config.sourceMaps,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: config.sourceMaps,
+              config: {
+                path: __dirname + '/postcss.config.js',
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: config.sourceMaps,
+            },
+          },
+        ],
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
-        include: variables.assetsPath,
-        loader: "url-loader",
+        include: config.path.assets,
+        loader: 'url-loader',
         options: {
           limit: 4096,
-          name: "[path][name].[ext]"
-        }
-      }
-    ]
+          name: '[path][name].[ext]',
+        },
+      },
+    ],
   },
   output: {
-    filename: "scripts/[name].js",
-    path: path.resolve(__dirname, variables.distPath)
+    filename: 'scripts/[name].js',
+    path: path.resolve(__dirname, config.path.dist),
+    pathinfo: false,
   },
   externals: {
     jquery: "jQuery"
   },
+  performance: { hints: false },
   plugins: [
-    new webpack.ProvidePlugin({
-      Component: "materialize-css/js/component.js",
-      Modal: "materialize-css/js/modal.js",
-      $: "jquery",
-      jQuery: "jquery"
-    }),
-    ExtractNormalCSS,
     new BrowserSyncPlugin({
-      host: "localhost",
-      proxy: variables.browserSyncURL,
-      delay: 500,
-      watch: true,
-      watchOptions: {
-        aggregateTimeout: 300,
-        poll: 1000,
-        ignored: /node_modules/
-      },
-      files: [variables.themePath + "/**/*.php"]
+      host: 'localhost',
+      proxy: config.browserSyncURL,
+      files: [config.path.theme + '/**/*.php', config.path.theme + '/**/*.twig'],
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'styles/[name].css',
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
     }),
     new CopyWebpackPlugin(
       [
         {
-          context: variables.assetsPath + "/images",
-          from: "**/*",
-          to: "images/[name].[ext]"
-        }
+          context: config.path.assets + '/images',
+          from: '**/*',
+          to: 'images/[path][name].[ext]',
+        },
       ],
       {
-        ignore: [".gitkeep"],
-        copyUnmodified: true
+        ignore: ['.gitkeep'],
+        copyUnmodified: true,
       }
-    )
-  ]
+    ),
+  ],
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: config.sourceMaps,
+      }),
+      new ImageminPlugin({
+        bail: false, // Ignore errors on corrupted images
+        cache: true,
+        name: '[path][name].[ext]',
+        imageminOptions: {
+          // Lossless optimization with custom option
+          // Feel free to experement with options for better result for you
+          plugins: [
+            imageminGifsicle({
+              interlaced: true,
+            }),
+            imageminJpegtran({
+              progressive: true,
+            }),
+            imageminOptipng({
+              optimizationLevel: 1,
+            }),
+            imageminSvgo({
+              removeViewBox: false,
+            }),
+          ],
+        },
+      }),
+    ],
+  },
 };
-
-if (process.env.NODE_ENV === "production") {
-  config.plugins.push(
-    new UglifyJsPlugin({}),
-    //new OptimizeCssAssetsPlugin({}),
-    new ImageminPlugin({
-      disable: process.env.NODE_ENV !== "production",
-      test: /\.(jpe?g|png|gif|svg)$/i
-    })
-  );
+if (process.env.NODE_ENV === 'production') {
+  webpackConfig.plugins.push(new CleanWebpackPlugin());
 }
-module.exports = config;
+module.exports = webpackConfig;
