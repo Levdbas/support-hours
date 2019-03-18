@@ -1,121 +1,141 @@
 @keyframes circleAnim {
-	0%		{ opacity: 0; }
-	100%	{ opacity: 1; }
-}
-#support_hours_dashboard_widget{
-	h3{
-		margin: 1.33em 0 0;
-		font-size: 16px;
-		font-weight: bold;
-	}
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-.progress-bar__background, .progress-bar__left{
-	background-color: $background-color;
+#support_hours_dashboard_widget {
+  h3 {
+    margin: 1.33em 0 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
 }
-.progress-bar__rotate, .progress-bar__right{
-	background-color: $progress-color;
+
+.progress-bar__background,
+.progress-bar__left {
+  background-color: $background-color;
 }
-.progress-bar__left{
-	opacity: 1;
+
+.progress-bar__rotate,
+.progress-bar__right {
+  background-color: $progress-color;
 }
-.progress-bar__right{
-	transform: rotate(180deg);
-	opacity: 0;
+
+.progress-bar__left {
+  opacity: 1;
 }
+
+.progress-bar__right {
+  transform: rotate(180deg);
+  opacity: 0;
+}
+
 .progress-bar {
-	.innerCicle{
-		width: 90%;
-		height: 90%;
-		margin: 5%;
-		position: absolute;
-		z-index: 12;
-		border-radius: 50%;
-		background: white;
-		transition: all 0.2s ease-in;
-		.textHolder{
-			display: block;
-			top: 50%;
-			position: relative;
-			.text{
-				text-align: center;
-				display: block;
-				color:$background-color;
-				font-weight: bold;
-				margin-top: -50px;
-				font-size: 35px;
-				transition: all 0.2s ease-in;
-				line-height: 50px;
-				position: absolute;
-				width: 100%;
-				&.small{
-					margin-top: -50px;
-					line-height: 50px;
-					font-size: 30px;
-				}
-			}
-		}
-		&:hover{
-			width: 94%;
-			height: 94%;
-			margin: 3%;
-			.text{
-				font-size: 45px;
-				color:$progress-color;
-				&.small{
-					font-size: 35px;
-				}
-			}
-		}
-	}
-	position: relative;
-	width:100%;
-	padding-bottom: 100%;
-	div {
-		border-radius: 50%;
-		height: 100%;
-		position: absolute;
-		width: 100%;
-	}
+  .innerCicle {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+    position: absolute;
+    z-index: 12;
+    border-radius: 50%;
+    background: white;
+    transition: all 0.2s ease-in;
+
+    .textHolder {
+      display: block;
+      top: 50%;
+      position: relative;
+
+      .text {
+        text-align: center;
+        display: block;
+        color: $background-color;
+        font-weight: bold;
+        margin-top: -50px;
+        font-size: 35px;
+        transition: all 0.2s ease-in;
+        line-height: 50px;
+        position: absolute;
+        width: 100%;
+
+        &.small {
+          margin-top: -50px;
+          line-height: 50px;
+          font-size: 30px;
+        }
+      }
+    }
+
+    &:hover {
+      width: 94%;
+      height: 94%;
+      margin: 3%;
+
+      .text {
+        font-size: 45px;
+        color: $progress-color;
+
+        &.small {
+          font-size: 35px;
+        }
+      }
+    }
+  }
+
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+
+  div {
+    border-radius: 50%;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
 }
+
 .bigbr {
-	display: none;
+  display: none;
 }
-.text.big{
-	.smallbr {
-		display: none;
-	}
-	.bigbr {
-		display: block;
-	}
+
+.text.big {
+  .smallbr {
+    display: none;
+  }
+
+  .bigbr {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 870px) {
-	.smallbr {
-		display: none;
-	}
+  .smallbr {
+    display: none;
+  }
 
-	.bigbr {
-		display: block;
-	}
+  .bigbr {
+    display: block;
+  }
 
 
-	.text {
-		font-size: 30px;
-		line-height: 40px;
-		margin-top: -40px;
-	}
+  .text {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: -40px;
+  }
 
-	.progress-bar:hover .text {
-		font-size: 40px;
-	}
+  .progress-bar:hover .text {
+    font-size: 40px;
+  }
 }
+
 @media screen and (max-width: 800px) {
-	.progress-bar {
-		max-width:none;
-		max-height:none;
-	}
+  .progress-bar {
+    max-width: none;
+    max-height: none;
+  }
 }
-.totalrandomthing{
-	animation: a;
+
+.totalrandomthing {
+  animation: a;
 }
