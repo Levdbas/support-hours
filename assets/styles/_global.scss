@@ -1,40 +1,49 @@
 .clearfix{
-	clear:both;
+	clear: both;
 }
+
 .bold{
-	color:#444;
-	font-weight: bold;
+	font-weight: 700;
+	color: #444444;
 }
+
 .time-type-icon{
 	display: inline-block;
 	width: 20px;
 	font-size: 18px;
-	font-weight: bold;
+	font-weight: 700;
 	text-align: center;
 }
+
 .support-hours-mail{
 	display: inline-block;
+
 	span{
 		margin-right: 5px;
 	}
 }
+
 .support-hours-notice{
-	margin-top: 15px  !important;
+	margin-top: 15px !important;
 	margin-bottom: 15px !important;
+
 	p{
 		line-height: 1.8;
 	}
+
 	a{
-		color: #444;
+		color: #444444;
 	}
 }
 
 
 *, ::after, ::before {
-    box-sizing: content-box;
+	box-sizing: content-box;
 }
+
 .shs{
+
 	*, ::after, ::before {
-	    box-sizing: border-box !important;
+		box-sizing: border-box !important;
 	}
 }
