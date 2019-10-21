@@ -162,10 +162,13 @@ class Support_Hours_Admin
 
 	public function validate($input)
 	{
+		error_log(var_dump($input['workFields']));
 		$valid = array();
 		$options = get_option($this->plugin_name);
 		$workFields = $options['workFields'];
-
+		if (!is_array($workFields)) {
+			$workFields = array();
+		}
 		$valid['email'] = sanitize_email($input['email']);
 
 		if (isset($input['users'])) :
@@ -177,7 +180,6 @@ class Support_Hours_Admin
 			$input['workFields'] = null;
 		} else {
 			$input['workFields'] = array_replace_recursive($workFields, $input['workFields']);
-
 			usort($input['workFields'], array('Support_Hours_Admin', 'support_hours_date_compare'));
 		}
 
