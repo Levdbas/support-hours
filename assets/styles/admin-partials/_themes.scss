@@ -68,7 +68,7 @@
 		li {
 
 			.current {
-				background: $color !important;
+				background: darken($color, 20%) !important;
 			}
 		}
 	}

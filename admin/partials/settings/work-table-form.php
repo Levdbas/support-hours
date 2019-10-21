@@ -15,9 +15,9 @@
 
     <tbody>
       <?php
-      if ( $workFields ):
+      if ( $output ):
         $first = false;
-        foreach ( $workFields as $field ) {
+        foreach ( $output as $field ) {
           include( 'work-table-fields.php' );
           $i++;
         }
@@ -33,4 +33,22 @@
     <?php _e('Add activity', $name); ?>
   </a>
   <?php submit_button(__( 'Save', $name), 'primary','submit', true); ?>
+
+  <?php
+
+  $page_links = paginate_links( array(
+    'base' => add_query_arg( 'pagenumber', '%#%' ),
+    'format' => '',
+    'prev_text' => __( '&laquo;', 'aag' ),
+    'next_text' => __( '&raquo;', 'aag' ),
+    'total' => $num_of_pages,
+    'type' => 'list',
+    'current' => $pagenum
+  ) );
+
+  if ( $page_links ) {
+    echo '<div class="pagination" style="margin: 1em 0">' .
+    $page_links . '</div>';
+  }
+  ?>
 </fieldset>

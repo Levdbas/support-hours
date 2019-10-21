@@ -62,7 +62,7 @@ class Support_Hours_Admin {
 	*/
 	public function enqueue_styles() {
 	 	$current_page = get_current_screen()->base;
-		
+
 		if (in_array($current_page, array('toplevel_page_support-hours','support-hours_page_support-hours-settings','dashboard'))):
 			wp_enqueue_style( $this->plugin_name, plugins_url($this->plugin_name). '/dist/styles/support-hours-admin.css', array(), $this->version, 'all' );
 		endif;
@@ -155,7 +155,8 @@ class Support_Hours_Admin {
 
 	public function validate($input) {
 		$valid = array();
-
+		$options = get_option($this->plugin_name);
+		$workFields = $options['workFields'];
 
 		$valid['email'] = sanitize_email($input['email']);
 
@@ -167,6 +168,8 @@ class Support_Hours_Admin {
 		if(!isset($input['workFields']) || $input['workFields'] == null){
 			$input['workFields'] = null;
 		} else{
+			$input['workFields'] = array_replace_recursive($workFields, $input['workFields']);
+
 			usort($input['workFields'], array('Support_Hours_Admin','support_hours_date_compare'));
 		}
 
