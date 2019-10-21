@@ -162,10 +162,9 @@ class Support_Hours_Admin
 
 	public function validate($input)
 	{
-		error_log(var_dump($input['workFields']));
 		$valid = array();
 		$options = get_option($this->plugin_name);
-		$workFields = $options['workFields'];
+		$workFields = array_reverse($options['workFields']);
 		if (!is_array($workFields)) {
 			$workFields = array();
 		}
@@ -176,6 +175,7 @@ class Support_Hours_Admin
 		else :
 			$valid['users'] = array();
 		endif;
+
 		if (!isset($input['workFields']) || $input['workFields'] == null) {
 			$input['workFields'] = null;
 		} else {
