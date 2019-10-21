@@ -18,7 +18,6 @@ function repeatRow() {
     $('.repeat').click(function(e) {
         e.preventDefault();
         var lastRepeatingGroup = jQuery('.repeating:last-of-type');
-        console.log(lastRepeatingGroup);
         var num = parseInt(lastRepeatingGroup.attr('data-number'));
         var cloned = lastRepeatingGroup.clone(true);
         cloned.find('input:not(:radio)').val('');

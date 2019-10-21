@@ -9,7 +9,6 @@ import workTableHelpers from './workTableHelpers.js';
     var SupportHours = {
         common: {
             init: function() {
-                console.log('klik');
                 timeInput();
                 repeatRow();
                 workTableHelpers();
