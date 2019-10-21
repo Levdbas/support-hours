@@ -17,8 +17,9 @@ function repeatRow() {
     // Clone the previous workField, and remove all of the values
     $('.repeat').click(function(e) {
         e.preventDefault();
-        var lastRepeatingGroup = jQuery('.repeating').last();
-        var num = parseInt(lastRepeatingGroup.data('number'));
+        var lastRepeatingGroup = jQuery('.repeating:last-of-type');
+        console.log(lastRepeatingGroup);
+        var num = parseInt(lastRepeatingGroup.attr('data-number'));
         var cloned = lastRepeatingGroup.clone(true);
         cloned.find('input:not(:radio)').val('');
         cloned.find('select').val('');
@@ -26,6 +27,7 @@ function repeatRow() {
         cloned.hide();
         cloned.insertAfter(lastRepeatingGroup);
         cloned.fadeIn(500);
+        cloned.attr('data-number', num + 1);
         resetAttributeNames(cloned, num);
         cloned.find('input.time-used').attr('checked', true); // sets new repeated time.used button to checked.
         cloned.find('.datepicker').datepicker({

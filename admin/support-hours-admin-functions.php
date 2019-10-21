@@ -5,7 +5,7 @@ $name = $this->plugin_name;
 $users = $options['users'];
 $email = $options['email'];
 //$static_time = $options['bought_hours'];
-$current_color = get_user_option( 'admin_color' );
+$current_color = get_user_option('admin_color');
 $workFields = $options['workFields'];
 
 $used_minutes = AddTime($workFields, 'time-used', 'minutes');
@@ -41,8 +41,9 @@ echo transform_fixed_time($static_time, $workFields, $name, $options);
  * @param  int $minutes minutes, can be bought or used
  * @return string          HH:MM
  */
-function minutestoTime($minutes){
-  return sprintf("%02d:%02d", floor($minutes/60), $minutes%60);  // 01:37
+function minutestoTime($minutes)
+{
+  return sprintf("%02d:%02d", floor($minutes / 60), $minutes % 60);  // 01:37
 }
 
 /**
@@ -51,10 +52,11 @@ function minutestoTime($minutes){
  * @param  [type] $minutes minutes, can be bought or used
  * @return string Retunrs full hour without zeros
  */
-function minutestoTimeRound($minutes) {
-  if($minutes % 60 == 0):
-    $time = $minutes/60;
-  else:
+function minutestoTimeRound($minutes)
+{
+  if ($minutes % 60 == 0) :
+    $time = $minutes / 60;
+  else :
     $time = minutestoTime($minutes);
   endif;
   return $time;
@@ -71,25 +73,26 @@ function minutestoTimeRound($minutes) {
  * @param   string  $returns      if minutes returns total minutes
  * @return  string                Returns full hours format or total minutes of used or bought hours
  */
-function AddTime($workFields, $type, $returns = null) {
+function AddTime($workFields, $type, $returns = null)
+{
   $output = 0;
   $minutes = 0;
-  if($workFields != null){
-    if(isset($workFields[0]['type'])):
+  if ($workFields != null) {
+    if (isset($workFields[0]['type'])) :
       $workFields = array_filter($workFields, function ($var) use ($type) {
         return ($var['type'] == $type);
       });
       foreach ($workFields as $time) {
         //  Check if the field is not empty. Else stay with 0.
-        if($time['type'] !== ""){
+        if ($time['type'] !== "") {
           list($hour, $minute) = explode(':', $time['used']);
           $minutes += $hour * 60;
           $minutes += $minute;
         }
       }
-      if($returns == 'minutes'):
+      if ($returns == 'minutes') :
         $output =  $minutes;
-      else:
+      else :
         $hours = floor($minutes / 60);
         $minutes -= $hours * 60;
         $time = sprintf('%02d:%02d', $hours, $minutes);
@@ -108,19 +111,19 @@ function AddTime($workFields, $type, $returns = null) {
  * @param  array   $workFields      The workfields from this plugin, contains bought and used hours
  * @return int                      Last bought hours in minute format
  */
-function last_bought($workFields){
+function last_bought($workFields)
+{
   $minutes = 0;
-  if($workFields != null){
+  if ($workFields != null) {
     $workFields = array_reverse($workFields); // invert array so we can search DESC
     $key = array_search('time-added', array_column($workFields, 'type')); // searching for the last time-added value in key 'type'
 
-    if($key !== false): // if there is a key!
+    if ($key !== false) : // if there is a key!
       $time = $workFields[$key]['used']; // take our time in HH:MM format from the field
       list($hour, $minute) = explode(':', $time); // explode the time
       $minutes += $hour * 60; // hours to minutes, add them to minutes
       $minutes += $minute; // add minutes to total as well.
     endif;
-    
   }
   return $minutes;
 }
@@ -138,10 +141,11 @@ function last_bought($workFields){
  * @param  int     $bought_minutes  Total bought minutes
  * @return int                      minutes
  */
-function bought_minus_last($workFields, $bought_minutes){
+function bought_minus_last($workFields, $bought_minutes)
+{
   $output = 0;
 
-  if($workFields != null){
+  if ($workFields != null) {
     $output = $bought_minutes - last_bought($workFields);
   }
 
@@ -160,26 +164,27 @@ function bought_minus_last($workFields, $bought_minutes){
  * @param  int    $bought_minutes Total bought minutes
  * @return string                 Returns hours in HH:MM format or HH format where the first is used time, the second the bought time.
  */
-function widget_output($workFields, $used_minutes, $bought_minutes){
+function widget_output($workFields, $used_minutes, $bought_minutes)
+{
   $bought_minus_last = bought_minus_last($workFields, $bought_minutes);
   $minutes_to_spent = $bought_minutes - $used_minutes;
   $last_bought_minutes = last_bought($workFields);
 
   // NOTE: calculates used hours
-  if($used_minutes > $bought_minus_last){
+  if ($used_minutes > $bought_minus_last) {
     $used_minutes = $used_minutes - $bought_minus_last;
-  } else{
+  } else {
     $used_minutes = $used_minutes;
   }
 
   // NOTE: calculates bought hours
-  if($minutes_to_spent < $last_bought_minutes){
+  if ($minutes_to_spent < $last_bought_minutes) {
     $bought_minutes = $last_bought_minutes;
-  } else{
+  } else {
     $bought_minutes = $bought_minutes;
   }
 
-  $widget_hours = minutestoTimeRound($used_minutes).' / '.minutestoTimeRound($bought_minutes);
+  $widget_hours = minutestoTimeRound($used_minutes) . ' / ' . minutestoTimeRound($bought_minutes);
   return $widget_hours;
 }
 
@@ -195,33 +200,33 @@ function widget_output($workFields, $used_minutes, $bought_minutes){
  * @param  int    $bought_minutes Total bought minutes
  * @return int                    Calculated percentage
  */
-function percentage($workFields, $used_minutes, $bought_minutes){
+function percentage($workFields, $used_minutes, $bought_minutes)
+{
 
   $bought_minus_last = bought_minus_last($workFields, $bought_minutes);
   $minutes_to_spent = $bought_minutes - $used_minutes;
   $last_bought_minutes = last_bought($workFields);
 
   // NOTE: calculates used hours
-  if($used_minutes > $bought_minus_last){
+  if ($used_minutes > $bought_minus_last) {
     $used_minutes = $used_minutes - $bought_minus_last;
-  } else{
+  } else {
     $used_minutes = $used_minutes;
   }
 
   // NOTE: calculates bought hours
-  if($minutes_to_spent < $last_bought_minutes){
+  if ($minutes_to_spent < $last_bought_minutes) {
     $bought_minutes = $last_bought_minutes;
-  } else{
+  } else {
     $bought_minutes = $bought_minutes;
   }
 
   $percentage = $used_minutes * 100 / $bought_minutes;
-  if($percentage > 100){
+  if ($percentage > 100) {
     $percentage = 100;
   }
   $percentage = round($percentage);
   return $percentage;
-
 }
 
 
@@ -235,16 +240,13 @@ function percentage($workFields, $used_minutes, $bought_minutes){
  * @param  int    $bought_minutes Total bought minutes
  * @return string                 small or big, this is used in our css to display the correct font size
  */
-function font_size($used_minutes, $bought_minutes){
+function font_size($used_minutes, $bought_minutes)
+{
   $size = 'small';
 
-  if($used_minutes %60 == 0 && $bought_minutes < 5940):
+  if ($used_minutes % 60 == 0 && $bought_minutes < 5940) :
     $size = 'big';
   endif;
 
   return $size;
 }
-
-
-
-?>
