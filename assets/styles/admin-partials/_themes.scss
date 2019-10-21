@@ -1,62 +1,99 @@
 @mixin theme-colors($color) {
-  .progress-bar{
-    .progress-bar__rotate, .progress-bar__right{
-      background-color:$color;
-    }
-    .innerCicle:hover .text{
-      color:$color;
-    }
-  }
-  [type="checkbox"].filled-in:checked + span:not(.lever)::after{
-    border: 2px solid $color !important;
-    background-color:$color !important;
-  }
-  td.is-today{
-    background-color:rgba($color, 0.25) !important;
-  }
-  td.is-today, .datepicker-done, .datepicker-cancel, .timepicker-close, .dropdown-content li > span{
-    color:$color !important;
-  }
-  .datepicker-date-display, .datepicker-table td.is-selected, .timepicker-digital-display, a.remove-row{
-    background-color:$color !important;
-  }
-  .timepicker-canvas line{
-    stroke: $color !important;
-  }
-  .timepicker-canvas-bg, .timepicker-canvas-bearing{
-    fill: $color !important;
-  }
-  .timepicker-tick:hover{
-    background-color: rgba($color, 0.25) !important;
-  }
-  td.is-selected{
-    color: white !important;
-  }
-  tr.repeating [type="radio"]:checked + span::after{
-    border: 2px solid $color;
-    background-color:$color;
-  }
-  input:focus{
-    border-bottom: 1px solid $color !important;
-    box-shadow: 0 1px 0 0 $color !important;
-  }
+
+	.progress-bar {
+
+		.progress-bar__rotate,
+		.progress-bar__right {
+			background-color: $color;
+		}
+
+		.innerCicle:hover .text {
+			color: $color;
+		}
+	}
+
+	[type="checkbox"].filled-in:checked + span:not( .lever )::after {
+		background-color: $color !important;
+		border: 2px solid $color !important;
+	}
+
+	td.is-today {
+		background-color: rgba($color, 0.25) !important;
+	}
+
+	td.is-today,
+	.datepicker-done,
+	.datepicker-cancel,
+	.timepicker-close,
+	.dropdown-content li > span {
+		color: $color !important;
+	}
+
+	.datepicker-date-display,
+	.datepicker-table td.is-selected,
+	.timepicker-digital-display,
+	a.remove-row {
+		background-color: $color !important;
+	}
+
+	.timepicker-canvas line {
+		stroke: $color !important;
+	}
+
+	.timepicker-canvas-bg,
+	.timepicker-canvas-bearing {
+		fill: $color !important;
+	}
+
+	.timepicker-tick:hover {
+		background-color: rgba($color, 0.25) !important;
+	}
+
+	td.is-selected {
+		color: white !important;
+	}
+
+	tr.repeating [type="radio"]:checked + span::after {
+		background-color: $color;
+		border: 2px solid $color;
+	}
+
+	input:focus {
+		border-bottom: 1px solid $color !important;
+		box-shadow: 0 1px 0 0 $color !important;
+	}
+
+	.pagination {
+
+		li {
+
+			.current {
+				background: $color !important;
+			}
+		}
+	}
 }
 
-  .admin-color-midnight {
-    @include theme-colors(#e14d43);
-  }
-  .admin-color-ectoplasm {
-    @include theme-colors(#a3b745);
-  }
-  .admin-color-blue {
-    @include theme-colors(#e1a948);
-  }
-  .admin-color-ocean {
-    @include theme-colors(#9ebaa0);
-  }
-  .admin-color-coffee {
-    @include theme-colors(#c7a589);
-  }
-  .admin-color-sunrise {
-    @include theme-colors(#dd823b);
-  }
+.admin-color-midnight {
+	@include theme-colors(#e14d43);
+}
+
+.admin-color-ectoplasm {
+	@include theme-colors(#a3b745);
+}
+
+.admin-color-blue {
+	@include theme-colors(#e1a948);
+}
+
+.admin-color-ocean {
+	@include theme-colors(#9ebaa0);
+}
+
+.admin-color-coffee {
+	@include theme-colors(#c7a589);
+}
+
+.admin-color-sunrise {
+	@include theme-colors(#dd823b);
+}

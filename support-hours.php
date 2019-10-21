@@ -16,7 +16,7 @@
  * Plugin Name:       Support Hours
  * Plugin URI:        http://basedonline.nl
  * Description:       Use Support hours to give yourself and your clients insights on the status of pre-paid work.
- * Version:           1.5.6
+ * Version:           1.5.7
  * Author:            Erik van der Bas
  * Author URI:        https://basedonline.nl
  * License:           GPL-2.0+
@@ -26,7 +26,7 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (!defined('WPINC')) {
 	die;
 }
 
@@ -34,21 +34,23 @@ if ( ! defined( 'WPINC' ) ) {
  * The code that runs during plugin activation.
  * This action is documented in includes/class-support-hours-activator.php
  */
-function activate_support_hours() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-support-hours-activator.php';
+function activate_support_hours()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-support-hours-activator.php';
 	Support_Hours_Activator::activate();
 }
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-support-hours-deactivator.php
  */
-function deactivate_support_hours() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-support-hours-deactivator.php';
+function deactivate_support_hours()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-support-hours-deactivator.php';
 	Support_Hours_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_support_hours' );
-register_deactivation_hook( __FILE__, 'deactivate_support_hours' );
+register_activation_hook(__FILE__, 'activate_support_hours');
+register_deactivation_hook(__FILE__, 'deactivate_support_hours');
 
 
 
@@ -56,7 +58,7 @@ register_deactivation_hook( __FILE__, 'deactivate_support_hours' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-support-hours.php';
+require plugin_dir_path(__FILE__) . 'includes/class-support-hours.php';
 
 /**
  * Begins execution of the plugin.
@@ -67,7 +69,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-support-hours.php';
  *
  * @since    1.0.0
  */
-function run_support_hours() {
+function run_support_hours()
+{
 
 	$plugin = new Support_Hours();
 	$plugin->run();

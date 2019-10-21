@@ -2,8 +2,8 @@
 Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
-Tested up to: 5.1.1
-Stable tag: 1.5.6
+Tested up to: 5.3
+Stable tag: 1.5.7
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,11 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 1.5.7 =
+* Checked against WorPress 5.3
+* Minor fixes
+* Prepairing for further development
 
 = 1.5.6 =
 * Fixed another issue where the plugins Javascript would interfere with Divi theme.
