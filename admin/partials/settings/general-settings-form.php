@@ -5,7 +5,7 @@
   foreach ($WPusers as $user) {
     ?>
     <label for="<?php echo $name; ?>[users<?php echo $user->ID; ?>]">
-      <input type="checkbox" name="<?php echo $name; ?>[users][]" id="<?php echo $name; ?>[users<?php echo $user->ID; ?>]" class="filled-in" value="<?php echo $user->ID; ?>" <?php if (!empty($users)) { } ?> />
+      <input type="checkbox" name="<?php echo $name; ?>[users][]" id="<?php echo $name; ?>[users<?php echo $user->ID; ?>]" class="filled-in" value="<?php echo $user->ID; ?>" <?php if (!empty($users)) { checked((in_array( $user->ID, $users))); } ?> />
       <span><?php echo $user->display_name; ?></span>
     </label><br />
   <?php } ?>
