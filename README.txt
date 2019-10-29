@@ -47,7 +47,7 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 == Changelog ==
 
 = 1.5.7 =
-* Checked against WorPress 5.3
+* Checked against WordPress 5.3
 * Minor fixes
 * Prepairing for further development
 
