@@ -20,10 +20,7 @@
       </thead>
       <tbody>
         <?php
-          $widget_fields = $workFields;
-          if ($pagenow == 'index.php') :
-            $widget_fields = array_slice($workFields, -5);
-          endif;
+          $widget_fields = array_slice($workFields, -5);
           foreach ($widget_fields as $field) { ?>
           <tr>
             <td><?php if (!empty($field['used'])) echo $field['date'] ?></td>

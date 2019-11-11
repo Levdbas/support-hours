@@ -15,8 +15,8 @@ $user_ID = get_current_user_id();
 $i = 0;
 global $pagenow;
 if (!empty($users) && !empty($email) && !empty($workFields[0]['date'])) :
-  include_once('partials/widgets/widget-clock.php');
-  include_once('partials/common/worktable.php');
+  include_once('partials/widget/widget-clock.php');
+  include_once('partials/widget/worktable.php');
   include_once('partials/common/bottom-message.php');
 elseif (empty($users) || empty($email)) :
   include_once('partials/common/notice-configure.php');
