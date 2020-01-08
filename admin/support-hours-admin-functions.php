@@ -250,3 +250,18 @@ function font_size($used_minutes, $bought_minutes)
 
   return $size;
 }
+
+
+function sh_get_notice($message, $notice_class = 'notice-alt')
+{
+  $notice = '';
+  $notice .=  '<div class="warning-message notice support-hours-notice inline notice-warning ' . $notice_class . '">';
+  $notice .= '<p>' . $message . '</p>';
+  $notice .= '</div>';
+
+  return $notice;
+}
+function sh_the_notice($message, $notice_class = 'notice-alt')
+{
+  echo sh_get_notice($message, $notice_class);
+}
