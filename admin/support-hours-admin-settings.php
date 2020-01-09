@@ -24,11 +24,11 @@ $i = 0;
 
     <form method="post" name="cleanup_options" action="options.php" class="support-hours-settings shs">
       <?php
-        settings_fields($name);
-        do_settings_sections($name);
-        include_once('partials/settings/general-settings-form.php');
-        include_once('partials/settings/work-table-form.php');
-        ?>
+      settings_fields($name);
+      do_settings_sections($name);
+      include_once('partials/settings/general-settings-form.php');
+      include_once('partials/settings/work-table-form.php');
+      ?>
     </form>
   <?php } else { ?>
     <h3>

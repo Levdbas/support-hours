@@ -23,7 +23,7 @@ global $pagenow;
     $i = 0;
 
     if (!empty($workFields[0]['date'])) :
-      ?>
+  ?>
       <table class="wp-list-table widefat fixed striped users">
         <thead>
           <tr>
@@ -36,11 +36,11 @@ global $pagenow;
         <tbody id="the-list" data-wp-lists="list:user">
 
           <?php
-              $widget_fields = $workFields;
-              if ($pagenow == 'index.php') :
-                $widget_fields = array_slice($workFields, -5);
-              endif;
-              foreach ($widget_fields as $field) { ?>
+          $widget_fields = $workFields;
+          if ($pagenow == 'index.php') :
+            $widget_fields = array_slice($workFields, -5);
+          endif;
+          foreach ($widget_fields as $field) { ?>
             <tr>
               <td><?php if (!empty($field['used'])) echo $field['date'] ?></td>
               <td>
