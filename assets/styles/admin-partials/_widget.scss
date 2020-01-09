@@ -1,147 +1,176 @@
 @keyframes circleAnim {
+    0% {
+        opacity: 0;
+    }
 
-	0% { opacity: 0; }
-
-	100% { opacity: 1; }
+    100% {
+        opacity: 1;
+    }
 }
 
 #support_hours_dashboard_widget {
-
-	h3 {
-		margin: 1.33em 0 0;
-		font-size: 16px;
-		font-weight: 700;
-	}
-}
-
-.progress-bar__background,
-.progress-bar__left {
-	background-color: $background-color;
-}
-
-.progress-bar__rotate,
-.progress-bar__right {
-	background-color: $progress-color;
-}
-
-.progress-bar__left {
-	opacity: 1;
-}
-
-.progress-bar__right {
-	opacity: 0;
-	transform: rotate(180deg);
+    h3 {
+        margin: 1.33em 0 0;
+        font-size: 16px;
+        font-weight: 700;
+    }
 }
 
 .progress-bar {
-	position: relative;
-	width: 100%;
-	padding-bottom: 100%;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
 
-	.innerCicle {
-		position: absolute;
-		z-index: 12;
-		width: 90%;
-		height: 90%;
-		margin: 5%;
-		background: white;
-		border-radius: 50%;
-		transition: all 0.2s ease-in;
+    .innerCicle {
+        position: absolute;
+        z-index: 12;
+        width: 90%;
+        height: 90%;
+        margin: 5%;
+        background: white;
+        border-radius: 50%;
+        transition: all 0.2s ease-in;
 
-		.textHolder {
-			position: relative;
-			top: 50%;
-			display: block;
+        .textHolder {
+            position: relative;
+            top: 50%;
+            display: block;
 
-			.text {
-				position: absolute;
-				display: block;
-				width: 100%;
-				margin-top: -50px;
-				font-size: 35px;
-				font-weight: 700;
-				line-height: 50px;
-				color: $background-color;
-				text-align: center;
-				transition: all 0.2s ease-in;
+            .text {
+                position: absolute;
+                display: block;
+                width: 100%;
+                margin-top: -50px;
+                font-size: 35px;
+                font-weight: 700;
+                line-height: 50px;
+                color: $background-color;
+                text-align: center;
+                transition: all 0.2s ease-in;
 
-				&.small {
-					margin-top: -50px;
-					font-size: 30px;
-					line-height: 50px;
-				}
-			}
-		}
+                &.small {
+                    margin-top: -50px;
+                    font-size: 30px;
+                    line-height: 50px;
+                }
+            }
+        }
 
-		&:hover {
-			width: 94%;
-			height: 94%;
-			margin: 3%;
+        &:hover {
+            width: 94%;
+            height: 94%;
+            margin: 3%;
 
-			.text {
-				font-size: 45px;
-				color: $progress-color;
+            .text {
+                font-size: 45px;
+                color: $progress-color;
 
-				&.small {
-					font-size: 35px;
-				}
-			}
-		}
-	}
+                &.small {
+                    font-size: 35px;
+                }
+            }
+        }
+    }
 
-	div {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
-	}
+    div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
 }
 
 .bigbr {
-	display: none;
+    display: none;
 }
 
 .text.big {
+    .smallbr {
+        display: none;
+    }
 
-	.smallbr {
-		display: none;
-	}
-
-	.bigbr {
-		display: block;
-	}
+    .bigbr {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 870px) {
+    .smallbr {
+        display: none;
+    }
 
-	.smallbr {
-		display: none;
-	}
+    .bigbr {
+        display: block;
+    }
 
-	.bigbr {
-		display: block;
-	}
+    .text {
+        margin-top: -40px;
+        font-size: 30px;
+        line-height: 40px;
+    }
 
-
-	.text {
-		margin-top: -40px;
-		font-size: 30px;
-		line-height: 40px;
-	}
-
-	.progress-bar:hover .text {
-		font-size: 40px;
-	}
+    .progress-bar:hover .text {
+        font-size: 40px;
+    }
 }
 
 @media screen and (max-width: 800px) {
-
-	.progress-bar {
-		max-width: none;
-		max-height: none;
-	}
+    .progress-bar {
+        max-width: none;
+        max-height: none;
+    }
 }
 
-.totalrandomthing {
-	animation: a;
+// ==========================================================================
+// Test
+// ==========================================================================
+
+@keyframes load-gauge {
+    from {
+        stroke-dasharray: 0 352;
+    }
+}
+
+.sh-gauge {
+    position: relative;
+    &__base {
+        opacity: 1;
+        stroke: $background-color;
+        stroke-width: 7px;
+        fill: none;
+    }
+    &__arc {
+        fill: none;
+        stroke: $progress-color;
+        stroke-width: 7px;
+        animation: load-gauge 2s ease forwards;
+        animation-delay: 250ms;
+    }
+    &__percentage {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        line-height: 0;
+        text-align: center;
+        top: 0;
+    }
+    &__text {
+        position: absolute;
+        display: block;
+        width: 100%;
+        align-self: center;
+        font-size: 35px;
+        font-weight: 700;
+        line-height: 50px;
+        color: $background-color;
+        text-align: center;
+        transition: all 0.2s ease-in;
+
+        &--small {
+            margin-top: -50px;
+            font-size: 30px;
+            line-height: 50px;
+        }
+    }
 }

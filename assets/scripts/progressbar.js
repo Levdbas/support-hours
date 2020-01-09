@@ -1,42 +1,18 @@
 function progressBar() {
-    function clipSizer() {
-        var circleWidth = $('.progress-bar').width();
-        var halfCircleWidth = Math.round(circleWidth / 2);
-        $('.progress-bar__left, .progress-bar__right, .progress-bar__rotate').css({
-            clip: 'rect(0px, ' + halfCircleWidth + 'px, auto, 0px)',
-        });
-    }
-
     $('.progress-bar').each(function() {
-        var $target = $(this);
-        var opts = {
-            percent: $target.data('percent'),
-            duration: 2000,
-        };
+        var target = $(this);
 
-        clipSizer();
-        $(window).resize(function() {
-            clipSizer();
-        });
+        // Cast `null` to 0
+        const numericScore = Number(target.data('percent'));
+        const gaugeArc = $('.sh-gauge__arc');
+        // 352 is ~= 2 * Math.PI * gauge radius (56)
+        // https://codepen.io/xgad/post/svg-radial-progress-meters
+        // score of 50: `stroke-dasharray: 176 352`;
+        /** @type {?SVGCircleElement} */
 
-        var $rotate = $target.find('.progress-bar__rotate');
-        setTimeout(function() {
-            $rotate.css({
-                transition: 'transform ' + opts.duration + 'ms linear',
-                transform: 'rotate(' + Math.round(opts.percent * 3.6) + 'deg)',
-            });
-        }, 1);
-
-        if (opts.percent > 50) {
-            var animationRight = 'circleAnim ' + (opts.duration / opts.percent) * 50 + 'ms step-end';
-            var animationLeft = 'circleAnim ' + (opts.duration / opts.percent) * 50 + 'ms step-start';
-            $target.find('.progress-bar__right').css({
-                animation: animationRight,
-                opacity: 1,
-            });
-            $target.find('.progress-bar__left').css({
-                animation: animationLeft,
-                opacity: 0,
+        if (gaugeArc) {
+            $(gaugeArc).css({
+                strokeDasharray: `${(numericScore * 352) / 100} 352`,
             });
         }
     });
