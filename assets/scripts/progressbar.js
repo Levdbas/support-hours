@@ -11,8 +11,9 @@ function progressBar() {
         /** @type {?SVGCircleElement} */
 
         if (gaugeArc) {
+            var cssDash = (numericScore * 352) / 100;
             $(gaugeArc).css({
-                strokeDasharray: `${(numericScore * 352) / 100} 352`,
+                strokeDasharray: cssDash + ' 352',
             });
         }
     });

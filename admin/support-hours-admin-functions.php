@@ -248,7 +248,7 @@ function font_size($used_minutes, $bought_minutes)
     $size = 'big';
   endif;
 
-  return $size;
+  return 'sh-gauge__text--' . $size;
 }
 
 

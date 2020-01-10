@@ -21,9 +21,10 @@
   <a href="#performance" class="sh-gauge__wrapper sh-gauge__wrapper--average">
     <!-- Wrapper exists for the ::before plugin icon. Cannot create pseudo-elements on svgs. -->
     <div class="sh-gauge__svg-wrapper">
-      <svg viewBox="0 0 120 120" class="sh-gauge">
+      <svg viewBox="0 0 120 120" class="sh-gauge__svg">
         <circle class="sh-gauge__base" r="56" cx="60" cy="60"></circle>
-        <circle class="sh-gauge__arc" transform="rotate(-90 60 60)" r="56" cx="60" cy="60" style="stroke-dasharray: 306.24px, 352px;"></circle>
+        <circle class="sh-gauge__arc" stroke="#d2d3d4" transform="rotate(-90 60 60)" r="56" cx="60" cy="60"></circle>
+        <line class="sh-gauge__overlay" x1="60" y1="60" x2="60" y2="60"></line>
       </svg>
     </div>
     <div class="sh-gauge__percentage">

@@ -1,13 +1,3 @@
-@keyframes circleAnim {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
 #support_hours_dashboard_widget {
     h3 {
         margin: 1.33em 0 0;
@@ -15,121 +5,9 @@
         font-weight: 700;
     }
 }
-
-.progress-bar {
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%;
-
-    .innerCicle {
-        position: absolute;
-        z-index: 12;
-        width: 90%;
-        height: 90%;
-        margin: 5%;
-        background: white;
-        border-radius: 50%;
-        transition: all 0.2s ease-in;
-
-        .textHolder {
-            position: relative;
-            top: 50%;
-            display: block;
-
-            .text {
-                position: absolute;
-                display: block;
-                width: 100%;
-                margin-top: -50px;
-                font-size: 35px;
-                font-weight: 700;
-                line-height: 50px;
-                color: $background-color;
-                text-align: center;
-                transition: all 0.2s ease-in;
-
-                &.small {
-                    margin-top: -50px;
-                    font-size: 30px;
-                    line-height: 50px;
-                }
-            }
-        }
-
-        &:hover {
-            width: 94%;
-            height: 94%;
-            margin: 3%;
-
-            .text {
-                font-size: 45px;
-                color: $progress-color;
-
-                &.small {
-                    font-size: 35px;
-                }
-            }
-        }
-    }
-
-    div {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-    }
-}
-
-.bigbr {
-    display: none;
-}
-
-.text.big {
-    .smallbr {
-        display: none;
-    }
-
-    .bigbr {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 870px) {
-    .smallbr {
-        display: none;
-    }
-
-    .bigbr {
-        display: block;
-    }
-
-    .text {
-        margin-top: -40px;
-        font-size: 30px;
-        line-height: 40px;
-    }
-
-    .progress-bar:hover .text {
-        font-size: 40px;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .progress-bar {
-        max-width: none;
-        max-height: none;
-    }
-}
-
 // ==========================================================================
-// Test
+// The new widget
 // ==========================================================================
-
-@keyframes load-gauge {
-    from {
-        stroke-dasharray: 0 352;
-    }
-}
 
 .sh-gauge {
     position: relative;
@@ -139,12 +17,30 @@
         stroke-width: 7px;
         fill: none;
     }
+    &__svg-wrapper {
+        position: relative;
+        padding-bottom: 100%;
+    }
+    &__svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
     &__arc {
         fill: none;
         stroke: $progress-color;
         stroke-width: 7px;
-        animation: load-gauge 2s ease forwards;
-        animation-delay: 250ms;
+        transition: stroke-dasharray 1.5s ease-in-out 0.25s;
+        stroke-dasharray: 0px, 352px;
+        box-shadow: 2px 2px 2px black;
+    }
+    &__overlay {
+        stroke-width: 105;
+        stroke-linecap: round;
+        stroke: white;
+        transition: stroke-width 0.2s ease-in;
     }
     &__percentage {
         width: 100%;
@@ -156,21 +52,62 @@
         top: 0;
     }
     &__text {
-        position: absolute;
+        //position: absolute;
         display: block;
         width: 100%;
         align-self: center;
-        font-size: 35px;
+        font-size: 30px;
         font-weight: 700;
-        line-height: 50px;
+        line-height: 1.2;
         color: $background-color;
         text-align: center;
         transition: all 0.2s ease-in;
 
+        @media screen and (min-width: 870px) {
+            font-size: 35px;
+        }
+        .smallbr {
+            display: none;
+            @media screen and (min-width: 870px) {
+                display: block;
+            }
+        }
+        .bigbr {
+            display: block;
+            @media screen and (min-width: 870px) {
+                display: none;
+            }
+        }
+
+        &--big {
+            .smallbr {
+                display: none;
+            }
+
+            .bigbr {
+                display: block;
+            }
+        }
+    }
+}
+
+// ==========================================================================
+// Hover
+// ==========================================================================
+.sh-gauge:hover {
+    .sh-gauge__overlay {
+        stroke-width: 110;
+    }
+    .sh-gauge__text {
+        font-size: 35px;
+        color: $progress-color;
+
+        @media screen and (min-width: 870px) {
+            font-size: 45px;
+        }
+
         &--small {
-            margin-top: -50px;
-            font-size: 30px;
-            line-height: 50px;
+            font-size: 35px;
         }
     }
 }
