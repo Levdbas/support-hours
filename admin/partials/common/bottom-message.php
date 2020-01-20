@@ -22,10 +22,10 @@ if ($pagenow == 'index.php') :
 
   if ($percentage == 100) {
     $message = __('your Support Hours are used.', $this->plugin_name);
-    sh_the_notice($welcome . $message);
+    sh_the_notice($welcome . $message, 'notice-error');
   } elseif ($percentage >= 80) {
     $message = __('your Support Hours are almost used.', $this->plugin_name);
-    sh_the_notice($welcome . $message);
+    sh_the_notice($welcome . $message, 'notice-warning');
   } else {
     $message = __('you have plenty of hours left.', $this->plugin_name);
     sh_the_notice($welcome . $message, 'notice-success');

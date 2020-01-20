@@ -255,7 +255,7 @@ function font_size($used_minutes, $bought_minutes)
 function sh_get_notice($message, $notice_class = 'notice-alt')
 {
   $notice = '';
-  $notice .=  '<div class="warning-message notice support-hours-notice inline notice-warning ' . $notice_class . '">';
+  $notice .=  '<div class="warning-message notice support-hours-notice inline ' . $notice_class . '">';
   $notice .= '<p>' . $message . '</p>';
   $notice .= '</div>';
 
