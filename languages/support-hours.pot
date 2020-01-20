@@ -8,7 +8,7 @@ msgstr ""
 "WordPress Blank Pot "
 "v1.0.0\n"
 "POT-Creation-Date: "
-"2017-10-31 10:10+0100\n"
+"2020-01-20 12:10+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your "
 "Name <you@example.com>\n"
@@ -44,211 +44,210 @@ msgstr ""
 "__ngettext:1,2;"
 "__ngettext_noop:1,2;_c,"
 "_nc:4c,1,2\n"
-"X-Poedit-Basepath: ..\n"
+"X-Poedit-Basepath: ../"
+"admin\n"
 "Language: en_US\n"
 "X-Generator: Poedit "
-"2.0.4\n"
+"2.2.4\n"
 "X-Poedit-"
 "SearchPath-0: .\n"
 "X-Poedit-"
-"SearchPath-1: .\n"
+"SearchPathExcluded-0: ../"
+"node_modules\n"
 
-#: admin/class-support-hours-admin.php:115
-#: admin/class-support-hours-admin.php:124
+#: class-support-hours-admin.php:94
+#: class-support-hours-admin.php:103
 msgid ""
 "Support Hours overview"
 msgstr ""
 
-#: admin/class-support-hours-admin.php:116
-#: admin/class-support-hours-admin.php:189
+#: class-support-hours-admin.php:95
+#: class-support-hours-admin.php:182
 msgid "Support Hours"
 msgstr ""
 
-#: admin/class-support-hours-admin.php:125
+#: class-support-hours-admin.php:104
 msgid "Overview"
 msgstr ""
 
-#: admin/class-support-hours-admin.php:132
+#: class-support-hours-admin.php:111
 msgid ""
 "Support Hours settings"
 msgstr ""
 
-#: admin/class-support-hours-admin.php:133
-#: admin/class-support-hours-admin.php:150
+#: class-support-hours-admin.php:112
+#: class-support-hours-admin.php:129
 msgid "Settings"
 msgstr ""
 
-#: admin/partials/support-hours-admin-settings-textFields.php:2
+#: partials/common/bottom-message.php:6
+msgid "Add new activity"
+msgstr ""
+
+#: partials/common/bottom-message.php:8
+msgid "View all activities"
+msgstr ""
+
+#: partials/common/bottom-message.php:13
+msgid ""
+"No activities added yet."
+msgstr ""
+
+#: partials/common/bottom-message.php:16
+msgid "Add first activity"
+msgstr ""
+
+#: partials/common/bottom-message.php:21
+msgid "Hi"
+msgstr ""
+
+#: partials/common/bottom-message.php:24
+msgid ""
+"your Support Hours are "
+"used."
+msgstr ""
+
+#: partials/common/bottom-message.php:27
+msgid ""
+"your Support Hours are "
+"almost used."
+msgstr ""
+
+#: partials/common/bottom-message.php:30
+msgid ""
+"you have plenty of hours "
+"left."
+msgstr ""
+
+#: partials/common/bottom-message.php:33
+#: partials/common/notice-no-hours.php:5
+#: partials/common/notice-no-hours.php:6
+msgid "Order Support Hours"
+msgstr ""
+
+#: partials/common/notice-configure.php:2
+msgid ""
+"Support Hours is not "
+"configured."
+msgstr ""
+
+#: partials/common/notice-configure.php:8
+msgid "Configure plugin!"
+msgstr ""
+
+#: partials/common/notice-no-hours.php:2
+msgid ""
+"No Support Hours bought "
+"yet."
+msgstr ""
+
+#: partials/settings/general-settings-form.php:2
 msgid ""
 "Select Support Hours "
 "managers"
 msgstr ""
 
-#: admin/partials/support-hours-admin-settings-textFields.php:3
+#: partials/settings/general-settings-form.php:14
+#: partials/settings/general-settings-form.php:16
 msgid ""
-"Select Support-Hour "
-"manager. Warning!  If "
-"you do not set yourself "
-"as a Support Hours "
-"manager, you will loose "
-"access to this page "
-"until the plugin is "
-"disabled and enabled."
-msgstr ""
-
-#: admin/partials/support-hours-admin-settings-textFields.php:8
-msgid ""
-"Warning! If you do not "
-"set yourself as a "
-"Support Hours manager, "
-"you will loose access to "
-"this page until the "
-"plugin is disabled and "
-"enabled."
-msgstr ""
-
-#: admin/partials/support-hours-admin-settings-textFields.php:11
-#: admin/partials/support-hours-admin-settings-textFields.php:12
-msgid ""
-"E-Mail adress main "
+"E-mail address main "
 "Support Hours manager"
 msgstr ""
 
-#: admin/partials/support-hours-admin-settings-textFields.php:16
-#: admin/partials/support-hours-admin-settings-textFields.php:17
-msgid ""
-"Amount of bought Support "
-"Hours"
+#: partials/settings/general-settings-form.php:20
+msgid "E-mail"
 msgstr ""
 
-#: admin/partials/support-hours-admin-settings-textFields.php:19
-msgid ""
-"Please enter a valid time"
-msgstr ""
-
-#: admin/partials/support-hours-admin-settings-workTable.php:8
-#: admin/partials/support-hours-admin-settings-workTable.php:23
-#: admin/partials/support-hours-admin-settings-workTable.php:46
-#: admin/partials/support-hours-admin-widget-hourTable.php:6
-#: admin/partials/support-hours-admin-widget-workTable.php:7
-msgid "Date"
-msgstr ""
-
-#: admin/partials/support-hours-admin-settings-workTable.php:9
-#: admin/partials/support-hours-admin-settings-workTable.php:28
-#: admin/partials/support-hours-admin-settings-workTable.php:51
-#: admin/partials/support-hours-admin-widget-hourTable.php:7
-#: admin/partials/support-hours-admin-widget-workTable.php:8
-msgid "Description"
-msgstr ""
-
-#: admin/partials/support-hours-admin-settings-workTable.php:10
-#: admin/partials/support-hours-admin-settings-workTable.php:32
-#: admin/partials/support-hours-admin-settings-workTable.php:55
-#: admin/partials/support-hours-admin-widget-hourTable.php:8
-#: admin/partials/support-hours-admin-widget-workTable.php:9
+#: partials/settings/work-table-fields.php:8
 msgid "Time used"
 msgstr ""
 
-#: admin/partials/support-hours-admin-settings-workTable.php:25
-#: admin/partials/support-hours-admin-settings-workTable.php:48
-msgid "Today"
+#: partials/settings/work-table-fields.php:14
+msgid "Time added"
 msgstr ""
 
-#: admin/partials/support-hours-admin-settings-workTable.php:29
-#: admin/partials/support-hours-admin-settings-workTable.php:52
+#: partials/settings/work-table-fields.php:19
+#: partials/settings/work-table-form.php:9
+#: partials/widget/worktable.php:16
+#: support-hours-admin-overview.php:30
+#: support-hours-admin-overview.php:59
+msgid "Date"
+msgstr ""
+
+#: partials/settings/work-table-fields.php:23
+#: partials/settings/work-table-form.php:10
+#: partials/widget/worktable.php:17
+#: support-hours-admin-overview.php:31
+#: support-hours-admin-overview.php:60
+msgid "Time"
+msgstr ""
+
+#: partials/settings/work-table-fields.php:27
+#: partials/settings/work-table-form.php:11
+#: partials/widget/worktable.php:18
+#: support-hours-admin-overview.php:32
+#: support-hours-admin-overview.php:61
+msgid "Description"
+msgstr ""
+
+#: partials/settings/work-table-fields.php:28
 msgid ""
 "Description of the "
 "activity"
 msgstr ""
 
-#: admin/partials/support-hours-admin-settings-workTable.php:64
+#: partials/settings/work-table-form.php:8
+msgid "Type"
+msgstr ""
+
+#: partials/settings/work-table-form.php:31
+msgid ""
+"Activities will be "
+"sorted by date on save"
+msgstr ""
+
+#: partials/settings/work-table-form.php:33
 msgid "Add activity"
 msgstr ""
 
-#: admin/partials/support-hours-admin-settings-workTable.php:64
-msgid "Save all changes"
+#: partials/settings/work-table-form.php:35
+msgid "Save"
 msgstr ""
 
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:3
-#: admin/partials/support-hours-admin-widget-hourTable.php:30
-msgid "Add new activity"
-msgstr ""
-
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:6
-#: admin/partials/support-hours-admin-widget-hourTable.php:33
-msgid ""
-"View all acitivities"
-msgstr ""
-
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:11
-#: admin/partials/support-hours-admin-widget-hourTable.php:37
-msgid "Add first acitivity"
-msgstr ""
-
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:17
-msgid "Support hours used."
-msgstr ""
-
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:19
-msgid ""
-"Support hours almost used"
-msgstr ""
-
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:21
-msgid ""
-"Need more support hours"
-msgstr ""
-
-#: admin/partials/support-hours-admin-widget-bottomMessage.php:23
-#: admin/support-hours-admin-widget.php:43
-msgid "Contact me via"
-msgstr ""
-
-#: admin/partials/support-hours-admin-widget-clock.php:15
+#: partials/widget/widget-clock.php:15
 msgid "hours"
 msgstr ""
 
-#: admin/partials/support-hours-admin-widget-clock.php:19
+#: partials/widget/widget-clock.php:17
 msgid "used"
 msgstr ""
 
-#: admin/partials/support-hours-admin-widget-hourTable.php:2
-#: admin/partials/support-hours-admin-widget-workTable.php:2
-msgid "Activities"
+#: partials/widget/worktable.php:6
+msgid ""
+"Last five activities:"
 msgstr ""
 
-#: admin/partials/support-hours-admin-widget-hourTable.php:35
-#: admin/partials/support-hours-admin-widget-workTable.php:31
+#: partials/widget/worktable.php:8
+msgid "Activities:"
+msgstr ""
+
+#: partials/widget/worktable.php:39
+#: support-hours-admin-overview.php:68
 msgid "Total"
 msgstr ""
 
-#: admin/support-hours-admin-overview.php:28
-#: admin/support-hours-admin-widget.php:33
-msgid "Configure plugin!"
+#: support-hours-admin-overview.php:18
+msgid ""
+"A complete overview of "
+"all activities."
 msgstr ""
 
-#: admin/support-hours-admin-settings.php:35
+#: support-hours-admin-settings.php:35
 msgid ""
 "You do not have access "
 "to this page because you "
 "are not a Support Hours "
 "manager. Please disable "
-"and enable this plugin "
-"if you need access again."
-msgstr ""
-
-#: admin/support-hours-admin-widget.php:40
-msgid ""
-"No support Hours bought"
-msgstr ""
-
-#: includes/class-support-hours-activator.php:36
-msgid ""
-"Support Hours uses a new "
-"system to store hours. "
-"Do not forget to input "
-"the old hours into the "
-"new system. Amount of "
-"old hours need to be set:"
+"and enable the plugin to "
+"reset user access."
 msgstr ""
