@@ -46,6 +46,9 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 == Changelog ==
 
+= 1.6.1 =
+* Use correct colors in notices.
+
 = 1.6.0 =
 * Updated widget to use circle svg instead of overlapping divs. Widget animation should now be a lot smoother.
 * Notices in plugin now use an uniform function.
