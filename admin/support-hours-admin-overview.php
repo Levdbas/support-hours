@@ -63,7 +63,7 @@ global $pagenow;
         </tfoot>
       </table>
 
-      <div class="tablenav bottom">
+      <div class="tablenav sh-tablenav bottom">
         <div class="total">
           <span class="bold"><?php _e('Total', $this->plugin_name); ?></span>:
           <?php echo AddTime($workFields, 'time-used'); ?> / <?php echo AddTime($workFields, 'time-added'); ?>

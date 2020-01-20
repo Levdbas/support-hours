@@ -11,6 +11,12 @@
 
 .sh-gauge {
     position: relative;
+    &__wrapper {
+        &:focus {
+            box-shadow: none;
+            outline: none;
+        }
+    }
     &__base {
         opacity: 1;
         stroke: $background-color;
