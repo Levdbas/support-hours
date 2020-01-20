@@ -1,6 +1,5 @@
 function progressBar() {
     $('.sh-gauge').each(function() {
-        console.log('test');
         var target = $(this);
 
         // Cast `null` to 0
