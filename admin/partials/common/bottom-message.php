@@ -4,7 +4,7 @@ if (!empty($users) && in_array($user_ID, $users) && !empty($workFields[0]['date'
   <div class="support-hours-notices">
 
     <a class="button button-primary" href="<?php echo admin_url('admin.php?page=support-hours-settings'); ?>"><?php _e('Add new activity', $this->plugin_name); ?></a>
-    <?php if ($i >= 5 && current_user_can('publish_pages')) : ?>
+    <?php if (count($workFields) >= 5 && current_user_can('publish_pages') && $pagenow == 'index.php') : ?>
       <a class="button button-secondary" href="<?php echo admin_url('admin.php?page=support-hours'); ?>"><?php _e('View all activities', $this->plugin_name); ?></a>
     <?php endif; ?>
 

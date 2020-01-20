@@ -61,7 +61,7 @@
         line-height: 1.2;
         color: $background-color;
         text-align: center;
-        transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in-out;
 
         @media screen and (min-width: 870px) {
             font-size: 35px;
@@ -108,6 +108,10 @@
 
         &--small {
             font-size: 35px;
+
+            @media screen and (min-width: 870px) {
+                font-size: 40px;
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 <div class="sh-gauge" role="heading" aria-level="2" data-percent="<?php echo percentage($workFields, $used_minutes, $bought_minutes); ?>">
-  <a href="#performance" class="sh-gauge__wrapper sh-gauge__wrapper--average">
+  <a href="<?php echo admin_url('admin.php?page=support-hours'); ?>" class="sh-gauge__wrapper sh-gauge__wrapper--average">
     <!-- Wrapper exists for the ::before plugin icon. Cannot create pseudo-elements on svgs. -->
     <div class="sh-gauge__svg-wrapper">
       <svg viewBox="0 0 120 120" class="sh-gauge__svg">
