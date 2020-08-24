@@ -1,10 +1,10 @@
 #! /bin/bash
-dev="/mnt/d/MAMP/htdocs/testenviroment.local/wp-content/plugins/support-hours"
-trunk="/mnt/d/MAMP/htdocs/anders/support-hours/trunk"
-release="/mnt/d/MAMP/htdocs/anders/support-hours"
+dev="/mnt/d/laragon/www/testenvironment.local/web/app/plugins/support-hours"
+trunk="/mnt/d/laragon/www/anders/support-hours/trunk"
+release="/mnt/d/laragon/www/anders/support-hours"
 read -p 'Release number:' releasenumber
 
-rm -r $release/trunk/*
+rm -r $trunk/*
 
 cp -R $dev/admin/ $trunk/admin/
 cp -R $dev/includes/ $trunk/includes/
