@@ -2,8 +2,8 @@
 Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
-Tested up to: 5.5
-Stable tag: 1.6.2
+Tested up to: 5.6
+Stable tag: 1.6.3
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,11 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 1.6.3 =
+* Compatibility check with new WP version
+* Compatibility check with PHP 8
+* Code cleanup
 
 = 1.6.2 =
 * Compatibility check with new WP version
