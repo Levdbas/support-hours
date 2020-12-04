@@ -27,7 +27,8 @@
  * @subpackage Support_Hours/includes
  * @author     Erik van der Bas <erik@basedonline.nl>
  */
-class Support_Hours {
+class Support_Hours
+{
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -66,7 +67,8 @@ class Support_Hours {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 
 		$this->plugin_name = 'support-hours';
 		$this->version = '1.0.0';
@@ -74,7 +76,6 @@ class Support_Hours {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
-
 	}
 
 	/**
@@ -93,24 +94,25 @@ class Support_Hours {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function load_dependencies()
+	{
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-support-hours-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-support-hours-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-support-hours-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-support-hours-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-support-hours-admin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-support-hours-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -118,7 +120,6 @@ class Support_Hours {
 		 */
 
 		$this->loader = new Support_Hours_Loader();
-
 	}
 
 	/**
@@ -130,12 +131,12 @@ class Support_Hours {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function set_locale() {
+	private function set_locale()
+	{
 
 		$plugin_i18n = new Support_Hours_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 	}
 
 	/**
@@ -145,20 +146,20 @@ class Support_Hours {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks() {
-		$plugin_admin = new Support_Hours_Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+	private function define_admin_hooks()
+	{
+		$plugin_admin = new Support_Hours_Admin($this->get_plugin_name(), $this->get_version());
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 		// Add menu item
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_menu' );
+		$this->loader->add_action('admin_menu', $plugin_admin, 'add_plugin_admin_menu');
 		// Add Settings link to the plugin
-		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
-		$this->loader->add_filter( 'plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links' );
+		$plugin_basename = plugin_basename(plugin_dir_path(__DIR__) . $this->plugin_name . '.php');
+		$this->loader->add_filter('plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links');
 		$this->loader->add_action('admin_init', $plugin_admin, 'options_update');
 
 		// load widget hook from class-support-hours-admin.php
-		$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'support_hours_add_dashboard_widgets' );
-
+		$this->loader->add_action('wp_dashboard_setup', $plugin_admin, 'support_hours_add_dashboard_widgets');
 	}
 
 	/**
@@ -166,7 +167,8 @@ class Support_Hours {
 	 *
 	 * @since    1.0.0
 	 */
-	public function run() {
+	public function run()
+	{
 		$this->loader->run();
 	}
 
@@ -177,7 +179,8 @@ class Support_Hours {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_plugin_name() {
+	public function get_plugin_name()
+	{
 		return $this->plugin_name;
 	}
 
@@ -187,7 +190,8 @@ class Support_Hours {
 	 * @since     1.0.0
 	 * @return    Support_Hours_Loader    Orchestrates the hooks of the plugin.
 	 */
-	public function get_loader() {
+	public function get_loader()
+	{
 		return $this->loader;
 	}
 
@@ -197,8 +201,8 @@ class Support_Hours {
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
-	public function get_version() {
+	public function get_version()
+	{
 		return $this->version;
 	}
-
 }

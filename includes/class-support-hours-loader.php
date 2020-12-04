@@ -21,7 +21,8 @@
  * @subpackage Support_Hours/includes
  * @author     Erik van der Bas <erik@basedonline.nl>
  */
-class Support_Hours_Loader {
+class Support_Hours_Loader
+{
 	/**
 	 * The array of actions registered with WordPress.
 	 *
@@ -45,11 +46,11 @@ class Support_Hours_Loader {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 
 		$this->actions = array();
 		$this->filters = array();
-
 	}
 
 	/**
@@ -62,8 +63,9 @@ class Support_Hours_Loader {
 	 * @param    int                  $priority         Optional. he priority at which the function should be fired. Default is 10.
 	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
 	 */
-	public function add_action( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
-		$this->actions = $this->add( $this->actions, $hook, $component, $callback, $priority, $accepted_args );
+	public function add_action($hook, $component, $callback, $priority = 10, $accepted_args = 1)
+	{
+		$this->actions = $this->add($this->actions, $hook, $component, $callback, $priority, $accepted_args);
 	}
 
 	/**
@@ -76,8 +78,9 @@ class Support_Hours_Loader {
 	 * @param    int                  $priority         Optional. he priority at which the function should be fired. Default is 10.
 	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1
 	 */
-	public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
-		$this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
+	public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1)
+	{
+		$this->filters = $this->add($this->filters, $hook, $component, $callback, $priority, $accepted_args);
 	}
 
 	/**
@@ -94,7 +97,8 @@ class Support_Hours_Loader {
 	 * @param    int                  $accepted_args    The number of arguments that should be passed to the $callback.
 	 * @return   array                                  The collection of actions and filters registered with WordPress.
 	 */
-	private function add( $hooks, $hook, $component, $callback, $priority, $accepted_args ) {
+	private function add($hooks, $hook, $component, $callback, $priority, $accepted_args)
+	{
 
 		$hooks[] = array(
 			'hook'          => $hook,
@@ -105,7 +109,6 @@ class Support_Hours_Loader {
 		);
 
 		return $hooks;
-
 	}
 
 	/**
@@ -113,15 +116,15 @@ class Support_Hours_Loader {
 	 *
 	 * @since    1.0.0
 	 */
-	public function run() {
+	public function run()
+	{
 
-		foreach ( $this->filters as $hook ) {
-			add_filter( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
+		foreach ($this->filters as $hook) {
+			add_filter($hook['hook'], array($hook['component'], $hook['callback']), $hook['priority'], $hook['accepted_args']);
 		}
 
-		foreach ( $this->actions as $hook ) {
-			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
+		foreach ($this->actions as $hook) {
+			add_action($hook['hook'], array($hook['component'], $hook['callback']), $hook['priority'], $hook['accepted_args']);
 		}
-
 	}
 }

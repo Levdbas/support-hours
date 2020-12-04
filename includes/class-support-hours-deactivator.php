@@ -20,7 +20,8 @@
  * @subpackage Support_Hours/includes
  * @author     Erik van der Bas <erik@basedonline.nl>
  */
-class Support_Hours_Deactivator {
+class Support_Hours_Deactivator
+{
 
 	/**
 	 * Short Description. (use period)
@@ -29,13 +30,13 @@ class Support_Hours_Deactivator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function deactivate() {
-			//Get entire array
-			$SupportHourOptions = get_option('support-hours');
-			//Alter the options array appropriately
-			$SupportHourOptions['users'] = '';
-			//Update entire array
-			update_option('support-hours', $SupportHourOptions);
+	public static function deactivate()
+	{
+		//Get entire array
+		$options = get_option('support-hours');
+		//Alter the options array appropriately
+		$options['users'] = '';
+		//Update entire array
+		update_option('support-hours', $options);
 	}
-
 }
