@@ -9,7 +9,7 @@ if (isset($options['users'])) {
 }
 
 if (isset($options['email'])) {
-  $users = $options['email'];
+  $email = $options['email'];
 }
 
 if (isset($options['workFields'])) {
@@ -17,8 +17,6 @@ if (isset($options['workFields'])) {
   $used_minutes = AddTime($workFields, 'time-used', 'minutes');
   $bought_minutes = AddTime($workFields, 'time-added', 'minutes');
 }
-
-
 
 /**
  * function to strip the hours displayed in the clock of minutes if the hour is round.
@@ -28,10 +26,10 @@ if (isset($options['workFields'])) {
  */
 function minutestoTimeRound($minutes)
 {
+  $time = sprintf("%02d:%02d", floor($minutes / 60), $minutes % 60);
+
   if ($minutes % 60 == 0) :
     $time = $minutes / 60;
-  else :
-    $time = sprintf("%02d:%02d", floor($minutes / 60), $minutes % 60);
   endif;
 
   return $time;
@@ -228,7 +226,7 @@ function font_size($used_minutes, $bought_minutes)
 function sh_get_notice($message, $notice_class = 'notice-alt')
 {
   $notice = '';
-  $notice .=  '<div class="warning-message notice support-hours-notice inline ' . $notice_class . '">';
+  $notice .= '<div class="warning-message notice support-hours-notice inline ' . $notice_class . '">';
   $notice .= '<p>' . $message . '</p>';
   $notice .= '</div>';
 

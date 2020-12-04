@@ -13,6 +13,7 @@
 
 $user_ID = get_current_user_id();
 $i = 0;
+
 global $pagenow;
 if (!empty($users) && !empty($email) && !empty($workFields[0]['date'])) :
   include_once('partials/widget/widget-clock.php');

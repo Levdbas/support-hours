@@ -1,5 +1,4 @@
 <?php
-
 if (!empty($users) && in_array($user_ID, $users) && !empty($workFields[0]['date'])) : ?>
   <div class="support-hours-notices">
 
