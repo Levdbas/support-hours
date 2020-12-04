@@ -1,50 +1,24 @@
 <?php
 
-$options = get_option($this->plugin_name);
 $name = $this->plugin_name;
-$users = $options['users'];
-$email = $options['email'];
-//$static_time = $options['bought_hours'];
+$options = get_option($this->plugin_name);
 $current_color = get_user_option('admin_color');
-$workFields = $options['workFields'];
 
-$used_minutes = AddTime($workFields, 'time-used', 'minutes');
-$bought_minutes = AddTime($workFields, 'time-added', 'minutes');
-
-/*
-// NOTE: temp function to transform first set of hours to new hour system.
-function transform_fixed_time($static_time, $workFields, $name, $options){
-if($options['bought_hours'] != '00:00'){
-echo "<h3>". __('Update of Support Hours complete, please refresh page', $name)."</h3>";
-$newdata =  array (
-'date' => date('d-m-Y'),
-'description' => __('First bought time - added by Support Hours', $name),
-'used' => $static_time,
-'type' => 'time-added'
-);
-array_unshift($options['workFields'], $newdata);
-//$options = array_diff_key($options, ['bought_hours' => "xy"]);
-
-$options['workFields'] = array_map(function($arr){
-return $arr + ['type' =>'time-used'];
-}, $options['workFields']);
-
-update_option($name, $options);
+if (isset($options['users'])) {
+  $users = $options['users'];
 }
-}
-echo transform_fixed_time($static_time, $workFields, $name, $options);
-*/
 
-/**
- * Transforms $minutes to HH:MM
- * @since
- * @param  int $minutes minutes, can be bought or used
- * @return string          HH:MM
- */
-function minutestoTime($minutes)
-{
-  return sprintf("%02d:%02d", floor($minutes / 60), $minutes % 60);  // 01:37
+if (isset($options['email'])) {
+  $users = $options['email'];
 }
+
+if (isset($options['workFields'])) {
+  $workFields = $options['workFields'];
+  $used_minutes = AddTime($workFields, 'time-used', 'minutes');
+  $bought_minutes = AddTime($workFields, 'time-added', 'minutes');
+}
+
+
 
 /**
  * function to strip the hours displayed in the clock of minutes if the hour is round.
@@ -57,12 +31,11 @@ function minutestoTimeRound($minutes)
   if ($minutes % 60 == 0) :
     $time = $minutes / 60;
   else :
-    $time = minutestoTime($minutes);
+    $time = sprintf("%02d:%02d", floor($minutes / 60), $minutes % 60);
   endif;
+
   return $time;
 }
-
-
 
 /**
  * Checks the workfields array for the time fields. Adds all timefields and returns them.
