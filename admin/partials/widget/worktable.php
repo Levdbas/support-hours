@@ -1,3 +1,7 @@
+<?php
+
+namespace Support_Hours;
+?>
 <?php if ($workFields) : ?>
   <div class="support-hours-time-table">
     <h3>

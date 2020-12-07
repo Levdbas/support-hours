@@ -1,5 +1,7 @@
 <?php
 
+namespace Support_Hours;
+
 /**
  * The file that defines the core plugin class
  *

@@ -1,5 +1,7 @@
 <?php
 
+namespace Support_Hours;
+
 /**
  * Provide a page that can be seen from editor to admin. Shows all the time entries.
  *

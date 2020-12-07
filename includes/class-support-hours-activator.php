@@ -1,5 +1,7 @@
 <?php
 
+namespace Support_Hours;
+
 /**
  * Fired during plugin activation
  *

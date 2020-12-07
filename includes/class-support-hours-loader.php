@@ -1,5 +1,7 @@
 <?php
 
+namespace Support_Hours;
+
 /**
  * Register all actions and filters for the plugin
  *

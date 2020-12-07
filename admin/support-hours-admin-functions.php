@@ -1,5 +1,7 @@
 <?php
 
+namespace Support_Hours;
+
 $name = $this->plugin_name;
 $options = get_option($this->plugin_name);
 $current_color = get_user_option('admin_color');
@@ -223,7 +225,7 @@ function font_size($used_minutes, $bought_minutes)
 }
 
 
-function sh_get_notice($message, $notice_class = 'notice-alt')
+function get_notice($message, $notice_class = 'notice-alt')
 {
   $notice = '';
   $notice .= '<div class="warning-message notice support-hours-notice inline ' . $notice_class . '">';
@@ -232,7 +234,7 @@ function sh_get_notice($message, $notice_class = 'notice-alt')
 
   return $notice;
 }
-function sh_the_notice($message, $notice_class = 'notice-alt')
+function the_notice($message, $notice_class = 'notice-alt')
 {
-  echo sh_get_notice($message, $notice_class);
+  echo get_notice($message, $notice_class);
 }

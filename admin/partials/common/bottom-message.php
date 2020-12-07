@@ -1,4 +1,7 @@
 <?php
+
+namespace Support_Hours;
+
 if (!empty($users) && in_array($user_ID, $users) && !empty($workFields[0]['date'])) : ?>
   <div class="support-hours-notices">
 
@@ -10,7 +13,7 @@ if (!empty($users) && in_array($user_ID, $users) && !empty($workFields[0]['date'
   <?php elseif (!empty($users) && in_array($user_ID, $users)) :
   if ($pagenow == 'admin.php') :
     $message = __('No activities added yet.', $this->plugin_name);
-    sh_the_notice($message);
+    the_notice($message);
   endif; ?>
     <a class="button button-primary" href="<?php echo admin_url('admin.php?page=support-hours-settings'); ?>"><?php _e('Add first activity', $this->plugin_name); ?></a>
   <?php
@@ -21,13 +24,13 @@ if ($pagenow == 'index.php') :
 
   if ($percentage == 100) {
     $message = __('your Support Hours are used.', $this->plugin_name);
-    sh_the_notice($welcome . $message, 'notice-error');
+    the_notice($welcome . $message, 'notice-error');
   } elseif ($percentage >= 80) {
     $message = __('your Support Hours are almost used.', $this->plugin_name);
-    sh_the_notice($welcome . $message, 'notice-warning');
+    the_notice($welcome . $message, 'notice-warning');
   } else {
     $message = __('you have plenty of hours left.', $this->plugin_name);
-    sh_the_notice($welcome . $message, 'notice-success');
+    the_notice($welcome . $message, 'notice-success');
   } ?>
     <a class="button button-primary" href="mailto:<?php echo $email; ?>'?SUBJECT=<?php _e('Order Support Hours', $this->plugin_name); ?> - <?php echo bloginfo('name'); ?>"><?php _e('Order Support Hours', $this->plugin_name); ?></a>
   </div>

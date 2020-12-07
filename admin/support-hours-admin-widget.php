@@ -1,5 +1,7 @@
 <?php
 
+namespace Support_Hours;
+
 /**
  * Provide a admin widget for the plugin
  *

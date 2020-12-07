@@ -1,5 +1,7 @@
 <?php
 
+namespace Support_Hours;
+
 /**
  * Define the internationalization functionality.
  *

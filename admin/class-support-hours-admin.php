@@ -1,5 +1,7 @@
 <?php
 
+namespace Support_Hours;
+
 /**
  * The admin-specific functionality of the plugin.
  *
