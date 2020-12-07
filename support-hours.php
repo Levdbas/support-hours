@@ -32,6 +32,8 @@ if (!defined('WPINC')) {
 	die;
 }
 
+define('SH_PLUGIN_DIR_URI', plugin_dir_url(__FILE__));
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-support-hours-activator.php

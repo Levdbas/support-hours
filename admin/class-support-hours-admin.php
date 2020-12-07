@@ -69,7 +69,7 @@ class Support_Hours_Admin
 		$current_page = get_current_screen()->base;
 
 		if (in_array($current_page, array('toplevel_page_support-hours', 'support-hours_page_support-hours-settings', 'dashboard'))) :
-			wp_enqueue_style($this->plugin_name, plugins_url($this->plugin_name) . '/dist/styles/support-hours-admin.css', array(), $this->version, 'all');
+			wp_enqueue_style($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/styles/support-hours-admin.css', array(), $this->version, 'all');
 		endif;
 	}
 
@@ -83,7 +83,7 @@ class Support_Hours_Admin
 		$current_page = get_current_screen()->base;
 
 		if (in_array($current_page, array('toplevel_page_support-hours', 'support-hours_page_support-hours-settings', 'dashboard'))) :
-			wp_enqueue_script($this->plugin_name, plugins_url($this->plugin_name) . '/dist/scripts/support-hours-admin.js', array('jquery'), $this->version, false);
+			wp_enqueue_script($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/scripts/support-hours-admin.js', array('jquery'), $this->version, false);
 		endif;
 	}
 	public function add_plugin_admin_menu()
