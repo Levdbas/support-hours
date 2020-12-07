@@ -54,6 +54,7 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 * Fix jQuery deprecations
 * Code cleanup
 * Add proper uninstall hook
+* Fix notices after installation
 
 = 1.6.2 =
 * Compatibility check with new WP version
