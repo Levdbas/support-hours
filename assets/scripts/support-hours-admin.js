@@ -5,21 +5,21 @@ import timeInput from './timeInput.js';
 import repeatRow from './repeatrow.js';
 import workTableHelpers from './workTableHelpers.js';
 
-(function($) {
+(function ($) {
     var SupportHours = {
         common: {
-            init: function() {
+            init: function () {
+                console.log('bliep');
                 timeInput();
                 repeatRow();
                 workTableHelpers();
-            },
-            finalize: function() {
                 progressBar();
             },
+            finalize: function () {},
         },
     };
     var UTIL = {
-        fire: function(func, funcname, args) {
+        fire: function (func, funcname, args) {
             var fire;
             var namespace = SupportHours;
             funcname = funcname === undefined ? 'init' : funcname;
@@ -31,7 +31,7 @@ import workTableHelpers from './workTableHelpers.js';
                 namespace[func][funcname](args);
             }
         },
-        loadEvents: function() {
+        loadEvents: function () {
             UTIL.fire('common');
             UTIL.fire('common', 'finalize');
         },

@@ -20,7 +20,7 @@ global $pagenow;
     <?php _e('A complete overview of all activities.', $this->plugin_name); ?>
   </p>
   <?php
-  if (!empty($users) && $bought_minutes !== '0' && !empty($email)) :
+  if (!empty($this->managers) && $bought_minutes !== '0' && !empty($this->email)) :
     $user_ID = get_current_user_id();
     $i = 0;
 
@@ -68,7 +68,7 @@ global $pagenow;
       <div class="tablenav sh-tablenav bottom">
         <div class="total">
           <span class="bold"><?php _e('Total', $this->plugin_name); ?></span>:
-          <?php echo AddTime($workFields, 'time-used'); ?> / <?php echo AddTime($workFields, 'time-added'); ?>
+          <?php echo calculate_hours_and_minutes_output($this->used_minutes); ?> / <?php echo calculate_hours_and_minutes_output($this->bought_minutes); ?>
         </div>
       </div>
   <?php
@@ -76,7 +76,7 @@ global $pagenow;
 
     include_once('partials/common/bottom-message.php');
 
-  elseif (empty($users) || empty($email)) :
+  elseif (empty($this->managers) || empty($this->email)) :
     include_once('partials/common/notice-configure.php');
 
   else :

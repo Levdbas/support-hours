@@ -41,7 +41,7 @@ namespace Support_Hours;
     </table>
     <div class="total">
       <span class="bold"><?php _e('Total', $this->plugin_name); ?></span>:
-      <?php echo AddTime($workFields, 'time-used'); ?> / <?php echo AddTime($workFields, 'time-added'); ?>
+      <?php echo calculate_hours_and_minutes_output($this->used_minutes); ?> / <?php echo calculate_hours_and_minutes_output($this->bought_minutes); ?>
     </div>
   </div>
 <?php endif; ?>

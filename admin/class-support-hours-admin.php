@@ -66,9 +66,37 @@ class Support_Hours_Admin
 	 *
 	 * @since    1.7.0
 	 * @access   private
-	 * @var      array   $email  Email address used to order more hours.
+	 * @var     $email  Email address used to order more hours.
 	 */
-	private $email;
+	private $email = false;
+
+	/**
+	 * Support Hours work_fields
+	 *
+	 * @since    1.7.0
+	 * @access   private
+	 * @var      string   $work_fields all work fields
+	 */
+	private $work_fields = null;
+
+	/**
+	 * Support Hours used_minutes
+	 *
+	 * @since    1.7.0
+	 * @access   private
+	 * @var      int   All used minutes
+	 */
+	private $used_minutes = 0;
+
+	/**
+	 * Support Hours bought_minutes
+	 *
+	 * @since    1.7.0
+	 * @access   private
+	 * @var      int   All bought minutes
+	 */
+	private $bought_minutes = 0;
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -84,12 +112,18 @@ class Support_Hours_Admin
 		$this->options = get_option($plugin_name);
 
 
-		if (isset($this->options['users'])) {
+		if (!empty($this->options['users'])) {
 			$this->managers = $this->options['users'];
 		}
 
 		if (isset($this->options['email'])) {
 			$this->email = $this->options['email'];
+		}
+
+		if (isset($this->options['workFields'])) {
+			$this->work_fields = $this->options['workFields'];
+			$this->used_minutes = $this->add_time_entries('time-used');
+			$this->bought_minutes  = $this->add_time_entries('time-added');
 		}
 	}
 
@@ -238,5 +272,40 @@ class Support_Hours_Admin
 	{
 		include_once('support-hours-admin-functions.php');
 		include_once('support-hours-admin-widget.php');
+	}
+
+
+	/**
+	 * Checks the workfields array for the time fields. Adds all timefields and returns them.
+	 * If no workfields and therefore no time fields are filled, returns 00:00
+	 * @since   1.4
+	 * @param   string  $type         can be used or bought
+	 * @return  string                Returns full hours format or total minutes of used or bought hours
+	 */
+	private function add_time_entries($type)
+	{
+		$minutes = 0;
+
+		if ($this->work_fields == null) {
+			return $minutes;
+		}
+
+		if (!isset($this->work_fields[0]['type'])) {
+			return $minutes;
+		}
+
+		$filtered_fields = array_filter($this->work_fields, function ($var) use ($type) {
+			return ($var['type'] == $type);
+		});
+
+		foreach ($filtered_fields as $time) {
+			if ($time['type'] !== "") {
+				list($hour, $minute) = explode(':', $time['used']);
+				$minutes += $hour * 60;
+				$minutes += $minute;
+			}
+		}
+
+		return $minutes;
 	}
 }

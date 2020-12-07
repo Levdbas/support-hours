@@ -2,7 +2,7 @@
 
 namespace Support_Hours;
 
-if (!empty($users) && in_array($user_ID, $users) && !empty($workFields[0]['date'])) : ?>
+if (!empty($this->managers) && in_array($user_ID, $this->managers) && !empty($workFields[0]['date'])) : ?>
   <div class="support-hours-notices">
 
     <a class="button button-primary" href="<?php echo admin_url('admin.php?page=support-hours-settings'); ?>"><?php _e('Add new activity', $this->plugin_name); ?></a>
@@ -10,7 +10,7 @@ if (!empty($users) && in_array($user_ID, $users) && !empty($workFields[0]['date'
       <a class="button button-secondary" href="<?php echo admin_url('admin.php?page=support-hours'); ?>"><?php _e('View all activities', $this->plugin_name); ?></a>
     <?php endif; ?>
 
-  <?php elseif (!empty($users) && in_array($user_ID, $users)) :
+  <?php elseif (!empty($this->managers) && in_array($user_ID, $this->managers)) :
   if ($pagenow == 'admin.php') :
     $message = __('No activities added yet.', $this->plugin_name);
     the_notice($message);
@@ -32,6 +32,6 @@ if ($pagenow == 'index.php') :
     $message = __('you have plenty of hours left.', $this->plugin_name);
     the_notice($welcome . $message, 'notice-success');
   } ?>
-    <a class="button button-primary" href="mailto:<?php echo $email; ?>'?SUBJECT=<?php _e('Order Support Hours', $this->plugin_name); ?> - <?php echo bloginfo('name'); ?>"><?php _e('Order Support Hours', $this->plugin_name); ?></a>
+    <a class="button button-primary" href="mailto:<?php echo $this->email; ?>'?SUBJECT=<?php _e('Order Support Hours', $this->plugin_name); ?> - <?php echo bloginfo('name'); ?>"><?php _e('Order Support Hours', $this->plugin_name); ?></a>
   </div>
 <?php endif; ?>

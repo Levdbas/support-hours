@@ -15,7 +15,7 @@ function repeatRow() {
     }
 
     // Clone the previous workField, and remove all of the values
-    $('.repeat').on('change', function () {
+    $('.repeat').on('click', function (e) {
         e.preventDefault();
         var lastRepeatingGroup = jQuery('.repeating:last-of-type');
         var num = parseInt(lastRepeatingGroup.attr('data-number'));

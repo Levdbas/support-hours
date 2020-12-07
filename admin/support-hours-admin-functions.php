@@ -3,22 +3,12 @@
 namespace Support_Hours;
 
 $name = $this->plugin_name;
-$options = get_option($this->plugin_name);
+$options = $this->options;
 $current_color = get_user_option('admin_color');
 
-if (isset($options['users'])) {
-  $users = $options['users'];
-}
-
-if (isset($options['email'])) {
-  $email = $options['email'];
-}
-
-if (isset($options['workFields'])) {
-  $workFields = $options['workFields'];
-  $used_minutes = AddTime($workFields, 'time-used', 'minutes');
-  $bought_minutes = AddTime($workFields, 'time-added', 'minutes');
-}
+$workFields = $this->work_fields;
+$used_minutes = $this->used_minutes;
+$bought_minutes = $this->bought_minutes;
 
 /**
  * function to strip the hours displayed in the clock of minutes if the hour is round.
@@ -26,7 +16,7 @@ if (isset($options['workFields'])) {
  * @param  [type] $minutes minutes, can be bought or used
  * @return string Retunrs full hour without zeros
  */
-function minutestoTimeRound($minutes)
+function maybe_hide_minutes($minutes)
 {
   $time = sprintf("%02d:%02d", floor($minutes / 60), $minutes % 60);
 
@@ -36,47 +26,6 @@ function minutestoTimeRound($minutes)
 
   return $time;
 }
-
-/**
- * Checks the workfields array for the time fields. Adds all timefields and returns them.
- * If no workfields and therefore no time fields are filled, returns 00:00
- * @since   1.4
- * @param   array   $workFields   The workfields from this plugin, contains bought and used hours
- * @param   string  $type         can be used or bought
- * @param   string  $returns      if minutes returns total minutes
- * @return  string                Returns full hours format or total minutes of used or bought hours
- */
-function AddTime($workFields, $type, $returns = null)
-{
-  $output = 0;
-  $minutes = 0;
-  if ($workFields != null) {
-    if (isset($workFields[0]['type'])) :
-      $workFields = array_filter($workFields, function ($var) use ($type) {
-        return ($var['type'] == $type);
-      });
-      foreach ($workFields as $time) {
-        //  Check if the field is not empty. Else stay with 0.
-        if ($time['type'] !== "") {
-          list($hour, $minute) = explode(':', $time['used']);
-          $minutes += $hour * 60;
-          $minutes += $minute;
-        }
-      }
-      if ($returns == 'minutes') :
-        $output =  $minutes;
-      else :
-        $hours = floor($minutes / 60);
-        $minutes -= $hours * 60;
-        $time = sprintf('%02d:%02d', $hours, $minutes);
-        $output = $time;
-      endif;
-    endif;
-  }
-  return $output;
-}
-
-
 
 /**
  * Searches our $workFields array for the last bought hours.
@@ -108,7 +57,7 @@ function last_bought($workFields)
  * If multiple time hours are bought, and most of it was spent, we only want to see the
  * last bought hours and the hours left calculated against that.
  * This function is used to return all used minutes minus all the minutes prior to the last bought hours
- * so we can display the used hours correctly. Used in percentage() and widget_output()
+ * so we can display the used hours correctly. Used in calculate_minutes_output()
  * @since
  * @param  array   $workFields      The workfields from this plugin, contains bought and used hours
  * @param  int     $bought_minutes  Total bought minutes
@@ -126,18 +75,7 @@ function bought_minus_last($workFields, $bought_minutes)
 }
 
 
-
-
-/**
- * This function is being used to display the hours in the widget.
- * Output depends on time spent, time bought and time bought the last time.
- * @since 1.4
- * @param  array  $workFields     The workfields from this plugin, contains bought and used hours
- * @param  int    $used_minutes   Total used minutes
- * @param  int    $bought_minutes Total bought minutes
- * @return string                 Returns hours in HH:MM format or HH format where the first is used time, the second the bought time.
- */
-function widget_output($workFields, $used_minutes, $bought_minutes)
+function calculate_minutes_output($workFields, $used_minutes, $bought_minutes)
 {
   $bought_minus_last = bought_minus_last($workFields, $bought_minutes);
   $minutes_to_spent = $bought_minutes - $used_minutes;
@@ -157,11 +95,37 @@ function widget_output($workFields, $used_minutes, $bought_minutes)
     $bought_minutes = $bought_minutes;
   }
 
-  $widget_hours = minutestoTimeRound($used_minutes) . ' / ' . minutestoTimeRound($bought_minutes);
-  return $widget_hours;
+  return [
+    'used_minutes' => $used_minutes,
+    'bought_minutes' => $bought_minutes
+  ];
+}
+
+function calculate_hours_and_minutes_output($minutes)
+{
+  $hours = floor($minutes / 60);
+  $minutes -= $hours * 60;
+  return sprintf('%02d:%02d', $hours, $minutes);
 }
 
 
+
+/**
+ * This function is being used to display the hours in the widget.
+ * Output depends on time spent, time bought and time bought the last time.
+ * @since 1.4
+ * @param  array  $workFields     The workfields from this plugin, contains bought and used hours
+ * @param  int    $used_minutes   Total used minutes
+ * @param  int    $bought_minutes Total bought minutes
+ * @return string                 Returns hours in HH:MM format or HH format where the first is used time, the second the bought time.
+ */
+function widget_output($workFields, $used_minutes, $bought_minutes)
+{
+  $minutes = calculate_minutes_output($workFields, $used_minutes, $bought_minutes);
+
+  $widget_hours = maybe_hide_minutes($minutes['used_minutes']) . ' / ' . maybe_hide_minutes($minutes['bought_minutes']);
+  return $widget_hours;
+}
 
 
 /**
@@ -176,25 +140,9 @@ function widget_output($workFields, $used_minutes, $bought_minutes)
 function percentage($workFields, $used_minutes, $bought_minutes)
 {
 
-  $bought_minus_last = bought_minus_last($workFields, $bought_minutes);
-  $minutes_to_spent = $bought_minutes - $used_minutes;
-  $last_bought_minutes = last_bought($workFields);
+  $minutes = calculate_minutes_output($workFields, $used_minutes, $bought_minutes);
 
-  // NOTE: calculates used hours
-  if ($used_minutes > $bought_minus_last) {
-    $used_minutes = $used_minutes - $bought_minus_last;
-  } else {
-    $used_minutes = $used_minutes;
-  }
-
-  // NOTE: calculates bought hours
-  if ($minutes_to_spent < $last_bought_minutes) {
-    $bought_minutes = $last_bought_minutes;
-  } else {
-    $bought_minutes = $bought_minutes;
-  }
-
-  $percentage = $used_minutes * 100 / $bought_minutes;
+  $percentage = $minutes['used_minutes'] * 100 / $minutes['bought_minutes'];
   if ($percentage > 100) {
     $percentage = 100;
   }
@@ -234,6 +182,7 @@ function get_notice($message, $notice_class = 'notice-alt')
 
   return $notice;
 }
+
 function the_notice($message, $notice_class = 'notice-alt')
 {
   echo get_notice($message, $notice_class);

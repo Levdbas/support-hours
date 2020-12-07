@@ -13,21 +13,15 @@ namespace Support_Hours;
  */
 
 $name = $this->plugin_name;
-$options = get_option($name);
-$workFields = [];
+$options = $this->options;
+$workFields =  $this->work_fields;
 $user_ID = get_current_user_id();
 $i = 0;
-
-if ($options) {
-  $users = $options['users'];
-  $email = $options['email'];
-  $workFields = $options['workFields'];
-}
 
 ?>
 <div class="wrap">
   <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
-  <?php if (empty($users) || (!empty($users) && in_array($user_ID, $users))) { ?>
+  <?php if (empty($this->managers) || (!empty($this->managers) && in_array($user_ID, $this->managers))) { ?>
 
     <form method="post" name="cleanup_options" action="options.php" class="support-hours-settings shs">
       <?php
