@@ -12,9 +12,8 @@ const imageminGifsicle = require('imagemin-gifsicle');
 const imageminJpegtran = require('imagemin-jpegtran');
 const imageminOptipng = require('imagemin-optipng');
 const imageminSvgo = require('imagemin-svgo');
-const ManifestPlugin = require('webpack-manifest-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const rootPath = process.cwd();
 
 var userConfig = require(path.resolve(__dirname, rootPath) + '/assets/config.json');
@@ -115,19 +114,6 @@ const webpackConfig = {
             $: 'jquery',
             jQuery: 'jquery',
         }),
-        new CopyWebpackPlugin(
-            [
-                {
-                    context: config.path.assets + '/images',
-                    from: '**/*',
-                    to: 'images/[path][name].[ext]',
-                },
-            ],
-            {
-                ignore: ['.gitkeep'],
-                copyUnmodified: true,
-            },
-        ),
     ],
     optimization: {
         minimizer: [
