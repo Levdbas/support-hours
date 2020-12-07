@@ -170,7 +170,7 @@ class Support_Hours_Admin
 		if (!isset($input['workFields']) || $input['workFields'] == null) {
 			$input['workFields'] = null;
 		} else {
-			usort($input['workFields'], array('Support_Hours_Admin', 'support_hours_date_compare'));
+			usort($input['workFields'], array('Support_Hours\Support_Hours_Admin', 'support_hours_date_compare'));
 		}
 
 		$valid['workFields'] = $input['workFields'];
