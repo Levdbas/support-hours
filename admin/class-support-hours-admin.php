@@ -86,6 +86,7 @@ class Support_Hours_Admin
 			wp_enqueue_script($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/scripts/support-hours-admin.js', array('jquery'), $this->version, false);
 		endif;
 	}
+
 	public function add_plugin_admin_menu()
 	{
 
@@ -149,7 +150,7 @@ class Support_Hours_Admin
 	}
 
 
-	public static function support_hours_date_compare($a, $b)
+	public static function date_compare($a, $b)
 	{
 		$t1 = strtotime($a['date']);
 		$t2 = strtotime($b['date']);
@@ -170,21 +171,20 @@ class Support_Hours_Admin
 		if (!isset($input['workFields']) || $input['workFields'] == null) {
 			$input['workFields'] = null;
 		} else {
-			usort($input['workFields'], array('Support_Hours\Support_Hours_Admin', 'support_hours_date_compare'));
+			usort($input['workFields'], array('Support_Hours\Support_Hours_Admin', 'date_compare'));
 		}
 
 		$valid['workFields'] = $input['workFields'];
 		return $valid;
 	}
 
-
-	function support_hours_add_dashboard_widgets()
+	public function add_dashboard_widget()
 	{
 		if (current_user_can('publish_pages')) {
 			wp_add_dashboard_widget(
 				'support_hours_dashboard_widget',
 				__('Support Hours', $this->plugin_name),
-				array($this, 'support_hours_dashboard_widget_function')
+				array($this, 'widget_compose')
 			);
 			global $wp_meta_boxes;
 			$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
@@ -194,7 +194,8 @@ class Support_Hours_Admin
 			$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 		}
 	}
-	function support_hours_dashboard_widget_function()
+
+	public function widget_compose()
 	{
 		include_once('support-hours-admin-functions.php');
 		include_once('support-hours-admin-widget.php');

@@ -161,7 +161,7 @@ class Support_Hours
 		$this->loader->add_action('admin_init', $plugin_admin, 'options_update');
 
 		// load widget hook from class-support-hours-admin.php
-		$this->loader->add_action('wp_dashboard_setup', $plugin_admin, 'support_hours_add_dashboard_widgets');
+		$this->loader->add_action('wp_dashboard_setup', $plugin_admin, 'add_dashboard_widget');
 	}
 
 	/**
