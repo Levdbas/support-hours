@@ -43,6 +43,33 @@ class Support_Hours_Admin
 	private $version;
 
 	/**
+	 * Plugin options
+	 *
+	 * @since    1.7.0
+	 * @access   private
+	 * @var      string    $this->options    The plugin options saved in the database.
+	 */
+	private $options;
+
+
+	/**
+	 * Support Hours Managers
+	 *
+	 * @since    1.7.0
+	 * @access   private
+	 * @var      array   $managers  allowed users to manage Support Hours
+	 */
+	private $managers;
+
+	/**
+	 * Support Hours E-mail address
+	 *
+	 * @since    1.7.0
+	 * @access   private
+	 * @var      array   $email  Email address used to order more hours.
+	 */
+	private $email;
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -54,11 +81,23 @@ class Support_Hours_Admin
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->options = get_option($plugin_name);
+
+
+		if (isset($this->options['users'])) {
+			$this->managers = $this->options['users'];
+		}
+
+		if (isset($this->options['email'])) {
+			$this->email = $this->options['email'];
+		}
 	}
+
 	public function options_update()
 	{
 		register_setting($this->plugin_name, $this->plugin_name, array($this, 'validate'));
 	}
+
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
