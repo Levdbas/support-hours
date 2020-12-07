@@ -3,9 +3,9 @@ function repeatRow() {
     var attrs = ['for', 'id', 'name'];
     function resetAttributeNames(section, num) {
         var tags = section.find('input, label');
-        tags.each(function() {
+        tags.each(function () {
             var $this = jQuery(this);
-            jQuery.each(attrs, function(i, attr) {
+            jQuery.each(attrs, function (i, attr) {
                 var attr_val = $this.attr(attr);
                 if (attr_val) {
                     $this.attr(attr, attr_val.replace(/\[workFields\]\[\d+\]\[/, '[workFields][' + (num + 1) + ']['));
@@ -15,7 +15,7 @@ function repeatRow() {
     }
 
     // Clone the previous workField, and remove all of the values
-    $('.repeat').click(function(e) {
+    $('.repeat').on('change', function () {
         e.preventDefault();
         var lastRepeatingGroup = jQuery('.repeating:last-of-type');
         var num = parseInt(lastRepeatingGroup.attr('data-number'));

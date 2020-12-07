@@ -1,9 +1,9 @@
 function workTableHelpers() {
     // remove workFields row.
-    $('.remove-row').click(function(e) {
+    $('.remove-row').on('click', function () {
         $(this)
             .parents('.repeating')
-            .fadeOut(500, function() {
+            .fadeOut(500, function () {
                 $(this).remove();
             });
     });
