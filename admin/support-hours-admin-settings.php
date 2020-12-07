@@ -14,11 +14,16 @@ namespace Support_Hours;
 
 $name = $this->plugin_name;
 $options = get_option($name);
-$users = $options['users'];
-$email = $options['email'];
-$workFields = $options['workFields'];
+$workFields = [];
 $user_ID = get_current_user_id();
 $i = 0;
+
+if ($options) {
+  $users = $options['users'];
+  $email = $options['email'];
+  $workFields = $options['workFields'];
+}
+
 ?>
 <div class="wrap">
   <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
