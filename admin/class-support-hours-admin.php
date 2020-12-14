@@ -185,7 +185,7 @@ class Support_Hours_Admin
 			'support-hours',
 			__('Support Hours settings', $this->plugin_name),
 			__('Settings', $this->plugin_name),
-			'manage_options',
+			'publish_pages',
 			'support-hours-settings',
 			array($this, 'display_plugin_setup_page')
 		);
@@ -230,6 +230,23 @@ class Support_Hours_Admin
 		return $t1 - $t2;
 	}
 
+	public function update_capabilities()
+	{
+		$managers = $this->managers;
+		$administrator_ids = get_users('fields=ID&role=administrator');
+		$non_managers = array_diff($administrator_ids, $managers);
+
+		foreach ($this->managers as $user_id) {
+			$user = new \WP_User($user_id);
+			$user->add_cap('support_hours_manager');
+		}
+
+		foreach ($non_managers as $non_manager_id) {
+			$non_manager = new \WP_User($non_manager_id);
+			$non_manager->remove_cap('support_hours_manager');
+		}
+	}
+
 	public function validate($input)
 	{
 		$valid = array();
@@ -240,6 +257,7 @@ class Support_Hours_Admin
 		if (isset($input['users'])) :
 			$valid['users'] = $input['users'];
 		endif;
+
 
 		if (!isset($input['workFields']) || $input['workFields'] == null) {
 			$input['workFields'] = null;
