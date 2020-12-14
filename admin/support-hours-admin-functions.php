@@ -10,22 +10,7 @@ $workFields = $this->work_fields;
 $used_minutes = $this->used_minutes;
 $bought_minutes = $this->bought_minutes;
 
-/**
- * function to strip the hours displayed in the clock of minutes if the hour is round.
- * @since
- * @param  [type] $minutes minutes, can be bought or used
- * @return string Retunrs full hour without zeros
- */
-function maybe_hide_minutes($minutes)
-{
-  $time = sprintf("%02d:%02d", floor($minutes / 60), $minutes % 60);
 
-  if ($minutes % 60 == 0) :
-    $time = $minutes / 60;
-  endif;
-
-  return $time;
-}
 
 /**
  * Searches our $workFields array for the last bought hours.
@@ -51,35 +36,12 @@ function last_bought($workFields)
 }
 
 
-
-/**
- * To not overcluther the interface we only show the time you actually care about in the widget.
- * If multiple time hours are bought, and most of it was spent, we only want to see the
- * last bought hours and the hours left calculated against that.
- * This function is used to return all used minutes minus all the minutes prior to the last bought hours
- * so we can display the used hours correctly. Used in calculate_minutes_output()
- * @since
- * @param  array   $workFields      The workfields from this plugin, contains bought and used hours
- * @param  int     $bought_minutes  Total bought minutes
- * @return int                      minutes
- */
-function bought_minus_last($workFields, $bought_minutes)
-{
-  $output = 0;
-
-  if ($workFields != null) {
-    $output = $bought_minutes - last_bought($workFields);
-  }
-
-  return $output;
-}
-
-
 function calculate_minutes_output($workFields, $used_minutes, $bought_minutes)
 {
-  $bought_minus_last = bought_minus_last($workFields, $bought_minutes);
-  $minutes_to_spent = $bought_minutes - $used_minutes;
   $last_bought_minutes = last_bought($workFields);
+  $bought_minus_last = $bought_minutes -  $last_bought_minutes;
+  $minutes_to_spent = $bought_minutes - $used_minutes;
+
 
   // NOTE: calculates used hours
   if ($used_minutes > $bought_minus_last) {
@@ -108,7 +70,22 @@ function calculate_hours_and_minutes_output($minutes)
   return sprintf('%02d:%02d', $hours, $minutes);
 }
 
+/**
+ * function to strip the hours displayed in the clock of minutes if the hour is round.
+ * @since
+ * @param  [type] $minutes minutes, can be bought or used
+ * @return string Retunrs full hour without zeros
+ */
+function maybe_hide_minutes($minutes)
+{
+  $time = sprintf("%02d:%02d", floor($minutes / 60), $minutes % 60);
 
+  if ($minutes % 60 == 0) :
+    $time = $minutes / 60;
+  endif;
+
+  return $time;
+}
 
 /**
  * This function is being used to display the hours in the widget.
