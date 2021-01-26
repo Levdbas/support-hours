@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
 Tested up to: 5.6
-Stable tag: 1.7.0
+Stable tag: 1.7.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,8 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 == Changelog ==
 
+= 1.7.1 =
+* Fixes rare case where jQuery UI datepicker took over the materialize.css datepicker.
 
 = 1.7.0 =
 * Namespace plugin PHP files.
