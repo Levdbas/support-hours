@@ -1,3 +1,5 @@
+import createDatePickers from "./createDatepickers";
+
 function workTableHelpers() {
     // remove workFields row.
     $('.remove-row').on('click', function () {
@@ -6,11 +8,10 @@ function workTableHelpers() {
             .fadeOut(500, function () {
                 $(this).remove();
             });
+
+        createDatePickers();
     });
 
-    $('.datepicker').datepicker({
-        format: 'dd-mm-yyyy',
-        defaultDate: new Date(),
-    });
+    createDatePickers();
 }
 export default workTableHelpers;
