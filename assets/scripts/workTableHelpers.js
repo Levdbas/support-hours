@@ -1,4 +1,3 @@
-import createDatePickers from "./createDatepickers";
 
 function workTableHelpers() {
     // remove workFields row.
@@ -8,10 +7,8 @@ function workTableHelpers() {
             .fadeOut(500, function () {
                 $(this).remove();
             });
-
-        createDatePickers();
     });
 
-    createDatePickers();
+
 }
 export default workTableHelpers;
