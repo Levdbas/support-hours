@@ -4,7 +4,7 @@
 
     <fieldset class="type-switch">
       <label for="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][used]">
-        <input id="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][used]" type="radio" class="radio time-used" value="time-used" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type]" <?php if (isset($field['type']) && 'time-used' == $field['type']) echo 'checked="checked"'; ?>>
+        <input id="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type][used]" required type="radio" class="radio time-used" value="time-used" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][type]" <?php if (isset($field['type']) && 'time-used' == $field['type']) echo 'checked="checked"'; ?>>
         <span><?php _e('Time used', $name); ?></span>
       </label>
 
