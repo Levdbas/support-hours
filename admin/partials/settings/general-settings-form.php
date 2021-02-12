@@ -15,8 +15,8 @@
   <legend class="screen-reader-text">
     <span><?php _e('E-mail address main Support Hours manager', $name); ?>:</span>
   </legend>
-  <div class="input-field">
-    <input id="email" type="email" class="regular-text regular-text--email validate" id="<?php echo $name; ?>-email" name="<?php echo $name; ?>[email]" value="<?php if (!empty($this->email)) echo $this->email; ?>" />
+  <div class="">
     <label for="email"><?php _e('E-mail', $name); ?></label>
+    <input id="email" type="email" class="components-text-control__input validate" id="<?php echo $name; ?>-email" name="<?php echo $name; ?>[email]" value="<?php if (!empty($this->email)) echo $this->email; ?>" />
   </div>
 </fieldset>

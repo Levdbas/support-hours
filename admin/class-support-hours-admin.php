@@ -124,6 +124,7 @@ class Support_Hours_Admin
 			$this->work_fields = $this->options['workFields'];
 			$this->used_minutes = $this->add_time_entries('time-used');
 			$this->bought_minutes  = $this->add_time_entries('time-added');
+			$this->work_fields = self::date_validation($this->work_fields);
 		}
 	}
 
@@ -230,6 +231,20 @@ class Support_Hours_Admin
 		return $t1 - $t2;
 	}
 
+	public static function date_validation($workfields)
+	{
+		foreach ($workfields as $key => $workfield) {
+			if (isset($workfield['date'])) {
+				$date = $workfield['date'];
+				$d = \DateTime::createFromFormat('d-m-Y', $date);
+
+				if ($d) {
+					$workfields[$key]['date'] = $d->format('Y-m-d');
+				}
+			}
+		}
+		return $workfields;
+	}
 	public function update_capabilities()
 	{
 		$managers = $this->managers;
@@ -268,6 +283,7 @@ class Support_Hours_Admin
 		$valid['workFields'] = $input['workFields'];
 		return $valid;
 	}
+
 
 	public function add_dashboard_widget()
 	{

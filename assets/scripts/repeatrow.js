@@ -20,7 +20,6 @@ function repeatRow() {
         var lastRepeatingGroup = jQuery('.repeating:last-of-type');
         var num = parseInt(lastRepeatingGroup.attr('data-number'));
         var cloned = lastRepeatingGroup.clone(true);
-        var timepicker = cloned.find('.sh-datepicker');
 
         cloned.find('input:not(:radio)').val('');
         cloned.find('select').val('');
@@ -32,12 +31,6 @@ function repeatRow() {
         resetAttributeNames(cloned, num);
         cloned.find('input.time-used').attr('checked', true); // sets new repeated time.used button to checked.
 
-
-        M.Datepicker.init(timepicker[0], {
-            format: 'dd-mm-yyyy',
-            defaultDate: new Date(),
-            setDefaultDate: true,
-        });
     });
 }
 export default repeatRow;

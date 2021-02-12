@@ -16,9 +16,9 @@
   </td>
 
   <td data-th="<?php _e('Date', $name); ?>">
-    <input type="text" placeholder="dd-mm-yyyy" class="regular-text date validate sh-datepicker" id="<?php echo $name; ?>-workFields-date" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][date]" value="<?php if (!empty($field['date'])) {
-                                                                                                                                                                                                                      echo $field['date'];
-                                                                                                                                                                                                                    } ?>" required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" />
+    <input type="date" class="regular-text date validate sh-datepicker" id="<?php echo $name; ?>-workFields-date" name="<?php echo $name; ?>[workFields][<?php echo $i; ?>][date]" value="<?php if (!empty($field['date'])) {
+                                                                                                                                                                                            echo $field['date'];
+                                                                                                                                                                                          } ?>" required />
   </td>
 
   <td data-th="<?php _e('Time', $name); ?>">
