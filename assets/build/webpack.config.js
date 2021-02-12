@@ -55,29 +55,24 @@ const webpackConfig = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: '../',
-                            sourceMap: config.sourceMaps,
+
                         },
                     },
                     {
                         loader: 'css-loader',
-                        options: {
-                            sourceMap: config.sourceMaps,
-                        },
+
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
-                            sourceMap: config.sourceMaps,
-                            config: {
-                                path: __dirname + '/postcss.config.js',
+
+                            postcssOptions: {
+                                config: __dirname + '/postcss.config.js',
                             },
                         },
                     },
                     {
                         loader: 'sass-loader',
-                        options: {
-                            sourceMap: config.sourceMaps,
-                        },
                     },
                 ],
             },
@@ -118,9 +113,7 @@ const webpackConfig = {
     optimization: {
         minimizer: [
             new TerserPlugin({
-                cache: true,
                 parallel: true,
-                sourceMap: config.sourceMaps,
             }),
             new ImageminPlugin({
                 bail: false, // Ignore errors on corrupted images
