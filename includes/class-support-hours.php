@@ -73,7 +73,7 @@ class Support_Hours
 	{
 
 		$this->plugin_name = 'support-hours';
-		$this->version = '1.7.1';
+		$this->version = '1.8.0';
 
 		$this->load_dependencies();
 		$this->set_locale();

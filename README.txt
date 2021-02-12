@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
 Tested up to: 5.6
-Stable tag: 1.7.1
+Stable tag: 1.8.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,11 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 1.8.0 =
+* New: Time and date inputs now use proper input forms. 
+* New: Materialize.css datepicker is ditched in favor of browser native input fieds.
+* New: Function that converts the old dd-mm-yyyy from the workfields to the new yy-mm-dd format to be used with the default time input fields.
 
 = 1.7.1 =
 * Fixes rare case where jQuery UI datepicker took over the materialize.css datepicker.
@@ -219,7 +224,3 @@ Bugs fixed:
 
 = 1.0 =
 * First commit of my plugin
-
-
-== Upgrade Notice ==
-If you dont see your previous time entries show up after you update the plugin, please refresh the page. If the problem continues to exist, please get in contact.

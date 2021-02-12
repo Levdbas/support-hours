@@ -231,6 +231,16 @@ class Support_Hours_Admin
 		return $t1 - $t2;
 	}
 
+	/**
+	 * Date convert function.
+	 * 
+	 * Function that converts the dd-mm-yyyy dates stored in the database to yyyy-mm-dd
+	 * This is needed because the date input field only takes dates in yyyy-mm-dd
+	 *
+	 * @param array $workfields
+	 * @since 1.8
+	 * @return void
+	 */
 	public static function date_validation($workfields)
 	{
 		foreach ($workfields as $key => $workfield) {
