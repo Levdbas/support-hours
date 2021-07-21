@@ -48,7 +48,9 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 
 = 1.8.0 =
+* New: Removed jQuery from build.
 * New: Time and date inputs now use proper input forms. 
+* New: Dates are now translated and displayed following your WordPress settings. 
 * New: Materialize.css datepicker is ditched in favor of browser native input fieds.
 * New: Function that converts the old dd-mm-yyyy from the workfields to the new yy-mm-dd format to be used with the default time input fields.
 * Bug fixed: removed extra comma after e-mail address in mailto button.

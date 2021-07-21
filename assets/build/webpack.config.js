@@ -55,17 +55,14 @@ const webpackConfig = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: '../',
-
                         },
                     },
                     {
                         loader: 'css-loader',
-
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
-
                             postcssOptions: {
                                 config: __dirname + '/postcss.config.js',
                             },
@@ -105,11 +102,10 @@ const webpackConfig = {
         new MiniCssExtractPlugin({
             filename: 'styles/[name].css',
         }),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-        }),
     ],
+    externals: {
+        jquery: 'jQuery',
+    },
     optimization: {
         minimizer: [
             new TerserPlugin({

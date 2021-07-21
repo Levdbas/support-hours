@@ -1,3 +1,4 @@
+import $ from 'jquery';
 function progressBar() {
     $('.sh-gauge').each(function () {
         var target = $(this);

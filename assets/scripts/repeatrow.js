@@ -1,3 +1,4 @@
+import $ from 'jquery';
 function repeatRow() {
     // Prepare new attributes for the repeating section
     var attrs = ['for', 'id', 'name'];
@@ -30,7 +31,6 @@ function repeatRow() {
         cloned.attr('data-number', num + 1);
         resetAttributeNames(cloned, num);
         cloned.find('input.time-used').attr('checked', true); // sets new repeated time.used button to checked.
-
     });
 }
 export default repeatRow;

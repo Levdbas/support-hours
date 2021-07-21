@@ -1,4 +1,4 @@
-
+import $ from 'jquery';
 function workTableHelpers() {
     // remove workFields row.
     $('.remove-row').on('click', function () {
@@ -8,7 +8,5 @@ function workTableHelpers() {
                 $(this).remove();
             });
     });
-
-
 }
 export default workTableHelpers;

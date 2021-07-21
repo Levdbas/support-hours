@@ -1,4 +1,4 @@
-
+import $ from 'jquery';
 import progressBar from './progressbar.js';
 import timeInput from './timeInput.js';
 import repeatRow from './repeatrow.js';
@@ -13,7 +13,7 @@ import workTableHelpers from './workTableHelpers.js';
                 workTableHelpers();
                 progressBar();
             },
-            finalize: function () { },
+            finalize: function () {},
         },
     };
     var UTIL = {

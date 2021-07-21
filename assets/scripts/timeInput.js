@@ -1,3 +1,4 @@
+import $ from 'jquery';
 function timeInput() {
     // regexpression for matching xx:xx (4 digits at max)
     var $regexname = /^\d{2,3}\:(([0-5]){1}.$([0-9]|){1}$)/;
