@@ -44,7 +44,9 @@ global $pagenow;
           endif;
           foreach ($widget_fields as $field) { ?>
             <tr>
-              <td><?php if (!empty($field['used'])) echo $field['date'] ?></td>
+              <td><?php
+                  $format = get_option('date_format');
+                  if (!empty($field['used'])) echo date_i18n($format, strtotime($field['date'])); ?></td>
               <td>
                 <span class="time-type-icon">
                   <?php echo ($field['type'] == 'time-added') ? '+' : '-'; ?>

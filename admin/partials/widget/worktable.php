@@ -17,8 +17,8 @@ namespace Support_Hours;
     <table class="worktable" width="100%">
       <thead>
         <tr class="row-head">
-          <th width="20%"><?php _e('Date', $this->plugin_name); ?></th>
-          <th width="30%"><?php _e('Time', $this->plugin_name); ?></th>
+          <th width="30%"><?php _e('Date', $this->plugin_name); ?></th>
+          <th width="20%"><?php _e('Time', $this->plugin_name); ?></th>
           <th width="50%"><?php _e('Description', $this->plugin_name); ?></th>
         </tr>
       </thead>
@@ -27,7 +27,9 @@ namespace Support_Hours;
         $widget_fields = array_slice($workFields, -5);
         foreach ($widget_fields as $field) { ?>
           <tr>
-            <td><?php if (!empty($field['used'])) echo $field['date'] ?></td>
+            <td><?php
+                $format = get_option('date_format');
+                if (!empty($field['used'])) echo date_i18n($format, strtotime($field['date'])); ?></td>
             <td>
               <span class="time-type-icon">
                 <?php echo ($field['type'] == 'time-added') ? '+' : '-'; ?>
