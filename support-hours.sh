@@ -1,7 +1,7 @@
 #! /bin/bash
 dev="/mnt/d/laragon/www/testenvironment.local/web/app/plugins/support-hours"
-trunk="/mnt/d/laragon/www/anders/support-hours/trunk"
-release="/mnt/d/laragon/www/anders/support-hours"
+trunk="/mnt/d/laragon/www/Anders/support-hours/trunk"
+release="/mnt/d/laragon/www/Anders/support-hours"
 read -p 'Release number:' releasenumber
 echo 'Get fresh production files'
 yarn run production
