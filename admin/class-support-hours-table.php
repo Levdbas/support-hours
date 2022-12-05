@@ -129,21 +129,21 @@ class Link_List_Table extends \WP_List_Table
 	{
 
 		// Get the records registered in the prepare_items method
-		$workFields = $this->items;
+		$work_fields = $this->items;
 		$name = $this->plugin_name;
 		// Get the columns registered in the get_columns and get_sortable_columns methods
 		list($columns, $hidden) = $this->get_column_info();
 		$user_ID = get_current_user_id();
 		$i = 0;
-		if ($workFields) :
+		if ($work_fields) :
 			$first = false;
-			foreach ($workFields as $field) {
+			foreach ($work_fields as $field) {
 				include('partials/settings/work-table-fields.php');
 				$i++;
 			}
-	   else :
-		   $first = true;
-		   include('partials/settings/work-table-fields.php');
-	   endif;
+		else :
+			$first = true;
+			include('partials/settings/work-table-fields.php');
+		endif;
 	}
 }

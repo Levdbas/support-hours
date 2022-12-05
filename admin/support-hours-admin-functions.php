@@ -6,37 +6,37 @@ $name          = $this->plugin_name;
 $options       = $this->options;
 $current_color = get_user_option('admin_color');
 
-$workFields     = self::$work_fields;
+$work_fields     = self::$work_fields;
 $used_minutes   = $this->used_minutes;
 $bought_minutes = $this->bought_minutes;
 
 /**
- * Searches our $workFields array for the last bought hours.
+ * Searches our $work_fields array for the last bought hours.
  *
  * @since
- * @param  array $workFields      The workfields from this plugin, contains bought and used hours
+ * @param  array $work_fields      The workfields from this plugin, contains bought and used hours
  * @return int                      Last bought hours in minute format
  */
-function last_bought($workFields)
+function last_bought($work_fields)
 {
 	$minutes = 0;
-	if (null != $workFields) {
-		$workFields = array_reverse($workFields); // invert array so we can search DESC
-		$key        = array_search('time-added', array_column($workFields, 'type')); // searching for the last time-added value in key 'type'
+	if (null != $work_fields) {
+		$work_fields = array_reverse($work_fields); // invert array so we can search DESC
+		$key        = array_search('time-added', array_column($work_fields, 'type')); // searching for the last time-added value in key 'type'
 
 		if (false !== $key) : // if there is a key!
-			$time                = $workFields[$key]['used']; // take our time in HH:MM format from the field
+			$time                = $work_fields[$key]['used']; // take our time in HH:MM format from the field
 			list($hour, $minute) = explode(':', $time); // explode the time
 			$minutes += $hour * 60; // hours to minutes, add them to minutes
 			$minutes += $minute; // add minutes to total as well.
-	  endif;
+		endif;
 	}
 	return $minutes;
 }
 
-function calculate_minutes_output($workFields, $used_minutes, $bought_minutes)
+function calculate_minutes_output($work_fields, $used_minutes, $bought_minutes)
 {
-	$last_bought_minutes = last_bought($workFields);
+	$last_bought_minutes = last_bought($work_fields);
 	$bought_minus_last   = $bought_minutes - $last_bought_minutes;
 	$minutes_to_spent    = $bought_minutes - $used_minutes;
 
@@ -80,7 +80,7 @@ function maybe_hide_minutes($minutes)
 
 	if ($minutes % 60 == 0) :
 		$time = $minutes / 60;
-  endif;
+	endif;
 
 	return $time;
 }
@@ -90,14 +90,14 @@ function maybe_hide_minutes($minutes)
  * Output depends on time spent, time bought and time bought the last time.
  *
  * @since 1.4
- * @param  array $workFields     The workfields from this plugin, contains bought and used hours
+ * @param  array $work_fields     The workfields from this plugin, contains bought and used hours
  * @param  int   $used_minutes   Total used minutes
  * @param  int   $bought_minutes Total bought minutes
  * @return string                 Returns hours in HH:MM format or HH format where the first is used time, the second the bought time.
  */
-function widget_output($workFields, $used_minutes, $bought_minutes)
+function widget_output($work_fields, $used_minutes, $bought_minutes)
 {
-	$minutes = calculate_minutes_output($workFields, $used_minutes, $bought_minutes);
+	$minutes = calculate_minutes_output($work_fields, $used_minutes, $bought_minutes);
 
 	$widget_hours = maybe_hide_minutes($minutes['used_minutes']) . ' / ' . maybe_hide_minutes($minutes['bought_minutes']);
 	return $widget_hours;
@@ -108,15 +108,15 @@ function widget_output($workFields, $used_minutes, $bought_minutes)
  * and in the widget to animate the circle.
  *
  * @since
- * @param  array $workFields     The workfields from this plugin, contains bought and used hours
+ * @param  array $work_fields     The workfields from this plugin, contains bought and used hours
  * @param  int   $used_minutes   Total used minutes
  * @param  int   $bought_minutes Total bought minutes
  * @return int                    Calculated percentage
  */
-function percentage($workFields, $used_minutes, $bought_minutes)
+function percentage($work_fields, $used_minutes, $bought_minutes)
 {
 
-	$minutes = calculate_minutes_output($workFields, $used_minutes, $bought_minutes);
+	$minutes = calculate_minutes_output($work_fields, $used_minutes, $bought_minutes);
 
 	if (0 == $minutes['used_minutes']) {
 		return 0;
@@ -151,7 +151,7 @@ function font_size($used_minutes, $bought_minutes)
 
 	if ($used_minutes % 60 == 0 && $bought_minutes < 5940) :
 		$size = 'big';
-  endif;
+	endif;
 
 	return 'sh-gauge__text--' . $size;
 }

@@ -17,7 +17,7 @@ $i = 0;
 
 global $pagenow;
 
-if (!empty($this->managers) && !empty($this->email) && !empty($workFields[0]['date'])) :
+if (!empty($this->managers) && !empty($this->email) && !empty($work_fields[0]['date'])) :
 	include_once('partials/widget/widget-clock.php');
 	include_once('partials/widget/worktable.php');
 	include_once('partials/common/bottom-message.php');

@@ -129,7 +129,7 @@ class Support_Hours_Admin
 
 	public function options_update()
 	{
-		register_setting($this->plugin_name, $this->plugin_name, [$this, 'validate']);
+		register_setting($this->plugin_name, 'support-hours', [$this, 'validate']);
 	}
 
 	/**
@@ -164,8 +164,8 @@ class Support_Hours_Admin
 	{
 
 		add_menu_page(
-			__('Support Hours overview', $this->plugin_name),
-			__('Support Hours', $this->plugin_name),
+			__('Support Hours overview', 'support-hours'),
+			__('Support Hours', 'support-hours'),
 			'publish_pages',
 			'support-hours',
 			[$this, 'display_plugin_page'],
@@ -174,8 +174,8 @@ class Support_Hours_Admin
 
 		add_submenu_page(
 			'support-hours',
-			__('Support Hours overview', $this->plugin_name),
-			__('Overview', $this->plugin_name),
+			__('Support Hours overview', 'support-hours'),
+			__('Overview', 'support-hours'),
 			'publish_pages',
 			'support-hours',
 			[$this, 'display_plugin_page']
@@ -183,8 +183,8 @@ class Support_Hours_Admin
 
 		add_submenu_page(
 			'support-hours',
-			__('Support Hours settings', $this->plugin_name),
-			__('Settings', $this->plugin_name),
+			__('Support Hours settings', 'support-hours'),
+			__('Settings', 'support-hours'),
 			'publish_pages',
 			'support-hours-settings',
 			[$this, 'display_plugin_setup_page']
@@ -192,8 +192,8 @@ class Support_Hours_Admin
 
 		add_submenu_page(
 			'support-hours',
-			__('Support Hours test', $this->plugin_name),
-			__('Settings', $this->plugin_name),
+			__('Support Hours test', 'support-hours'),
+			__('Settings', 'support-hours'),
 			'publish_pages',
 			'support-hours-test',
 			[$this, 'display_plugin_table']
@@ -211,7 +211,7 @@ class Support_Hours_Admin
 		*  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
 		*/
 		$settings_link = [
-			'<a href="' . admin_url('admin.php?page=support-hours-settings') . '">' . __('Settings', $this->plugin_name) . '</a>',
+			'<a href="' . admin_url('admin.php?page=support-hours-settings') . '">' . __('Settings', 'support-hours') . '</a>',
 		];
 		return array_merge($settings_link, $links);
 	}
@@ -252,23 +252,23 @@ class Support_Hours_Admin
 	 * Function that converts the dd-mm-yyyy dates stored in the database to yyyy-mm-dd
 	 * This is needed because the date input field only takes dates in yyyy-mm-dd
 	 *
-	 * @param array $workfields
+	 * @param array $work_fields
 	 * @since 1.8
 	 * @return void
 	 */
-	public static function date_validation($workfields)
+	public static function date_validation($work_fields)
 	{
-		foreach ($workfields as $key => $workfield) {
+		foreach ($work_fields as $key => $workfield) {
 			if (isset($workfield['date'])) {
 				$date = $workfield['date'];
 				$d    = \DateTime::createFromFormat('d-m-Y', $date);
 
 				if ($d) {
-					$workfields[$key]['date'] = $d->format('Y-m-d');
+					$work_fields[$key]['date'] = $d->format('Y-m-d');
 				}
 			}
 		}
-		return $workfields;
+		return $work_fields;
 	}
 	public function update_capabilities()
 	{
@@ -313,7 +313,7 @@ class Support_Hours_Admin
 		if (current_user_can('publish_pages')) {
 			add_meta_box(
 				'support_hours_dashboard_widget',
-				__('Support Hours', $this->plugin_name),
+				__('Support Hours', 'support-hours'),
 				[$this, 'widget_compose'],
 				'dashboard',
 				'normal',

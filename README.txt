@@ -156,7 +156,7 @@ Thank you [Jos Klever](https://wordpress.org/support/users/josklever/) for revie
 bugs fixed:
 
 * link to setup page on plugin overview is fixed.
-* better check on the $workFields array if it is really empty.
+* better check on the $work_fields array if it is really empty.
 
 enhancements:
 
