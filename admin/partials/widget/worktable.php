@@ -8,9 +8,9 @@ namespace Support_Hours;
 		<h3>
 			<?php
 			if ($pagenow == 'index.php') :
-				_e('Last five activities:', 'support-hours');
+				esc_html_e('Last five activities:', 'support-hours');
 			else :
-				_e('Activities:', 'support-hours');
+				esc_html_e('Activities:', 'support-hours');
 			endif;
 			?>
 		</h3>
@@ -18,16 +18,16 @@ namespace Support_Hours;
 		<table class="worktable" width="100%">
 			<thead>
 				<tr class="row-head">
-					<th width="30%"><?php _e('Date', 'support-hours'); ?></th>
-					<th width="20%"><?php _e('Time', 'support-hours'); ?></th>
-					<th width="50%"><?php _e('Description', 'support-hours'); ?></th>
+					<th width="30%"><?php esc_html_e('Date', 'support-hours'); ?></th>
+					<th width="20%"><?php esc_html_e('Time', 'support-hours'); ?></th>
+					<th width="50%"><?php esc_html_e('Description', 'support-hours'); ?></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
 				$widget_fields = array_slice($work_fields, -5);
 				foreach ($widget_fields as $field) {
-				?>
+					?>
 					<tr>
 						<td>
 							<?php
@@ -59,7 +59,7 @@ namespace Support_Hours;
 			</tbody>
 		</table>
 		<div class="total">
-			<span class="bold"><?php _e('Total', 'support-hours'); ?></span>:
+			<span class="bold"><?php esc_html_e('Total', 'support-hours'); ?></span>:
 			<?php echo calculate_hours_and_minutes_output($this->used_minutes); ?> / <?php echo calculate_hours_and_minutes_output($this->bought_minutes); ?>
 		</div>
 	</div>

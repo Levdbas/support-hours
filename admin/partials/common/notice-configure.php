@@ -8,6 +8,6 @@ the_notice($message, 'notice-warning');
 ?>
 <p>
   <a class="button button-primary" href="<?php echo admin_url('admin.php?page=support-hours-settings'); ?>">
-	<?php _e('Configure plugin!', 'support-hours'); ?>
+	<?php esc_html_e('Configure plugin!', 'support-hours'); ?>
   </a>
 </p>

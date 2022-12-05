@@ -16,9 +16,9 @@ namespace Support_Hours;
 			<span class="sh-gauge__text <?php echo font_size($used_minutes, $bought_minutes); ?>">
 				<?php echo widget_output($work_fields, $used_minutes, $bought_minutes); ?>
 				<br class="smallbr" />
-				<?php _e('hours', 'support-hours'); ?>
+				<?php esc_html_e('hours', 'support-hours'); ?>
 				<br class='bigbr' />
-				<?php _e('used', 'support-hours'); ?>
+				<?php esc_html_e('used', 'support-hours'); ?>
 			</span>
 		</div>
 	</a>

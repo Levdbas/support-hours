@@ -5,10 +5,10 @@
 		<thead>
 			<tr class="row-head">
 
-				<th class="support-hours-col col-type"><?php _e('Type', $name); ?></th>
-				<th class="support-hours-col col-date"><?php _e('Date', $name); ?></th>
-				<th class="support-hours-col col-time"><?php _e('Time', $name); ?></th>
-				<th class="support-hours-col col-description"><?php _e('Description', $name); ?></th>
+				<th class="support-hours-col col-type"><?php esc_html_e('Type', 'support-hours'); ?></th>
+				<th class="support-hours-col col-date"><?php esc_html_e('Date', 'support-hours'); ?></th>
+				<th class="support-hours-col col-time"><?php esc_html_e('Time', 'support-hours'); ?></th>
+				<th class="support-hours-col col-description"><?php esc_html_e('Description', 'support-hours'); ?></th>
 				<th></th>
 			</tr>
 		</thead>
@@ -28,9 +28,9 @@
 			?>
 		</tbody>
 	</table>
-	<p><em><?php _e('Activities will be sorted by date on save', $name); ?>.</em></p>
+	<p><em><?php esc_html_e('Activities will be sorted by date on save', 'support-hours'); ?>.</em></p>
 	<a href="#" class="repeat button button-secondary">
-		<?php _e('Add activity', $name); ?>
+		<?php esc_html_e('Add activity', 'support-hours'); ?>
 	</a>
 	<?php submit_button(__('Save', $name), 'primary', 'submit', true); ?>
 </fieldset>

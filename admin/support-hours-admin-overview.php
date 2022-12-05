@@ -17,7 +17,7 @@ global $pagenow;
 <div class="wrap">
 	<h2><?php echo esc_html(get_admin_page_title()); ?></h2>
 	<p>
-		<?php _e('A complete overview of all activities.', 'support-hours'); ?>
+		<?php esc_html_e('A complete overview of all activities.', 'support-hours'); ?>
 	</p>
 	<?php
 	if (!empty($this->managers) && $bought_minutes !== '0' && !empty($this->email)) :
@@ -25,13 +25,13 @@ global $pagenow;
 		$i = 0;
 
 		if (!empty($work_fields[0]['date'])) :
-	?>
+			?>
 			<table class="wp-list-table widefat fixed striped users">
 				<thead>
 					<tr>
-						<th scope="col" class="column-primary"><?php _e('Date', 'support-hours'); ?></th>
-						<th scope="col "><?php _e('Time', 'support-hours'); ?></th>
-						<th scope="col "><?php _e('Description', 'support-hours'); ?></th>
+						<th scope="col" class="column-primary"><?php esc_html_e('Date', 'support-hours'); ?></th>
+						<th scope="col "><?php esc_html_e('Time', 'support-hours'); ?></th>
+						<th scope="col "><?php esc_html_e('Description', 'support-hours'); ?></th>
 					</tr>
 				</thead>
 
@@ -43,7 +43,7 @@ global $pagenow;
 						$widget_fields = array_slice($work_fields, -5);
 					endif;
 					foreach ($widget_fields as $field) {
-					?>
+						?>
 						<tr>
 							<td>
 								<?php
@@ -76,20 +76,20 @@ global $pagenow;
 
 				<tfoot>
 					<tr>
-						<th scope="col column-primary"><?php _e('Date', 'support-hours'); ?></th>
-						<th scope="col column-primary"><?php _e('Time', 'support-hours'); ?></th>
-						<th scope="col column-primary"><?php _e('Description', 'support-hours'); ?></th>
+						<th scope="col column-primary"><?php esc_html_e('Date', 'support-hours'); ?></th>
+						<th scope="col column-primary"><?php esc_html_e('Time', 'support-hours'); ?></th>
+						<th scope="col column-primary"><?php esc_html_e('Description', 'support-hours'); ?></th>
 					</tr>
 				</tfoot>
 			</table>
 
 			<div class="tablenav sh-tablenav bottom">
 				<div class="total">
-					<span class="bold"><?php _e('Total', 'support-hours'); ?></span>:
+					<span class="bold"><?php esc_html_e('Total', 'support-hours'); ?></span>:
 					<?php echo calculate_hours_and_minutes_output($this->used_minutes); ?> / <?php echo calculate_hours_and_minutes_output($this->bought_minutes); ?>
 				</div>
 			</div>
-	<?php
+			<?php
 		endif;
 
 		include_once('partials/common/bottom-message.php');
