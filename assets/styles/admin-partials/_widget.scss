@@ -1,123 +1,141 @@
 #support_hours_dashboard_widget {
-    h3 {
-        margin: 1.33em 0 0;
-        font-size: 16px;
-        font-weight: 700;
-    }
+
+	h3 {
+		margin: 1.33em 0 0;
+		font-size: 16px;
+		font-weight: 700;
+	}
 }
 // ==========================================================================
 // The new widget
 // ==========================================================================
 
 .sh-gauge {
-    position: relative;
-    &__wrapper {
-        &:focus {
-            box-shadow: none;
-            outline: none;
-        }
-    }
-    &__base {
-        opacity: 1;
-        stroke: $background-color;
-        stroke-width: 7px;
-        fill: none;
-    }
-    &__svg-wrapper {
-        position: relative;
-        padding-bottom: 100%;
-    }
-    &__svg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-    }
-    &__arc {
-        fill: none;
-        stroke: $progress-color;
-        stroke-width: 7px;
-        transition: stroke-dasharray 1.5s ease-in-out 0.25s;
-        stroke-dasharray: 0px, 352px;
-        box-shadow: 2px 2px 2px black;
-    }
-    &__overlay {
-        stroke-width: 105;
-        stroke-linecap: round;
-        stroke: white;
-        transition: stroke-width 0.2s ease-in;
-    }
-    &__percentage {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        display: flex;
-        line-height: 0;
-        text-align: center;
-        top: 0;
-    }
-    &__text {
-        //position: absolute;
-        display: block;
-        width: 100%;
-        align-self: center;
-        font-size: 30px;
-        font-weight: 700;
-        line-height: 1.2;
-        color: $background-color;
-        text-align: center;
-        transition: all 0.2s ease-in-out;
+	position: relative;
 
-        @media screen and (min-width: 870px) {
-            font-size: 35px;
-        }
-        .smallbr {
-            display: none;
-            @media screen and (min-width: 870px) {
-                display: block;
-            }
-        }
-        .bigbr {
-            display: block;
-            @media screen and (min-width: 870px) {
-                display: none;
-            }
-        }
+	&__wrapper {
 
-        &--big {
-            .smallbr {
-                display: none;
-            }
+		&:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	}
 
-            .bigbr {
-                display: block;
-            }
-        }
-    }
+	&__base {
+		opacity: 1;
+		fill: none;
+		stroke: $background-color;
+		stroke-width: 7px;
+	}
+
+	&__svg-wrapper {
+		position: relative;
+		padding-bottom: 100%;
+	}
+
+	&__svg {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+	&__arc {
+		box-shadow: 2px 2px 2px black;
+		fill: none;
+		stroke: $progress-color;
+		stroke-dasharray: 0, 352px;
+		stroke-width: 7px;
+		transition: stroke-dasharray 1.5s ease-in-out 0.25s;
+	}
+
+	&__overlay {
+		stroke: white;
+		stroke-linecap: round;
+		stroke-width: 105;
+		transition: stroke-width 0.2s ease-in;
+	}
+
+	&__percentage {
+		position: absolute;
+		top: 0;
+		display: flex;
+		width: 100%;
+		height: 100%;
+		line-height: 0;
+		text-align: center;
+	}
+
+	&__text {
+		//position: absolute;
+		display: block;
+		align-self: center;
+		width: 100%;
+		font-size: 30px;
+		font-weight: 700;
+		line-height: 1.2;
+		color: $background-color;
+		text-align: center;
+		transition: all 0.2s ease-in-out;
+
+		@media screen and (min-width: 870px) {
+			font-size: 35px;
+		}
+
+		.smallbr {
+			display: none;
+
+			@media screen and (min-width: 870px) {
+				display: block;
+			}
+		}
+
+		.bigbr {
+			display: block;
+
+			@media screen and (min-width: 870px) {
+				display: none;
+			}
+		}
+
+		&--big {
+
+			.smallbr {
+				display: none;
+			}
+
+			.bigbr {
+				display: block;
+			}
+		}
+	}
 }
 
 // ==========================================================================
 // Hover
 // ==========================================================================
+
 .sh-gauge:hover {
-    .sh-gauge__overlay {
-        stroke-width: 110;
-    }
-    .sh-gauge__text {
-        font-size: 35px;
-        color: $progress-color;
 
-        @media screen and (min-width: 870px) {
-            font-size: 45px;
-        }
+	.sh-gauge__overlay {
+		stroke-width: 110;
+	}
 
-        &--small {
-            font-size: 35px;
+	.sh-gauge__text {
+		font-size: 35px;
+		color: $progress-color;
 
-            @media screen and (min-width: 870px) {
-                font-size: 40px;
-            }
-        }
-    }
+		@media screen and (min-width: 870px) {
+			font-size: 45px;
+		}
+
+		&--small {
+			font-size: 35px;
+
+			@media screen and (min-width: 870px) {
+				font-size: 40px;
+			}
+		}
+	}
 }

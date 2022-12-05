@@ -77,7 +77,7 @@ class Support_Hours_Admin
 	 * @access   private
 	 * @var      string   $work_fields all work fields
 	 */
-	private $work_fields = null;
+	public static ?array $work_fields = null;
 
 	/**
 	 * Support Hours used_minutes
@@ -121,10 +121,10 @@ class Support_Hours_Admin
 		}
 
 		if (isset($this->options['workFields'])) {
-			$this->work_fields = $this->options['workFields'];
+			self::$work_fields = $this->options['workFields'];
 			$this->used_minutes = $this->add_time_entries('time-used');
 			$this->bought_minutes  = $this->add_time_entries('time-added');
-			$this->work_fields = self::date_validation($this->work_fields);
+			self::$work_fields = self::date_validation(self::$work_fields);
 		}
 	}
 
@@ -190,6 +190,15 @@ class Support_Hours_Admin
 			'support-hours-settings',
 			array($this, 'display_plugin_setup_page')
 		);
+
+		add_submenu_page(
+			'support-hours',
+			__('Support Hours test', $this->plugin_name),
+			__('Settings', $this->plugin_name),
+			'publish_pages',
+			'support-hours-test',
+			array($this, 'display_plugin_table')
+		);
 	}
 
 	/**
@@ -218,6 +227,14 @@ class Support_Hours_Admin
 		include_once('support-hours-admin-functions.php');
 		include_once('support-hours-admin-overview.php');
 	}
+
+	public function display_plugin_table()
+	{
+		$wp_list_table = new Link_List_Table($this->plugin_name);
+		$wp_list_table->prepare_items();
+		$wp_list_table->display();
+	}
+
 	public function display_plugin_setup_page()
 	{
 		include_once('support-hours-admin-settings.php');
@@ -330,15 +347,15 @@ class Support_Hours_Admin
 	{
 		$minutes = 0;
 
-		if ($this->work_fields == null) {
+		if (self::$work_fields == null) {
 			return $minutes;
 		}
 
-		if (!isset($this->work_fields[0]['type'])) {
+		if (!isset(self::$work_fields[0]['type'])) {
 			return $minutes;
 		}
 
-		$filtered_fields = array_filter($this->work_fields, function ($var) use ($type) {
+		$filtered_fields = array_filter(self::$work_fields, function ($var) use ($type) {
 			return ($var['type'] == $type);
 		});
 

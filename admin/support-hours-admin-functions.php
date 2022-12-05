@@ -2,15 +2,13 @@
 
 namespace Support_Hours;
 
-$name = $this->plugin_name;
-$options = $this->options;
+$name          = $this->plugin_name;
+$options       = $this->options;
 $current_color = get_user_option('admin_color');
 
-$workFields = $this->work_fields;
-$used_minutes = $this->used_minutes;
+$workFields     = self::$work_fields;
+$used_minutes   = $this->used_minutes;
 $bought_minutes = $this->bought_minutes;
-
-
 
 /**
  * Searches our $workFields array for the last bought hours.
@@ -21,12 +19,12 @@ $bought_minutes = $this->bought_minutes;
 function last_bought($workFields)
 {
   $minutes = 0;
-  if ($workFields != null) {
+  if (null != $workFields) {
     $workFields = array_reverse($workFields); // invert array so we can search DESC
-    $key = array_search('time-added', array_column($workFields, 'type')); // searching for the last time-added value in key 'type'
+    $key        = array_search('time-added', array_column($workFields, 'type')); // searching for the last time-added value in key 'type'
 
-    if ($key !== false) : // if there is a key!
-      $time = $workFields[$key]['used']; // take our time in HH:MM format from the field
+    if (false !== $key) : // if there is a key!
+      $time                = $workFields[$key]['used']; // take our time in HH:MM format from the field
       list($hour, $minute) = explode(':', $time); // explode the time
       $minutes += $hour * 60; // hours to minutes, add them to minutes
       $minutes += $minute; // add minutes to total as well.
@@ -35,13 +33,11 @@ function last_bought($workFields)
   return $minutes;
 }
 
-
 function calculate_minutes_output($workFields, $used_minutes, $bought_minutes)
 {
   $last_bought_minutes = last_bought($workFields);
-  $bought_minus_last = $bought_minutes -  $last_bought_minutes;
-  $minutes_to_spent = $bought_minutes - $used_minutes;
-
+  $bought_minus_last   = $bought_minutes - $last_bought_minutes;
+  $minutes_to_spent    = $bought_minutes - $used_minutes;
 
   // NOTE: calculates used hours
   if ($used_minutes > $bought_minus_last) {
@@ -58,8 +54,8 @@ function calculate_minutes_output($workFields, $used_minutes, $bought_minutes)
   }
 
   return [
-    'used_minutes' => $used_minutes,
-    'bought_minutes' => $bought_minutes
+    'used_minutes'   => $used_minutes,
+    'bought_minutes' => $bought_minutes,
   ];
 }
 
@@ -104,7 +100,6 @@ function widget_output($workFields, $used_minutes, $bought_minutes)
   return $widget_hours;
 }
 
-
 /**
  * used for calculating the hours left in the notices
  * and in the widget to animate the circle.
@@ -119,15 +114,22 @@ function percentage($workFields, $used_minutes, $bought_minutes)
 
   $minutes = calculate_minutes_output($workFields, $used_minutes, $bought_minutes);
 
+  if (0 == $minutes['used_minutes']) {
+    return 0;
+  }
+
+  if (0 == $minutes['bought_minutes']) {
+    return 0;
+  }
+
   $percentage = $minutes['used_minutes'] * 100 / $minutes['bought_minutes'];
+
   if ($percentage > 100) {
     $percentage = 100;
   }
   $percentage = round($percentage);
   return $percentage;
 }
-
-
 
 /**
  * Control the font size of the time in the widget
@@ -148,7 +150,6 @@ function font_size($used_minutes, $bought_minutes)
 
   return 'sh-gauge__text--' . $size;
 }
-
 
 function get_notice($message, $notice_class = 'notice-alt')
 {
