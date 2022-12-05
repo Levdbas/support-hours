@@ -5,7 +5,6 @@ namespace Support_Hours;
 /**
  * Provide a admin widget for the plugin
  *
- *
  * @link       http://basedonline.nl
  * @since      1.0.0
  *
@@ -19,11 +18,11 @@ $i = 0;
 global $pagenow;
 
 if (!empty($this->managers) && !empty($this->email) && !empty($workFields[0]['date'])) :
-  include_once('partials/widget/widget-clock.php');
-  include_once('partials/widget/worktable.php');
-  include_once('partials/common/bottom-message.php');
+	include_once('partials/widget/widget-clock.php');
+	include_once('partials/widget/worktable.php');
+	include_once('partials/common/bottom-message.php');
 elseif (empty($this->managers) || empty($this->email)) :
-  include_once('partials/common/notice-configure.php');
+	include_once('partials/common/notice-configure.php');
 else :
-  include_once('partials/common/notice-no-hours.php');
+	include_once('partials/common/notice-no-hours.php');
 endif;

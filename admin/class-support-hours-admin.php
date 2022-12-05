@@ -101,8 +101,8 @@ class Support_Hours_Admin
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct($plugin_name, $version)
 	{
@@ -129,7 +129,7 @@ class Support_Hours_Admin
 
 	public function options_update()
 	{
-		register_setting($this->plugin_name, $this->plugin_name, array($this, 'validate'));
+		register_setting($this->plugin_name, $this->plugin_name, [$this, 'validate']);
 	}
 
 	/**
@@ -141,8 +141,8 @@ class Support_Hours_Admin
 	{
 		$current_page = get_current_screen()->base;
 
-		if (in_array($current_page, array('toplevel_page_support-hours', 'support-hours_page_support-hours-settings', 'dashboard'))) :
-			wp_enqueue_style($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/styles/support-hours-admin.css', array(), $this->version, 'all');
+		if (in_array($current_page, ['toplevel_page_support-hours', 'support-hours_page_support-hours-settings', 'dashboard'])) :
+			wp_enqueue_style($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/styles/support-hours-admin.css', [], $this->version, 'all');
 		endif;
 	}
 
@@ -155,8 +155,8 @@ class Support_Hours_Admin
 	{
 		$current_page = get_current_screen()->base;
 
-		if (in_array($current_page, array('toplevel_page_support-hours', 'support-hours_page_support-hours-settings', 'dashboard'))) :
-			wp_enqueue_script($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/scripts/support-hours-admin.js', array('jquery'), $this->version, false);
+		if (in_array($current_page, ['toplevel_page_support-hours', 'support-hours_page_support-hours-settings', 'dashboard'])) :
+			wp_enqueue_script($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/scripts/support-hours-admin.js', ['jquery'], $this->version, false);
 		endif;
 	}
 
@@ -168,7 +168,7 @@ class Support_Hours_Admin
 			__('Support Hours', $this->plugin_name),
 			'publish_pages',
 			'support-hours',
-			array($this, 'display_plugin_page'),
+			[$this, 'display_plugin_page'],
 			'dashicons-clock'
 		);
 
@@ -178,7 +178,7 @@ class Support_Hours_Admin
 			__('Overview', $this->plugin_name),
 			'publish_pages',
 			'support-hours',
-			array($this, 'display_plugin_page')
+			[$this, 'display_plugin_page']
 		);
 
 		add_submenu_page(
@@ -187,7 +187,7 @@ class Support_Hours_Admin
 			__('Settings', $this->plugin_name),
 			'publish_pages',
 			'support-hours-settings',
-			array($this, 'display_plugin_setup_page')
+			[$this, 'display_plugin_setup_page']
 		);
 
 		add_submenu_page(
@@ -196,7 +196,7 @@ class Support_Hours_Admin
 			__('Settings', $this->plugin_name),
 			'publish_pages',
 			'support-hours-test',
-			array($this, 'display_plugin_table')
+			[$this, 'display_plugin_table']
 		);
 	}
 
@@ -208,11 +208,11 @@ class Support_Hours_Admin
 	public function add_action_links($links)
 	{
 		/*
-     *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
-     */
-		$settings_link = array(
+		*  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
+		*/
+		$settings_link = [
 			'<a href="' . admin_url('admin.php?page=support-hours-settings') . '">' . __('Settings', $this->plugin_name) . '</a>',
-		);
+		];
 		return array_merge($settings_link, $links);
 	}
 	/**
@@ -289,8 +289,8 @@ class Support_Hours_Admin
 
 	public function validate($input)
 	{
-		$valid          = array();
-		$valid['users'] = array();
+		$valid          = [];
+		$valid['users'] = [];
 
 		$valid['email'] = sanitize_email($input['email']);
 
@@ -301,7 +301,7 @@ class Support_Hours_Admin
 		if (!isset($input['workFields']) || null == $input['workFields']) {
 			$input['workFields'] = null;
 		} else {
-			usort($input['workFields'], array('Support_Hours\Support_Hours_Admin', 'date_compare'));
+			usort($input['workFields'], ['Support_Hours\Support_Hours_Admin', 'date_compare']);
 		}
 
 		$valid['workFields'] = $input['workFields'];
@@ -314,7 +314,7 @@ class Support_Hours_Admin
 			add_meta_box(
 				'support_hours_dashboard_widget',
 				__('Support Hours', $this->plugin_name),
-				array($this, 'widget_compose'),
+				[$this, 'widget_compose'],
 				'dashboard',
 				'normal',
 				'high'
@@ -331,8 +331,9 @@ class Support_Hours_Admin
 	/**
 	 * Checks the workfields array for the time fields. Adds all timefields and returns them.
 	 * If no workfields and therefore no time fields are filled, returns 00:00
+	 *
 	 * @since   1.4
-	 * @param   string  $type         can be used or bought
+	 * @param   string $type         can be used or bought
 	 * @return  string                Returns full hours format or total minutes of used or bought hours
 	 */
 	private function add_time_entries($type)
@@ -347,12 +348,15 @@ class Support_Hours_Admin
 			return $minutes;
 		}
 
-		$filtered_fields = array_filter(self::$work_fields, function ($var) use ($type) {
-			return ($var['type'] == $type);
-		});
+		$filtered_fields = array_filter(
+			self::$work_fields,
+			function ($var) use ($type) {
+				return ($var['type'] == $type);
+			}
+		);
 
 		foreach ($filtered_fields as $time) {
-			if ("" !== $time['type']) {
+			if ('' !== $time['type']) {
 				list($hour, $minute) = explode(':', $time['used']);
 				$minutes += $hour * 60;
 				$minutes += $minute;

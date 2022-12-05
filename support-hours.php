@@ -65,8 +65,8 @@ function remove_support_hours()
 }
 
 register_activation_hook(__FILE__, __NAMESPACE__ . '\\activate_support_hours');
-register_deactivation_hook(__FILE__,  __NAMESPACE__ . '\\deactivate_support_hours');
-register_uninstall_hook(__FILE__,  __NAMESPACE__ . '\\remove_support_hours');
+register_deactivation_hook(__FILE__, __NAMESPACE__ . '\\deactivate_support_hours');
+register_uninstall_hook(__FILE__, __NAMESPACE__ . '\\remove_support_hours');
 
 
 /**

@@ -1,0 +1,36 @@
+{
+    "name": "studiolemon/wp-lemon",
+    "description": "WordPress parent theme for quick theme development",
+    "type": "project",
+    "homepage": "https://studiolemon.nl/",
+    "support": {
+        "docs": "https://studio-lemon.github.io/wp-lemon-docs/"
+    },
+    "authors": [
+        {
+            "name": "Erik van der Bas",
+            "email": "erik@basedonline.nl"
+        }
+    ],
+    "prefer-stable": true,
+    "require": {},
+    "require-dev": {
+        "php": ">=7.4|>=8.0",
+        "wp-coding-standards/wpcs": "^2",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "phpunit/phpunit": "^9",
+        "brain/monkey": "^2",
+        "phpcompatibility/php-compatibility": "^9"
+    },
+    "scripts": {
+        "lint:fix": "@php ./vendor/bin/phpcbf --standard=phpcs.xml.dist --extensions=php --colors -s -p -v ./",
+        "lint": "@php ./vendor/bin/phpcs --standard=phpcs.xml.dist --extensions=php --colors -s -p -v ./",
+        "test": "@php ./vendor/bin/phpunit",
+        "sniffer:php8": "@php ./vendor/bin/phpcs -p ./includes --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

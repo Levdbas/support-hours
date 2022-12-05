@@ -34,11 +34,11 @@ class Support_Hours_Deactivator
 	 */
 	public static function deactivate()
 	{
-		//Get entire array
+		// Get entire array
 		$options = get_option('support-hours');
-		//Alter the options array appropriately
+		// Alter the options array appropriately
 		$options['users'] = '';
-		//Update entire array
+		// Update entire array
 		update_option('support-hours', $options);
 	}
 }
