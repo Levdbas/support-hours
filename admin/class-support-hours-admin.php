@@ -1,7 +1,5 @@
 <?php
 
-namespace Support_Hours;
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -11,6 +9,9 @@ namespace Support_Hours;
  * @package    Support_Hours
  * @subpackage Support_Hours/admin
  */
+
+namespace Support_Hours;
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -51,7 +52,6 @@ class Support_Hours_Admin
 	 */
 	private $options;
 
-
 	/**
 	 * Support Hours Managers
 	 *
@@ -77,7 +77,7 @@ class Support_Hours_Admin
 	 * @access   private
 	 * @var      string   $work_fields all work fields
 	 */
-	public static ?array $work_fields = null;
+	public static $work_fields = [];
 
 	/**
 	 * Support Hours used_minutes
@@ -108,9 +108,8 @@ class Support_Hours_Admin
 	{
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-		$this->options = get_option($plugin_name);
-
+		$this->version     = $version;
+		$this->options     = get_option($plugin_name);
 
 		if (!empty($this->options['users'])) {
 			$this->managers = $this->options['users'];
@@ -121,10 +120,10 @@ class Support_Hours_Admin
 		}
 
 		if (isset($this->options['workFields'])) {
-			self::$work_fields = $this->options['workFields'];
-			$this->used_minutes = $this->add_time_entries('time-used');
-			$this->bought_minutes  = $this->add_time_entries('time-added');
-			self::$work_fields = self::date_validation(self::$work_fields);
+			self::$work_fields    = $this->options['workFields'];
+			$this->used_minutes   = $this->add_time_entries('time-used');
+			$this->bought_minutes = $this->add_time_entries('time-added');
+			self::$work_fields    = self::date_validation(self::$work_fields);
 		}
 	}
 
@@ -209,8 +208,8 @@ class Support_Hours_Admin
 	public function add_action_links($links)
 	{
 		/*
-		*  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
-		*/
+     *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
+     */
 		$settings_link = array(
 			'<a href="' . admin_url('admin.php?page=support-hours-settings') . '">' . __('Settings', $this->plugin_name) . '</a>',
 		);
@@ -224,8 +223,8 @@ class Support_Hours_Admin
 
 	public function display_plugin_page()
 	{
-		include_once('support-hours-admin-functions.php');
-		include_once('support-hours-admin-overview.php');
+		include_once 'support-hours-admin-functions.php';
+		include_once 'support-hours-admin-overview.php';
 	}
 
 	public function display_plugin_table()
@@ -237,9 +236,8 @@ class Support_Hours_Admin
 
 	public function display_plugin_setup_page()
 	{
-		include_once('support-hours-admin-settings.php');
+		include_once 'support-hours-admin-settings.php';
 	}
-
 
 	public static function date_compare($a, $b)
 	{
@@ -250,7 +248,7 @@ class Support_Hours_Admin
 
 	/**
 	 * Date convert function.
-	 * 
+	 *
 	 * Function that converts the dd-mm-yyyy dates stored in the database to yyyy-mm-dd
 	 * This is needed because the date input field only takes dates in yyyy-mm-dd
 	 *
@@ -263,7 +261,7 @@ class Support_Hours_Admin
 		foreach ($workfields as $key => $workfield) {
 			if (isset($workfield['date'])) {
 				$date = $workfield['date'];
-				$d = \DateTime::createFromFormat('d-m-Y', $date);
+				$d    = \DateTime::createFromFormat('d-m-Y', $date);
 
 				if ($d) {
 					$workfields[$key]['date'] = $d->format('Y-m-d');
@@ -274,9 +272,9 @@ class Support_Hours_Admin
 	}
 	public function update_capabilities()
 	{
-		$managers = $this->managers;
+		$managers          = $this->managers;
 		$administrator_ids = get_users('fields=ID&role=administrator');
-		$non_managers = array_diff($administrator_ids, $managers);
+		$non_managers      = array_diff($administrator_ids, $managers);
 
 		foreach ($this->managers as $user_id) {
 			$user = new \WP_User($user_id);
@@ -291,7 +289,7 @@ class Support_Hours_Admin
 
 	public function validate($input)
 	{
-		$valid = array();
+		$valid          = array();
 		$valid['users'] = array();
 
 		$valid['email'] = sanitize_email($input['email']);
@@ -300,8 +298,7 @@ class Support_Hours_Admin
 			$valid['users'] = $input['users'];
 		endif;
 
-
-		if (!isset($input['workFields']) || $input['workFields'] == null) {
+		if (!isset($input['workFields']) || null == $input['workFields']) {
 			$input['workFields'] = null;
 		} else {
 			usort($input['workFields'], array('Support_Hours\Support_Hours_Admin', 'date_compare'));
@@ -311,30 +308,25 @@ class Support_Hours_Admin
 		return $valid;
 	}
 
-
 	public function add_dashboard_widget()
 	{
 		if (current_user_can('publish_pages')) {
-			wp_add_dashboard_widget(
+			add_meta_box(
 				'support_hours_dashboard_widget',
 				__('Support Hours', $this->plugin_name),
-				array($this, 'widget_compose')
+				array($this, 'widget_compose'),
+				'dashboard',
+				'normal',
+				'high'
 			);
-			global $wp_meta_boxes;
-			$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
-			$support_hours_dashboard_widget_backup = array('support_hours_dashboard_widget' => $normal_dashboard['support_hours_dashboard_widget']);
-			unset($normal_dashboard['support_hours_dashboard_widget']);
-			$sorted_dashboard = array_merge($support_hours_dashboard_widget_backup, $normal_dashboard);
-			$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 		}
 	}
 
 	public function widget_compose()
 	{
-		include_once('support-hours-admin-functions.php');
-		include_once('support-hours-admin-widget.php');
+		include_once 'support-hours-admin-functions.php';
+		include_once 'support-hours-admin-widget.php';
 	}
-
 
 	/**
 	 * Checks the workfields array for the time fields. Adds all timefields and returns them.
@@ -347,7 +339,7 @@ class Support_Hours_Admin
 	{
 		$minutes = 0;
 
-		if (self::$work_fields == null) {
+		if (null == self::$work_fields) {
 			return $minutes;
 		}
 
@@ -360,7 +352,7 @@ class Support_Hours_Admin
 		});
 
 		foreach ($filtered_fields as $time) {
-			if ($time['type'] !== "") {
+			if ("" !== $time['type']) {
 				list($hour, $minute) = explode(':', $time['used']);
 				$minutes += $hour * 60;
 				$minutes += $minute;
