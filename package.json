@@ -1,6 +1,6 @@
 {
     "name": "support-hours",
-    "version": "1.0.0",
+    "version": "1.9.0",
     "description": "Project short description.",
     "main": "app.js",
     "scripts": {
