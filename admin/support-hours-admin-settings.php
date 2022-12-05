@@ -12,11 +12,11 @@ namespace Support_Hours;
  * @subpackage Support_Hours/admin
  */
 
-$name = $this->plugin_name;
-$options = $this->options;
-$workFields =  $this->work_fields;
-$user_ID = get_current_user_id();
-$i = 0;
+$name       = $this->plugin_name;
+$options    = $this->options;
+$workFields = $this::$work_fields;
+$user_ID    = get_current_user_id();
+$i          = 0;
 
 ?>
 <div class="wrap">
@@ -27,8 +27,8 @@ $i = 0;
       <?php
       settings_fields($name);
       do_settings_sections($name);
-      include_once('partials/settings/general-settings-form.php');
-      include_once('partials/settings/work-table-form.php');
+      include_once 'partials/settings/general-settings-form.php';
+      include_once 'partials/settings/work-table-form.php';
       ?>
     </form>
   <?php } else { ?>

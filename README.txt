@@ -46,6 +46,9 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 == Changelog ==
 
+= 1.9.0 =
+* Bug fixed: Fixed PHP error.
+
 
 = 1.8.0 =
 * New: Removed jQuery from build.
