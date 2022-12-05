@@ -12,7 +12,7 @@ namespace Support_Hours;
  * @subpackage Support_Hours/admin
  */
 
-$user_ID = get_current_user_id();
+$current_user_id = get_current_user_id();
 $i = 0;
 
 global $pagenow;

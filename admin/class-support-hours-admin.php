@@ -270,23 +270,13 @@ class Support_Hours_Admin
 		}
 		return $work_fields;
 	}
-	public function update_capabilities()
-	{
-		$managers          = $this->managers;
-		$administrator_ids = get_users('fields=ID&role=administrator');
-		$non_managers      = array_diff($administrator_ids, $managers);
 
-		foreach ($this->managers as $user_id) {
-			$user = new \WP_User($user_id);
-			$user->add_cap('support_hours_manager');
-		}
-
-		foreach ($non_managers as $non_manager_id) {
-			$non_manager = new \WP_User($non_manager_id);
-			$non_manager->remove_cap('support_hours_manager');
-		}
-	}
-
+	/**
+	 * Validates the user input
+	 *
+	 * @param  array $input The user input.
+	 * @return array $input The validated user input.
+	 */
 	public function validate($input)
 	{
 		$valid          = [];
@@ -308,6 +298,11 @@ class Support_Hours_Admin
 		return $valid;
 	}
 
+	/**
+	 * Hook into the 'wp_dashboard_setup' action to register the dashboard widget.
+	 *
+	 * @return void
+	 */
 	public function add_dashboard_widget()
 	{
 		if (current_user_can('publish_pages')) {
@@ -322,6 +317,11 @@ class Support_Hours_Admin
 		}
 	}
 
+	/**
+	 * Creates the widget content.
+	 *
+	 * @return void
+	 */
 	public function widget_compose()
 	{
 		include_once 'support-hours-admin-functions.php';
@@ -333,8 +333,8 @@ class Support_Hours_Admin
 	 * If no workfields and therefore no time fields are filled, returns 00:00
 	 *
 	 * @since   1.4
-	 * @param   string $type         can be used or bought
-	 * @return  string                Returns full hours format or total minutes of used or bought hours
+	 * @param   string $type          Can be used or bought.
+	 * @return  string                Returns full hours format or total minutes of used or bought hours.
 	 */
 	private function add_time_entries($type)
 	{

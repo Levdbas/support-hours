@@ -2,7 +2,7 @@
 
 namespace Support_Hours;
 
-if (!empty($this->managers) && in_array($user_ID, $this->managers) && !empty($work_fields[0]['date'])) : ?>
+if (!empty($this->managers) && in_array($current_user_id, $this->managers) && !empty($work_fields[0]['date'])) : ?>
   <div class="support-hours-notices">
 
     <a class="button button-primary" href="<?php echo admin_url('admin.php?page=support-hours-settings'); ?>"><?php esc_html_e('Add new activity', 'support-hours'); ?></a>
@@ -10,7 +10,7 @@ if (!empty($this->managers) && in_array($user_ID, $this->managers) && !empty($wo
       <a class="button button-secondary" href="<?php echo admin_url('admin.php?page=support-hours'); ?>"><?php esc_html_e('View all activities', 'support-hours'); ?></a>
     <?php endif; ?>
 
-  <?php elseif (!empty($this->managers) && in_array($user_ID, $this->managers)) :
+  <?php elseif (!empty($this->managers) && in_array($current_user_id, $this->managers)) :
   if ('admin.php' == $pagenow) :
     $message = __('No activities added yet.', 'support-hours');
     the_notice($message);

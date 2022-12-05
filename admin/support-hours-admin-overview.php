@@ -1,7 +1,5 @@
 <?php
 
-namespace Support_Hours;
-
 /**
  * Provide a page that can be seen from editor to admin. Shows all the time entries.
  *
@@ -11,6 +9,9 @@ namespace Support_Hours;
  * @package    Support_Hours
  * @subpackage Support_Hours/admin
  */
+
+namespace Support_Hours;
+
 global $pagenow;
 
 ?>
@@ -20,8 +21,8 @@ global $pagenow;
 		<?php esc_html_e('A complete overview of all activities.', 'support-hours'); ?>
 	</p>
 	<?php
-	if (!empty($this->managers) && $bought_minutes !== '0' && !empty($this->email)) :
-		$user_ID = get_current_user_id();
+	if (!empty($this->managers) && '0' !== $bought_minutes && !empty($this->email)) :
+		$current_user_id = get_current_user_id();
 		$i = 0;
 
 		if (!empty($work_fields[0]['date'])) :

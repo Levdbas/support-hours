@@ -133,7 +133,7 @@ class Link_List_Table extends \WP_List_Table
 		$name = $this->plugin_name;
 		// Get the columns registered in the get_columns and get_sortable_columns methods
 		list($columns, $hidden) = $this->get_column_info();
-		$user_ID = get_current_user_id();
+		$current_user_id = get_current_user_id();
 		$i = 0;
 		if ($work_fields) :
 			$first = false;
