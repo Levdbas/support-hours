@@ -26,7 +26,7 @@ global $pagenow;
 		$i = 0;
 
 		if (!empty($work_fields[0]['date'])) :
-			?>
+	?>
 			<table class="wp-list-table widefat fixed striped users">
 				<thead>
 					<tr>
@@ -44,17 +44,18 @@ global $pagenow;
 						$widget_fields = array_slice($work_fields, -5);
 					endif;
 					foreach ($widget_fields as $field) {
-						?>
+					?>
 						<tr>
-							<td>
+							<td class="column-primary">
 								<?php
 								$format = get_option('date_format');
 								if (!empty($field['used'])) {
 									echo esc_html(date_i18n($format, strtotime($field['date'])));
 								}
 								?>
+								<button type="button" class="toggle-row"></button>
 							</td>
-							<td>
+							<td data-colname="<?php esc_html_e('Date', 'support-hours'); ?>">
 								<span class="time-type-icon">
 									<?php echo ('time-added' == $field['type']) ? '+' : '-'; ?>
 								</span>
@@ -64,9 +65,9 @@ global $pagenow;
 								}
 								?>
 							</td>
-							<td>
+							<td data-colname="<?php esc_html_e('Description', 'support-hours'); ?>">
 								<?php
-								if (!empty($field['used'])) {
+								if (!empty($field['description'])) {
 									echo esc_html($field['description']);
 								}
 								?>
@@ -77,9 +78,9 @@ global $pagenow;
 
 				<tfoot>
 					<tr>
-						<th scope="col column-primary"><?php esc_html_e('Date', 'support-hours'); ?></th>
-						<th scope="col column-primary"><?php esc_html_e('Time', 'support-hours'); ?></th>
-						<th scope="col column-primary"><?php esc_html_e('Description', 'support-hours'); ?></th>
+						<th class="column-primary" scope="col"><?php esc_html_e('Date', 'support-hours'); ?></th>
+						<th scope="col"><?php esc_html_e('Time', 'support-hours'); ?></th>
+						<th scope="col"><?php esc_html_e('Description', 'support-hours'); ?></th>
 					</tr>
 				</tfoot>
 			</table>
@@ -90,7 +91,7 @@ global $pagenow;
 					<?php echo esc_html(calculate_hours_and_minutes_output($this->used_minutes)); ?> / <?php echo esc_html(calculate_hours_and_minutes_output($this->bought_minutes)); ?>
 				</div>
 			</div>
-			<?php
+	<?php
 		endif;
 
 		include_once('partials/common/bottom-message.php');

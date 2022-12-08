@@ -13,7 +13,7 @@
 ?>
 <tr class="repeating" data-number="<?php echo esc_attr($i); ?>">
 
-	<td>
+	<td class="column-primary">
 
 		<fieldset class="type-switch">
 			<label for="<?php echo esc_attr($name); ?>[workFields][<?php echo esc_attr($i); ?>][type][used]">
@@ -28,23 +28,24 @@
 				<span><?php esc_html_e('Time added', 'support-hours'); ?></span>
 			</label>
 		</fieldset>
+		<button type="button" class="toggle-row"></button>
 	</td>
 
-	<td data-th="<?php esc_html_e('Date', 'support-hours'); ?>">
+	<td data-th="<?php esc_html_e('Date', 'support-hours'); ?>" data-colname="<?php esc_html_e('Date', 'support-hours'); ?>">
 		<?php $date_value = !empty($field['date']) ? $field['date'] : ''; ?>
 		<input type="date" class="regular-text date validate sh-datepicker" id="<?php echo esc_attr($name); ?>-workFields-date" name="<?php echo esc_attr($name); ?>[workFields][<?php echo esc_attr($i); ?>][date]" value="<?php echo esc_attr($date_value); ?>" />
 	</td>
 
-	<td data-th="<?php esc_html_e('Time', 'support-hours'); ?>">
+	<td data-th="<?php esc_html_e('Time', 'support-hours'); ?>" data-colname="<?php esc_html_e('Time', 'support-hours'); ?>">
 		<?php $used_value = !empty($field['used']) ? $field['used'] : ''; ?>
 		<input type="time" placeholder="00:00" class="regular-text time validate" id="<?php echo esc_attr($name); ?>-workFields-used" name="<?php echo esc_attr($name); ?>[workFields][<?php echo esc_attr($i); ?>][used]" required value="<?php echo esc_attr($used_value); ?>" />
 	</td>
 
-	<td data-th="<?php esc_html_e('Description', 'support-hours'); ?>">
+	<td data-th="<?php esc_html_e('Description', 'support-hours'); ?>" data-colname="<?php esc_html_e('Description', 'support-hours'); ?>">
 		<?php $description_value = !empty($field['description']) ? $field['description'] : ''; ?>
 		<input type="text" required placeholder="<?php esc_html_e('Description of the activity', 'support-hours'); ?>" class="regular-text description validate" id="<?php echo esc_attr($name); ?>-workFields-description" name="<?php echo esc_attr($name); ?>[workFields][<?php echo esc_attr($i); ?>][description]" value="<?php echo esc_attr($description_value); ?>" />
 	</td>
 	<td class="remove">
-		<a class="remove-item"><span class="dashicons dashicons-minus"></span></a>
+		<a class="remove-item remove-row"><span class="dashicons dashicons-trash"></span></a>
 	</td>
 </tr>

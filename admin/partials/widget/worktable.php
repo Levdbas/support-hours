@@ -30,7 +30,7 @@ namespace Support_Hours;
 
 			<thead>
 				<tr class="row-head">
-					<th width="30%"><?php esc_html_e('Date', 'support-hours'); ?></th>
+					<th class="column-primary" width="30%"><?php esc_html_e('Date', 'support-hours'); ?></th>
 					<th width="20%"><?php esc_html_e('Time', 'support-hours'); ?></th>
 					<th width="50%"><?php esc_html_e('Description', 'support-hours'); ?></th>
 				</tr>
@@ -41,13 +41,14 @@ namespace Support_Hours;
 				foreach ($widget_fields as $field) {
 				?>
 					<tr>
-						<td>
+						<td class="column-primary">
 							<?php
 							$format = get_option('date_format');
 							if (!empty($field['used'])) {
 								echo esc_html(date_i18n($format, strtotime($field['date'])));
 							}
 							?>
+
 						</td>
 						<td>
 							<span class="time-type-icon">

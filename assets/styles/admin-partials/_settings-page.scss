@@ -29,48 +29,6 @@
 	}
 }
 
-.datepicker-controls .select-month input {
-	width: 90px;
-}
-
-.sh-pagination {
-	margin: 0 !important;
-
-	.page-numbers {
-		margin: 0;
-	}
-
-	li {
-		overflow: hidden;
-		color: #555555;
-		vertical-align: top;
-		background: #f7f7f7;
-		border-color: #cccccc;
-		border-style: solid;
-		border-width: 1px;
-		border-radius: 3px;
-		box-shadow: 0 1px 0 #cccccc;
-
-		.prev,
-		.next {
-			line-height: 25px !important;
-		}
-
-		.current {
-			color: white;
-			background: #0085ba;
-		}
-	}
-
-	span {
-		display: inline-block;
-		padding: 0 10px;
-		font-size: 1.2rem;
-		line-height: 30px;
-		color: #444444;
-	}
-}
-
 .sh-footer {
 	display: flex;
 	justify-content: space-between;

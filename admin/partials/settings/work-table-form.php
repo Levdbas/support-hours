@@ -19,7 +19,7 @@
 		<thead>
 			<tr class="row-head">
 
-				<th class="support-hours-col col-type"><?php esc_html_e('Type', 'support-hours'); ?></th>
+				<th class="support-hours-col col-type column-primary"><?php esc_html_e('Type', 'support-hours'); ?></th>
 				<th class="support-hours-col col-date"><?php esc_html_e('Date', 'support-hours'); ?></th>
 				<th class="support-hours-col col-time"><?php esc_html_e('Time', 'support-hours'); ?></th>
 				<th class="support-hours-col col-description"><?php esc_html_e('Description', 'support-hours'); ?></th>
