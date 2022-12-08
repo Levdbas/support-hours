@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
 Tested up to: 6.1.1
-Stable tag: 1.9.0
+Stable tag: 2.0.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,8 +46,12 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 == Changelog ==
 
-= 1.9.0 =
+= 2.0.0 =
+* Complete rework of plugin.
+* Removed outdated css framework in favor of vanilla css.
+* Plugin is now compatible with latest WordPress security standards.
 * Bug fixed: Fixed PHP error.
+
 
 
 = 1.8.0 =

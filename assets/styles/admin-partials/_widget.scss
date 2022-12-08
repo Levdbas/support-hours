@@ -6,6 +6,7 @@
 		font-weight: 700;
 	}
 }
+
 // ==========================================================================
 // The new widget
 // ==========================================================================
@@ -48,6 +49,7 @@
 		stroke-dasharray: 0, 352px;
 		stroke-width: 7px;
 		transition: stroke-dasharray 1.5s ease-in-out 0.25s;
+		animation: arc-animation 1.5s ease-in-out 0.25s forwards;
 	}
 
 	&__overlay {
@@ -68,7 +70,6 @@
 	}
 
 	&__text {
-		//position: absolute;
 		display: block;
 		align-self: center;
 		width: 100%;
@@ -137,5 +138,16 @@
 				font-size: 40px;
 			}
 		}
+	}
+}
+
+@keyframes arc-animation {
+
+	0% {
+		stroke-dasharray: 0, 352px;
+	}
+
+	100% {
+		stroke-dasharray: var(--sh-stroke), 352px;
 	}
 }

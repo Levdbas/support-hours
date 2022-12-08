@@ -2,37 +2,35 @@ $secondary-color: #0085ba !default;
 
 $circle-size: 400px;
 $background-color: #cccccc;
-$progress-color:  #008ec2;
+$progress-color: #008ec2;
 $percent: 75;
 $duration: 2s;
 $breakpoint-alpha: 480px;
 
-
-
-body{
-   --support-hours-theme-color: #{$progress-color};
+body {
+	--support-hours-theme-color: #{$progress-color};
 }
 
 .admin-color-midnight {
-   --support-hours-theme-color: #e14d43;
+	--support-hours-theme-color: #e14d43;
 }
 
 .admin-color-ectoplasm {
-   --support-hours-theme-color: #a3b745;
+	--support-hours-theme-color: #a3b745;
 }
 
 .admin-color-blue {
-   --support-hours-theme-color: #e1a948;
+	--support-hours-theme-color: #e1a948;
 }
 
 .admin-color-ocean {
-   --support-hours-theme-color: #9ebaa0;
+	--support-hours-theme-color: #9ebaa0;
 }
 
 .admin-color-coffee {
-   --support-hours-theme-color: #c7a589;
+	--support-hours-theme-color: #c7a589;
 }
 
 .admin-color-sunrise {
-   --support-hours-theme-color: #dd823b;
+	--support-hours-theme-color: #dd823b;
 }

@@ -1,13 +1,13 @@
-.clearfix{
+.clearfix {
 	clear: both;
 }
 
-.bold{
+.bold {
 	font-weight: 700;
 	color: #444444;
 }
 
-.time-type-icon{
+.time-type-icon {
 	display: inline-block;
 	width: 20px;
 	font-size: 18px;
@@ -15,35 +15,38 @@
 	text-align: center;
 }
 
-.support-hours-mail{
+.support-hours-mail {
 	display: inline-block;
 
-	span{
+	span {
 		margin-right: 5px;
 	}
 }
 
-.support-hours-notice{
+.support-hours-notice {
 	margin-top: 15px !important;
 	margin-bottom: 15px !important;
 
-	p{
+	p {
 		line-height: 1.8;
 	}
 
-	a{
+	a {
 		color: #444444;
 	}
 }
 
-
-*, ::after, ::before {
+*,
+::after,
+::before {
 	box-sizing: content-box;
 }
 
-.shs{
+.shs {
 
-	*, ::after, ::before {
+	*,
+	::after,
+	::before {
 		box-sizing: border-box !important;
 	}
 }

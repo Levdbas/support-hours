@@ -162,7 +162,6 @@ class Support_Hours_Admin
 	public function enqueue_scripts()
 	{
 		$current_page = get_current_screen()->base;
-
 		if (in_array($current_page, ['toplevel_page_support-hours', 'support-hours_page_support-hours-settings', 'dashboard'])) :
 			wp_enqueue_script($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/scripts/support-hours-admin.js', ['jquery'], $this->version, false);
 		endif;
