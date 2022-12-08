@@ -45,6 +45,6 @@
 		<input type="text" required placeholder="<?php esc_html_e('Description of the activity', 'support-hours'); ?>" class="regular-text description validate" id="<?php echo esc_attr($name); ?>-workFields-description" name="<?php echo esc_attr($name); ?>[workFields][<?php echo esc_attr($i); ?>][description]" value="<?php echo esc_attr($description_value); ?>" />
 	</td>
 	<td class="remove">
-		<a class="remove-row btn-floating btn-small waves-effect waves-light"><span class="material-icons dashicons dashicons-minus"></span></a>
+		<a class="remove-item"><span class="dashicons dashicons-minus"></span></a>
 	</td>
 </tr>

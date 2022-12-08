@@ -14,7 +14,7 @@
 
 <fieldset>
 	<span class="currentDate"><?php echo esc_html(date_i18n('d-m-Y')); ?></span>
-	<table id="repeatable-fieldset-one" class="worktable">
+	<table id="repeatable-fieldset-one" class="worktable wp-list-table widefat fixed striped table-view-list pages">
 
 		<thead>
 			<tr class="row-head">
@@ -23,7 +23,7 @@
 				<th class="support-hours-col col-date"><?php esc_html_e('Date', 'support-hours'); ?></th>
 				<th class="support-hours-col col-time"><?php esc_html_e('Time', 'support-hours'); ?></th>
 				<th class="support-hours-col col-description"><?php esc_html_e('Description', 'support-hours'); ?></th>
-				<th></th>
+				<th width="50px"></th>
 			</tr>
 		</thead>
 

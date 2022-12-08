@@ -44,7 +44,7 @@
 	&__arc {
 		box-shadow: 2px 2px 2px black;
 		fill: none;
-		stroke: $progress-color;
+		stroke: var(--support-hours-theme-color);
 		stroke-dasharray: 0, 352px;
 		stroke-width: 7px;
 		transition: stroke-dasharray 1.5s ease-in-out 0.25s;
@@ -124,7 +124,7 @@
 
 	.sh-gauge__text {
 		font-size: 35px;
-		color: $progress-color;
+		color: var(--support-hours-theme-color);
 
 		@media screen and (min-width: 870px) {
 			font-size: 45px;

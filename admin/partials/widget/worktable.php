@@ -26,6 +26,8 @@ namespace Support_Hours;
 		</h3>
 
 		<table class="worktable" width="100%">
+
+
 			<thead>
 				<tr class="row-head">
 					<th width="30%"><?php esc_html_e('Date', 'support-hours'); ?></th>
@@ -37,7 +39,7 @@ namespace Support_Hours;
 				<?php
 				$widget_fields = array_slice($work_fields, -5);
 				foreach ($widget_fields as $field) {
-					?>
+				?>
 					<tr>
 						<td>
 							<?php
