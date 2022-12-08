@@ -4,7 +4,6 @@ const devMode = process.env.NODE_ENV !== 'production';
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { merge } = require('webpack-merge');
 const rootPath = process.cwd();
@@ -87,11 +86,6 @@ const webpackConfig = {
     },
     performance: { hints: false },
     plugins: [
-        new BrowserSyncPlugin({
-            host: 'localhost',
-            proxy: config.browserSyncURL,
-            files: [config.path.theme + '/**/*.php', config.path.theme + '/**/*.twig'],
-        }),
         new MiniCssExtractPlugin({
             filename: 'styles/[name].css',
         }),
