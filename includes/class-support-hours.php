@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       http://basedonline.nl
+ * @link       https://basedonline.nl
  * @since      1.0.0
  *
  * @package    Support_Hours
@@ -86,7 +86,7 @@ class Support_Hours
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Support_Hours_Loader. Orchestrates the hooks of the plugin.
-	 * - Support_Hours_i18n. Defines internationalization functionality.
+	 * - Support_Hours_I18n. Defines internationalization functionality.
 	 * - Support_Hours_Admin. Defines all hooks for the admin area.
 	 * - Support_Hours_Public. Defines all hooks for the public side of the site.
 	 *
@@ -117,10 +117,6 @@ class Support_Hours
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-support-hours-admin.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-support-hours-table.php';
-		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -131,7 +127,7 @@ class Support_Hours
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Support_Hours_i18n class in order to set the domain and to register the hook
+	 * Uses the Support_Hours_I18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -140,7 +136,7 @@ class Support_Hours
 	private function set_locale()
 	{
 
-		$plugin_i18n = new Support_Hours_i18n();
+		$plugin_i18n = new Support_Hours_I18n();
 
 		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 	}
@@ -162,7 +158,7 @@ class Support_Hours
 		// Add Settings link to the plugin
 		$plugin_basename = plugin_basename(plugin_dir_path(__DIR__) . $this->plugin_name . '.php');
 		$this->loader->add_filter('plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links');
-		$this->loader->add_action('admin_init', $plugin_admin, 'options_update');
+		$this->loader->add_action('admin_init', $plugin_admin, 'register_options');
 
 		// load widget hook from class-support-hours-admin.php
 		$this->loader->add_action('wp_dashboard_setup', $plugin_admin, 'add_dashboard_widget');

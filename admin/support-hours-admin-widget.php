@@ -1,16 +1,16 @@
 <?php
 
-namespace Support_Hours;
-
 /**
  * Provide a admin widget for the plugin
  *
- * @link       http://basedonline.nl
+ * @link       https://basedonline.nl
  * @since      1.0.0
  *
  * @package    Support_Hours
  * @subpackage Support_Hours/admin
  */
+
+namespace Support_Hours;
 
 $current_user_id = get_current_user_id();
 $i = 0;

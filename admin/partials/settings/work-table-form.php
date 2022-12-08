@@ -1,5 +1,19 @@
+<?php
+
+/**
+ * Partial when there are no hours available.
+ *
+ * @link       https://basedonline.nl
+ * @since      1.0.0
+ *
+ * @package    Support_Hours
+ * @subpackage Support_Hours/partials
+ */
+
+?>
+
 <fieldset>
-	<span class="currentDate"><?php echo date_i18n('d-m-Y'); ?></span>
+	<span class="currentDate"><?php echo esc_html(date_i18n('d-m-Y')); ?></span>
 	<table id="repeatable-fieldset-one" class="worktable">
 
 		<thead>
@@ -32,5 +46,5 @@
 	<a href="#" class="repeat button button-secondary">
 		<?php esc_html_e('Add activity', 'support-hours'); ?>
 	</a>
-	<?php submit_button(__('Save', $name), 'primary', 'submit', true); ?>
+	<?php submit_button(__('Save', 'support-hours'), 'primary', 'submit', true); ?>
 </fieldset>

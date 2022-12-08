@@ -1,16 +1,16 @@
 <?php
 
-namespace Support_Hours;
-
 /**
  * Settings page of Support Hours
  *
- * @link       http://basedonline.nl
+ * @link       https://basedonline.nl
  * @since      1.4.0
  *
  * @package    Support_Hours
  * @subpackage Support_Hours/admin
  */
+
+namespace Support_Hours;
 
 $name       = $this->plugin_name;
 $options    = $this->options;

@@ -1,12 +1,22 @@
 <?php
 
+/**
+ * Provided helper functuions for the Support Hours plugin
+ *
+ * @link       https://basedonline.nl
+ * @since      1.4.0
+ *
+ * @package    Support_Hours
+ * @subpackage Support_Hours/admin
+ */
+
 namespace Support_Hours;
 
 $name          = $this->plugin_name;
 $options       = $this->options;
 $current_color = get_user_option('admin_color');
 
-$work_fields     = self::$work_fields;
+$work_fields    = self::$work_fields;
 $used_minutes   = $this->used_minutes;
 $bought_minutes = $this->bought_minutes;
 
@@ -14,15 +24,15 @@ $bought_minutes = $this->bought_minutes;
  * Searches our $work_fields array for the last bought hours.
  *
  * @since
- * @param  array $work_fields      The workfields from this plugin, contains bought and used hours
- * @return int                      Last bought hours in minute format
+ * @param  array $work_fields      The workfields from this plugin, contains bought and used hours.
+ * @return int                      Last bought hours in minute format.
  */
 function last_bought($work_fields)
 {
 	$minutes = 0;
 	if (null != $work_fields) {
 		$work_fields = array_reverse($work_fields); // invert array so we can search DESC
-		$key        = array_search('time-added', array_column($work_fields, 'type')); // searching for the last time-added value in key 'type'
+		$key         = array_search('time-added', array_column($work_fields, 'type')); // searching for the last time-added value in key 'type'
 
 		if (false !== $key) : // if there is a key!
 			$time                = $work_fields[$key]['used']; // take our time in HH:MM format from the field
@@ -34,6 +44,14 @@ function last_bought($work_fields)
 	return $minutes;
 }
 
+/**
+ * Calculates the minutes and hours for the output.
+ *
+ * @param  array $work_fields    The workfields from this plugin, contains bought and used hours.
+ * @param  int   $used_minutes      Total used minutes.
+ * @param  int   $bought_minutes    Total bought minutes.
+ * @return array                  Returns an array with used and bought minutes.
+ */
 function calculate_minutes_output($work_fields, $used_minutes, $bought_minutes)
 {
 	$last_bought_minutes = last_bought($work_fields);
@@ -60,6 +78,12 @@ function calculate_minutes_output($work_fields, $used_minutes, $bought_minutes)
 	];
 }
 
+/**
+ * Undocumented function.
+ *
+ * @param  int $minutes minutes, can be bought or used.
+ * @return string Returns hours in HH:MM format.
+ */
 function calculate_hours_and_minutes_output($minutes)
 {
 	$hours = floor($minutes / 60);
@@ -68,17 +92,17 @@ function calculate_hours_and_minutes_output($minutes)
 }
 
 /**
- * function to strip the hours displayed in the clock of minutes if the hour is round.
+ * Function to strip the hours displayed in the clock of minutes if the hour is round.
  *
  * @since
- * @param  [type] $minutes minutes, can be bought or used
- * @return string Retunrs full hour without zeros
+ * @param  int $minutes minutes, can be bought or used.
+ * @return string Retunrs full hour without zeros.
  */
 function maybe_hide_minutes($minutes)
 {
 	$time = sprintf('%02d:%02d', floor($minutes / 60), $minutes % 60);
 
-	if ($minutes % 60 == 0) :
+	if (0 == $minutes % 60) :
 		$time = $minutes / 60;
 	endif;
 
@@ -90,9 +114,9 @@ function maybe_hide_minutes($minutes)
  * Output depends on time spent, time bought and time bought the last time.
  *
  * @since 1.4
- * @param  array $work_fields     The workfields from this plugin, contains bought and used hours
- * @param  int   $used_minutes   Total used minutes
- * @param  int   $bought_minutes Total bought minutes
+ * @param  array $work_fields     The workfields from this plugin, contains bought and used hours.
+ * @param  int   $used_minutes   Total used minutes.
+ * @param  int   $bought_minutes Total bought minutes.
  * @return string                 Returns hours in HH:MM format or HH format where the first is used time, the second the bought time.
  */
 function widget_output($work_fields, $used_minutes, $bought_minutes)
@@ -104,14 +128,14 @@ function widget_output($work_fields, $used_minutes, $bought_minutes)
 }
 
 /**
- * used for calculating the hours left in the notices
+ * Used for calculating the hours left in the notices
  * and in the widget to animate the circle.
  *
  * @since
- * @param  array $work_fields     The workfields from this plugin, contains bought and used hours
- * @param  int   $used_minutes   Total used minutes
- * @param  int   $bought_minutes Total bought minutes
- * @return int                    Calculated percentage
+ * @param  array $work_fields     The workfields from this plugin, contains bought and used hours.
+ * @param  int   $used_minutes   Total used minutes.
+ * @param  int   $bought_minutes Total bought minutes.
+ * @return int                    Calculated percentage.
  */
 function percentage($work_fields, $used_minutes, $bought_minutes)
 {
@@ -141,21 +165,28 @@ function percentage($work_fields, $used_minutes, $bought_minutes)
  * and bought hours are less then 99 hours. Otherwise UI will be too cluttered.
  *
  * @since
- * @param  int $used_minutes   Total used minutes
- * @param  int $bought_minutes Total bought minutes
- * @return string                 small or big, this is used in our css to display the correct font size
+ * @param  int $used_minutes   Total used minutes.
+ * @param  int $bought_minutes Total bought minutes.
+ * @return string              Small or big, this is used in our css to display the correct font size.
  */
 function font_size($used_minutes, $bought_minutes)
 {
 	$size = 'small';
 
-	if ($used_minutes % 60 == 0 && $bought_minutes < 5940) :
+	if (0 == $used_minutes % 60 && $bought_minutes < 5940) :
 		$size = 'big';
 	endif;
 
 	return 'sh-gauge__text--' . $size;
 }
 
+/**
+ * Get the notice in html.
+ *
+ * @param  string $message              The message to display.
+ * @param  string $notice_class     The class of the notice.
+ * @return string                       The notice in html.
+ */
 function get_notice($message, $notice_class = 'notice-alt')
 {
 	$notice = '';
@@ -166,6 +197,12 @@ function get_notice($message, $notice_class = 'notice-alt')
 	return $notice;
 }
 
+/**
+ * Echo the notice in html.
+ *
+ * @param  string $message              The message to display.
+ * @param  string $notice_class     The class of the notice.
+ */
 function the_notice($message, $notice_class = 'notice-alt')
 {
 	echo get_notice($message, $notice_class);

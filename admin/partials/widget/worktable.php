@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Widget for the dashboard.
+ *
+ * @link       https://basedonline.nl
+ * @since      1.0.0
+ *
+ * @package    Support_Hours
+ * @subpackage Support_Hours/partials
+ */
+
 namespace Support_Hours;
 
 ?>
@@ -7,7 +17,7 @@ namespace Support_Hours;
 	<div class="support-hours-time-table">
 		<h3>
 			<?php
-			if ($pagenow == 'index.php') :
+			if ('index.php' == $pagenow) :
 				esc_html_e('Last five activities:', 'support-hours');
 			else :
 				esc_html_e('Activities:', 'support-hours');
@@ -33,24 +43,24 @@ namespace Support_Hours;
 							<?php
 							$format = get_option('date_format');
 							if (!empty($field['used'])) {
-								echo date_i18n($format, strtotime($field['date']));
+								echo esc_html(date_i18n($format, strtotime($field['date'])));
 							}
 							?>
 						</td>
 						<td>
 							<span class="time-type-icon">
-								<?php echo ($field['type'] == 'time-added') ? '+' : '-'; ?>
+								<?php echo ('time-added' == $field['type']) ? '+' : '-'; ?>
 							</span>
 							<?php
 							if (!empty($field['used'])) {
-								echo $field['used'];
+								echo esc_html($field['used']);
 							}
 							?>
 						</td>
 						<td>
 							<?php
 							if (!empty($field['used'])) {
-								echo $field['description'];
+								echo esc_html($field['description']);
 							}
 							?>
 						</td>
@@ -60,7 +70,7 @@ namespace Support_Hours;
 		</table>
 		<div class="total">
 			<span class="bold"><?php esc_html_e('Total', 'support-hours'); ?></span>:
-			<?php echo calculate_hours_and_minutes_output($this->used_minutes); ?> / <?php echo calculate_hours_and_minutes_output($this->bought_minutes); ?>
+			<?php echo esc_html(calculate_hours_and_minutes_output($this->used_minutes)); ?> / <?php echo esc_html(calculate_hours_and_minutes_output($this->bought_minutes)); ?>
 		</div>
 	</div>
 <?php endif; ?>

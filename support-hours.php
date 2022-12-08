@@ -1,7 +1,5 @@
 <?php
 
-namespace Support_Hours;
-
 /**
  * The plugin bootstrap file
  *
@@ -16,7 +14,7 @@ namespace Support_Hours;
  *
  * @wordpress-plugin
  * Plugin Name:       Support Hours
- * Plugin URI:        http://basedonline.nl
+ * Plugin URI:        https://basedonline.nl
  * Description:       Use Support hours to give yourself and your clients insights on the status of pre-paid work.
  * Version:           1.8.0
  * Author:            Erik van der Bas
@@ -26,6 +24,8 @@ namespace Support_Hours;
  * Text Domain:       support-hours
  * Domain Path:       /languages
  */
+
+namespace Support_Hours;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {

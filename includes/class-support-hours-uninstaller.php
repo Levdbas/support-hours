@@ -1,16 +1,16 @@
 <?php
 
-namespace Support_Hours;
-
 /**
  * Fired during plugin removal
  *
- * @link       http://basedonline.nl
+ * @link       https://basedonline.nl
  * @since      1.0.0
  *
  * @package    Support_Hours
  * @subpackage Support_Hours/includes
  */
+
+namespace Support_Hours;
 
 /**
  * Fired during plugin removal.

@@ -3,7 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       http://basedonline.nl
+ * @link       https://basedonline.nl
  * @since      1.0.0
  *
  * @package    Support_Hours
@@ -127,15 +127,22 @@ class Support_Hours_Admin
 		}
 	}
 
-	public function options_update()
+	/**
+	 * Register options for plugin.
+	 * Hooked in class-support-hours.php
+	 *
+	 * @return void
+	 */
+	public function register_options()
 	{
 		register_setting($this->plugin_name, 'support-hours', [$this, 'validate']);
 	}
 
 	/**
 	 * Register the stylesheets for the admin area.
+	 * Hooked in class-support-hours.php
 	 *
-	 * @since    1.0.0
+	 * @return void
 	 */
 	public function enqueue_styles()
 	{
@@ -148,8 +155,9 @@ class Support_Hours_Admin
 
 	/**
 	 * Register the JavaScript for the admin area.
+	 * Hooked in class-support-hours.php
 	 *
-	 * @since    1.0.0
+	 * @return void
 	 */
 	public function enqueue_scripts()
 	{
@@ -160,6 +168,13 @@ class Support_Hours_Admin
 		endif;
 	}
 
+
+	/**
+	 * Add plugin pages to admin menu.
+	 * Hooked in class-support-hours.php
+	 *
+	 * @return void
+	 */
 	public function add_plugin_admin_menu()
 	{
 
@@ -189,56 +204,52 @@ class Support_Hours_Admin
 			'support-hours-settings',
 			[$this, 'display_plugin_setup_page']
 		);
-
-		add_submenu_page(
-			'support-hours',
-			__('Support Hours test', 'support-hours'),
-			__('Settings', 'support-hours'),
-			'publish_pages',
-			'support-hours-test',
-			[$this, 'display_plugin_table']
-		);
 	}
 
 	/**
 	 * Add settings action link to the plugins page.
+	 * Hooked in class-support-hours.php
 	 *
-	 * @since    1.0.0
+	 * @param array $links of plugin.
+	 * @return array Updated links.
 	 */
 	public function add_action_links($links)
 	{
-		/*
-		*  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
-		*/
 		$settings_link = [
 			'<a href="' . admin_url('admin.php?page=support-hours-settings') . '">' . __('Settings', 'support-hours') . '</a>',
 		];
 		return array_merge($settings_link, $links);
 	}
+
+
 	/**
-	 * Render the settings page for this plugin.
+	 * Render the home page for this plugin.
 	 *
 	 * @since    1.0.0
 	 */
-
 	public function display_plugin_page()
 	{
 		include_once 'support-hours-admin-functions.php';
 		include_once 'support-hours-admin-overview.php';
 	}
 
-	public function display_plugin_table()
-	{
-		$wp_list_table = new Link_List_Table($this->plugin_name);
-		$wp_list_table->prepare_items();
-		$wp_list_table->display();
-	}
-
+	/**
+	 * Render the settings page for this plugin.
+	 *
+	 * @since    1.0.0
+	 */
 	public function display_plugin_setup_page()
 	{
 		include_once 'support-hours-admin-settings.php';
 	}
 
+	/**
+	 * Helper function to sort entries by date.
+	 *
+	 * @param  array $a Timeslot a.
+	 * @param  array $b Timeslot b.
+	 * @return int   Difference between the two dates.
+	 */
 	public static function date_compare($a, $b)
 	{
 		$t1 = strtotime($a['date']);
@@ -249,12 +260,12 @@ class Support_Hours_Admin
 	/**
 	 * Date convert function.
 	 *
-	 * Function that converts the dd-mm-yyyy dates stored in the database to yyyy-mm-dd
-	 * This is needed because the date input field only takes dates in yyyy-mm-dd
+	 * Function that converts the dd-mm-yyyy dates stored in the database to yyyy-mm-dd.
+	 * This is needed because the date input field only takes dates in yyyy-mm-dd.
 	 *
-	 * @param array $work_fields
+	 * @param array $work_fields The work fields.
 	 * @since 1.8
-	 * @return void
+	 * @return array $work_fields validated.
 	 */
 	public static function date_validation($work_fields)
 	{

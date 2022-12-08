@@ -1,16 +1,16 @@
 <?php
 
-namespace Support_Hours;
-
 /**
  * Register all actions and filters for the plugin
  *
- * @link       http://basedonline.nl
+ * @link       https://basedonline.nl
  * @since      1.0.0
  *
  * @package    Support_Hours
  * @subpackage Support_Hours/includes
  */
+
+namespace Support_Hours;
 
 /**
  * Register all actions and filters for the plugin.
@@ -78,7 +78,7 @@ class Support_Hours_Loader
 	 * @param    object $component        A reference to the instance of the object on which the filter is defined.
 	 * @param    string $callback         The name of the function definition on the $component.
 	 * @param    int    $priority         Optional. he priority at which the function should be fired. Default is 10.
-	 * @param    int    $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1
+	 * @param    int    $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
 	 */
 	public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1)
 	{

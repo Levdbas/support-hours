@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Partial when the plugin is not configured.
+ *
+ * @link       https://basedonline.nl
+ * @since      1.0.0
+ *
+ * @package    Support_Hours
+ * @subpackage Support_Hours/partials
+ */
+
 namespace Support_Hours;
 
 $message = __('Support Hours is not configured.', 'support-hours');
@@ -7,7 +17,7 @@ $message = __('Support Hours is not configured.', 'support-hours');
 the_notice($message, 'notice-warning');
 ?>
 <p>
-  <a class="button button-primary" href="<?php echo admin_url('admin.php?page=support-hours-settings'); ?>">
+  <a class="button button-primary" href="<?php echo esc_attr(admin_url('admin.php?page=support-hours-settings')); ?>">
 	<?php esc_html_e('Configure plugin!', 'support-hours'); ?>
   </a>
 </p>

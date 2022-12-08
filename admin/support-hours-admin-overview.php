@@ -3,7 +3,7 @@
 /**
  * Provide a page that can be seen from editor to admin. Shows all the time entries.
  *
- * @link       http://basedonline.nl
+ * @link       https://basedonline.nl
  * @since      1.4.0
  *
  * @package    Support_Hours
@@ -40,7 +40,7 @@ global $pagenow;
 
 					<?php
 					$widget_fields = $work_fields;
-					if ($pagenow == 'index.php') :
+					if ('index.php' == $pagenow) :
 						$widget_fields = array_slice($work_fields, -5);
 					endif;
 					foreach ($widget_fields as $field) {
@@ -50,24 +50,24 @@ global $pagenow;
 								<?php
 								$format = get_option('date_format');
 								if (!empty($field['used'])) {
-									echo date_i18n($format, strtotime($field['date']));
+									echo esc_html(date_i18n($format, strtotime($field['date'])));
 								}
 								?>
 							</td>
 							<td>
 								<span class="time-type-icon">
-									<?php echo ($field['type'] == 'time-added') ? '+' : '-'; ?>
+									<?php echo ('time-added' == $field['type']) ? '+' : '-'; ?>
 								</span>
 								<?php
 								if (!empty($field['used'])) {
-									echo $field['used'];
+									echo esc_html($field['used']);
 								}
 								?>
 							</td>
 							<td>
 								<?php
 								if (!empty($field['used'])) {
-									echo $field['description'];
+									echo esc_html($field['description']);
 								}
 								?>
 							</td>
@@ -87,7 +87,7 @@ global $pagenow;
 			<div class="tablenav sh-tablenav bottom">
 				<div class="total">
 					<span class="bold"><?php esc_html_e('Total', 'support-hours'); ?></span>:
-					<?php echo calculate_hours_and_minutes_output($this->used_minutes); ?> / <?php echo calculate_hours_and_minutes_output($this->bought_minutes); ?>
+					<?php echo esc_html(calculate_hours_and_minutes_output($this->used_minutes)); ?> / <?php echo esc_html(calculate_hours_and_minutes_output($this->bought_minutes)); ?>
 				</div>
 			</div>
 			<?php

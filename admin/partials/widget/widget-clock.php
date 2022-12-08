@@ -1,10 +1,20 @@
 <?php
 
+/**
+ * Widget for the dashboard.
+ *
+ * @link       https://basedonline.nl
+ * @since      1.0.0
+ *
+ * @package    Support_Hours
+ * @subpackage Support_Hours/partials
+ */
+
 namespace Support_Hours;
 
 ?>
-<div class="sh-gauge" role="heading" aria-level="2" data-percent="<?php echo percentage($work_fields, $used_minutes, $bought_minutes); ?>">
-	<a href="<?php echo admin_url('admin.php?page=support-hours'); ?>" class="sh-gauge__wrapper sh-gauge__wrapper--average">
+<div class="sh-gauge" role="heading" aria-level="2" data-percent="<?php echo esc_attr(percentage($work_fields, $used_minutes, $bought_minutes)); ?>">
+	<a href="<?php echo esc_attr(admin_url('admin.php?page=support-hours')); ?>" class="sh-gauge__wrapper sh-gauge__wrapper--average">
 		<div class="sh-gauge__svg-wrapper">
 			<svg viewBox="0 0 120 120" class="sh-gauge__svg">
 				<circle class="sh-gauge__base" r="56" cx="60" cy="60"></circle>
@@ -13,8 +23,8 @@ namespace Support_Hours;
 			</svg>
 		</div>
 		<div class="sh-gauge__percentage">
-			<span class="sh-gauge__text <?php echo font_size($used_minutes, $bought_minutes); ?>">
-				<?php echo widget_output($work_fields, $used_minutes, $bought_minutes); ?>
+			<span class="sh-gauge__text <?php echo esc_html(font_size($used_minutes, $bought_minutes)); ?>">
+				<?php echo esc_html(widget_output($work_fields, $used_minutes, $bought_minutes)); ?>
 				<br class="smallbr" />
 				<?php esc_html_e('hours', 'support-hours'); ?>
 				<br class='bigbr' />

@@ -1,7 +1,5 @@
 <?php
 
-namespace Support_Hours;
-
 /**
  * Define the internationalization functionality.
  *
@@ -13,7 +11,17 @@ namespace Support_Hours;
  * @subpackage Support_Hours/includes
  * @author     Erik van der Bas <erik@basedonline.nl>
  */
-class Support_Hours_i18n
+
+namespace Support_Hours;
+
+/**
+ * Load the plugin text domain for translation.
+ *
+ * @package    Support_Hours
+ * @subpackage Support_Hours/includes
+ * @author     Erik van der Bas <erik@basedonline.nl>
+ */
+class Support_Hours_I18n
 {
 
 
