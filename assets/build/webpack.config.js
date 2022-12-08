@@ -2,16 +2,9 @@ process.noDeprecation = true;
 const env = process.env.NODE_ENV;
 const devMode = process.env.NODE_ENV !== 'production';
 const path = require('path');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack');
-const imageminGifsicle = require('imagemin-gifsicle');
-const imageminJpegtran = require('imagemin-jpegtran');
-const imageminOptipng = require('imagemin-optipng');
-const imageminSvgo = require('imagemin-svgo');
 const TerserPlugin = require('terser-webpack-plugin');
 const { merge } = require('webpack-merge');
 const rootPath = process.cwd();
@@ -110,29 +103,6 @@ const webpackConfig = {
         minimizer: [
             new TerserPlugin({
                 parallel: true,
-            }),
-            new ImageminPlugin({
-                bail: false, // Ignore errors on corrupted images
-                cache: true,
-                name: '[path][name].[ext]',
-                imageminOptions: {
-                    // Lossless optimization with custom option
-                    // Feel free to experement with options for better result for you
-                    plugins: [
-                        imageminGifsicle({
-                            interlaced: true,
-                        }),
-                        imageminJpegtran({
-                            progressive: true,
-                        }),
-                        imageminOptipng({
-                            optimizationLevel: 1,
-                        }),
-                        imageminSvgo({
-                            removeViewBox: false,
-                        }),
-                    ],
-                },
             }),
         ],
     },
