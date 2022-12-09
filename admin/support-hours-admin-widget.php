@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Provide a admin widget for the plugin
+ * Provide an admin widget for the plugin
  *
  * @link       https://basedonline.nl
  * @since      1.0.0
@@ -16,8 +16,8 @@ $current_user_id = get_current_user_id();
 $i = 0;
 
 global $pagenow;
-
 if (!empty($this->managers) && !empty($this->email) && !empty($work_fields[0]['date'])) :
+
 	include_once('partials/widget/widget-clock.php');
 	include_once('partials/widget/worktable.php');
 	include_once('partials/common/bottom-message.php');

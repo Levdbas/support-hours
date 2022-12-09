@@ -12,6 +12,10 @@
 
 namespace Support_Hours;
 
+
+
+$total = Support_Hours_Admin::get_time_output('time_full');
+
 ?>
 <?php if ($work_fields) : ?>
 	<div class="support-hours-time-table">
@@ -39,7 +43,7 @@ namespace Support_Hours;
 				<?php
 				$widget_fields = array_slice($work_fields, -5);
 				foreach ($widget_fields as $field) {
-					?>
+				?>
 					<tr>
 						<td class="column-primary">
 							<?php
@@ -73,7 +77,7 @@ namespace Support_Hours;
 		</table>
 		<div class="total">
 			<span class="bold"><?php esc_html_e('Total', 'support-hours'); ?></span>:
-			<?php echo esc_html(calculate_hours_and_minutes_output($this->used_minutes)); ?> / <?php echo esc_html(calculate_hours_and_minutes_output($this->bought_minutes)); ?>
+			<?php echo esc_html($total); ?>
 		</div>
 	</div>
 <?php endif; ?>

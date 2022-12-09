@@ -12,15 +12,16 @@
 
 namespace Support_Hours;
 
-$perentage = (int) percentage($work_fields, $used_minutes, $bought_minutes);
-$stroke = ($perentage * 352) / 100;
+$percentage = Support_Hours_Admin::get_time_output('used_time_in_percentage');
+$stroke  = Support_Hours_Admin::get_time_output('stroke_dasharray');
+$modifier = Support_Hours_Admin::get_time_output('text_size');
 ?>
 <style>
 	body {
 		--sh-stroke: <?php echo esc_attr($stroke); ?>;
 	}
 </style>
-<div class="sh-gauge" role="heading" aria-level="2" data-percent="<?php echo esc_attr($perentage); ?>">
+<div class="sh-gauge" role="heading" aria-level="2" data-percent="<?php echo esc_attr($percentage); ?>">
 	<a href="<?php echo esc_attr(admin_url('admin.php?page=support-hours')); ?>" class="sh-gauge__wrapper sh-gauge__wrapper--average">
 		<div class="sh-gauge__svg-wrapper">
 			<svg viewBox="0 0 120 120" class="sh-gauge__svg">
@@ -30,8 +31,8 @@ $stroke = ($perentage * 352) / 100;
 			</svg>
 		</div>
 		<div class="sh-gauge__percentage">
-			<span class="sh-gauge__text <?php echo esc_html(font_size($used_minutes, $bought_minutes)); ?>">
-				<?php echo esc_html(widget_output($work_fields, $used_minutes, $bought_minutes)); ?>
+			<span class="sh-gauge__text sh-gauge__text--<?php echo esc_html($modifier); ?>">
+				<?php echo esc_html(Support_Hours_Admin::get_time_output('time_full')); ?>
 				<br class="smallbr" />
 				<?php esc_html_e('hours', 'support-hours'); ?>
 				<br class='bigbr' />

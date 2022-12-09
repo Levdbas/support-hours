@@ -12,11 +12,10 @@
 
 namespace Support_Hours;
 
-$name       = $this->plugin_name;
-$options    = $this->options;
-$work_fields = $this::$work_fields;
-$current_user_id    = get_current_user_id();
-$i          = 0;
+$name            = $this->plugin_name;
+$work_fields     = $this::$work_fields;
+$current_user_id = get_current_user_id();
+$i               = 0;
 
 ?>
 <div class="wrap">

@@ -30,11 +30,12 @@ elseif (!empty($this->managers) && in_array($current_user_id, $this->managers)) 
 		<a class="button button-primary" href="<?php echo esc_attr(admin_url('admin.php?page=support-hours-settings')); ?>"><?php esc_html_e('Add first activity', 'support-hours'); ?></a>
 	<?php
 endif;
-?>
+	?>
 
 	<?php
 	if ('index.php' == $pagenow) {
-		$percentage = percentage($work_fields, $used_minutes, $bought_minutes);
+
+		$percentage = Support_Hours_Admin::get_time_output('used_time_in_percentage');
 		$welcome    = __('Hi', 'support-hours') . ' ' . wp_get_current_user()->display_name . ', ';
 
 		if (100 == $percentage) {
@@ -47,7 +48,7 @@ endif;
 			$message = __('you have plenty of hours left.', 'support-hours');
 			the_notice($welcome . $message, 'notice-success');
 		}
-		?>
+	?>
 		<a class="button button-primary" href="mailto:<?php echo esc_attr($this->email); ?>?SUBJECT=<?php esc_html_e('Order Support Hours', 'support-hours'); ?> - <?php echo esc_attr(bloginfo('name')); ?>"><?php esc_html_e('Order Support Hours', 'support-hours'); ?></a>
 
 	<?php } ?>

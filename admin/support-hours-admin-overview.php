@@ -26,7 +26,7 @@ global $pagenow;
 		$i = 0;
 
 		if (!empty($work_fields[0]['date'])) :
-			?>
+	?>
 			<table class="wp-list-table widefat fixed striped users">
 				<thead>
 					<tr>
@@ -44,7 +44,7 @@ global $pagenow;
 						$widget_fields = array_slice($work_fields, -5);
 					endif;
 					foreach ($widget_fields as $field) {
-						?>
+					?>
 						<tr>
 							<td class="column-primary">
 								<?php
@@ -88,10 +88,10 @@ global $pagenow;
 			<div class="tablenav sh-tablenav bottom">
 				<div class="total">
 					<span class="bold"><?php esc_html_e('Total', 'support-hours'); ?></span>:
-					<?php echo esc_html(calculate_hours_and_minutes_output($this->used_minutes)); ?> / <?php echo esc_html(calculate_hours_and_minutes_output($this->bought_minutes)); ?>
+					<?php echo esc_html(Support_Hours_Admin::get_time_output('time_full')); ?>
 				</div>
 			</div>
-			<?php
+	<?php
 		endif;
 
 		include_once('partials/common/bottom-message.php');

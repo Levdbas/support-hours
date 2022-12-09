@@ -33,7 +33,7 @@
 
 	<td data-th="<?php esc_html_e('Date', 'support-hours'); ?>" data-colname="<?php esc_html_e('Date', 'support-hours'); ?>">
 		<?php $date_value = !empty($field['date']) ? $field['date'] : ''; ?>
-		<input type="date" class="regular-text date validate sh-datepicker" id="<?php echo esc_attr($name); ?>-workFields-date" name="<?php echo esc_attr($name); ?>[workFields][<?php echo esc_attr($i); ?>][date]" value="<?php echo esc_attr($date_value); ?>" />
+		<input type="date" required class="regular-text date validate sh-datepicker" id="<?php echo esc_attr($name); ?>-workFields-date" name="<?php echo esc_attr($name); ?>[workFields][<?php echo esc_attr($i); ?>][date]" value="<?php echo esc_attr($date_value); ?>" />
 	</td>
 
 	<td data-th="<?php esc_html_e('Time', 'support-hours'); ?>" data-colname="<?php esc_html_e('Time', 'support-hours'); ?>">

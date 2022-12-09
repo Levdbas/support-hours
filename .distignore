@@ -1,5 +1,6 @@
 /.git
 /.github
+/.vscode
 /.wordpress-org
 /assets
 /node_modules
