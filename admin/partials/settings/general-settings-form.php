@@ -24,7 +24,7 @@
 					<?php
 					$administrators = get_users('orderby=nicename&role=administrator');
 					foreach ($administrators as $administrator) {
-					?>
+						?>
 						<label for="<?php echo esc_attr($name); ?>[users<?php echo esc_attr($administrator->ID); ?>]">
 							<?php $user_checked = !empty($this->managers) ? in_array($administrator->ID, $this->managers) : false; ?>
 							<input type="checkbox" name="<?php echo esc_attr($name); ?>[users][]" id="<?php echo esc_attr($name); ?>[users<?php echo esc_attr($administrator->ID); ?>]" class="filled-in" value="<?php echo esc_attr($administrator->ID); ?>" <?php checked($user_checked); ?> />

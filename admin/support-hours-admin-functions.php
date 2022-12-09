@@ -205,5 +205,5 @@ function get_notice($message, $notice_class = 'notice-alt')
  */
 function the_notice($message, $notice_class = 'notice-alt')
 {
-	echo get_notice($message, $notice_class);
+	echo wp_kses_post(get_notice($message, $notice_class));
 }

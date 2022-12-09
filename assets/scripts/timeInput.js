@@ -8,7 +8,6 @@ function timeInput() {
             $(this).next().removeClass('hidden');
             $('input[type="submit"]').attr('disabled', 'disabled');
         } else if ($(this).val().match('')) {
-            //$(this).next().addClass('hidden');
             $('input[type="submit"]').removeAttr('disabled');
         } else {
             $(this).next().addClass('hidden');

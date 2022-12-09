@@ -4,7 +4,7 @@ function workTableHelpers() {
     $('.remove-row').on('click', function () {
         $(this)
             .parents('.repeating')
-            .fadeOut(500, function () {
+            .fadeOut(300, function () {
                 $(this).remove();
             });
     });

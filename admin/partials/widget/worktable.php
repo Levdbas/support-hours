@@ -39,7 +39,7 @@ namespace Support_Hours;
 				<?php
 				$widget_fields = array_slice($work_fields, -5);
 				foreach ($widget_fields as $field) {
-				?>
+					?>
 					<tr>
 						<td class="column-primary">
 							<?php

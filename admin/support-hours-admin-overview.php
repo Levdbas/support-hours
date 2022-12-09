@@ -26,7 +26,7 @@ global $pagenow;
 		$i = 0;
 
 		if (!empty($work_fields[0]['date'])) :
-	?>
+			?>
 			<table class="wp-list-table widefat fixed striped users">
 				<thead>
 					<tr>
@@ -44,7 +44,7 @@ global $pagenow;
 						$widget_fields = array_slice($work_fields, -5);
 					endif;
 					foreach ($widget_fields as $field) {
-					?>
+						?>
 						<tr>
 							<td class="column-primary">
 								<?php
@@ -91,7 +91,7 @@ global $pagenow;
 					<?php echo esc_html(calculate_hours_and_minutes_output($this->used_minutes)); ?> / <?php echo esc_html(calculate_hours_and_minutes_output($this->bought_minutes)); ?>
 				</div>
 			</div>
-	<?php
+			<?php
 		endif;
 
 		include_once('partials/common/bottom-message.php');
