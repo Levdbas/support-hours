@@ -146,8 +146,8 @@ class Support_Hours
 	 */
 	private function define_admin_hooks()
 	{
+
 		$plugin_admin = new Support_Hours_Admin();
-		$data = new Support_Hours_Data();
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 		// Add menu item
@@ -155,7 +155,7 @@ class Support_Hours
 		// Add Settings link to the plugin
 		$plugin_basename = plugin_basename(plugin_dir_path(__DIR__) . self::PLUGIN_NAME . '.php');
 		$this->loader->add_filter('plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links');
-		$this->loader->add_action('admin_init', $plugin_admin, 'register_options');
+		$this->loader->add_action('admin_init', $plugin_admin, 'admit_init');
 
 		// load widget hook from class-support-hours-admin.php
 		$this->loader->add_action('wp_dashboard_setup', $plugin_admin, 'add_dashboard_widget');

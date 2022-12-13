@@ -29,14 +29,15 @@ class Support_Hours_Admin
 
 
 	/**
-	 * Register options for plugin.
+	 * Register options for plugin and set's up data.
 	 * Hooked in class-support-hours.php
 	 *
 	 * @return void
 	 */
-	public function register_options()
+	public function admit_init()
 	{
 		register_setting(Support_Hours::PLUGIN_NAME, 'support-hours', [$this, 'validate']);
+		new Support_Hours_Data();
 	}
 
 	/**
