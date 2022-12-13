@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
 Tested up to: 6.1.1
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,10 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 2.1.0 =
+* Update minimal php version to 7.4
+* Refactored classes so the plugin only does the calculations when loading a backend page.
 
 = 2.0.0 =
 * Complete rework of plugin.
