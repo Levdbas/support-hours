@@ -212,14 +212,14 @@ class Support_Hours_Data
 			$used_minutes_output = $bought_time_without_last - self::$total_used_minutes - $leftovers;
 		}
 
-		if ($remaining_time <= 0) {
+		if ($overusage < 0) {
 			$used_minutes_output = abs($overusage);
 		}
 
 		if (0 !== $used_minutes_output && 0 !== $bought_minutes_output) {
 			$percentage = $used_minutes_output * 100 / $bought_minutes_output;
 			$percentage = $percentage > 100 ? 100 : $percentage;
-			$percentage = round($percentage);
+			$percentage = floor($percentage);
 		}
 
 		$bought_time_in_hours_minutes = $this->convert_minutes_to_hours_minutes($bought_minutes_output);
@@ -264,7 +264,7 @@ class Support_Hours_Data
 
 		if (0 == $minutes % 60) :
 			$time = $minutes / 60;
-	   endif;
+		endif;
 
 		return $time;
 	}
