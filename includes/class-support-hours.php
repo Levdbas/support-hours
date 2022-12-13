@@ -49,16 +49,12 @@ class Support_Hours
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
-	protected $plugin_name;
+	const PLUGIN_NAME = 'support-hours';
 
 	/**
 	 * The current version of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
 	 */
-	protected $version;
+	const VERSION = '2.0.0';
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -71,10 +67,6 @@ class Support_Hours
 	 */
 	public function __construct()
 	{
-
-		$this->plugin_name = 'support-hours';
-		$this->version = '2.0.0';
-
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -117,6 +109,10 @@ class Support_Hours
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-support-hours-admin.php';
 
 		/**
+		 * The class responsible for all the calculations and data.
+		 */
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-support-hours-data.php';
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -150,13 +146,14 @@ class Support_Hours
 	 */
 	private function define_admin_hooks()
 	{
-		$plugin_admin = new Support_Hours_Admin($this->get_plugin_name(), $this->get_version());
+		$plugin_admin = new Support_Hours_Admin();
+		$data = new Support_Hours_Data();
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 		// Add menu item
 		$this->loader->add_action('admin_menu', $plugin_admin, 'add_plugin_admin_menu');
 		// Add Settings link to the plugin
-		$plugin_basename = plugin_basename(plugin_dir_path(__DIR__) . $this->plugin_name . '.php');
+		$plugin_basename = plugin_basename(plugin_dir_path(__DIR__) . self::PLUGIN_NAME . '.php');
 		$this->loader->add_filter('plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links');
 		$this->loader->add_action('admin_init', $plugin_admin, 'register_options');
 
@@ -183,7 +180,7 @@ class Support_Hours
 	 */
 	public function get_plugin_name()
 	{
-		return $this->plugin_name;
+		return self::PLUGIN_NAME;
 	}
 
 	/**
@@ -205,6 +202,6 @@ class Support_Hours
 	 */
 	public function get_version()
 	{
-		return $this->version;
+		return self::VERSION;
 	}
 }

@@ -12,20 +12,14 @@
 
 namespace Support_Hours;
 
-
-
-$total = Support_Hours_Admin::get_time_output('time_full');
+$total = Support_Hours_Data::get_time_output('time_full');
 
 ?>
-<?php if ($work_fields) : ?>
+<?php if (Support_Hours_Data::get_workfields()) : ?>
 	<div class="support-hours-time-table">
 		<h3>
 			<?php
-			if ('index.php' == $pagenow) :
-				esc_html_e('Last five activities:', 'support-hours');
-			else :
-				esc_html_e('Activities:', 'support-hours');
-			endif;
+			esc_html_e('Last five activities:', 'support-hours');
 			?>
 		</h3>
 
@@ -41,33 +35,34 @@ $total = Support_Hours_Admin::get_time_output('time_full');
 			</thead>
 			<tbody>
 				<?php
-				$widget_fields = array_slice($work_fields, -5);
-				foreach ($widget_fields as $field) {
-				?>
+				$entries = array_slice(Support_Hours_Data::get_workfields(), -5);
+				$format = get_option('date_format');
+				foreach ($entries as $entry) {
+					?>
 					<tr>
 						<td class="column-primary">
 							<?php
-							$format = get_option('date_format');
-							if (!empty($field['used'])) {
-								echo esc_html(date_i18n($format, strtotime($field['date'])));
+
+							if (!empty($entry['used'])) {
+								echo esc_html(date_i18n($format, strtotime($entry['date'])));
 							}
 							?>
 
 						</td>
 						<td>
 							<span class="time-type-icon">
-								<?php echo ('time-added' == $field['type']) ? '+' : '-'; ?>
+								<?php echo ('time-added' == $entry['type']) ? '+' : '-'; ?>
 							</span>
 							<?php
-							if (!empty($field['used'])) {
-								echo esc_html($field['used']);
+							if (!empty($entry['used'])) {
+								echo esc_html($entry['used']);
 							}
 							?>
 						</td>
 						<td>
 							<?php
-							if (!empty($field['used'])) {
-								echo esc_html($field['description']);
+							if (!empty($entry['used'])) {
+								echo esc_html($entry['description']);
 							}
 							?>
 						</td>

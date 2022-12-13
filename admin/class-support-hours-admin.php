@@ -25,120 +25,8 @@ namespace Support_Hours;
 class Support_Hours_Admin
 {
 
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
-	 */
-	private $plugin_name;
 
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
-	private $version;
 
-	/**
-	 * Plugin options
-	 *
-	 * @since    1.7.0
-	 * @access   private
-	 * @var      string    $this->options    The plugin options saved in the database.
-	 */
-	private $options;
-
-	/**
-	 * Support Hours Managers
-	 *
-	 * @since    1.7.0
-	 * @access   private
-	 * @var      array   $managers  allowed users to manage Support Hours
-	 */
-	private $managers;
-
-	/**
-	 * Support Hours E-mail address
-	 *
-	 * @since    1.7.0
-	 * @access   private
-	 * @var     $email  Email address used to order more hours.
-	 */
-	private $email = false;
-
-	/**
-	 * Support Hours work_fields
-	 *
-	 * @since    1.7.0
-	 * @access   private
-	 * @var      array   $work_fields all work fields
-	 */
-	public static $work_fields = [];
-
-	/**
-	 * Support Hours used_minutes
-	 *
-	 * @since    1.7.0
-	 * @access   private
-	 * @var      int   All used minutes
-	 */
-	private static $total_used_minutes = 0;
-
-	/**
-	 * Support Hours bought_minutes
-	 *
-	 * @since    1.7.0
-	 * @access   private
-	 * @var      int   All bought minutes
-	 */
-	private static $total_bought_minutes = 0;
-
-	private static $last_added_time = 0;
-
-	public static $time_output = [
-		'used_time_in_minutes'    => 0,
-		'used_time_in_percentage' => 0,
-		'bought_time_in_minutes'  => 0,
-		'time_full'               => '00:00',
-		'time_simplified'         => '00:00',
-		'stroke_dasharray'        => 352,
-		'text_size'               => 'small',
-	]; // TODO: make private.
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @since    1.0.0
-	 * @param      string $plugin_name       The name of this plugin.
-	 * @param      string $version    The version of this plugin.
-	 */
-	public function __construct($plugin_name, $version)
-	{
-
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
-		$this->options     = get_option($plugin_name);
-
-		if (!empty($this->options['users'])) {
-			$this->managers = $this->options['users'];
-		}
-
-		if (isset($this->options['email'])) {
-			$this->email = $this->options['email'];
-		}
-
-		if (isset($this->options['workFields'])) {
-			self::$work_fields          = $this->options['workFields'];
-			self::$total_used_minutes   = $this->add_time_entries('time-used');
-			self::$total_bought_minutes = $this->add_time_entries('time-added');
-			self::$last_added_time      = $this->set_last_added_time();
-			$this->set_time_output();
-			self::$work_fields = self::date_validation(self::$work_fields); // is this still needed?
-		}
-	}
 
 	/**
 	 * Register options for plugin.
@@ -148,7 +36,7 @@ class Support_Hours_Admin
 	 */
 	public function register_options()
 	{
-		register_setting($this->plugin_name, 'support-hours', [$this, 'validate']);
+		register_setting(Support_Hours::PLUGIN_NAME, 'support-hours', [$this, 'validate']);
 	}
 
 	/**
@@ -162,7 +50,7 @@ class Support_Hours_Admin
 		$current_page = get_current_screen()->base;
 
 		if (in_array($current_page, ['toplevel_page_support-hours', 'support-hours_page_support-hours-settings', 'dashboard'])) :
-			wp_enqueue_style($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/styles/support-hours-admin.css', [], $this->version, 'all');
+			wp_enqueue_style(Support_Hours::PLUGIN_NAME, SH_PLUGIN_DIR_URI . 'dist/styles/support-hours-admin.css', [], Support_Hours::VERSION, 'all');
 		endif;
 	}
 
@@ -176,7 +64,7 @@ class Support_Hours_Admin
 	{
 		$current_page = get_current_screen()->base;
 		if (in_array($current_page, ['toplevel_page_support-hours', 'support-hours_page_support-hours-settings', 'dashboard'])) :
-			wp_enqueue_script($this->plugin_name, SH_PLUGIN_DIR_URI . 'dist/scripts/support-hours-admin.js', ['jquery'], $this->version, false);
+			wp_enqueue_script(Support_Hours::PLUGIN_NAME, SH_PLUGIN_DIR_URI . 'dist/scripts/support-hours-admin.js', ['jquery'], Support_Hours::VERSION, false);
 		endif;
 	}
 
@@ -239,7 +127,6 @@ class Support_Hours_Admin
 	 */
 	public function display_plugin_page()
 	{
-		include_once 'support-hours-admin-functions.php';
 		include_once 'support-hours-admin-overview.php';
 	}
 
@@ -313,9 +200,11 @@ class Support_Hours_Admin
 			$input['workFields'] = null;
 		} else {
 			usort($input['workFields'], ['Support_Hours\Support_Hours_Admin', 'date_compare']);
+			$input['workFields'] = self::date_validation($input['workFields']);
 		}
 
 		$valid['workFields'] = $input['workFields'];
+
 		return $valid;
 	}
 
@@ -345,139 +234,23 @@ class Support_Hours_Admin
 	 */
 	public function widget_compose()
 	{
-		include_once 'support-hours-admin-functions.php';
 		include_once 'support-hours-admin-widget.php';
 	}
 
+
 	/**
-	 * Checks the workfields array for the time fields. Adds all timefields and returns them.
-	 * If no workfields and therefore no time fields are filled, returns 00:00
+	 * Echo the notice in html.
 	 *
-	 * @since   1.4
-	 * @param   string $type          Can be used or bought.
-	 * @return  string                Returns full hours format or total minutes of used or bought hours.
+	 * @param  string $message              The message to display.
+	 * @param  string $notice_class     The class of the notice.
 	 */
-	private function add_time_entries($type)
+	public static function the_notice($message, $notice_class = 'notice-alt')
 	{
-		$minutes = 0;
+		$notice = '';
+		$notice .= '<div class="warning-message notice support-hours-notice inline ' . $notice_class . '">';
+		$notice .= '<p>' . $message . '</p>';
+		$notice .= '</div>';
 
-		if (empty(self::$work_fields)) {
-			return $minutes;
-		}
-
-		if (!isset(self::$work_fields[0]['type'])) {
-			return $minutes;
-		}
-
-		$filtered_fields = array_filter(
-			self::$work_fields,
-			function ($var) use ($type) {
-				return ($var['type'] == $type);
-			}
-		);
-
-		foreach ($filtered_fields as $time) {
-			if ('' !== $time['type']) {
-				list($hour, $minute) = explode(':', $time['used']);
-				$minutes += $hour * 60;
-				$minutes += $minute;
-			}
-		}
-
-		return $minutes;
-	}
-
-	private function set_last_added_time()
-	{
-		$minutes = 0;
-
-		if (empty(self::$work_fields)) {
-			return $minutes;
-		}
-
-		$work_fields_inverted = array_reverse(self::$work_fields);
-		$key                  = array_search('time-added', array_column($work_fields_inverted, 'type')); // searching for the last time-added value in key 'type'
-
-		if (false === $key) {
-			return $minutes;
-		}
-
-		$time                = $work_fields_inverted[$key]['used']; // take our time in HH:MM format from the field
-		list($hour, $minute) = explode(':', $time); // explode the time
-		$minutes += $hour * 60; // hours to minutes, add them to minutes
-		$minutes += $minute; // add minutes to total as well.
-
-		return $minutes;
-	}
-
-	public function set_time_output()
-	{
-		$bought_time_without_last = self::$total_bought_minutes - self::$last_added_time;
-		$remaining_time           = self::$total_bought_minutes - self::$total_used_minutes;
-		$percentage            = 100;
-
-		$used_minutes_output = self::$total_used_minutes;
-		$bought_minutes_output = self::$total_bought_minutes;
-
-		// NOTE: calculates used hours
-		if (self::$total_used_minutes > $bought_time_without_last && $remaining_time >= 0 || $remaining_time < 0) {
-			$used_minutes_output = self::$total_used_minutes - $bought_time_without_last;
-		}
-
-		// NOTE: calculates bought hours
-		if ($remaining_time < self::$last_added_time && $remaining_time >= 0 || $remaining_time < 0) {
-			$bought_minutes_output = self::$last_added_time;
-		}
-
-		if (0 !== $used_minutes_output && 0 !== $bought_minutes_output) {
-			$percentage = $used_minutes_output * 100 / $bought_minutes_output;
-			$percentage = $percentage > 100 ? 100 : $percentage;
-			$percentage = round($percentage);
-		}
-
-		$bought_time_in_hours_minutes = $this->convert_minutes_to_hours_minutes($bought_minutes_output);
-		$used_time_in_hours_minutes   = $this->convert_minutes_to_hours_minutes($used_minutes_output);
-
-		$text_size = 0 == $used_minutes_output % 60 && $bought_minutes_output < 5940 ? 'big' : 'small';
-
-		self::$time_output = [
-			'used_time_in_minutes'                             => $used_minutes_output,
-			'bought_time_in_minutes'                           => $bought_minutes_output,
-			'used_time_in_percentage'                          => $percentage,
-			'used_time_in_hours'                               => $used_time_in_hours_minutes,
-			'bought_time_in_hours'                             => $bought_time_in_hours_minutes,
-			'time_full'                                        => $used_time_in_hours_minutes . ' / ' . $bought_time_in_hours_minutes,
-			'time_simplified'                                  => $this->maybe_hide_minutes($used_minutes_output) . ' / ' . $this->maybe_hide_minutes($bought_minutes_output),
-			'stroke_dasharray'                                 => ($percentage * 352) / 100,
-			'text_size'                                        => $text_size,
-		];
-	}
-
-	private function convert_minutes_to_hours_minutes($minutes)
-	{
-		$hours = floor($minutes / 60);
-		$minutes -= $hours * 60;
-		return sprintf('%02d:%02d', $hours, $minutes);
-	}
-
-	private function maybe_hide_minutes($minutes)
-	{
-
-		$time = $this->convert_minutes_to_hours_minutes($minutes);
-
-		if (0 == $minutes % 60) :
-			$time = $minutes / 60;
-		endif;
-
-		return $time;
-	}
-
-	public static function get_time_output($type)
-	{
-		if (!isset(self::$time_output[$type])) {
-			throw new \Exception('Type not found in time output array.');
-		}
-
-		return self::$time_output[$type];
+		echo wp_kses_post($notice);
 	}
 }

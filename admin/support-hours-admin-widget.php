@@ -12,16 +12,14 @@
 
 namespace Support_Hours;
 
-$current_user_id = get_current_user_id();
-$i = 0;
+$mail = Support_Hours_Data::get_email();
+$managers = Support_Hours_Data::get_managers();
 
-global $pagenow;
-if (!empty($this->managers) && !empty($this->email) && !empty($work_fields[0]['date'])) :
-
+if (!empty($managers) && !empty($mail) && !empty(Support_Hours_Data::get_workfields())) :
 	include_once('partials/widget/widget-clock.php');
 	include_once('partials/widget/worktable.php');
 	include_once('partials/common/bottom-message.php');
-elseif (empty($this->managers) || empty($this->email)) :
+elseif (empty($managers) || empty($mail)) :
 	include_once('partials/common/notice-configure.php');
 else :
 	include_once('partials/common/notice-no-hours.php');

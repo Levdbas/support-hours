@@ -14,7 +14,7 @@ namespace Support_Hours;
 
 $message = __('Support Hours is not configured.', 'support-hours');
 
-the_notice($message, 'notice-warning');
+Support_Hours_Admin::the_notice($message, 'notice-warning');
 ?>
 <p>
   <a class="button button-primary" href="<?php echo esc_attr(admin_url('admin.php?page=support-hours-settings')); ?>">

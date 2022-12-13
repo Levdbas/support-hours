@@ -13,8 +13,8 @@
 namespace Support_Hours;
 
 $message = __('No Support Hours bought yet.', 'support-hours');
-the_notice($message, 'notice-warning');
+Support_Hours_Admin::the_notice($message, 'notice-warning');
 ?>
-<a class="button button-primary" href="mailto:<?php echo esc_attr($this->email); ?>?SUBJECT=<?php esc_html_e('Order Support Hours', 'support-hours'); ?> - <?php echo esc_attr(bloginfo('name')); ?>">
+<a class="button button-primary" href="mailto:<?php echo esc_attr(Support_Hours_Data::get_email()); ?>?SUBJECT=<?php esc_html_e('Order Support Hours', 'support-hours'); ?> - <?php echo esc_attr(bloginfo('name')); ?>">
   <?php esc_html_e('Order Support Hours', 'support-hours'); ?>
 </a>

@@ -13,7 +13,8 @@
 namespace Support_Hours;
 
 global $pagenow;
-
+$managers = Support_Hours_Data::get_managers();
+$email = Support_Hours_Data::get_email();
 ?>
 <div class="wrap">
 	<h2><?php echo esc_html(get_admin_page_title()); ?></h2>
@@ -21,12 +22,9 @@ global $pagenow;
 		<?php esc_html_e('A complete overview of all activities.', 'support-hours'); ?>
 	</p>
 	<?php
-	if (!empty($this->managers) && '0' !== $bought_minutes && !empty($this->email)) :
-		$current_user_id = get_current_user_id();
-		$i = 0;
-
-		if (!empty($work_fields[0]['date'])) :
-	?>
+	if (!empty($managers) && !empty(Support_Hours_Data::get_bought_time()) && !empty($email)) :
+		if (!empty(Support_Hours_Data::get_workfields())) :
+			?>
 			<table class="wp-list-table widefat fixed striped users">
 				<thead>
 					<tr>
@@ -39,12 +37,9 @@ global $pagenow;
 				<tbody id="the-list" data-wp-lists="list:user">
 
 					<?php
-					$widget_fields = $work_fields;
-					if ('index.php' == $pagenow) :
-						$widget_fields = array_slice($work_fields, -5);
-					endif;
+					$widget_fields = Support_Hours_Data::get_workfields();
 					foreach ($widget_fields as $field) {
-					?>
+						?>
 						<tr>
 							<td class="column-primary">
 								<?php
@@ -88,15 +83,15 @@ global $pagenow;
 			<div class="tablenav sh-tablenav bottom">
 				<div class="total">
 					<span class="bold"><?php esc_html_e('Total', 'support-hours'); ?></span>:
-					<?php echo esc_html(Support_Hours_Admin::get_time_output('time_full')); ?>
+					<?php echo esc_html(Support_Hours_Data::get_time_output('time_total')); ?>
 				</div>
 			</div>
-	<?php
+			<?php
 		endif;
 
 		include_once('partials/common/bottom-message.php');
 
-	elseif (empty($this->managers) || empty($this->email)) :
+	elseif (empty(Support_Hours_Data::get_managers()) || empty(Support_Hours_Data::get_email())) :
 		include_once('partials/common/notice-configure.php');
 
 	else :

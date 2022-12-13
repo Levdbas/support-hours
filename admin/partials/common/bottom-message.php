@@ -12,7 +12,11 @@
 
 namespace Support_Hours;
 
-if (!empty($this->managers) && in_array($current_user_id, $this->managers) && !empty($work_fields[0]['date'])) : ?>
+global $pagenow;
+$managers = Support_Hours_Data::get_managers();
+
+$current_user_id = get_current_user_id();
+if (!empty($managers) && in_array($current_user_id, $managers) && !empty(Support_Hours_Data::get_workfields())) : ?>
 	<div class="support-hours-notices">
 
 		<a class="button button-primary" href="<?php echo esc_attr(admin_url('admin.php?page=support-hours-settings')); ?>"><?php esc_html_e('Add new activity', 'support-hours'); ?></a>
@@ -21,35 +25,35 @@ if (!empty($this->managers) && in_array($current_user_id, $this->managers) && !e
 		<?php endif; ?>
 
 	<?php
-elseif (!empty($this->managers) && in_array($current_user_id, $this->managers)) :
+elseif (!empty($managers) && in_array($current_user_id, $managers)) :
 	if ('admin.php' == $pagenow) :
 		$message = __('No activities added yet.', 'support-hours');
-		the_notice($message);
+		Support_Hours_Admin::the_notice($message);
 	endif;
 	?>
 		<a class="button button-primary" href="<?php echo esc_attr(admin_url('admin.php?page=support-hours-settings')); ?>"><?php esc_html_e('Add first activity', 'support-hours'); ?></a>
 	<?php
 endif;
-	?>
+?>
 
 	<?php
 	if ('index.php' == $pagenow) {
 
-		$percentage = Support_Hours_Admin::get_time_output('used_time_in_percentage');
+		$percentage = Support_Hours_Data::get_time_output('used_time_in_percentage');
 		$welcome    = __('Hi', 'support-hours') . ' ' . wp_get_current_user()->display_name . ', ';
 
 		if (100 == $percentage) {
 			$message = __('your Support Hours are used.', 'support-hours');
-			the_notice($welcome . $message, 'notice-error');
+			Support_Hours_Admin::the_notice($welcome . $message, 'notice-error');
 		} elseif ($percentage >= 80) {
 			$message = __('your Support Hours are almost used.', 'support-hours');
-			the_notice($welcome . $message, 'notice-warning');
+			Support_Hours_Admin::the_notice($welcome . $message, 'notice-warning');
 		} else {
 			$message = __('you have plenty of hours left.', 'support-hours');
-			the_notice($welcome . $message, 'notice-success');
+			Support_Hours_Admin::the_notice($welcome . $message, 'notice-success');
 		}
-	?>
-		<a class="button button-primary" href="mailto:<?php echo esc_attr($this->email); ?>?SUBJECT=<?php esc_html_e('Order Support Hours', 'support-hours'); ?> - <?php echo esc_attr(bloginfo('name')); ?>"><?php esc_html_e('Order Support Hours', 'support-hours'); ?></a>
+		?>
+		<a class="button button-primary" href="mailto:<?php echo esc_attr(Support_Hours_Data::get_email()); ?>?SUBJECT=<?php esc_html_e('Order Support Hours', 'support-hours'); ?> - <?php echo esc_attr(bloginfo('name')); ?>"><?php esc_html_e('Order Support Hours', 'support-hours'); ?></a>
 
 	<?php } ?>
 	</div>

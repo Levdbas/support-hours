@@ -12,9 +12,9 @@
 
 namespace Support_Hours;
 
-$percentage = Support_Hours_Admin::get_time_output('used_time_in_percentage');
-$stroke  = Support_Hours_Admin::get_time_output('stroke_dasharray');
-$modifier = Support_Hours_Admin::get_time_output('text_size');
+$percentage = Support_Hours_Data::get_time_output('used_time_in_percentage');
+$stroke  = Support_Hours_Data::get_time_output('stroke_dasharray');
+$modifier = Support_Hours_Data::get_time_output('text_size');
 ?>
 <style>
 	body {
@@ -32,7 +32,7 @@ $modifier = Support_Hours_Admin::get_time_output('text_size');
 		</div>
 		<div class="sh-gauge__percentage">
 			<span class="sh-gauge__text sh-gauge__text--<?php echo esc_html($modifier); ?>">
-				<?php echo esc_html(Support_Hours_Admin::get_time_output('time_full')); ?>
+				<?php echo esc_html(Support_Hours_Data::get_time_output('time_simplified')); ?>
 				<br class="smallbr" />
 				<?php esc_html_e('hours', 'support-hours'); ?>
 				<br class='bigbr' />

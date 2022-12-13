@@ -10,6 +10,8 @@
  * @subpackage Support_Hours/partials
  */
 
+namespace Support_Hours;
+
 ?>
 
 <fieldset>
@@ -29,16 +31,16 @@
 
 		<tbody>
 			<?php
-			if ($work_fields) :
+			if (Support_Hours_Data::get_workfields()) {
 				$first = false;
-				foreach ($work_fields as $field) {
+				foreach (Support_Hours_Data::get_workfields() as $field) {
 					include('work-table-fields.php');
 					$i++;
 				}
-			else :
+			} else {
 				$first = true;
 				include('work-table-fields.php');
-			endif;
+			}
 			?>
 		</tbody>
 	</table>
