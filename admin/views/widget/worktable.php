@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    Support_Hours
- * @subpackage Support_Hours/partials
+ * @subpackage Support_Hours/views
  */
 
 namespace Support_Hours;
@@ -38,7 +38,7 @@ $total = Support_Hours_Data::get_time_output('time_full');
 				$entries = array_slice(Support_Hours_Data::get_workfields(), -5);
 				$format = get_option('date_format');
 				foreach ($entries as $entry) {
-					?>
+				?>
 					<tr>
 						<td class="column-primary">
 							<?php

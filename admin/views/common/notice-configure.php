@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    Support_Hours
- * @subpackage Support_Hours/partials
+ * @subpackage Support_Hours/views
  */
 
 namespace Support_Hours;
@@ -18,6 +18,6 @@ Support_Hours_Admin::the_notice($message, 'notice-warning');
 ?>
 <p>
   <a class="button button-primary" href="<?php echo esc_attr(admin_url('admin.php?page=support-hours-settings')); ?>">
-	<?php esc_html_e('Configure plugin!', 'support-hours'); ?>
+    <?php esc_html_e('Configure plugin', 'support-hours'); ?>
   </a>
 </p>

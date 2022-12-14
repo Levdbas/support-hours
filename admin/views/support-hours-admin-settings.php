@@ -27,8 +27,8 @@ $managers = Support_Hours_Data::get_managers();
 			<?php
 			settings_fields('support-hours');
 			do_settings_sections('support-hours');
-			include_once 'partials/settings/general-settings-form.php';
-			include_once 'partials/settings/work-table-form.php';
+			include_once 'settings/general-settings-form.php';
+			include_once 'settings/work-table-form.php';
 			?>
 		</form>
 	<?php } else { ?>

@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    Support_Hours
- * @subpackage Support_Hours/partials
+ * @subpackage Support_Hours/views
  */
 
 namespace Support_Hours;

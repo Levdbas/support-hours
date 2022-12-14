@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    Support_Hours
- * @subpackage Support_Hours/partials
+ * @subpackage Support_Hours/views
  */
 
 namespace Support_Hours;
@@ -34,7 +34,7 @@ elseif (!empty($managers) && in_array($current_user_id, $managers)) :
 		<a class="button button-primary" href="<?php echo esc_attr(admin_url('admin.php?page=support-hours-settings')); ?>"><?php esc_html_e('Add first activity', 'support-hours'); ?></a>
 	<?php
 endif;
-?>
+	?>
 
 	<?php
 	if ('index.php' == $pagenow) {
@@ -52,7 +52,7 @@ endif;
 			$message = __('you have plenty of hours left.', 'support-hours');
 			Support_Hours_Admin::the_notice($welcome . $message, 'notice-success');
 		}
-		?>
+	?>
 		<a class="button button-primary" href="mailto:<?php echo esc_attr(Support_Hours_Data::get_email()); ?>?SUBJECT=<?php esc_html_e('Order Support Hours', 'support-hours'); ?> - <?php echo esc_attr(bloginfo('name')); ?>"><?php esc_html_e('Order Support Hours', 'support-hours'); ?></a>
 
 	<?php } ?>

@@ -128,7 +128,7 @@ class Support_Hours_Admin
 	 */
 	public function display_plugin_page()
 	{
-		include_once 'support-hours-admin-overview.php';
+		include_once 'views/support-hours-admin-overview.php';
 	}
 
 	/**
@@ -138,7 +138,7 @@ class Support_Hours_Admin
 	 */
 	public function display_plugin_setup_page()
 	{
-		include_once 'support-hours-admin-settings.php';
+		include_once 'views/support-hours-admin-settings.php';
 	}
 
 	/**
@@ -235,7 +235,7 @@ class Support_Hours_Admin
 	 */
 	public function widget_compose()
 	{
-		include_once 'support-hours-admin-widget.php';
+		include_once 'views/support-hours-admin-widget.php';
 	}
 
 

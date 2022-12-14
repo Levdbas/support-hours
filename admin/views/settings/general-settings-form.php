@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    Support_Hours
- * @subpackage Support_Hours/partials
+ * @subpackage Support_Hours/views
  */
 
 namespace Support_Hours;
@@ -16,8 +16,6 @@ $administrators = get_users('orderby=nicename&role=administrator');
 $managers = Support_Hours_Data::get_managers();
 $email = Support_Hours_Data::get_email();
 ?>
-
-
 
 <table class="form-table" role="presentation">
 
@@ -29,7 +27,7 @@ $email = Support_Hours_Data::get_email();
 					<?php
 
 					foreach ($administrators as $administrator) {
-						?>
+					?>
 						<label for="<?php echo esc_attr($name); ?>[users<?php echo esc_attr($administrator->ID); ?>]">
 							<?php $user_checked = !empty($managers) ? in_array($administrator->ID, $managers) : false; ?>
 							<input type="checkbox" name="<?php echo esc_attr($name); ?>[users][]" id="<?php echo esc_attr($name); ?>[users<?php echo esc_attr($administrator->ID); ?>]" class="filled-in" value="<?php echo esc_attr($administrator->ID); ?>" <?php checked($user_checked); ?> />
