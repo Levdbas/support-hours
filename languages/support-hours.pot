@@ -12,7 +12,7 @@ msgstr ""
 "<translations@example."
 "com>\n"
 "POT-Creation-Date: "
-"2022-12-08 14:47+0100\n"
+"2022-12-14 22:27+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your "
 "Name <you@example.com>\n"
@@ -54,190 +54,173 @@ msgstr ""
 "SearchPathExcluded-0: ../"
 "node_modules\n"
 
-#: class-support-hours-admin.php:181
-#: class-support-hours-admin.php:191
+#: class-support-hours-admin.php:82
+#: class-support-hours-admin.php:92
 msgid ""
 "Support Hours overview"
 msgstr ""
 
-#: class-support-hours-admin.php:182
-#: class-support-hours-admin.php:321
+#: class-support-hours-admin.php:83
+#: class-support-hours-admin.php:222
 msgid "Support Hours"
 msgstr ""
 
-#: class-support-hours-admin.php:192
+#: class-support-hours-admin.php:93
 msgid "Overview"
 msgstr ""
 
-#: class-support-hours-admin.php:200
+#: class-support-hours-admin.php:101
 msgid ""
 "Support Hours settings"
 msgstr ""
 
-#: class-support-hours-admin.php:201
-#: class-support-hours-admin.php:218
+#: class-support-hours-admin.php:102
+#: class-support-hours-admin.php:119
 msgid "Settings"
 msgstr ""
 
-#: partials/common/bottom-message.php:18
+#: views/common/bottom-message.php:22
 msgid "Add new activity"
 msgstr ""
 
-#: partials/common/bottom-message.php:20
+#: views/common/bottom-message.php:24
 msgid "View all activities"
 msgstr ""
 
-#: partials/common/bottom-message.php:26
+#: views/common/bottom-message.php:30
 msgid ""
 "No activities added yet."
 msgstr ""
 
-#: partials/common/bottom-message.php:30
+#: views/common/bottom-message.php:34
 msgid "Add first activity"
 msgstr ""
 
-#: partials/common/bottom-message.php:38
+#: views/common/bottom-message.php:43
 msgid "Hi"
 msgstr ""
 
-#: partials/common/bottom-message.php:41
+#: views/common/bottom-message.php:46
 msgid ""
 "your Support Hours are "
 "used."
 msgstr ""
 
-#: partials/common/bottom-message.php:44
+#: views/common/bottom-message.php:49
 msgid ""
 "your Support Hours are "
 "almost used."
 msgstr ""
 
-#: partials/common/bottom-message.php:47
+#: views/common/bottom-message.php:52
 msgid ""
 "you have plenty of hours "
 "left."
 msgstr ""
 
-#: partials/common/bottom-message.php:51
-#: partials/common/notice-no-hours.php:18
-#: partials/common/notice-no-hours.php:19
+#: views/common/bottom-message.php:56
+#: views/common/notice-no-hours.php:18
+#: views/common/notice-no-hours.php:19
 msgid "Order Support Hours"
 msgstr ""
 
-#: partials/common/notice-configure.php:15
+#: views/common/notice-configure.php:15
 msgid ""
 "Support Hours is not "
 "configured."
 msgstr ""
 
-#: partials/common/notice-configure.php:21
-msgid "Configure plugin!"
+#: views/common/notice-configure.php:21
+msgid "Configure plugin"
 msgstr ""
 
-#: partials/common/notice-no-hours.php:15
+#: views/common/notice-no-hours.php:15
 msgid ""
 "No Support Hours bought "
 "yet."
 msgstr ""
 
-#: partials/settings/general-settings-form.php:21
+#: views/settings/general-settings-form.php:24
 msgid ""
 "Support Hours managers"
 msgstr ""
 
-#: partials/settings/general-settings-form.php:39
+#: views/settings/general-settings-form.php:42
 msgid ""
 "E-mail address main "
 "Support Hours manager"
 msgstr ""
 
-#: partials/settings/work-table-fields.php:22
+#: views/settings/work-table-fields.php:22
 msgid "Time used"
 msgstr ""
 
-#: partials/settings/work-table-fields.php:28
+#: views/settings/work-table-fields.php:28
 msgid "Time added"
 msgstr ""
 
-#: partials/settings/work-table-fields.php:34
-#: partials/settings/work-table-form.php:23
-#: partials/widget/worktable.php:33
-#: support-hours-admin-overview.php:33
-#: support-hours-admin-overview.php:58
-#: support-hours-admin-overview.php:81
+#: views/settings/work-table-fields.php:34
+#: views/settings/work-table-form.php:25
+#: views/support-hours-admin-overview.php:30
+#: views/support-hours-admin-overview.php:52
+#: views/support-hours-admin-overview.php:75
+#: views/widget/worktable.php:31
 msgid "Date"
 msgstr ""
 
-#: partials/settings/work-table-fields.php:39
-#: partials/settings/work-table-form.php:24
-#: partials/widget/worktable.php:34
-#: support-hours-admin-overview.php:34
-#: support-hours-admin-overview.php:82
+#: views/settings/work-table-fields.php:39
+#: views/settings/work-table-form.php:26
+#: views/support-hours-admin-overview.php:31
+#: views/support-hours-admin-overview.php:76
+#: views/widget/worktable.php:32
 msgid "Time"
 msgstr ""
 
-#: partials/settings/work-table-fields.php:44
-#: partials/settings/work-table-form.php:25
-#: partials/widget/worktable.php:35
-#: support-hours-admin-overview.php:35
-#: support-hours-admin-overview.php:68
-#: support-hours-admin-overview.php:83
+#: views/settings/work-table-fields.php:44
+#: views/settings/work-table-form.php:27
+#: views/support-hours-admin-overview.php:32
+#: views/support-hours-admin-overview.php:62
+#: views/support-hours-admin-overview.php:77
+#: views/widget/worktable.php:33
 msgid "Description"
 msgstr ""
 
-#: partials/settings/work-table-fields.php:46
+#: views/settings/work-table-fields.php:46
 msgid ""
 "Description of the "
 "activity"
 msgstr ""
 
-#: partials/settings/work-table-form.php:22
+#: views/settings/work-table-form.php:24
 msgid "Type"
 msgstr ""
 
-#: partials/settings/work-table-form.php:45
+#: views/settings/work-table-form.php:47
 msgid ""
 "Activities will be "
 "sorted by date on save"
 msgstr ""
 
-#: partials/settings/work-table-form.php:47
+#: views/settings/work-table-form.php:49
 msgid "Add activity"
 msgstr ""
 
-#: partials/settings/work-table-form.php:49
+#: views/settings/work-table-form.php:51
 msgid "Save"
 msgstr ""
 
-#: partials/widget/widget-clock.php:36
-msgid "hours"
-msgstr ""
-
-#: partials/widget/widget-clock.php:38
-msgid "used"
-msgstr ""
-
-#: partials/widget/worktable.php:21
-msgid ""
-"Last five activities:"
-msgstr ""
-
-#: partials/widget/worktable.php:23
-msgid "Activities:"
-msgstr ""
-
-#: partials/widget/worktable.php:75
-#: support-hours-admin-overview.php:90
-msgid "Total"
-msgstr ""
-
-#: support-hours-admin-overview.php:21
+#: views/support-hours-admin-overview.php:22
 msgid ""
 "A complete overview of "
 "all activities."
 msgstr ""
 
-#: support-hours-admin-settings.php:36
+#: views/support-hours-admin-overview.php:84
+#: views/widget/worktable.php:74
+msgid "Total"
+msgstr ""
+
+#: views/support-hours-admin-settings.php:36
 msgid ""
 "You do not have access "
 "to this page because you "
@@ -245,4 +228,17 @@ msgid ""
 "manager. Please disable "
 "and enable the plugin to "
 "reset user access."
+msgstr ""
+
+#: views/widget/widget-clock.php:37
+msgid "hours"
+msgstr ""
+
+#: views/widget/widget-clock.php:39
+msgid "used"
+msgstr ""
+
+#: views/widget/worktable.php:22
+msgid ""
+"Last five activities:"
 msgstr ""
