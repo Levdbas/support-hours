@@ -2,8 +2,8 @@
 Contributors: levdbas
 Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
 Requires at least: 4.6
-Tested up to: 6.1.1
-Stable tag: 2.1.0
+Tested up to: 6.2.0
+Stable tag: 2.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,11 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 3. Overview page where all activities are listed.
 
 == Changelog ==
+
+= 2.2.0 =
+* Compatibility check with new WP version
+* Fixed a bug where overusage wasn't calculated correctly.
+* Fixed a bug where you could not save the settings when you didn't added the first timeslot.
 
 = 2.1.0 =
 * Update minimal php version to 7.4

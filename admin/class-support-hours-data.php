@@ -116,7 +116,14 @@ class Support_Hours_Data
 			self::$email = $this->options['email'];
 		}
 
-		if (isset($this->options['workFields'])) {
+		if (!empty($this->options['workFields'])) {
+
+			$first_work_field = $this->options['workFields'][0];
+
+			if (empty($first_work_field['date']) || empty($first_work_field['used'])) {
+				return;
+			}
+
 			self::$work_fields          = $this->options['workFields'];
 			self::$total_used_minutes   = $this->add_time_entries('time-used');
 			self::$total_bought_minutes = $this->add_time_entries('time-added');
@@ -152,7 +159,7 @@ class Support_Hours_Data
 		);
 
 		foreach ($filtered_fields as $time) {
-			if ('' !== $time['type']) {
+			if ('' !== $time['type'] && !empty($time['used'])) {
 				list($hour, $minute) = explode(':', $time['used']);
 				$minutes += $hour * 60;
 				$minutes += $minute;
@@ -204,6 +211,7 @@ class Support_Hours_Data
 		$leftovers                = $bought_time_without_last - self::$total_used_minutes < 0 ? 0 : $bought_time_without_last - self::$total_used_minutes;
 		$remaining_time           = self::$total_bought_minutes - self::$total_used_minutes;
 		$bought_minutes_output    = self::$last_added_time + $leftovers;
+
 		$used_minutes_output      = self::$total_used_minutes - $bought_time_without_last;
 		$overusage                = self::$total_bought_minutes - self::$total_used_minutes;
 		$percentage               = 0;
@@ -213,7 +221,7 @@ class Support_Hours_Data
 		}
 
 		if ($overusage < 0) {
-			$used_minutes_output = abs($overusage);
+			$used_minutes_output = abs($overusage - self::$last_added_time);
 		}
 
 		if (0 !== $used_minutes_output && 0 !== $bought_minutes_output) {
@@ -224,10 +232,22 @@ class Support_Hours_Data
 
 		$bought_time_in_hours_minutes = $this->convert_minutes_to_hours_minutes($bought_minutes_output);
 		$used_time_in_hours_minutes   = $this->convert_minutes_to_hours_minutes($used_minutes_output);
-
 		$text_size = 0 == $used_minutes_output % 60 && $bought_minutes_output < 5940 ? 'big' : 'small';
 
 		self::$time_output = [
+			/* 			'debug' => [
+				'used_minutes'            => $used_minutes_output,
+				'bought_minutes'          => $bought_minutes_output,
+				'leftovers'               => $leftovers,
+				'remaining_time'          => $remaining_time,
+				'last_added_time'         => self::$last_added_time,
+				'total_used_minutes'      => self::$total_used_minutes,
+				'total_bought_minutes'    => self::$total_bought_minutes,
+				'used_time_in_hours'      => $used_time_in_hours_minutes,
+				'bought_time_in_hours'    => $bought_time_in_hours_minutes,
+				'percentage'              => $percentage,
+				'text_size'               => $text_size,
+			], */
 			'used_time_in_percentage' => $percentage,
 			'time_full'               => $used_time_in_hours_minutes . ' / ' . $bought_time_in_hours_minutes,
 			'time_total'              => $this->convert_minutes_to_hours_minutes(self::$total_used_minutes) . ' / ' . $this->convert_minutes_to_hours_minutes(self::$total_bought_minutes),
@@ -278,8 +298,8 @@ class Support_Hours_Data
 	 */
 	public static function get_time_output($type)
 	{
-		if (!isset(self::$time_output[$type])) {
-			throw new \Exception('Type not found in time output array.');
+		if (!key_exists($type, self::$time_output)) {
+			throw new \Exception('Type ' . $type . ' not found in time output array.');
 		}
 
 		return self::$time_output[$type];
