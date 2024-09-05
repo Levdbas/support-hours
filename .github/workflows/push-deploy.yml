@@ -24,12 +24,17 @@ jobs:
               env:
                   SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
                   SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-            - name: Upload release asset
-              uses: actions/upload-release-asset@v1
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Create zip archive
+              run: |
+                git archive --format=zip HEAD -o ${{ github.event.repository.name }}.zip
+                mkdir ${{ github.event.repository.name }}
+                unzip ${{ github.event.repository.name }}.zip -d ${{ github.event.repository.name }}
+                rm ${{ github.event.repository.name }}.zip
+                cp -r dist ${{ github.event.repository.name }}
+                zip -r ${{ github.event.repository.name }}.zip ${{ github.event.repository.name }}
+            - name: Release
+              uses: softprops/action-gh-release@v2
+              if: startsWith(github.ref, 'refs/tags/')
               with:
-                  upload_url: ${{ github.event.release.upload_url }}
-                  asset_path: ${{ steps.deploy.outputs.zip-path }}
-                  asset_name: ${{ github.event.repository.name }}.zip
-                  asset_content_type: application/zip
+                files: |
+                  ${{ github.event.repository.name }}.zip
