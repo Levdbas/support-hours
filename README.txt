@@ -1,6 +1,6 @@
-=== Plugin Name ===
+=== Support Hours ===
 Contributors: levdbas
-Tags: time, hours, tracking, client, pre-paid, freelance, support, development, developer
+Tags: support, hours, tracking, client, pre-paid,
 Requires at least: 4.6
 Tested up to: 6.6.0
 Stable tag: 2.2.1
