@@ -46,6 +46,10 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 == Changelog ==
 
+= 2.2.2 =
+* Fix two minor issues in README.TXT
+* Fix automatic deployment workflow on GitHub
+
 = 2.2.1 =
 * Compatibility check with new WP version
 
