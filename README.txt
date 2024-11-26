@@ -3,7 +3,7 @@ Contributors: levdbas
 Tags: support, hours, tracking, client, pre-paid,
 Requires at least: 4.6
 Tested up to: 6.7.1
-Stable tag: 2.2.2
+Stable tag: 2.3.0
 Requires PHP: 8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,8 @@ Yes! Feel free to sent me any suggestions or feedback. I think this plugin can b
 
 == Changelog ==
 
+= 2.3.1 =
+* Fixed version numbering
 
 = 2.3.0 =
 * Update minimal php version to 8.0
